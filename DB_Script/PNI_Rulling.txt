@@ -1,0 +1,3 @@
+incentive bonus = wages total amt/26/8*OT+Other Allowances
+earned wages total = basic+spcl+hra+PIB
+actual wages = earned total-pf-esi-tds-advance-shopfloorfine-other
