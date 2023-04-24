@@ -1,0 +1,135 @@
+﻿@model Wfm.App.Core.Model.ExitManagementMetaData
+@{
+    ViewBag.IS_REFOUND = new List<SelectListItem>
+                                                {
+                                                            new SelectListItem{ Text="Yes", Value = "Y" },
+                                                            new SelectListItem{ Text="No", Value = "N" }
+                                                         };
+}
+<style>
+    select {
+        display: inline;
+    }
+</style>
+<div class="row clearfix">
+    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6" id="fname"><b>Father Name:</b> @Model.WorkforceMetaData.FATHER_NAME</div>
+    <div class="ccol-lg-4 col-md-4 col-sm-6 col-xs-6" id="mobileno"> Mobile No: @Model.WorkforceMetaData.MOBILE_NO</div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="doj">Date of Joining: @Wfm.App.Common.Utility.FormatDate(@Model.WorkforceMetaData.DOJ.Value)</div>
+</div>
+<hr />
+<div class="row clearfix">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <div class="form-line">
+                <label>Is Notice Serve</label>
+                @Html.DropDownListFor(x => x.IS_NOTICE_SERVE, new List<SelectListItem>
+                                                {
+                                                    new SelectListItem{ Text="Yes", Value = "Y" },
+                                                    new SelectListItem{ Text="No", Value = "N" }
+                                                 }, "-- Is Notice Serving--", new { required = "true" })
+                @Html.ValidationMessageFor(m => m.IS_NOTICE_SERVE)
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <div class="form-line">
+                <label>Notice Days</label>
+                @Html.TextBoxFor(m => m.NOTICE_DAYS, "", new { placeholder = "Notice Days", @class = "form-control disabled", @type = "text", required = "true" })
+                @Html.ValidationMessageFor(m => m.NOTICE_DAYS)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <div class="form-line">
+                <label>Reason of Leaving</label>
+                @Html.TextBoxFor(m => m.REASON_OF_LEAVING, "", new { placeholder = "Reason of Leaving", @class = "form-control disabled", @type = "text", required = "true" })
+                @Html.ValidationMessageFor(m => m.REASON_OF_LEAVING)
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <div class="form-line">
+                <label>Resignation Date</label>
+                @Html.TextBoxFor(m => m.RESIGNATION_DATE, "{0:dd/MM/yyyy}", new { placeholder = "RESIGNATION DATE", @class = "form-control datepicker dateddmmyyyy", @type = "text", required = "true" })
+                @Html.ValidationMessageFor(m => m.RESIGNATION_DATE)
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <div class="form-line">
+                <label>Exit Date</label>
+                @Html.TextBoxFor(m => m.EXIT_DATE, "{0:dd/MM/yyyy}", new { placeholder = "EXIT DATE", @class = "form-control datepicker",@readonly= "readonly", @type = "text", required = "true" })
+                @Html.ValidationMessageFor(m => m.EXIT_DATE)
+            </div>
+        </div>
+    </div>
+
+</div>
+<table id="tblParticipantList">
+    <thead>
+        <tr>
+            <td>S.No</td>
+            <td>Assets</td>
+            <td>Asset Life</td>
+            <td>Refundable</td>
+            <td>Assigned Date</td>
+            <td>Is Refund</td>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        @{ if (Model.AssetMappingMetaDatas.Count > 0)
+            {
+                for (int i = 0; i < Model.AssetMappingMetaDatas.Count; i++)
+                {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>@Model.AssetMappingMetaDatas[i].ASSET_NAME</td>
+                        <td>@Model.AssetMappingMetaDatas[i].ASSET_LIFE</td>
+                        <td>@Model.AssetMappingMetaDatas[i].REFUNDABLE</td>
+                        <td>@Wfm.App.Common.Utility.FormatDate(Model.AssetMappingMetaDatas[i].ASSIGNED_DATE)</td>
+                        <td>
+                            @if (Model.AssetMappingMetaDatas[i].IS_REFUNDABLE)
+                            {
+                                @Html.HiddenFor(x => x.AssetMappingMetaDatas[i].ASSET_ID)
+                                @Html.HiddenFor(x => x.AssetMappingMetaDatas[i].ASSET_ALLOCATION_ID)
+                                @Html.HiddenFor(x => x.AssetMappingMetaDatas[i].IS_REFUNDABLE)
+                                @Html.DropDownListFor(x => x.AssetMappingMetaDatas[i].IS_REFOUND, new SelectList(ViewBag.IS_REFOUND, "Value", "Text", Model.AssetMappingMetaDatas[i].IS_REFOUND), "-- Select Department--", new { required = "true" })
+                                @Html.ValidationMessageFor(m => m.AssetMappingMetaDatas[i].IS_REFOUND)
+                            }
+                            else
+                            {
+                                @Html.HiddenFor(x => x.AssetMappingMetaDatas[i].ASSET_ID)
+                                @Html.HiddenFor(x => x.AssetMappingMetaDatas[i].ASSET_ALLOCATION_ID)
+                                @Html.HiddenFor(x => x.AssetMappingMetaDatas[i].IS_REFUNDABLE)
+                            }
+
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" style="text-align:center">No asset assigned to @Model.WorkforceMetaData.EMP_NAME</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<br />
+<div class="row clearfix">
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary waves-effect" id="btnSaveAssetAllocation">Submit</button>
+    </div>
+</div>
+@if (Model.IS_NOTICE_SERVE == null)
+{ }

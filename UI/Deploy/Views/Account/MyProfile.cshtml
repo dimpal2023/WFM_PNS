@@ -1,0 +1,101 @@
+﻿@model Wfm.App.Core.Model.UserMetaData
+
+@{
+    ViewBag.Title = "Home - My Profile";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Profile</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Account/MyProfile">
+                                <i class="fas fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Profile</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Your content goes here  -->
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="m-b-20">
+                        <div class="contact-grid">
+                            <div class="profile-header bg-dark">
+                                <div class="user-name">@Model.USER_NAME</div>
+                                <div class="name-center">Employee</div>
+                            </div>
+                            <img src="~/Content/assets/images/user/profilebig.png" class="user-img" alt="">                           
+                            <div>
+                                <span class="phone">
+                                    <i class="material-icons">phone</i>@Model.EditMOBILE_NO
+                                </span>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="card">
+                    <div class="profile-tab-box">
+                        <div class="p-l-20">
+                            <ul class="nav ">
+                                <li class="nav-item tab-all">
+                                    <a class="nav-link active show" href="#project" data-toggle="tab">About Me</a>
+                                </li>                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="card project_widget">
+                                    <div class="header">
+                                        <h2>About</h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row">
+                                            <div class="col-md-3 col-6 b-r">
+                                                <strong>Full Name</strong>
+                                                <br>
+                                                <p class="text-muted">@Model.USER_NAME</p>
+                                            </div>
+                                            <div class="col-md-3 col-6 b-r">
+                                                <strong>Mobile</strong>
+                                                <br>
+                                                <p class="text-muted">@Model.EditMOBILE_NO</p>
+                                            </div>
+                                            <div class="col-md-3 col-6 b-r">
+                                                <strong>Email</strong>
+                                                <br>
+                                                <p class="text-muted">@Model.EditMAIL_ID</p>
+                                            </div>
+                                            <div class="col-md-3 col-6">
+                                                <strong>Location</strong>
+                                                <br>
+                                                <p class="text-muted">India</p>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="timeline" aria-expanded="false">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

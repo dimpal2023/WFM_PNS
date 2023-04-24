@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.ExportSalaryMetaData>
+@{
+    Layout = null;
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="header" style="margin: 1% 10% 1% 10%;">
+                    <a href="/Workforce/GetworkforceSalary">
+                        <i class="fas fa-layer-group"></i> Back to Salary Search
+                    </a>
+                </div>
+                <div class="card" style="margin: 1% 10% 1% 10%;">
+                    <div class="header">
+                        <h2>
+                            <strong>Workforce</strong> Salary&nbsp;&nbsp;
+                            <input type='button' id='btn' value='Print' onclick='printDiv();'>
+                        </h2>
+                    </div>
+                    <div class="body" id='DivIdToPrint'>
+                        @foreach (var item in Model)
+                        {
+                            <div>@Html.Raw(item.SalarySlip)</div>
+                        }
+                    </div>
+                    <div class="header">
+                        <h2>
+                            <strong>Employee</strong> Cards&nbsp;&nbsp;
+                            <input type='button' id='btn' value='Print' onclick='printDiv();'>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    function printDiv() {
+
+        var divToPrint = document.getElementById('DivIdToPrint');
+        var newWin = window.open('', 'Print-Window');
+        newWin.document.open();
+        newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+        newWin.document.close();
+        setTimeout(function () { newWin.close(); }, 10);
+
+    }
+</script>

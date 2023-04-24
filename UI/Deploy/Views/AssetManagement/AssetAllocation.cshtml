@@ -1,0 +1,281 @@
+@model Wfm.App.Core.Model.AssetAllocationMetaDataForm
+
+@{
+    ViewBag.Title = "Asset Management - Allocation";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Asset Management</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/AssetManagement/AssetAllocation">
+                                <i class="fas fa-layer-group"></i>Asset Allocation
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Create</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Add</strong> Asset Allocation
+                            </h2>
+                        </div>
+                        <div class="body">
+
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="card">
+                                        <div class="body">
+                                            @using (Html.BeginForm("AssetAllocation", "AssetManagement", FormMethod.Post, new { id = "submitAssetAllocationForm" }))
+                                            {
+
+                                                <input type="hidden" id="rowValue" value="0" />
+                                                <div class="row clearfix">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                @Html.LabelFor(x => x.DEPT_ID, "Department name")
+                                                                @Html.DropDownListFor(m => m.DEPT_ID, new SelectList(Model.Departments, "Value", "Text"), "--Select--", new { required = "required" })
+                                                                @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                                                @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "--Select--", new { required = "true" })
+                                                                @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row clearfix">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                @Html.LabelFor(x => x.WF_EMP_TYPE, "Employee Type")
+                                                                @Html.DropDownListFor(x => x.WF_EMP_TYPE, new SelectList(ViewBag.EmployeeTypes, "Value", "Text"), "-- Select--", htmlAttributes: new { id = "WF_EMP_TYPE", required = true })
+                                                                @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <div id="emplyeedll">
+                                                                    <label for="password_2">Employee Name</label>
+                                                                    @Html.TextBoxFor(x => x.EMP_NAME, new { id = "EMP_NAME", placeholder = "Workforce Name", required = "true" })
+                                                                    @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                                                    @Html.HiddenFor(x => x.WF_ID, new { id = "WF_ID" })
+
+                                                                </div>
+                                                                @Html.ValidationMessageFor(m => m.WF_ID)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="card">
+                                                            <div id="emplyeedetail" style="display:none;"> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+    .Show {
+        display: block;
+    }
+
+    .Hide {
+        display: none;
+    }
+
+    .ui-autocomplete {
+        background-color: #f5f5f5;
+        max-width: 500px;
+        max-height: 200px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        z-index: 100;
+        border: 0px 1px 1px 1px;
+    }
+
+    .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+        background-color: #DCDCDC;
+        color: #000000;
+    }
+</style>
+
+<script src="~/Content/assets/js/pages/asset/asset.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script>
+    $(document).ready(function () {
+        $("select[required]").css({ position: "absolute", display: "inline", height: 0, padding: 0, width: 0 });
+    });
+
+    $("#EMP_NAME").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("LoadWorkforceByWFType", "Workforce")',
+                datatype: "json",
+                data: {
+                    deptId: $("#DEPT_ID").val(),
+                    sub_dept_id: $("#SUBDEPT_ID").val(),
+                    query: $('#EMP_NAME').val(),
+                    emp_type_id: $('#WF_EMP_TYPE').val()
+                },
+                success: function (data) {
+                    if (!data.length) {
+                        var result = [{ label: "no results", value: response.term }];
+                        response(result);
+                    }
+                    else {
+                        response($.map(data, function (val, item) {
+                            return {
+                                label: val.Name,
+                                value: val.Name,
+                                empId: val.ID
+                            }
+                        }))
+                    }
+                }
+            })
+        },
+        select: function (event, ui) {
+            $("#WF_ID").val(ui.item.empId);
+            employeeOnChange();
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+
+    function employeeOnChange() {
+        var emp_id = $('#WF_ID').val();
+        $('#emplyeedetail').empty();
+        $('#rowValue').val(0);
+        if (emp_id === "00000000-0000-0000-0000-000000000000") {
+
+        } else {
+            $.get('/AssetManagement/GetEmployeeById?empid=' + emp_id, function (data) {
+                $('#emplyeedetail').html(data);
+                $('#emplyeedetail').fadeIn('fast');
+                addAsset();
+            });
+        }
+    }
+
+    function addAsset() {
+        var departId = $('#DEPT_ID').val();
+        var sub_departId = $('#SUBDEPT_ID').val();
+        var rowNumber = $('#rowValue').val();
+        if (rowNumber => 0) {
+            //var url = "/AssetManagement/GetAssetBydeptId?row=" + rowNumber + '&deptId=' + departId + '&sub_dept_id=' + sub_departId;
+            var url = '/AssetManagement/GetAssetBydeptId?deptId=' + departId + '&sub_dept_id=' + sub_departId + '&row=' + rowNumber;
+            $.get(url, function (data) {
+                $("#tblParticipantList tbody").append(data);
+
+                if (rowNumber >= 1) {
+                    var removeTd = parseInt(rowNumber) + 1;
+                    $('#remove_' + removeTd).html('<button type="button" onclick="remodeAsset(' + rowNumber + ')" id="btnRemoveAsset" value="' + rowNumber + '">Remove</button>');
+                    if (rowNumber > 1) {
+                        $('#remove_' + rowNumber).empty();
+                    }
+                } rowNumber = parseInt(rowNumber) + 1;
+                $('#rowValue').val(rowNumber);
+
+            });
+        }
+
+    }
+    function remodeAsset(tr) {
+        var removeTd = parseInt(tr) + 1;
+        $('#trRemove_' + removeTd).remove();
+        if (tr > 0) {
+            removeTd = removeTd - 2
+            if (removeTd > 0)
+                $('#remove_' + tr).html('<button type="button" onclick="remodeAsset(' + removeTd + ')" id="btnRemoveAsset" value="' + removeTd + '">Remove</button>');
+            var rowNumber = $('#rowValue').val();
+            rowNumber = parseInt(rowNumber) - 1;
+            $('#rowValue').val(rowNumber);
+        }
+    }
+
+    function onAssetChange(){
+        var asset_Id = $("#ASSET_ID option:selected").val();
+        var rowNumber = $('#rowValue').val();                
+        $.ajax({
+            type: "POST",
+            url: "/AssetManagement/GetAssetExpiryById",
+            data: { assetId: asset_Id },
+            success: function (response) {
+                if (response !== undefined) {
+                    $('#remove_' + rowNumber).prev().text(ToDate(response.EXPIRY_DATE));
+                }
+            }
+        });
+    }
+
+    function ToDate(value) {
+        var pattern = /Date\(([^)]+)\)/;
+        var results = pattern.exec(value);
+        var dt = new Date(parseFloat(results[1]));
+        return (dt.getDate() + 1) + "/" + dt.getMonth() + "/" + dt.getFullYear();
+    }
+
+    $("#DEPT_ID").change(function () {
+        getSubDeptbyDeptId();
+    });
+
+    function getSubDeptbyDeptId() {
+        var DEPT_ID = $("#DEPT_ID").val();
+        if (DEPT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').formSelect();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+        }
+    }
+    
+</script>

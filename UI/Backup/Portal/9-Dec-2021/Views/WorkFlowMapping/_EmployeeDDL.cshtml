@@ -1,0 +1,4 @@
+﻿@{
+    int i = ViewBag.RowIndex;
+}
+@Html.DropDownList((string)"ListMetaDatas[" + i + "]" + ".EMP_ID", ViewBag.EmployeeByRole as SelectList, "-- Select--", new { style = "display:block", id = "EMP_ID" + i, required = "true" })

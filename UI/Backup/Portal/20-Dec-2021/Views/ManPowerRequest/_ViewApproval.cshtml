@@ -1,0 +1,91 @@
+﻿@model IList<Wfm.App.Core.Model.MRFApprovalMetadata>
+@{
+    ViewBag.Title = "New Hiring - Edit MRF";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Man Power Request Form</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/ManPowerRequirement/Index">
+                                <i class="fas fa-layer-group"></i>Man Power Request Form
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>View</strong> >Man Power Request Form
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <table id="tableExport"
+                                   class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>Approver</th>
+                                        <th>Is Approved</th>
+                                        <th>S.No</th>
+                                        <th>MRF</th>
+                                        <th>Building/Floor</th>
+                                        <th>Skill/Designation</th>
+                                        <th>Quantity</th>
+                                        <th>Type</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.USER_NAME</td>
+                                            <td>@item.APPROVER_STATUS</td>
+                                            <td>@item.MRF_CODE.ToString("00000")</td>
+                                            <td>@item.REC_NAME</td>
+                                            <td>@item.BUILDING_NAME/@item.FLOOR_NAME</td>
+                                            <td>@item.SKILL_NAME/@item.WF_DESIGNATION_NAME</td>
+                                            <td>@item.QUANTITY</td>
+                                            <td>@item.EMP_TYPE</td>
+                                            <td>@item.MRF_STATUS</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("select[required]").css({ position: "absolute", display: "inline", height: 0, padding: 0, width: 0 });
+    });
+    function onBuildingChange() {
+        var buildingId = $("#BUILDING_ID option:selected").val();
+        $.get('/ManPowerRequest/GetFloorByBuildingId?buildingId=' + buildingId, function (data) {
+            $('#DEPT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#DEPT_ID').append($('<option>', {
+                    value: item.DEPT_ID,
+                    text: item.DEPT_NAME
+                }));
+            });
+            $('#DEPT_ID').formSelect();
+        });
+    }
+</script>

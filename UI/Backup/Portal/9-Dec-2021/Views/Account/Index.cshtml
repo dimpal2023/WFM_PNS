@@ -1,0 +1,95 @@
+﻿@model Wfm.App.Core.Model.LoginMasterMetaData
+
+@{ 
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Login</title>
+<!-- Favicon-->
+<link rel="icon" href="~/Content/assets/images/favicon.ico" type="image/x-icon">
+<!-- Plugins Core Css -->
+<link href="~/Content/assets/css/app.min.css" rel="stylesheet">
+<!-- Custom Css -->
+<link href="~/Content/assets/css/style.css" rel="stylesheet" />
+<link href="~/Content/assets/css/pages/extra_pages.css" rel="stylesheet" />
+
+<!-- Plugins Js -->
+<script src="~/Content/assets/js/app.min.js"></script>
+<!-- Extra page Js -->
+<script src="~/Content/assets/js/pages/examples/pages.js"></script>
+
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                    @using (Html.BeginForm("Index", "Account", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                    {
+                        <span class="login100-form-title p-b-45">
+                            Login
+                        </span>
+                        <div class="flex-sb-m w-full p-t-15 p-b-20">
+                            <div class="col-pink">
+                                @ViewBag.Message
+                            </div>
+                        </div>
+                            <div class="wrap-input100 validate-input" data-validate="Username is required">
+                                @Html.TextBoxFor(m => m.USER_LOGIN_ID, "sumit", new { @class = "input100", @name = "Username", @type = "text" })
+                                @Html.ValidationMessageFor(m => m.USER_LOGIN_ID)
+                                @*<span class="focus-input100"></span>*@
+                                @*<span class="label-input100">Userame</span>*@
+                            </div>
+                            <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                @Html.PasswordFor(m => m.CURRENT_PASSWORD,new { @class = "input100", @name = "Password", @type = "password" })
+                                @Html.ValidationMessageFor(m => m.CURRENT_PASSWORD)
+                                @*<span class="focus-input100"></span>*@
+                                @*<span class="label-input100">Password</span>*@
+                            </div>
+                            <div class="flex-sb-m w-full p-t-15 p-b-20">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        @Html.CheckBoxFor(m => m.REMEMBER_ME.Value, new { @class = "form-check-input" }) Remember me
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="hidden" name="ReturnUrl" value="@Request.QueryString["ReturnUrl"]" />
+                                    @Html.ActionLink("Forgot Password?", "ForgotPassword", "Account", new { @class = "txt1", id = "" })
+                                </div>
+                            </div>
+                            <div class="container-login100-form-btn">
+                                <input type="submit" name="submit" class="login100-form-btn" value="Login" />
+                            </div>
+                            <div class="text-center p-t-45 p-b-20">
+                                <span class="txt2">
+                                    or sign up using
+                                </span>
+                            </div>
+                            <div class="login100-form-social flex-c-m">
+                                <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                            }
+                            <div class="login100-more" style="background-image: url(@Url.Content("~/Content/assets/images/pages/bg-01.png"));">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <script type="text/javascript">
+    $(function () {
+        // delete extra hidden fields created by checkboxes as the grid links mess this up by doubling the querystring parameters
+        $("input[type='hidden'][name='REMEMBER_ME.Value']").remove();
+    });
+    </script>
+ </body>
+</html>
+

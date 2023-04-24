@@ -1,0 +1,415 @@
+﻿ID,BIOMETRIC_CODE,ATTENDANCE_DATE,PUNCH_RECORD,STATUS,INSERTED_ON,REMARKS
+1140,1750,2021-06-28,"20:44:in(HARNESS),20:49:(HARNESS),21:00:in(ME(Attendance)),07:00:out(HARNESS),",P,2021-07-02 14:26:23.970,NULL
+1141,4657,2021-06-02,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),12:16:out(ME(Attendance)),17:26:in(ME(Attendance)),05:00:out(ME(Attendance)),",P,2021-07-02 14:50:47.347,NULL
+1142,4657,2021-06-03,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),12:18:out(ME(Attendance)),13:09:in(ME(Attendance)),20:02:out(ME(Attendance)),",P,2021-07-02 14:50:47.347,NULL
+1143,8015,2021-06-04,"09:00:in(ME(Attendance)),15:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-02 14:51:52.367,NULL
+1144,8017,2021-06-04,"09:00:in(ME(Attendance)),15:30:out(ME(Attendance)),20:37:out(ME(Attendance)),",P,2021-07-02 14:51:56.163,NULL
+1145,8073,2021-06-03,"09:00:in(ME(Attendance)),11:32:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-02 14:52:42.030,NULL
+1146,8075,2021-06-02,"09:00:in(ME(Attendance)),09:33:in(ME(Attendance)),18:00:out(ME(Attendance)),",P,2021-07-02 14:52:45.027,NULL
+1147,5018,2021-06-03,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),19:44:out(ME(Attendance)),",P,2021-07-02 14:53:54.467,NULL
+1148,5023,2021-06-03,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),19:44:out(ME(Attendance)),",P,2021-07-02 14:54:00.187,NULL
+1149,5012,2021-06-03,"09:00:in(ME(Attendance)),12:07:out(ME(Attendance)),12:07:out(ME(Attendance)),13:57:in(ME(Attendance)),13:57:in(ME(Attendance)),19:30:out(ME(Attendance)),19:44:out(ME(Attendance)),",P,2021-07-02 14:54:09.403,NULL
+1150,8503,2021-06-03,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),19:44:out(ME(Attendance)),",P,2021-07-02 14:54:17.150,NULL
+1151,27887,2021-06-14,"09:00:in(ME(Attendance)),11:00:in(ME(Attendance)),19:36:out(ME(Attendance)),",P,2021-07-02 14:56:15.830,NULL
+1179,2852,2021-06-19,"07:04:in(QC/STR/GMD),07:11:out(QC/STR/GMD),19:30:in(QC/STR/GMD),",P,2021-07-04 05:56:49.647,NULL
+1180,4013,2021-06-24,"07:36:in(MF/Ma/Mt1/HT),18:53:out(MF/Ma/Mt1/HT),04:59:out(ME(Attendance)),",P,2021-07-04 05:59:43.240,NULL
+1181,4623,2021-06-16,"09:00:in(ME(Attendance)),17:35:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-04 06:04:12.830,NULL
+1182,4707,2021-06-04,"09:00:in(ME(Attendance)),10:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 06:08:00.240,NULL
+1183,8016,2021-06-10,"09:00:in(ME(Attendance)),13:24:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 06:08:51.980,NULL
+1184,8016,2021-06-12,"09:00:in(ME(Attendance)),10:28:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 06:08:52.120,NULL
+1185,8035,2021-06-10,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),19:35:in(ME(Attendance)),20:30:in(ME(Attendance)),05:30:out(SE),",P,2021-07-04 06:09:24.940,NULL
+1186,8063,2021-06-05,"07:00:in(ME(Attendance)),09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 06:09:46.797,NULL
+1187,4826,2021-06-02,"09:00:in(ME(Attendance)),10:37:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 06:11:30.973,NULL
+1188,5020,2021-06-03,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),19:44:out(ME(Attendance)),",P,2021-07-04 06:12:31.213,NULL
+1189,5020,2021-06-05,"09:00:in(ME(Attendance)),09:52:out(ME(Attendance)),10:12:in(ME(Attendance)),17:30:out(ME(Attendance)),18:02:out(ME(Attendance)),",P,2021-07-04 06:12:31.337,NULL
+1190,25010,2021-06-19,"20:49:in(UNIT 2),21:00:in(ME(Attendance)),08:24:out(UNIT 2),",P,2021-07-04 06:13:08.237,NULL
+1191,26121,2021-06-15,"09:00:in(ME(Attendance)),14:24:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 06:21:03.693,NULL
+1192,26202,2021-06-13,"07:00:in(ME(Attendance)),07:30:out(ME(Attendance)),15:10:out(ME(Attendance)),",P,2021-07-04 06:22:42.267,NULL
+1193,27590,2021-06-12,"09:00:in(ME(Attendance)),09:40:in(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-04 06:26:21.273,NULL
+1194,27641,2021-06-06,"07:00:in(ME(Attendance)),07:30:out(ME(Attendance)),15:11:out(ME(Attendance)),",P,2021-07-04 06:26:36.113,NULL
+1195,27691,2021-06-12,"09:00:in(ME(Attendance)),09:40:in(ME(Attendance)),20:30:out(ME(Attendance)),",P,2021-07-04 06:27:13.793,NULL
+1196,27887,2021-06-14,"09:00:in(ME(Attendance)),11:00:in(ME(Attendance)),19:36:out(ME(Attendance)),",P,2021-07-04 06:28:23.217,NULL
+1197,27902,2021-06-11,"07:00:in(ME(Attendance)),12:58:out(ME(Attendance)),13:22:in(ME(Attendance)),15:30:out(ME(Attendance)),05:29:out(ME(Attendance)),",P,2021-07-04 06:28:30.950,NULL
+1198,26236,2021-06-30,"17:34:in(B-24),17:42:out(ME(Attendance)),09:03:in(B-24),",P,2021-07-04 06:28:53.103,NULL
+1199,4312,2021-06-29,"19:31:in(MS/TR03),07:03:out(MS/TR03),16:03:in(MS/TR03),",P,2021-07-04 06:35:48.930,NULL
+1200,2910,2021-06-24,"19:30:in(MS/TR03),07:00:out(MS/TR03),16:00:in(MS/TR03),",P,2021-07-04 06:36:21.550,NULL
+1201,3033,2021-06-24,"19:30:in(MS/TR03),06:52:out(MS/TR03),13:46:in(MS/TR03),",P,2021-07-04 06:36:44.607,NULL
+1202,2917,2021-06-19,"19:00:in(MS/TR03),06:56:out(MS/TR03),15:30:in(MS/TR03),",P,2021-07-04 06:36:51.920,NULL
+1203,2804,2021-06-24,"19:31:in(MS/TR03),07:01:out(MS/TR03),15:48:in(MS/TR03),",P,2021-07-04 06:37:01.307,NULL
+1204,4338,2021-06-25,"07:38:in(MS/TR03),19:36:out(MS/TR03),22:13:in(MS/TR03),",P,2021-07-04 06:37:23.647,NULL
+1205,4338,2021-06-26,"07:37:in(MS/TR03),18:51:out(MS/TR03),03:31:in(MS/TR03),",P,2021-07-04 06:37:23.647,NULL
+1206,2883,2021-06-26,"19:43:in(PRESS SHOP),06:58:out(PRESS SHOP),15:35:in(PRESS SHOP),",P,2021-07-04 06:37:58.670,NULL
+1207,16027,2021-06-26,"19:30:in(PRESS SHOP),07:03:out(PRESS SHOP),15:01:in(PRESS SHOP),",P,2021-07-04 06:38:12.433,NULL
+1208,2829,2021-06-26,"19:33:in(PRESS SHOP),06:48:out(PRESS SHOP),15:35:in(PRESS SHOP),",P,2021-07-04 06:38:22.183,NULL
+1209,2915,2021-06-25,"07:30:in(PRESS SHOP),18:47:out(PRESS SHOP),05:31:in(PRESS SHOP),",P,2021-07-04 06:38:55.393,NULL
+1210,2852,2021-06-19,"07:04:in(PRESS SHOP),07:11:out(PRESS SHOP),19:30:in(PRESS SHOP),",P,2021-07-04 06:39:24.357,NULL
+1211,3713,2021-06-20,"06:50:in(PRESS SHOP),06:58:out(PRESS SHOP),15:00:in(PRESS SHOP),",P,2021-07-04 06:40:14.083,NULL
+1238,5052,2021-07-11,"VAIBHAV,DHIRAJ",,2021-07-11 09:06:11.893,BioMetric in multiple DB files.
+1239,5053,2021-07-11,",VAIBHAV,DHIRAJ",,2021-07-11 09:06:11.960,BioMetric in multiple DB files.
+1240,12011,2021-07-11,",ASHEESH,RAJESHSRIVASTAVA",,2021-07-11 09:06:15.850,BioMetric in multiple DB files.
+1241,16065,2021-07-11,",ASHEESH,ATAL,ROSHAN,RAJESHSRIVASTAVA",,2021-07-11 09:06:17.700,BioMetric in multiple DB files.
+1242,4312,2021-07-11,",ASHEESH,ATAL,ASHUTOSH,RAJESHSRIVASTAVA",,2021-07-11 09:06:18.470,BioMetric in multiple DB files.
+1243,4325,2021-07-11,",ASHEESH,ATAL,ASHUTOSH,RAJESHSRIVASTAVA",,2021-07-11 09:06:18.530,BioMetric in multiple DB files.
+1244,4303,2021-07-11,",ASHEESH,ATAL,ASHUTOSH,RAJESHSRIVASTAVA",,2021-07-11 09:06:18.600,BioMetric in multiple DB files.
+1245,4314,2021-07-11,",ASHEESH,ATAL,ASHUTOSH,RAJESHSRIVASTAVA",,2021-07-11 09:06:18.653,BioMetric in multiple DB files.
+1246,4305,2021-07-11,",ASHEESH,ATAL,ASHUTOSH,RAJESHSRIVASTAVA",,2021-07-11 09:06:18.733,BioMetric in multiple DB files.
+1247,4370,2021-07-11,",ASHEESH,ASHUTOSH,RAJESHSRIVASTAVA",,2021-07-11 09:06:18.800,BioMetric in multiple DB files.
+1248,4344,2021-07-11,",ATAL,ASHUTOSH,RAJESHSRIVASTAVA",,2021-07-11 09:06:18.870,BioMetric in multiple DB files.
+1249,4338,2021-07-11,",ASHEESH,ATAL,ASHUTOSH,RAJESHSRIVASTAVA",,2021-07-11 09:06:18.957,BioMetric in multiple DB files.
+1250,4346,2021-07-11,",ASHEESH,ATAL,ROSHAN,ASHUTOSH,RAJESHSRIVASTAVA",,2021-07-11 09:06:19.270,BioMetric in multiple DB files.
+1251,10004,2021-07-11,",ATAL,DHIRAJ",,2021-07-11 09:06:23.200,BioMetric in multiple DB files.
+1252,4334,2021-07-11,",DHIRAJ,ASHUTOSH",,2021-07-11 09:06:23.900,BioMetric in multiple DB files.
+1253,4315,2021-07-11,",DHIRAJ,ASHUTOSH",,2021-07-11 09:06:23.970,BioMetric in multiple DB files.
+1254,4389,2021-07-11,",DHIRAJ,ASHUTOSH",,2021-07-11 09:06:24.033,BioMetric in multiple DB files.
+1255,4391,2021-07-11,",DHIRAJ,ASHUTOSH",,2021-07-11 09:06:24.100,BioMetric in multiple DB files.
+1256,4654,2021-07-11,",ASHEESH,ATAL",,2021-07-11 09:06:24.170,BioMetric in multiple DB files.
+1257,4653,2021-07-11,",ASHEESH,ATAL",,2021-07-11 09:06:24.233,BioMetric in multiple DB files.
+1258,4657,2021-07-11,",ASHEESH,ATAL",,2021-07-11 09:06:24.303,BioMetric in multiple DB files.
+1259,4755,2021-07-11,",ATAL,ASHUTOSH",,2021-07-11 09:06:24.387,BioMetric in multiple DB files.
+1260,4815,2021-07-11,",ATAL,ASHUTOSH",,2021-07-11 09:06:24.463,BioMetric in multiple DB files.
+1261,4695,2021-07-11,",ASHEESH,ATAL",,2021-07-11 09:06:24.533,BioMetric in multiple DB files.
+1262,5055,2021-07-11,",VAIBHAV,DHIRAJ",,2021-07-11 09:06:24.603,BioMetric in multiple DB files.
+1263,5059,2021-07-11,",VAIBHAV,DHIRAJ",,2021-07-11 09:06:24.673,BioMetric in multiple DB files.
+1264,16019,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:45.677,BioMetric in multiple DB files.
+1265,2810,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:45.723,BioMetric in multiple DB files.
+1266,16069,2021-07-11,",ASHEESH,RAJESHSRIVASTAVA",,2021-07-11 09:06:45.793,BioMetric in multiple DB files.
+1267,16039,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:45.847,BioMetric in multiple DB files.
+1268,3009,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:45.910,BioMetric in multiple DB files.
+1269,16066,2021-07-11,",ASHEESH,RAJESHSRIVASTAVA",,2021-07-11 09:06:45.963,BioMetric in multiple DB files.
+1271,2997,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:46.080,BioMetric in multiple DB files.
+1272,16011,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:46.147,BioMetric in multiple DB files.
+1273,2802,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:46.193,BioMetric in multiple DB files.
+1274,2927,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:46.247,BioMetric in multiple DB files.
+1275,16062,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:46.327,BioMetric in multiple DB files.
+1276,2965,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:46.380,BioMetric in multiple DB files.
+1277,16067,2021-07-11,",ASHEESH,RAJESHSRIVASTAVA",,2021-07-11 09:06:46.450,BioMetric in multiple DB files.
+1278,16068,2021-07-11,",ASHEESH,RAJESHSRIVASTAVA",,2021-07-11 09:06:46.510,BioMetric in multiple DB files.
+1279,3026,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:46.563,BioMetric in multiple DB files.
+1280,5109,2021-07-11,",ASHEESH,ATAL,ROSHAN,RAJESHSRIVASTAVA",,2021-07-11 09:06:48.183,BioMetric in multiple DB files.
+1281,5159,2021-07-11,",ASHEESH,ATAL,ROSHAN,RAJESHSRIVASTAVA",,2021-07-11 09:06:48.987,BioMetric in multiple DB files.
+1282,27038,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:06:52.080,BioMetric in multiple DB files.
+1283,27664,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:06:52.143,BioMetric in multiple DB files.
+1284,27070,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.150,BioMetric in multiple DB files.
+1285,27437,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.210,BioMetric in multiple DB files.
+1286,27442,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.380,BioMetric in multiple DB files.
+1287,27444,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.443,BioMetric in multiple DB files.
+1288,27453,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.497,BioMetric in multiple DB files.
+1289,27454,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.567,BioMetric in multiple DB files.
+1290,27455,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.630,BioMetric in multiple DB files.
+1291,27457,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.697,BioMetric in multiple DB files.
+1292,27466,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.800,BioMetric in multiple DB files.
+1293,27478,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.850,BioMetric in multiple DB files.
+1294,27486,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.913,BioMetric in multiple DB files.
+1295,27488,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:21.983,BioMetric in multiple DB files.
+1296,27479,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.053,BioMetric in multiple DB files.
+1297,27490,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.113,BioMetric in multiple DB files.
+1298,27495,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.183,BioMetric in multiple DB files.
+1299,27502,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.247,BioMetric in multiple DB files.
+1300,27523,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.317,BioMetric in multiple DB files.
+1301,27525,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.370,BioMetric in multiple DB files.
+1302,27540,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.430,BioMetric in multiple DB files.
+1303,27541,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.500,BioMetric in multiple DB files.
+1304,27543,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.570,BioMetric in multiple DB files.
+1305,27545,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.630,BioMetric in multiple DB files.
+1306,27832,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.687,BioMetric in multiple DB files.
+1307,27834,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.753,BioMetric in multiple DB files.
+1308,27850,2021-07-11,",MAYANK,ASHISH",,2021-07-11 09:07:22.833,BioMetric in multiple DB files.
+1270,3050,2021-07-11,",ASHEESH,ATAL,RAJESHSRIVASTAVA",,2021-07-11 09:06:46.027,BioMetric in multiple DB files.
+775,2155,2021-04-28,"09:00:in(ME(Attendance)),16:06:in(ME(Attendance)),17:30:out(SE),",P,2021-07-01 09:15:10.647,NULL
+776,2163,2021-02-26,"08:55:in(ME(Attendance)),14:34:out(Packaging),20:30:out(ME(Attendance)),",P,2021-07-01 09:15:11.850,NULL
+778,136,2021-02-26,"08:55:in(ME(Attendance)),13:00:out(Packaging),13:10:in(ME(Attendance)),13:20:out(ME(Attendance)),13:27:in(ME(Attendance)),17:02:out(Packaging),20:33:out(ME(Attendance)),",P,2021-07-01 09:16:13.743,NULL
+780,898,2021-04-10,"08:47:in(Packaging),15:05:out(Packaging),15:08:(Packaging),19:33:out(ME(Attendance)),",P,2021-07-01 09:16:15.557,NULL
+782,400,2021-04-15,"09:00:in(ME(Attendance)),10:58:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 09:16:40.003,NULL
+783,450,2021-05-19,"09:00:in(ME(Attendance)),15:05:in(ME(Attendance)),17:30:out(SE),",P,2021-07-01 09:16:49.317,NULL
+784,468,2021-02-24,"09:00:in(ME(Attendance)),14:54:out(HARNESS),14:55:(HARNESS),17:30:out(ME(Attendance)),",P,2021-07-01 09:16:54.860,NULL
+785,569,2021-05-06,"09:00:in(ME(Attendance)),14:36:out(ME(Attendance)),17:42:out(ME(Attendance)),",P,2021-07-01 09:17:14.717,NULL
+786,570,2021-02-24,"09:00:in(ME(Attendance)),14:55:out(HARNESS),17:30:out(ME(Attendance)),",P,2021-07-01 09:17:15.513,NULL
+787,16037,2021-02-06,"07:00:in(ME(Attendance)),17:35:out(ME(Attendance)),18:30:out(ME(Attendance)),",P,2021-07-01 09:20:42.367,NULL
+788,2886,2021-04-22,"07:59:in(ME(Attendance)),17:31:out(ME(Attendance)),19:02:out(ME(Attendance)),",P,2021-07-01 09:22:16.050,NULL
+789,2987,2021-01-09,"19:00:in(ME(Attendance)),19:47:out(ME(Attendance)),07:30:out(ME(Attendance)),",P,2021-07-01 09:23:15.070,NULL
+790,16053,2021-02-11,"07:00:in(ME(Attendance)),19:00:in(ME(Attendance)),19:33:out(ME(Attendance)),",P,2021-07-01 09:24:37.400,NULL
+792,2817,2021-01-28,"15:00:in(ME(Attendance)),15:31:out(ME(Attendance)),23:31:out(ME(Attendance)),",P,2021-07-01 09:25:32.983,NULL
+793,2817,2021-05-24,"07:00:in(ME(Attendance)),19:00:in(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 09:25:35.467,NULL
+794,27002,2021-02-13,"07:00:in(ME(Attendance)),15:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 09:27:19.870,NULL
+795,27002,2021-04-22,"09:00:in(ME(Attendance)),19:38:out(ME(Attendance)),20:00:out(ME(Attendance)),",P,2021-07-01 09:27:21.460,NULL
+796,27057,2021-02-26,"07:00:in(ME(Attendance)),15:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 09:28:19.450,NULL
+797,27058,2021-02-26,"07:00:in(ME(Attendance)),19:03:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 09:28:24.043,NULL
+799,27072,2021-02-22,"18:50:in(A K AGENCY),19:00:in(ME(Attendance)),05:30:out(ME(Attendance)),05:34:(A K AGENCY),",P,2021-07-01 09:28:39.790,NULL
+800,27079,2021-02-17,"20:52:in(ME(Attendance)),21:02:out(ME(Attendance)),07:00:out(ME(Attendance)),",P,2021-07-01 09:28:48.163,NULL
+802,27137,2021-02-25,"07:00:in(ME(Attendance)),09:00:in(ME(Attendance)),19:00:out(ME(Attendance)),",P,2021-07-01 09:30:30.003,NULL
+803,27157,2021-05-28,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 09:30:50.733,NULL
+804,27158,2021-05-28,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 09:30:56.577,NULL
+807,27235,2021-05-26,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 09:32:45.477,NULL
+809,27306,2021-04-20,"19:00:in(ME(Attendance)),19:42:out(ME(Attendance)),08:00:out(ME(Attendance)),",P,2021-07-01 09:33:54.667,NULL
+813,27419,2021-02-03,"15:00:in(ME(Attendance)),20:48:out(ME(Attendance)),07:30:out(ME(Attendance)),",P,2021-07-01 09:36:02.393,NULL
+814,27419,2021-02-16,"15:00:in(ME(Attendance)),15:55:out(A K AGENCY),07:30:out(ME(Attendance)),",P,2021-07-01 09:36:02.847,NULL
+819,27535,2021-02-13,"07:00:in(ME(Attendance)),09:00:in(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 09:38:11.340,NULL
+821,26184,2021-03-13,"09:03:in(A K AGENCY),18:57:out(A K AGENCY),19:00:(A K AGENCY),19:06:out(ME(Attendance)),",P,2021-07-01 09:40:25.567,NULL
+825,27744,2021-05-28,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 09:41:23.307,NULL
+828,27854,2021-05-21,"09:00:in(ME(Attendance)),09:00:out(ME(Attendance)),21:00:out(ME(Attendance)),",P,2021-07-01 09:42:09.797,NULL
+829,27855,2021-05-16,"21:00:in(ME(Attendance)),08:00:out(ME(Attendance)),09:00:in(ME(Attendance)),09:00:in(ME(Attendance)),19:30:out(SE),",P,2021-07-01 09:42:12.763,NULL
+830,4313,2021-01-05,"06:59:in(ME(Attendance)),11:35:out(ME(Attendance)),13:55:in(ME(Attendance)),19:05:out(ME(Attendance)),19:14:out(ME(Attendance)),",P,2021-07-01 09:42:49.460,NULL
+831,4313,2021-01-10,"07:03:in(ME(Attendance)),07:12:in(ME(Attendance)),15:18:out(ME(Attendance)),",P,2021-07-01 09:42:49.650,NULL
+832,4313,2021-02-02,"07:00:in(ME(Attendance)),19:07:out(ME(Attendance)),19:16:out(ME(Attendance)),",P,2021-07-01 09:42:50.587,NULL
+833,3622,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),19:08:out(ME(Attendance)),",P,2021-07-01 09:43:15.863,NULL
+834,3623,2021-05-28,"08:59:in(ME(Attendance)),11:09:out(ME(Attendance)),18:22:out(ME(Attendance)),",P,2021-07-01 09:43:22.487,NULL
+835,3629,2021-02-23,"06:58:in(ME(Attendance)),07:08:out(ME(Attendance)),19:10:out(ME(Attendance)),",P,2021-07-01 09:43:45.060,NULL
+836,3631,2021-01-12,"07:08:in(ME(Attendance)),19:15:out(ME(Attendance)),03:31:out(ME(Attendance)),",P,2021-07-01 09:43:50.263,NULL
+837,3632,2021-04-22,"06:59:in(ME(Attendance)),14:48:out(ME(Attendance)),15:38:out(ME(Attendance)),",P,2021-07-01 09:44:00.697,NULL
+838,3637,2021-03-26,"18:56:in(T & D/STORES/HT/MT),18:56:(T & D/STORES/HT/MT),19:10:in(ME(Attendance)),07:10:out(T & D/STORES/HT/MT),",P,2021-07-01 09:44:33.677,NULL
+905,3561,2021-04-30,"09:00:in(ME(Attendance)),12:30:out(ME(Attendance)),13:00:in(ME(Attendance)),17:30:out(ME(Attendance)),18:30:out(ME(Attendance)),",P,2021-07-01 10:09:43.130,NULL
+906,11017,2021-01-25,"07:17:in(ME(Attendance)),15:00:in(ME(Attendance)),23:30:out(ME(Attendance)),",P,2021-07-01 10:11:53.550,NULL
+907,11017,2021-02-23,"15:00:in(ME(Attendance)),21:36:out(ME(Attendance)),07:30:out(ME(Attendance)),",P,2021-07-01 10:11:55.340,NULL
+908,11021,2021-02-23,"07:00:in(ME(Attendance)),19:30:out(ME(Attendance)),23:30:out(ME(Attendance)),",P,2021-07-01 10:12:05.220,NULL
+909,4302,2021-02-17,"07:00:in(ME(Attendance)),18:00:out(ME(Attendance)),20:04:out(ME(Attendance)),",P,2021-07-01 10:13:01.740,NULL
+910,4302,2021-04-19,"09:00:in(ME(Attendance)),18:00:out(ME(Attendance)),18:11:out(ME(Attendance)),",P,2021-07-01 10:13:05.637,NULL
+911,4318,2021-01-25,"07:00:in(ME(Attendance)),07:59:in(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:13:11.963,NULL
+912,4403,2021-02-19,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:14:49.837,NULL
+913,4404,2021-02-06,"09:00:in(ME(Attendance)),14:28:out(ME(Attendance)),19:04:out(ME(Attendance)),",P,2021-07-01 10:14:59.610,NULL
+914,4405,2021-03-04,"10:26:in(QC/TR/STR/GM),12:38:in(ME(Attendance)),19:01:out(QC/TR/STR/GM),",P,2021-07-01 10:15:09.787,NULL
+915,4405,2021-03-08,"10:40:in(ME(Attendance)),19:12:out(ME(Attendance)),20:20:out(ME(Attendance)),",P,2021-07-01 10:15:09.920,NULL
+917,4408,2021-02-08,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),21:00:out(ME(Attendance)),",P,2021-07-01 10:15:18.353,NULL
+918,4436,2021-02-19,"09:00:in(ME(Attendance)),18:30:out(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:16:57.930,NULL
+919,4440,2021-02-01,"09:06:in(ME(Attendance)),11:37:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:17:17.977,NULL
+920,4441,2021-02-19,"09:00:in(ME(Attendance)),20:41:out(ME(Attendance)),21:00:out(ME(Attendance)),",P,2021-07-01 10:17:29.280,NULL
+921,4447,2021-01-29,"09:07:in(ME(Attendance)),09:21:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:17:38.160,NULL
+922,4447,2021-02-19,"09:26:in(ME(Attendance)),18:11:out(ME(Attendance)),19:03:out(ME(Attendance)),",P,2021-07-01 10:17:39.277,NULL
+923,4448,2021-02-19,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),20:00:out(ME(Attendance)),",P,2021-07-01 10:17:47.683,NULL
+924,4462,2021-05-05,"09:00:in(ME(Attendance)),20:30:out(ME(Attendance)),21:30:out(ME(Attendance)),",P,2021-07-01 10:18:11.893,NULL
+925,4462,2021-05-12,"21:00:in(ME(Attendance)),22:11:in(ME(Attendance)),09:00:out(ME(Attendance)),",P,2021-07-01 10:18:12.117,NULL
+927,7513,2021-04-10,"18:54:in(MF/Ma/Mt1/HT),19:00:in(ME(Attendance)),07:30:out(ME(Attendance)),",P,2021-07-01 10:21:22.510,NULL
+928,4013,2021-02-25,"07:00:in(ME(Attendance)),15:30:out(ME(Attendance)),23:30:out(ME(Attendance)),",P,2021-07-01 10:21:51.120,NULL
+929,4116,2021-04-10,"20:27:in(MF/Ma/Mt1/HT),21:00:in(ME(Attendance)),07:30:out(ME(Attendance)),",P,2021-07-01 10:23:06.190,NULL
+930,4021,2021-04-27,"07:00:in(ME(Attendance)),15:30:out(ME(Attendance)),18:00:out(ME(Attendance)),",P,2021-07-01 10:23:17.363,NULL
+931,19016,2021-05-19,"07:00:in(ME(Attendance)),07:30:out(ME(Attendance)),19:00:out(ME(Attendance)),",P,2021-07-01 10:24:20.703,NULL
+933,4113,2021-05-24,"09:00:in(ME(Attendance)),19:00:out(ME(Attendance)),22:00:out(ME(Attendance)),",P,2021-07-01 10:24:53.727,NULL
+934,19009,2021-05-21,"07:00:in(ME(Attendance)),07:00:out(ME(Attendance)),19:00:out(ME(Attendance)),",P,2021-07-01 10:25:05.230,NULL
+935,4183,2021-04-10,"18:53:in(MF/Ma/Mt1/HT),19:00:in(ME(Attendance)),07:29:out(MF/Ma/Mt1/HT),07:30:out(ME(Attendance)),",P,2021-07-01 10:27:43.903,NULL
+936,4067,2021-05-18,"19:00:in(ME(Attendance)),20:00:out(ME(Attendance)),07:30:out(ME(Attendance)),",P,2021-07-01 10:30:15.447,NULL
+937,4067,2021-05-22,"19:00:out(ME(Attendance)),19:00:in(ME(Attendance)),07:00:out(ME(Attendance)),",P,2021-07-01 10:30:15.700,NULL
+938,4064,2021-05-21,"19:00:in(ME(Attendance)),07:00:out(ME(Attendance)),07:09:out(ME(Attendance)),",P,2021-07-01 10:30:37.963,NULL
+939,19039,2021-05-07,"07:00:in(ME(Attendance)),07:09:in(ME(Attendance)),18:00:out(ME(Attendance)),",P,2021-07-01 10:30:48.483,NULL
+941,19046,2021-04-10,"06:54:in(MF/Ma/Mt1/HT),18:31:out(MF/Ma/Mt1/HT),18:41:out(ME(Attendance)),",P,2021-07-01 10:33:31.133,NULL
+942,3903,2021-04-12,"06:52:in(MF/Ma/Mt1/HT),07:00:in(ME(Attendance)),19:31:out(ME(Attendance)),",P,2021-07-01 10:34:03.483,NULL
+943,3907,2021-04-10,"18:54:in(MF/Ma/Mt1/HT),19:00:in(ME(Attendance)),09:10:out(MF/Ma/Mt1/HT),09:14:out(ME(Attendance)),",P,2021-07-01 10:34:31.630,NULL
+944,3982,2021-01-15,"07:00:in(ME(Attendance)),15:00:in(ME(Attendance)),15:30:out(ME(Attendance)),",P,2021-07-01 10:35:50.720,NULL
+945,5069,2021-03-08,"19:59:in(Security-Unit I),08:01:out(Security-Unit I),08:08:in(Security-Unit I),",P,2021-07-01 10:36:23.780,NULL
+946,5079,2021-03-06,"19:58:in(Security-Unit I),08:00:out(Security-Unit I),08:06:in(Security-Unit I),",P,2021-07-01 10:36:25.400,NULL
+947,5079,2021-03-09,"20:16:in(Security-Unit I),07:57:out(Security-Unit I),17:41:in(Security-Unit I),",P,2021-07-01 10:36:25.567,NULL
+948,5083,2021-03-10,"20:09:in(Security-Unit I),08:01:out(Security-Unit I),08:07:in(Security-Unit I),",P,2021-07-01 10:36:26.487,NULL
+949,5125,2021-03-06,"20:07:in(Security-Unit I),08:00:out(Security-Unit I),08:06:in(Security-Unit I),",P,2021-07-01 10:36:27.020,NULL
+950,5073,2021-03-28,"08:13:in(Security-Unit I),19:50:out(Security-Unit I),04:00:out(ME(Attendance)),",P,2021-07-01 10:39:07.230,NULL
+951,5077,2021-03-27,"20:08:in(Security-Unit I),08:00:in(ME(Attendance)),08:12:out(Security-Unit I),08:19:in(Security-Unit I),18:00:out(SE),",P,2021-07-01 10:39:17.330,NULL
+952,5081,2021-03-27,"20:17:in(Security-Unit I),07:52:in(ME(Attendance)),08:00:out(Security-Unit I),08:07:in(Security-Unit I),18:00:out(SE),",P,2021-07-01 10:39:38.283,NULL
+953,5083,2021-03-27,"20:17:in(Security-Unit I),07:57:in(ME(Attendance)),08:04:out(Security-Unit I),08:09:in(Security-Unit I),18:00:out(SE),",P,2021-07-01 10:39:45.723,NULL
+954,16017,2021-03-27,"20:27:in(Security-Unit I),08:00:in(ME(Attendance)),18:00:out(SE),",P,2021-07-01 10:39:56.423,NULL
+955,2407,2021-01-15,"12:15:in(ME(Attendance)),09:00:in(ME(Attendance)),13:30:out(SE),",P,2021-07-01 10:40:15.483,NULL
+957,4537,2021-04-15,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),18:30:out(ME(Attendance)),",P,2021-07-01 10:40:46.107,NULL
+958,4653,2021-01-04,"09:00:in(ME(Attendance)),09:00:in(ME(Attendance)),19:30:in(ME(Attendance)),19:41:out(ME(Attendance)),",P,2021-07-01 10:41:02.630,NULL
+959,4653,2021-01-18,"09:00:in(ME(Attendance)),19:35:out(ME(Attendance)),20:30:out(ME(Attendance)),",P,2021-07-01 10:41:03.693,NULL
+960,4653,2021-02-25,"09:00:in(ME(Attendance)),11:06:out(ME(Attendance)),12:21:in(ME(Attendance)),13:03:out(ME(Attendance)),14:09:in(ME(Attendance)),22:07:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:41:07.030,NULL
+961,4653,2021-04-16,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),18:30:out(ME(Attendance)),",P,2021-07-01 10:41:12.200,NULL
+962,4653,2021-05-13,"09:00:in(ME(Attendance)),01:30:out(ME(Attendance)),05:20:out(ME(Attendance)),",P,2021-07-01 10:41:13.867,NULL
+963,4653,2021-05-22,"08:00:in(ME(Attendance)),19:30:out(ME(Attendance)),04:10:out(ME(Attendance)),",P,2021-07-01 10:41:14.450,NULL
+965,4654,2021-04-10,"09:05:in(BA),10:45:out(BA),10:46:out(ME(Attendance)),11:57:in(ME(Attendance)),11:59:(BA),19:00:out(ME(Attendance)),",P,2021-07-01 10:41:25.030,NULL
+966,4657,2021-04-30,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:42:01.013,NULL
+967,4657,2021-05-01,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),18:57:out(ME(Attendance)),",P,2021-07-01 10:42:01.013,NULL
+968,4657,2021-05-11,"08:00:in(ME(Attendance)),13:46:in(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:42:01.800,NULL
+839,3637,2021-05-19,"07:11:in(ME(Attendance)),07:28:in(ME(Attendance)),19:13:out(ME(Attendance)),",P,2021-07-01 09:44:34.973,NULL
+840,3643,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),18:42:out(ME(Attendance)),",P,2021-07-01 09:44:51.927,NULL
+841,3647,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),18:05:out(ME(Attendance)),",P,2021-07-01 09:45:11.860,NULL
+842,3648,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),17:35:out(ME(Attendance)),",P,2021-07-01 09:45:18.700,NULL
+843,3721,2021-01-22,"06:59:in(ME(Attendance)),19:19:out(ME(Attendance)),19:33:out(ME(Attendance)),",P,2021-07-01 09:45:20.840,NULL
+844,3662,2021-02-03,"06:57:in(ME(Attendance)),12:11:out(ME(Attendance)),13:18:in(ME(Attendance)),13:18:in(ME(Attendance)),19:12:out(ME(Attendance)),",P,2021-07-01 09:46:02.413,NULL
+845,3664,2021-01-23,"07:03:in(ME(Attendance)),07:18:out(ME(Attendance)),19:04:out(ME(Attendance)),",P,2021-07-01 09:46:07.800,NULL
+846,3664,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),19:08:out(ME(Attendance)),",P,2021-07-01 09:46:11.833,NULL
+847,3671,2021-02-04,"06:57:in(ME(Attendance)),11:21:out(ME(Attendance)),17:34:out(ME(Attendance)),",P,2021-07-01 09:46:22.470,NULL
+848,3675,2021-01-04,"07:00:in(ME(Attendance)),08:59:in(ME(Attendance)),17:42:out(ME(Attendance)),",P,2021-07-01 09:46:41.653,NULL
+849,3675,2021-04-13,"06:33:in(ME(Attendance)),06:50:in(ME(Attendance)),15:37:out(ME(Attendance)),",P,2021-07-01 09:46:43.733,NULL
+850,3693,2021-02-01,"09:03:in(ME(Attendance)),19:34:out(ME(Attendance)),23:34:out(ME(Attendance)),",P,2021-07-01 09:47:44.470,NULL
+851,3693,2021-05-27,"06:59:in(ME(Attendance)),20:07:out(ME(Attendance)),20:27:out(ME(Attendance)),",P,2021-07-01 09:47:48.877,NULL
+852,3693,2021-05-29,"07:42:in(ME(Attendance)),08:59:in(ME(Attendance)),19:41:out(ME(Attendance)),",P,2021-07-01 09:47:48.923,NULL
+853,3697,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),18:42:out(ME(Attendance)),",P,2021-07-01 09:48:00.030,NULL
+854,3748,2021-01-29,"18:59:in(ME(Attendance)),19:08:out(ME(Attendance)),07:08:out(ME(Attendance)),",P,2021-07-01 09:49:31.873,NULL
+855,3768,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),19:13:out(ME(Attendance)),",P,2021-07-01 09:49:56.930,NULL
+856,3789,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),19:08:out(ME(Attendance)),",P,2021-07-01 09:50:25.410,NULL
+857,3603,2021-02-26,"19:02:in(ME(Attendance)),03:32:out(ME(Attendance)),15:34:out(ME(Attendance)),",P,2021-07-01 09:51:06.917,NULL
+858,3610,2021-05-18,"07:08:in(ME(Attendance)),15:34:out(ME(Attendance)),18:34:out(ME(Attendance)),",P,2021-07-01 09:51:54.610,NULL
+859,3610,2021-05-20,"06:59:in(ME(Attendance)),15:39:out(ME(Attendance)),19:10:out(ME(Attendance)),",P,2021-07-01 09:51:54.673,NULL
+860,3611,2021-01-16,"06:57:in(ME(Attendance)),15:34:out(ME(Attendance)),17:38:out(ME(Attendance)),",P,2021-07-01 09:51:57.850,NULL
+861,3612,2021-02-16,"06:58:in(ME(Attendance)),08:59:in(ME(Attendance)),19:05:out(ME(Attendance)),",P,2021-07-01 09:52:07.340,NULL
+862,3615,2021-04-10,"06:54:in(T & D/STORES/HT/MT),07:26:in(ME(Attendance)),07:34:out(T & D/STORES/HT/MT),",P,2021-07-01 09:52:18.707,NULL
+863,3615,2021-05-22,"14:44:in(ME(Attendance)),15:00:in(ME(Attendance)),23:34:out(ME(Attendance)),",P,2021-07-01 09:52:20.597,NULL
+864,3873,2021-04-30,"19:00:in(ME(Attendance)),06:04:out(ME(Attendance)),16:36:out(ME(Attendance)),",P,2021-07-01 09:52:54.770,NULL
+865,5210,2021-02-03,"06:57:in(ME(Attendance)),07:06:out(ME(Attendance)),19:16:out(ME(Attendance)),",P,2021-07-01 09:54:25.490,NULL
+866,5210,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),19:08:out(ME(Attendance)),",P,2021-07-01 09:54:30.623,NULL
+867,5212,2021-01-17,"06:59:in(ME(Attendance)),07:15:out(ME(Attendance)),15:13:out(ME(Attendance)),",P,2021-07-01 09:54:33.193,NULL
+868,5215,2021-01-16,"06:57:in(ME(Attendance)),18:33:out(ME(Attendance)),19:05:out(ME(Attendance)),",P,2021-07-01 09:54:41.860,NULL
+869,5216,2021-01-22,"06:59:in(ME(Attendance)),19:19:out(ME(Attendance)),19:33:out(ME(Attendance)),",P,2021-07-01 09:54:57.660,NULL
+870,3601,2021-04-20,"07:00:in(ME(Attendance)),15:35:out(ME(Attendance)),15:50:out(ME(Attendance)),",P,2021-07-01 09:57:07.013,NULL
+871,4367,2021-01-25,"06:57:in(ME(Attendance)),09:05:in(ME(Attendance)),19:10:out(ME(Attendance)),",P,2021-07-01 09:57:19.170,NULL
+873,5278,2021-05-27,"18:56:in(ME(Attendance)),08:07:in(ME(Attendance)),17:30:out(SE),",P,2021-07-01 09:59:03.870,NULL
+874,4383,2021-04-13,"19:01:in(ME(Attendance)),07:00:out(ME(Attendance)),07:07:out(ME(Attendance)),",P,2021-07-01 09:59:32.907,NULL
+876,5283,2021-03-17,"06:56:in(T & D/STORES/HT/MT),12:28:out(T & D/STORES/HT/MT),12:33:(T & D/STORES/HT/MT),12:45:out(ME(Attendance)),13:15:in(ME(Attendance)),19:03:out(T & D/STORES/HT/MT),",P,2021-07-01 09:59:46.483,NULL
+877,5290,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),19:08:out(ME(Attendance)),",P,2021-07-01 10:00:15.910,NULL
+879,5307,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),21:01:out(ME(Attendance)),",P,2021-07-01 10:01:14.073,NULL
+880,28007,2021-05-25,"06:58:in(ME(Attendance)),07:09:in(ME(Attendance)),19:08:out(ME(Attendance)),",P,2021-07-01 10:01:42.953,NULL
+881,4762,2021-02-25,"06:57:in(ME(Attendance)),15:21:out(T & D/STORES/HT/MT),17:40:out(ME(Attendance)),",P,2021-07-01 10:01:47.983,NULL
+882,4809,2021-02-25,"07:05:in(ME(Attendance)),15:19:out(T & D/STORES/HT/MT),15:36:out(ME(Attendance)),",P,2021-07-01 10:01:56.950,NULL
+883,4664,2021-01-20,"06:59:in(ME(Attendance)),17:34:out(ME(Attendance)),19:07:out(ME(Attendance)),",P,2021-07-01 10:02:03.170,NULL
+884,4664,2021-02-25,"15:00:in(ME(Attendance)),15:22:out(T & D/STORES/HT/MT),23:34:out(ME(Attendance)),",P,2021-07-01 10:02:05.130,NULL
+885,154,2021-02-19,"09:07:in(ME(Attendance)),20:17:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:02:16.967,NULL
+886,2602,2021-01-29,"07:00:in(ME(Attendance)),17:30:out(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:02:25.833,NULL
+887,2611,2021-01-25,"07:00:in(ME(Attendance)),08:11:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:02:34.690,NULL
+888,2615,2021-01-25,"07:00:in(ME(Attendance)),08:04:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:02:52.310,NULL
+889,2618,2021-02-11,"07:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:03:19.940,NULL
+890,2618,2021-05-08,"09:00:in(ME(Attendance)),21:26:out(ME(Attendance)),04:00:out(ME(Attendance)),",P,2021-07-01 10:03:24.077,NULL
+891,2618,2021-05-21,"07:00:in(ME(Attendance)),13:00:in(ME(Attendance)),19:29:out(ME(Attendance)),",P,2021-07-01 10:03:24.810,NULL
+892,2647,2021-01-19,"09:00:in(ME(Attendance)),15:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:04:52.867,NULL
+893,2647,2021-05-13,"07:11:in(ME(Attendance)),09:00:in(ME(Attendance)),19:18:out(ME(Attendance)),",P,2021-07-01 10:04:59.170,NULL
+894,2679,2021-05-10,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),18:30:out(ME(Attendance)),",P,2021-07-01 10:05:54.887,NULL
+895,2681,2021-04-13,"09:07:in(ME(Attendance)),09:15:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:06:02.570,NULL
+896,2681,2021-05-05,"09:00:in(ME(Attendance)),09:55:in(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:06:03.397,NULL
+897,2687,2021-02-27,"19:00:in(ME(Attendance)),07:12:in(ME(Attendance)),11:24:out(ME(Attendance)),",P,2021-07-01 10:06:08.943,NULL
+898,2718,2021-02-08,"07:00:in(ME(Attendance)),09:00:in(ME(Attendance)),14:19:out(ME(Attendance)),17:58:in(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:06:44.640,NULL
+900,2786,2021-01-06,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),01:48:out(ME(Attendance)),",P,2021-07-01 10:07:45.850,NULL
+901,3512,2021-01-23,"09:00:in(ME(Attendance)),15:05:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:08:31.967,NULL
+902,3523,2021-02-03,"09:00:in(ME(Attendance)),20:17:out(ME(Attendance)),21:30:out(ME(Attendance)),",P,2021-07-01 10:09:13.850,NULL
+903,3561,2021-02-12,"09:00:in(ME(Attendance)),12:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:09:41.010,NULL
+904,3561,2021-02-19,"09:00:in(ME(Attendance)),13:06:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:09:41.310,NULL
+969,4659,2021-05-17,"09:00:in(ME(Attendance)),09:35:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:42:28.137,NULL
+970,4666,2021-02-03,"09:00:in(ME(Attendance)),15:00:in(ME(Attendance)),03:30:out(ME(Attendance)),",P,2021-07-01 10:42:32.803,NULL
+971,4666,2021-02-24,"07:00:in(ME(Attendance)),15:00:in(ME(Attendance)),15:30:out(ME(Attendance)),",P,2021-07-01 10:42:34.253,NULL
+972,4666,2021-05-04,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),19:00:out(ME(Attendance)),",P,2021-07-01 10:42:39.470,NULL
+973,4667,2021-05-03,"20:00:in(ME(Attendance)),09:00:in(ME(Attendance)),17:30:out(SE),",P,2021-07-01 10:42:51.680,NULL
+1152,18012,2021-06-23,"19:32:in(Forging/MT-03),07:04:out(Forging/MT-03),15:40:in(Forging/MT-03),",P,2021-07-04 05:26:32.180,NULL
+975,4674,2021-05-03,"20:00:in(ME(Attendance)),09:00:in(ME(Attendance)),17:30:out(SE),",P,2021-07-01 10:43:04.020,NULL
+1153,27104,2021-06-15,"09:00:in(ME(Attendance)),20:00:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-04 05:29:00.417,NULL
+977,4685,2021-02-12,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:43:10.640,NULL
+978,4694,2021-05-06,"09:00:in(ME(Attendance)),10:00:in(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:43:40.553,NULL
+979,4694,2021-05-27,"10:36:in(ME(Attendance)),12:30:out(ME(Attendance)),20:30:out(ME(Attendance)),",P,2021-07-01 10:43:42.110,NULL
+1154,27130,2021-06-02,"09:00:in(ME(Attendance)),20:21:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-04 05:29:35.880,NULL
+981,4720,2021-02-08,"09:00:in(ME(Attendance)),09:00:in(ME(Attendance)),13:17:in(ME(Attendance)),17:30:out(SE),",P,2021-07-01 10:44:07.327,NULL
+982,4720,2021-02-09,"09:00:in(ME(Attendance)),12:17:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:44:07.340,NULL
+983,4720,2021-02-19,"09:00:in(ME(Attendance)),11:00:in(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:44:07.930,NULL
+984,4720,2021-05-07,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),18:32:out(ME(Attendance)),",P,2021-07-01 10:44:13.880,NULL
+985,4720,2021-05-27,"08:00:in(ME(Attendance)),00:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:44:15.417,NULL
+1155,27259,2021-06-12,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-04 05:31:31.733,NULL
+987,4727,2021-01-28,"09:00:in(ME(Attendance)),12:57:out(ME(Attendance)),13:23:in(ME(Attendance)),19:57:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:44:32.210,NULL
+988,4727,2021-02-23,"11:28:in(ME(Attendance)),11:54:in(ME(Attendance)),20:29:out(ME(Attendance)),",P,2021-07-01 10:44:34.210,NULL
+989,4727,2021-05-06,"09:00:in(ME(Attendance)),18:20:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:44:40.433,NULL
+990,4727,2021-05-07,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:44:40.450,NULL
+991,4727,2021-05-22,"08:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:44:41.440,NULL
+992,4727,2021-05-27,"08:00:in(ME(Attendance)),19:09:out(ME(Attendance)),21:41:in(ME(Attendance)),00:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:44:41.600,NULL
+993,4771,2021-05-21,"09:00:in(ME(Attendance)),13:10:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:44:55.140,NULL
+1156,27291,2021-06-09,"09:00:in(ME(Attendance)),16:00:out(ME(Attendance)),16:33:in(ME(Attendance)),17:30:out(ME(Attendance)),18:18:out(ME(Attendance)),",P,2021-07-04 05:31:52.493,NULL
+1157,27595,2021-06-02,"09:00:in(ME(Attendance)),20:21:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-04 05:35:43.980,NULL
+996,8004,2021-02-22,"09:00:in(ME(Attendance)),18:17:out(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:45:01.570,NULL
+997,8004,2021-05-18,"09:00:in(ME(Attendance)),18:27:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:45:07.327,NULL
+1158,27668,2021-06-09,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),18:30:out(ME(Attendance)),",P,2021-07-04 05:36:34.893,NULL
+999,8005,2021-01-15,"07:00:in(ME(Attendance)),09:00:in(ME(Attendance)),15:30:out(ME(Attendance)),",P,2021-07-01 10:45:11.030,NULL
+1000,8005,2021-01-18,"15:00:in(ME(Attendance)),15:30:out(ME(Attendance)),23:30:out(ME(Attendance)),",P,2021-07-01 10:45:11.117,NULL
+1001,8005,2021-01-19,"15:00:in(ME(Attendance)),15:30:out(ME(Attendance)),23:30:out(ME(Attendance)),",P,2021-07-01 10:45:11.130,NULL
+1002,8005,2021-01-31,"07:01:in(ME(Attendance)),08:51:in(ME(Attendance)),16:41:out(ME(Attendance)),",P,2021-07-01 10:45:11.973,NULL
+1003,8005,2021-02-24,"07:00:in(ME(Attendance)),15:00:in(ME(Attendance)),15:30:out(ME(Attendance)),",P,2021-07-01 10:45:13.523,NULL
+1004,8005,2021-02-26,"07:00:in(ME(Attendance)),15:30:out(ME(Attendance)),19:34:out(ME(Attendance)),",P,2021-07-01 10:45:13.623,NULL
+1005,8005,2021-04-20,"07:00:in(ME(Attendance)),09:00:in(ME(Attendance)),15:30:out(SE),",P,2021-07-01 10:45:17.503,NULL
+1006,8005,2021-05-04,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),19:00:out(ME(Attendance)),",P,2021-07-01 10:45:18.373,NULL
+1007,8005,2021-05-07,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),19:00:out(ME(Attendance)),",P,2021-07-01 10:45:18.537,NULL
+1159,27700,2021-06-09,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),18:09:out(ME(Attendance)),",P,2021-07-04 05:37:02.140,NULL
+1009,8006,2021-03-15,"09:04:in(BA),20:00:out(BA),20:30:out(ME(Attendance)),01:32:in(BA),05:30:out(SE),",P,2021-07-01 10:45:27.720,NULL
+1010,8009,2021-01-02,"07:00:in(ME(Attendance)),09:00:in(ME(Attendance)),15:30:out(SE),",P,2021-07-01 10:45:33.303,NULL
+1011,8009,2021-01-07,"15:00:in(ME(Attendance)),17:07:out(ME(Attendance)),23:30:out(ME(Attendance)),",P,2021-07-01 10:45:33.567,NULL
+1012,8009,2021-01-15,"07:00:in(ME(Attendance)),09:00:in(ME(Attendance)),15:30:out(ME(Attendance)),",P,2021-07-01 10:45:34.000,NULL
+1013,8009,2021-01-18,"15:00:in(ME(Attendance)),15:30:out(ME(Attendance)),23:30:out(ME(Attendance)),",P,2021-07-01 10:45:34.083,NULL
+1014,8009,2021-01-19,"15:00:in(ME(Attendance)),15:30:out(ME(Attendance)),23:30:out(ME(Attendance)),",P,2021-07-01 10:45:34.083,NULL
+1015,8009,2021-02-24,"07:00:in(ME(Attendance)),15:00:in(ME(Attendance)),15:30:out(ME(Attendance)),",P,2021-07-01 10:45:36.630,NULL
+1016,8009,2021-02-26,"07:00:in(ME(Attendance)),15:30:out(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:45:36.713,NULL
+1017,8009,2021-04-20,"07:00:in(ME(Attendance)),09:00:in(ME(Attendance)),15:30:out(SE),",P,2021-07-01 10:45:40.253,NULL
+1018,8009,2021-05-04,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),19:00:out(ME(Attendance)),",P,2021-07-01 10:45:40.940,NULL
+1019,8009,2021-05-07,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),19:00:out(ME(Attendance)),",P,2021-07-01 10:45:41.110,NULL
+1020,8009,2021-05-13,"20:00:in(ME(Attendance)),07:00:out(ME(Attendance)),07:00:in(ME(Attendance)),08:00:in(ME(Attendance)),10:38:out(ME(Attendance)),11:05:in(ME(Attendance)),16:36:out(ME(Attendance)),",P,2021-07-01 10:45:41.560,NULL
+1021,8009,2021-05-27,"20:00:in(ME(Attendance)),07:00:out(ME(Attendance)),07:30:out(ME(Attendance)),",P,2021-07-01 10:45:42.213,NULL
+1022,8011,2021-05-22,"08:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:45:54.317,NULL
+1023,8012,2021-01-11,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),20:29:out(ME(Attendance)),",P,2021-07-01 10:45:57.320,NULL
+1024,8012,2021-05-24,"09:00:in(ME(Attendance)),15:56:out(ME(Attendance)),18:02:out(ME(Attendance)),",P,2021-07-01 10:46:07.330,NULL
+1160,27729,2021-06-09,"09:00:in(ME(Attendance)),13:47:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 05:37:23.480,NULL
+1026,8013,2021-03-13,"09:06:in(BA),20:01:out(BA),20:30:out(ME(Attendance)),01:33:in(BA),05:30:out(SE),",P,2021-07-01 10:46:15.473,NULL
+1027,8015,2021-04-10,"09:02:in(BA),17:59:out(BA),18:19:out(ME(Attendance)),",P,2021-07-01 10:46:32.463,NULL
+1028,8015,2021-05-10,"09:00:in(ME(Attendance)),18:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:46:34.453,NULL
+1029,8015,2021-05-22,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:46:35.310,NULL
+1030,8015,2021-05-26,"09:00:in(ME(Attendance)),16:54:out(ME(Attendance)),17:55:out(ME(Attendance)),",P,2021-07-01 10:46:35.580,NULL
+1161,27726,2021-06-11,"19:00:in(ME(Attendance)),20:17:out(ME(Attendance)),07:00:out(ME(Attendance)),",P,2021-07-04 05:37:42.617,NULL
+1162,27727,2021-06-09,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),02:20:out(ME(Attendance)),",P,2021-07-04 05:37:45.240,NULL
+1033,8017,2021-02-25,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:46:42.417,NULL
+1034,8017,2021-05-26,"08:00:in(ME(Attendance)),18:30:out(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:46:48.950,NULL
+1036,8018,2021-01-16,"09:00:in(ME(Attendance)),20:26:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:46:52.060,NULL
+1163,27845,2021-06-09,"10:53:in(ME(Attendance)),17:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-04 05:40:23.583,NULL
+1038,8019,2021-05-23,"07:00:in(ME(Attendance)),07:30:in(ME(Attendance)),13:54:out(ME(Attendance)),",P,2021-07-01 10:47:11.570,NULL
+1164,27845,2021-06-11,"09:00:in(ME(Attendance)),20:34:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-04 05:40:23.693,NULL
+1040,8023,2021-05-12,"08:00:in(ME(Attendance)),19:27:in(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:47:23.427,NULL
+1041,8026,2021-01-30,"09:00:in(ME(Attendance)),20:20:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:47:27.747,NULL
+1042,8026,2021-02-08,"09:00:in(ME(Attendance)),09:00:in(ME(Attendance)),19:30:in(ME(Attendance)),05:30:out(SE),",P,2021-07-01 10:47:28.363,NULL
+1043,8026,2021-05-06,"09:00:in(ME(Attendance)),18:20:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:47:35.080,NULL
+1044,8026,2021-05-22,"08:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:47:36.317,NULL
+1045,8026,2021-05-27,"08:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:47:36.570,NULL
+1165,27843,2021-06-09,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-04 05:40:29.927,NULL
+1047,8030,2021-05-17,"09:00:in(ME(Attendance)),18:30:out(ME(Attendance)),18:43:out(ME(Attendance)),",P,2021-07-01 10:48:01.627,NULL
+1166,27913,2021-06-02,"07:28:in(ME(Attendance)),17:30:out(ME(Attendance)),19:00:out(ME(Attendance)),",P,2021-07-04 05:40:57.517,NULL
+1049,8054,2021-01-04,"09:00:in(ME(Attendance)),09:00:in(ME(Attendance)),13:05:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:48:43.720,NULL
+1050,8054,2021-02-25,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:48:47.730,NULL
+1051,8054,2021-05-06,"09:00:in(ME(Attendance)),18:20:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:48:53.143,NULL
+1052,8054,2021-05-12,"08:00:in(ME(Attendance)),19:27:in(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:48:53.423,NULL
+1053,8054,2021-05-24,"08:00:in(ME(Attendance)),10:30:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:48:54.130,NULL
+1054,8054,2021-05-27,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),00:30:out(ME(Attendance)),",P,2021-07-01 10:48:54.210,NULL
+1055,8054,2021-05-29,"09:00:in(ME(Attendance)),19:28:out(ME(Attendance)),19:49:in(ME(Attendance)),19:49:in(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:48:54.310,NULL
+1167,27986,2021-06-29,"06:44:in(METAL FINISHING),17:12:out(PMT-2 & TURNING SHOP),19:02:out(ME(Attendance)),",P,2021-07-04 05:41:18.573,NULL
+1168,28030,2021-06-08,"09:00:in(ME(Attendance)),12:00:in(ME(Attendance)),17:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 05:41:54.630,NULL
+1058,8058,2021-05-06,"09:00:in(ME(Attendance)),18:20:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:49:06.400,NULL
+1059,8057,2021-01-02,"09:57:in(ME(Attendance)),20:08:out(ME(Attendance)),21:51:out(ME(Attendance)),22:08:in(ME(Attendance)),03:11:out(ME(Attendance)),",P,2021-07-01 10:49:10.297,NULL
+1060,8057,2021-01-04,"09:00:in(ME(Attendance)),09:00:in(ME(Attendance)),09:03:in(ME(Attendance)),13:05:out(ME(Attendance)),13:17:in(ME(Attendance)),19:30:out(ME(Attendance)),19:35:out(ME(Attendance)),",P,2021-07-01 10:49:10.297,NULL
+1061,8057,2021-01-28,"09:00:in(ME(Attendance)),09:48:in(ME(Attendance)),12:50:out(ME(Attendance)),13:10:in(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:49:12.837,NULL
+1062,8057,2021-02-08,"09:00:in(ME(Attendance)),09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:49:14.040,NULL
+1063,8057,2021-05-03,"09:00:in(ME(Attendance)),13:30:out(ME(Attendance)),18:45:out(ME(Attendance)),",P,2021-07-01 10:49:23.020,NULL
+1064,8057,2021-05-11,"09:00:in(ME(Attendance)),19:10:in(ME(Attendance)),02:05:out(ME(Attendance)),",P,2021-07-01 10:49:23.783,NULL
+1065,8057,2021-05-13,"09:14:in(ME(Attendance)),15:17:out(ME(Attendance)),20:02:in(ME(Attendance)),01:30:out(ME(Attendance)),01:40:out(ME(Attendance)),",P,2021-07-01 10:49:23.953,NULL
+1066,8057,2021-05-22,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:49:24.557,NULL
+1067,8057,2021-05-27,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:49:25.027,NULL
+1169,28031,2021-06-08,"09:00:in(ME(Attendance)),12:00:in(ME(Attendance)),17:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 05:41:54.957,NULL
+1170,28032,2021-06-08,"09:00:in(ME(Attendance)),12:00:in(ME(Attendance)),17:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 05:41:55.287,NULL
+1070,8075,2021-05-07,"08:00:in(ME(Attendance)),09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:50:29.877,NULL
+1071,8075,2021-05-10,"09:00:in(ME(Attendance)),18:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:50:29.893,NULL
+1072,8075,2021-05-18,"09:00:in(ME(Attendance)),19:41:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:50:30.347,NULL
+1073,8076,2021-02-25,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:50:37.597,NULL
+1074,8083,2021-02-15,"13:41:in(ME(Attendance)),09:00:in(ME(Attendance)),13:30:out(SE),",P,2021-07-01 10:51:00.790,NULL
+1075,8083,2021-05-29,"09:00:in(ME(Attendance)),10:04:out(ME(Attendance)),11:11:in(ME(Attendance)),12:27:in(ME(Attendance)),17:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:51:08.670,NULL
+1171,28033,2021-06-08,"09:00:in(ME(Attendance)),12:00:in(ME(Attendance)),17:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 05:41:55.630,NULL
+1172,28039,2021-06-08,"09:00:in(ME(Attendance)),12:00:in(ME(Attendance)),17:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-04 05:41:56.270,NULL
+1078,8084,2021-02-20,"09:00:in(ME(Attendance)),18:12:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:51:26.130,NULL
+1079,8084,2021-05-08,"09:00:in(ME(Attendance)),10:45:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:51:31.647,NULL
+1173,2763,2021-06-12,"09:00:in(ME(Attendance)),03:14:out(ME(Attendance)),03:30:out(ME(Attendance)),",P,2021-07-04 05:51:20.833,NULL
+1174,2789,2021-06-15,"09:00:in(ME(Attendance)),13:30:out(ME(Attendance)),13:30:out(ME(Attendance)),14:49:in(ME(Attendance)),21:30:out(ME(Attendance)),",P,2021-07-04 05:51:37.613,NULL
+1082,8087,2021-03-06,"08:50:in(ME(Attendance)),09:00:in(ME(Attendance)),17:31:out(BA),",P,2021-07-01 10:52:06.727,NULL
+1083,8087,2021-05-10,"09:00:in(ME(Attendance)),11:16:in(ME(Attendance)),17:31:out(ME(Attendance)),",P,2021-07-01 10:52:11.880,NULL
+1084,4761,2021-05-31,"09:00:in(ME(Attendance)),19:30:out(ME(Attendance)),01:50:out(ME(Attendance)),",P,2021-07-01 10:53:16.263,NULL
+1085,4769,2021-02-17,"09:00:in(ME(Attendance)),20:45:out(ME(Attendance)),01:30:out(ME(Attendance)),",P,2021-07-01 10:53:35.270,NULL
+1086,4769,2021-03-17,"08:51:in(BA),20:43:out(BA),01:30:out(ME(Attendance)),01:33:(BA),",P,2021-07-01 10:53:38.230,NULL
+1087,4773,2021-01-18,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),19:30:out(ME(Attendance)),",P,2021-07-01 10:53:47.203,NULL
+1088,4813,2021-03-25,"09:06:in(BA),13:05:out(BA),17:30:out(ME(Attendance)),",P,2021-07-01 10:54:33.790,NULL
+1089,153,2021-05-07,"09:00:in(ME(Attendance)),09:21:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:55:03.440,NULL
+1090,2712,2021-04-03,"09:00:in(BA),17:39:out(BA),18:17:out(ME(Attendance)),",P,2021-07-01 10:55:14.280,NULL
+1175,2829,2021-06-26,"19:33:in(QC/STR/GMD),06:48:out(QC/STR/GMD),15:35:in(QC/STR/GMD),",P,2021-07-04 05:56:06.827,NULL
+1092,5023,2021-02-16,"09:00:in(ME(Attendance)),17:30:out(ME(Attendance)),21:29:out(ME(Attendance)),",P,2021-07-01 10:55:51.130,NULL
+1093,5032,2021-05-22,"09:00:in(ME(Attendance)),09:30:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:56:12.557,NULL
+1176,2883,2021-06-26,"19:43:in(QC/STR/GMD),06:58:out(QC/STR/GMD),15:35:in(QC/STR/GMD),",P,2021-07-04 05:56:12.200,NULL
+1095,8503,2021-05-22,"09:00:in(ME(Attendance)),09:30:in(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 10:57:22.493,NULL
+1096,27773,2021-05-01,"09:00:in(ME(Attendance)),18:30:out(ME(Attendance)),19:00:out(ME(Attendance)),",P,2021-07-01 11:16:23.927,NULL
+1177,16027,2021-06-26,"19:30:in(QC/STR/GMD),07:03:out(QC/STR/GMD),15:01:in(QC/STR/GMD),",P,2021-07-04 05:56:19.870,NULL
+1098,1960,2021-01-21,"09:00:in(ME(Attendance)),15:30:out(ME(Attendance)),17:30:out(ME(Attendance)),",P,2021-07-01 11:23:47.823,NULL
+1178,3713,2021-06-20,"06:50:in(QC/STR/GMD),06:58:out(QC/STR/GMD),15:00:in(QC/STR/GMD),",P,2021-07-04 05:56:24.323,NULL
+1100,18009,2021-03-16,"06:58:in(MS/TR03),10:17:out(MS/TR03),19:35:in(MS/TR03),",P,2021-07-01 11:34:58.780,NULL
+1101,4539,2021-04-09,"18:49:in(MS/TR03),18:56:out(MS/TR03),07:32:in(MS/TR03),",P,2021-07-01 11:36:11.000,NULL
+1103,3556,2021-04-03,"18:58:in(MS/TR03),07:30:out(MS/TR03),16:30:out(ME(Attendance)),",P,2021-07-01 11:42:18.270,NULL
+1104,6875,2021-02-17,"19:00:in(ME(Attendance)),04:58:out(ME(Attendance)),07:30:out(ME(Attendance)),",P,2021-07-01 11:44:29.650,NULL
+1105,14005,2021-03-18,"08:45:in(Textile),08:50:out(Textile),21:00:out(ME(Attendance)),21:03:(Textile),",P,2021-07-01 11:45:48.223,NULL
+1106,2265,2021-05-24,"09:00:in(ME(Attendance)),09:00:in(ME(Attendance)),09:00:in(ME(Attendance)),21:00:out(ME(Attendance)),",P,2021-07-01 11:46:43.163,NULL

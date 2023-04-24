@@ -1,0 +1,182 @@
+﻿@model Wfm.App.Core.Model.UserMetaData
+
+@{
+    ViewBag.Title = "User Management - Create New User";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">User Management</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/User/Index">
+                                <i class="fas fa-layer-group"></i>User
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Create</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Add</strong> User
+                            </h2>
+                        </div>
+                        <div class="body">
+                            @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @id = "UserCreate", @class = "login100-form validate-form" }))
+                            {
+                                @Html.HiddenFor(m => m.USER_ID)
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.DEPT_IDs, "Department")
+                                                @Html.ListBoxFor(x => x.DEPT_IDs, Model.Departments, new { required = "true", @class = "listbox" })
+                                                @Html.ValidationMessageFor(m => m.DEPT_IDs)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.SUBDEPT_IDs, "Sub Department")
+                                                @Html.ListBoxFor(x => x.SUBDEPT_IDs, Model.SubDepartments, new { required = "true", @class = "listbox" })
+                                                @Html.ValidationMessageFor(m => m.SUBDEPT_IDs)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.USER_LOGIN_ID, "User login id")
+                                                @Html.TextBoxFor(m => m.USER_LOGIN_ID, "", new { @class = "form-control disabled", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.USER_LOGIN_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.USER_LOGIN_ID, "User name")
+                                                @Html.TextBoxFor(m => m.USER_NAME, "", new { @class = "form-control disabled", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.USER_NAME)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.MAIL_ID, "Email")
+                                                @Html.TextBoxFor(m => m.MAIL_ID, "", new { @class = "form-control disabled", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.MAIL_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.MAIL_ID, "Mobile no.")
+                                                @Html.TextBoxFor(m => m.MOBILE_NO, "", new { @class = "form-control disabled", @type = "text", @maxlength = "10" })
+                                                @Html.ValidationMessageFor(m => m.MOBILE_NO)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.USER_ROLES, "Roles")
+                                                @Html.ListBoxFor(x => x.USER_ROLES, Model.Roles, new { required = "true", @class = "listbox" })
+                                                @Html.ValidationMessageFor(m => m.USER_ROLES)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-12 p-t-20 text-center">
+                                    <button type="submit" id="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                    <button type="button" id="cancel" class="btn btn-danger waves-effect">Cancel</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $("#DEPT_IDs").change(function () {
+        var deptIds = $('#DEPT_IDs').val();
+
+        var departmentIds = JSON.stringify(deptIds);
+
+        $.ajax({
+            type: "POST",
+            url: "/User/GetSubDepartments",
+            data: departmentIds,
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                var uniqueGroups = new Array();
+                var dictionary = new Array();
+                
+                $('#SUBDEPT_IDs').empty();
+                $('#SUBDEPT_IDs').formSelect();
+
+                if (data.SubDepartments != null) {
+                    $.each(data.SubDepartments, function (i, subdept) {
+                        var v = { Value: subdept.Value, Text: subdept.Text };
+
+                        if (dictionary.find(x => x.Key === subdept.Group.Name) === undefined) {
+                            var entry = {};
+                            entry.Key = subdept.Group.Name;
+                            entry.Value = new Array();
+                            entry.Value.push(v);
+
+                            dictionary.push(entry);
+                        }
+                        else {
+                            var obj = dictionary.find(x => x.Key === subdept.Group.Name);
+                            obj.Value.push(v);
+                        }
+                    });
+
+                    console.log(dictionary);
+                    var optgroup = "";
+                    $.each(dictionary, function (i, group) {
+                        optgroup += "<optgroup label='" + group.Key + "'>";
+                        $.each(group.Value, function (j, item) {
+                            var option = "<option value='" + item.Value + "'>" + item.Text + "</option>";
+                            optgroup += option;
+                        });
+                        optgroup += "</optgroup>";
+                    });
+
+                    $('#SUBDEPT_IDs').append(optgroup);
+                    $('#SUBDEPT_IDs').formSelect();
+                }
+            },
+            error: function (responseText) {
+                alert(responseText);
+            }
+        });
+    });
+</script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Content/assets/js/pages/user/user.js"></script>

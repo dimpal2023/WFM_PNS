@@ -1,0 +1,37 @@
+﻿@model Wfm.App.Core.Model.WorkforceMetaData
+<style>
+    select {
+        display: inline;
+    }
+</style>
+<div class="row clearfix">
+    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6" id="fname"><b>Father Name:</b> @Model.FATHER_NAME</div>
+    <div class="ccol-lg-4 col-md-4 col-sm-6 col-xs-6" id="mobileno"> Mobile No: @Model.MOBILE_NO</div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="doj">Date of Joining: @Wfm.App.Common.Utility.FormatDate(@Model.DOJ.Value)</div>
+</div>
+<table id="tblParticipantList">
+    <thead>
+        <tr>
+            <td>S.No</td>
+            <td>Assets</td>
+            <td>New/Replace</td>
+            <td>Quantity</td>
+            <td>Purpose</td>
+            <td>Expiry Date</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+</table>
+<div class="row clearfix">
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary waves-effect" id="btnAddAsset" onclick="addAsset()">Add Asset</button>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary waves-effect" id="btnSaveAssetAllocation" >Submit</button>
+    </div>
+</div>

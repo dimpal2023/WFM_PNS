@@ -1,0 +1,30 @@
+﻿@model  IEnumerable<Wfm.App.Core.Model.WorkforceFaultyData>
+
+<table id="tableExport" 
+       class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+    <thead>
+        <tr>
+            <th>EMP_ID</th>
+            <th>EMP NAME</th>
+            <th>DEPARTMENT</th>
+            <th>BIO METRIC CODE</th>
+            <th>ATTENDANCE DATE</th>
+            <th>DETAILS</th>
+            <th>REMARKS</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EMP_ID</td>
+                <td>@item.EMP_NAME</td>
+                <td>@item.DEPT_NAME</td>
+                <td>@item.BIO_CODE</td>
+                <td>@item.ATTENDANCE_DATE</td>
+                <td>@item.PUNCH_RECORD</td>
+                <td>@item.REMARKS</td>
+            </tr>
+        }
+    </tbody>
+</table>

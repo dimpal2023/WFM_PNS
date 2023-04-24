@@ -1,0 +1,49 @@
+2021-09-06 20:36:20,253 [1] INFO EMailUtility.Program - ==============================EmailUtility Started==============================
+2021-09-06 20:36:20,315 [1] INFO EMailUtility.Program - Fetched Data From DB Sucessfully
+2021-09-06 20:36:20,331 [1] INFO EMailUtility.Program - Mail Sending For sumit to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:20,331 [1] INFO EMailUtility.Program - Mail Sending For sumit to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:20,347 [1] INFO EMailUtility.Program - Mail Sending For sumit to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:20,347 [1] INFO EMailUtility.Program - Mail Sending For neeraj to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:20,347 [1] INFO EMailUtility.Program - Mail Sending For neeraj to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:20,362 [1] INFO EMailUtility.Program - Mail Sending For neeraj to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:20,362 [1] INFO EMailUtility.Program - Mail Sending For sumit to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:20,378 [1] INFO EMailUtility.Program - Mail Sending For neeraj to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:20,378 [1] INFO EMailUtility.Program - Mail Sending For neeraj to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:20,378 [1] INFO EMailUtility.Program - Mail Sending For neeraj to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:20,393 [1] INFO EMailUtility.Program - Mail Sending For neeraj to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:20,393 [1] INFO EMailUtility.Program - Mail Sending For neeraj to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:20,409 [1] INFO EMailUtility.Program - Mail Sending For neeraj to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:20,409 [1] INFO EMailUtility.Program - Mail Sending For sumit to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:24,143 [1] INFO EMailUtility.Program - Sent Mail For sumit neerajkumarmca@gmail.com SuccessFully
+2021-09-06 20:36:24,158 [1] ERROR EMailUtility.Program - Error updating Data For sumit : Exception Invalid column name 'sumit'.
+2021-09-06 20:36:24,158 [1] ERROR EMailUtility.Program - Error updating Data For sumit
+2021-09-06 20:36:24,174 [1] INFO EMailUtility.Program - Mail Sending For neeraj to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:28,298 [1] INFO EMailUtility.Program - Sent Mail For neeraj neerajkumarmca@gmail.com SuccessFully
+2021-09-06 20:36:28,314 [1] ERROR EMailUtility.Program - Error updating Data For neeraj : Exception Invalid column name 'neeraj'.
+2021-09-06 20:36:28,314 [1] ERROR EMailUtility.Program - Error updating Data For neeraj
+2021-09-06 20:36:28,329 [1] INFO EMailUtility.Program - Mail Sending For neeraj to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:32,219 [1] INFO EMailUtility.Program - Sent Mail For neeraj neerajkumarmca@gmail.com SuccessFully
+2021-09-06 20:36:32,219 [1] ERROR EMailUtility.Program - Error updating Data For neeraj : Exception Invalid column name 'neeraj'.
+2021-09-06 20:36:32,235 [1] ERROR EMailUtility.Program - Error updating Data For neeraj
+2021-09-06 20:36:32,235 [1] INFO EMailUtility.Program - Mail Sending For neeraj to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:32,251 [1] INFO EMailUtility.Program - Mail Sending For neeraj to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:32,251 [1] INFO EMailUtility.Program - Mail Sending For sumit to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:32,266 [1] INFO EMailUtility.Program - Mail Sending For sumit to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:32,266 [1] INFO EMailUtility.Program - Mail Sending For sumit to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:32,282 [1] INFO EMailUtility.Program - Mail Sending For sumit to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:32,282 [1] INFO EMailUtility.Program - Mail Sending For neeraj to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:32,298 [1] INFO EMailUtility.Program - Mail Sending For sumit to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:32,298 [1] INFO EMailUtility.Program - Mail Sending For sumit to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:32,313 [1] INFO EMailUtility.Program - Mail Sending For sumit to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:32,329 [1] INFO EMailUtility.Program - Mail Sending For neeraj to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:32,344 [1] INFO EMailUtility.Program - Mail Sending For sumit to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:32,344 [1] INFO EMailUtility.Program - Mail Sending For sumit to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:32,360 [1] INFO EMailUtility.Program - Mail Sending For sumit to testuser1@gmail.com Started
+2021-09-06 20:36:32,376 [1] INFO EMailUtility.Program - Mail Sending For companymanager to Atal.bajpayi@karam.in Started
+2021-09-06 20:36:32,391 [1] INFO EMailUtility.Program - Mail Sending For companymanager to vaibhav.singh@karam.in Started
+2021-09-06 20:36:32,391 [1] INFO EMailUtility.Program - Mail Sending For Atal to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:32,407 [1] INFO EMailUtility.Program - Mail Sending For Atal to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:32,407 [1] INFO EMailUtility.Program - Mail Sending For Atal to neerajkumarmca@gmail.com Started
+2021-09-06 20:36:32,423 [1] INFO EMailUtility.Program - Mail Sending For Atal to sumitkumarph1@gmail.com Started
+2021-09-06 20:36:32,438 [1] INFO EMailUtility.Program - Mail Sending For 200510 to vinay@karam.in Started
+2021-09-06 20:36:32,438 [1] INFO EMailUtility.Program - ==============================EmailUtility Ended==============================

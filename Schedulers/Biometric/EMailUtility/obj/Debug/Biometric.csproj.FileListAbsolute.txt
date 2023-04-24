@@ -1,0 +1,7 @@
+E:\Projects\Schduler_Karam\Biometric\EMailUtility\bin\Debug\Biometric.exe.config
+E:\Projects\Schduler_Karam\Biometric\EMailUtility\bin\Debug\Biometric.exe
+E:\Projects\Schduler_Karam\Biometric\EMailUtility\bin\Debug\Biometric.pdb
+E:\Projects\Schduler_Karam\Biometric\EMailUtility\bin\Debug\log4net.dll
+E:\Projects\Schduler_Karam\Biometric\EMailUtility\bin\Debug\log4net.xml
+E:\Projects\Schduler_Karam\Biometric\EMailUtility\obj\Debug\Biometric.exe
+E:\Projects\Schduler_Karam\Biometric\EMailUtility\obj\Debug\Biometric.pdb

@@ -1,0 +1,156 @@
+﻿@model Wfm.App.Core.Model.ToolTalkConfigurationMetaData
+
+@{
+    ViewBag.Title = "Tooltalk - Configure";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Configure Check List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/ToolTalk/Configure">
+                                <i class="fas fa-layer-group"></i> Tool Talk
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Edit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Configure</strong> Check List
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.DEPT_ID, "Department")
+                                        @Html.DropDownListFor(x => x.DEPT_ID, ViewBag.Dept as SelectList, "--Select--", new { id = "DEPT_ID", required = "true", @onchange = "onDepartmentChange()" })
+                                        @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                        @Html.DropDownListFor(x => x.SUBDEPT_ID, ViewBag.SubDepartments as SelectList, "--Select--", new { id = "SUBDEPT_ID", required = "true" })
+                                        @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SHIFT_ID, "Shift")
+                                        @Html.DropDownListFor(x => x.SHIFT_ID, ViewBag.Shift as SelectList, "--Select--", new { id = "SHIFT_ID", required = "true" })
+                                        @Html.ValidationMessageFor(m => m.SHIFT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <span id="errorCheckbox" style="display:none;color:red;">Please check at least one item from list.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line align-right">
+                                        <button type="button" id="configure" class="btn btn-primary waves-effect m-r-15">Configure</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <div id="partialPlaceHolder" style="padding-left:15px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("select[required]").css({ position: "absolute", display: "inline", height: 0, padding: 0, width: 0 });
+    });
+
+    function onDepartmentChange() {
+        var departmentId = $("#DEPT_ID option:selected").val();
+        $.get('/GatePass/GetSubDepartmentByDepartmentId?departmentId=' + departmentId, function (data) {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#SUBDEPT_ID').append($('<option>', {
+                    value: item.SUBDEPT_ID,
+                    text: item.SUBDEPT_NAME
+                }));
+            });
+            $('#SUBDEPT_ID').formSelect();
+        });
+    }
+
+    $("#SUBDEPT_ID").on("change", function () {
+        var deptId = $("#DEPT_ID option:selected").val();
+        var subDeptId = $("#SUBDEPT_ID option:selected").val();
+        //var deptSubDeptIds = deptId + "," + subDeptId;
+
+        if (deptId !== "" && subDeptId !== "") {
+            $.get('/ToolTalk/GetCheckListBySubDeptId?deptId=' + deptId + '&subDeptId=' + subDeptId, function (data) {
+                $('#partialPlaceHolder').empty();
+                $('#errorCheckbox').text("");
+                $('#errorCheckbox').css("display", "none");
+
+                if (data.indexOf("div") === -1) {
+                    $('#errorCheckbox').text("There is no check list exist for this department and sub department.");
+                    $('#errorCheckbox').css("display", "block");
+                    return;
+                }
+
+                $('#partialPlaceHolder').html(data);
+                $('#partialPlaceHolder').fadeIn('fast');
+
+                // delete extra hidden fields created by checkboxes as the grid links mess this up by doubling the querystring parameters
+                $("input[type='hidden']").remove();
+                $('#errorCheckbox').css("display", "none");
+
+                $('#select-all').on("change", function () {
+                    if (this.checked) {
+                        $('input:checkbox').each(function () {
+                            this.checked = true;
+                        });
+                    }
+                    else {
+                        $('input:checkbox').each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
+            });
+        }
+    });
+
+</script>
+<script src="~/Content/assets/js/pages/tooltalk/tooltalk.js"></script>

@@ -1,0 +1,113 @@
+﻿@model List<Wfm.App.Core.Model.ToolTalkMasterMetaData>
+
+@{
+    ViewBag.Title = "Tooltalk - All Items";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Tool Talk</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/GatePass/Create">
+                                <i class="fas fa-layer-group"></i> Tool Talk
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>View</strong> Check Lists
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <span id="message" style="color:red;display:none;">This item is already in use. First remove this item from configured check list.</span>
+                        <div class="table-responsive">
+                            <table id="tableExport" 
+                                   class="display table table-hover table-checkable order-column m-t-20 width-per-100" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th> Department </th>
+                                        <th> Sub Department </th>
+                                        <th> Check List Name </th>    
+                                        <th></th>                                                                                                             
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        
+                                        int index = 0;
+                                        foreach (var tooltalk in Model)
+                                        {
+                                            <tr id="row_@tooltalk.ID">
+                                                <td>@(++index)</td>
+                                                <td>@tooltalk.DEPT_NAME</td>
+                                                <td>@tooltalk.SUBDEPT_NAME</td>
+                                                <td>@tooltalk.ITEM_NAME</td>                                               
+                                                
+                                                    <td>
+                                                        <a href="/ToolTalk/Edit/@tooltalk.ID" class="btn btn-tbl-edit">
+                                                            <i class="material-icons">create</i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-tbl-delete" data-toggle="modal" data-target="#exampleModalCenter">
+                                                            <i class="material-icons">delete_forever</i>
+                                                        </a>
+                                                    </td>                                                
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">
+                                    Delete Check List
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Are you sure you want to delete this check list?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="tooltalk_delete_confirm" type="button"
+                                        class="btn btn-info waves-effect">
+                                    Confirm
+                                </button>
+                                <button type="button" class="btn btn-danger waves-effect"
+                                        data-dismiss="modal">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<input type="hidden" id="hiddentoolTalkId" />
+
+<script src="~/Content/assets/js/pages/tooltalk/tooltalk.js"></script>

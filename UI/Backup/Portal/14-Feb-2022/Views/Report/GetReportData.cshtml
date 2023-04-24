@@ -1,0 +1,192 @@
+﻿@model Wfm.App.Core.Model.ReportMasterMetaData
+
+@{
+    ViewBag.Title = "Reports - Load";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Reports</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/GatePass/Create">
+                                <i class="fas fa-layer-group"></i> Report
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Data</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Get</strong> Report
+                            </h2>
+                        </div>
+                        <div class="body">
+                            @using (Html.BeginForm("GetReportData", "Report", FormMethod.Post, new { @id = "GetReportData", @class = "login100-form validate-form" }))
+                            {
+                                <div class="row clearfix">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.REPORT_TYPE, "Report Type")
+                                                @Html.DropDownListFor(x => x.REPORT_TYPE, new SelectList(ViewBag.ReportTypes, "Value", "Text"), "--Select--", new { id = "REPORT_TYPE", required = "required" })
+                                                @Html.ValidationMessageFor(m => m.REPORT_TYPE)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.DEPT_ID, "Department")
+                                                @Html.DropDownListFor(x => x.DEPT_ID, new SelectList(ViewBag.Dept, "Value", "Text"), "--Select--", new { id = "DEPT_ID", required = "required", @onchange = "onDepartmentChange()" })
+                                                @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                                @Html.DropDownListFor(x => x.SUBDEPT_ID, ViewBag.SubDepartments as SelectList, "--Select--", new { id = "SUBDEPT_ID", required = "required" })
+                                                @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.EMP_TYPE, "Employee Type")
+                                                @Html.DropDownListFor(x => x.EMP_TYPE, new SelectList(ViewBag.EmployeeTypes, "Value", "Text"), "--Select--", htmlAttributes: new { id = "WF_EMP_TYPE", required = "required" })
+                                                @Html.ValidationMessageFor(m => m.EMP_TYPE)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="row clearfix">                                        
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    @Html.LabelFor(x => x.EMP_NAME, "Employee Name")
+                                                    @Html.TextBoxFor(x => x.EMP_NAME, new { id = "EMP_NAME", @class = "form-control", @type = "text", required = "required" })
+                                                    @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                                    @Html.HiddenFor(x => x.WF_ID, new { id = "WF_ID" })
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    @Html.LabelFor(m => m.START_DATE, "Start Date")
+                                                    @Html.TextBoxFor(m => m.START_DATE, new { @class = "datepicker form-control" })
+                                                    @Html.ValidationMessageFor(m => m.START_DATE)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    @Html.LabelFor(m => m.END_DATE, "End Date")
+                                                    @Html.TextBoxFor(m => m.END_DATE, new { @class = "datepicker form-control" })
+                                                    @Html.ValidationMessageFor(m => m.END_DATE)
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <div id="pieceWagerDiv" style="padding-left:15px;">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.CheckBox("Is Piece Wager", false, new { id = "pieceWager", @class = "form-check-input" }) Is Piece Wager
+                                                                <span class="form-check-sign">
+                                                                    <span class="check"></span>
+                                                                </span>
+                                                            </label>
+                                                         </div>                                                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <button type="button" id="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>  
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                    </div>                                       
+                                    @Html.HiddenFor(m => m.WF_ID, new { id = "WF_ID" })                                    
+                                    
+                            }
+                            <div id="partialPlaceHolder" style="overflow-x:scroll">
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Content/assets/js/pages/report/report.js"></script>
+<script tyep="text/javascript">
+    $("#pieceWagerDiv input[type='hidden']").remove();
+    function onDepartmentChange() {
+        var departmentId = $("#DEPT_ID option:selected").val();
+        $.get('/GatePass/GetSubDepartmentByDepartmentId?departmentId=' + departmentId, function (data) {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#SUBDEPT_ID').append($('<option>', {
+                    value: item.SUBDEPT_ID,
+                    text: item.SUBDEPT_NAME
+                }));
+            });
+            $('#SUBDEPT_ID').formSelect();
+        });
+    }
+    $("#EMP_NAME").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("LoadWorkforceByWFType", "Workforce")',
+                datatype: "json",
+                data: {
+                    deptId: $('#DEPT_ID').val(),
+                    sub_dept_id: $('#SUBDEPT_ID').val(),
+                    query: $('#EMP_NAME').val(),
+                    emp_type_id: $('#WF_EMP_TYPE').val()
+                },
+                success: function (data) {
+                    response($.map(data, function (val, item) {
+                        return {
+                            label: val.Name,
+                            value: val.Name,
+                            empId: val.ID
+                        }
+                    }))
+                }
+            })
+        },
+        select: function (event, ui) {
+            $('#WF_ID').val(ui.item.empId);
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+</script>
+

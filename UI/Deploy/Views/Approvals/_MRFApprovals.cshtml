@@ -1,0 +1,76 @@
+﻿@model IList<Wfm.App.Core.Model.MRFApprovalMetadata>
+@{
+    Layout = null;
+}
+<div class="table-responsive">
+    @using (Html.BeginForm("MRFApprovals", "Approvals", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="submit" id="btnSubmit" name="Approve" class="btn btn-primary waves-effect m-r-15" value="Approve" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="submit" id="btnSubmit" name="Reject" class="btn btn-primary waves-effect m-r-15" value="Reject" />
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label class="col-12">Remark</label>
+                @Html.TextArea("Remark")
+            </div>
+        </div>
+        <table id="tableExport"
+               class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+            <thead>
+                <tr>
+                    <th>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="checkAll" />
+                            <span></span>
+                        </label>
+                    </th>
+                    <th>Approver</th>
+                    <th>Is Approved</th>
+                    <th>S.No</th>
+                    <th>MRF</th>
+                    <th>Building/Floor</th>
+                    <th>Skill/Designation</th>
+                    <th>Quantity</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @if (ViewBag.LoginUerrId == item.USER_ID&& item.APPROVER_STATUS=="")
+                        {
+                        <label>
+                            <input type="checkbox" name="twfmIds" class="filled-in" value="@item.MRF_APPROVER_ID" />
+                            <span></span>
+                        </label>
+                        }
+                    </td>
+                    <td>@item.USER_NAME</td>
+                    <td>@item.APPROVER_STATUS</td>
+                    <td>@item.MRF_CODE.ToString("00000")</td>
+                    <td>@item.REC_NAME</td>
+                    <td>@item.BUILDING_NAME/@item.FLOOR_NAME</td>
+                    <td>@item.SKILL_NAME/@item.WF_DESIGNATION_NAME</td>
+                    <td>@item.QUANTITY</td>
+                    <td>@item.EMP_TYPE</td>
+                    <td>@item.MRF_STATUS</td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+</div>
+

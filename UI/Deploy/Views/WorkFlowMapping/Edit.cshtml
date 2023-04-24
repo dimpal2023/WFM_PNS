@@ -1,0 +1,97 @@
+﻿@model Wfm.App.Core.Model.WorkflowMappingMasterMetaData
+
+@{
+    ViewBag.Title = "New Hiring - Edit Workflow";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Work Flow Approval</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/WorkFlowMapping/Index">
+                                <i class="fas fa-layer-group"></i> Work Flow Approval
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Edit</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Edit</strong> Work Flow Approval
+                            </h2>
+                        </div>
+                        <div class="body">
+                            @using (Html.BeginForm("Create", "WorkFlowMapping", FormMethod.Post, new { id = "submitApprovalForm" }))
+                            {
+                                <div class="row clearfix">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="card">
+                                            <div class="body">
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                        <label for="workFlowName">Work Flow Name</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                @Html.DropDownListFor(x => x.WORKFLOW_ID, Model.WorkFlowMaster, "-- Select Work Flow--", new { required = "true" })
+                                                                @Html.ValidationMessageFor(m => m.WORKFLOW_ID)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                        <label for="password_2">Level Of Approval</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                @Html.DropDownListFor(x => x.LEVEL_ID, Model.LevelOfApproval as SelectList, "--Select Approval--", new { @onchange = "levelChange()", required = "true" })
+                                                                @Html.ValidationMessageFor(m => m.LEVEL_ID)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="card">
+                                                            <div id="partialPlaceHolder" style="display:none;"> </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Content/assets/js/pages/workflow-mapping/workflow-mapping.js"></script>
+<script>
+    $(document).ready(function () {
+        var levelId = $(this).val();
+        var levelId = $("#LEVEL_ID option:selected").val();
+        var workFlowId = $("#WORKFLOW_ID option:selected").val();
+        $.get('/WorkFlowMapping/BindLevelOfApproavl?workFlowId=' + workFlowId + '&levelid=' + levelId, function (data) {
+            $('#partialPlaceHolder').html(data);
+            $('#partialPlaceHolder').fadeIn('fast');
+        });
+    });
+</script>

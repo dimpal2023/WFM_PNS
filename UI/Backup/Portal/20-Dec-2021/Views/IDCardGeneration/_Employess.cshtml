@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.PartialWorkflowMasterVieweMetaData>
+
+
+
+<div class="table-responsive">
+    @using (Html.BeginForm("GenerateCards", "IDCardGeneration", FormMethod.Post))
+    {
+
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="form-line">
+                        <input type="submit" id="btnSubmit" class="btn btn-primary waves-effect m-r-15" value="Generate cards for selected workforce" />
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped table-hover js-basic-example dataTable" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="checkAll" />
+                            <span></span>
+                        </label>
+                    </th>
+                    <th>Company Name </th>
+                    <th>Employee Name </th>
+                    <th>Employee Id </th>
+                    <th> Department </th>
+                    <th> Designation </th>
+                    <th> Mobile </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="checkbox" name="wfIds" class="filled-in" value="@item.WF_ID" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.COMPANY_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EMP_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EMP_ID)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DEPT_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DESIGNATION_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MOBILE_NO)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

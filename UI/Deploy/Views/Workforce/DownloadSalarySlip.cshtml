@@ -1,0 +1,360 @@
+﻿@{
+    Layout = null;
+}
+
+<table style="width: 100%; text-align: center; padding-left: 3%; padding-right:3%;">
+    <tr>
+        <td style="font-weight: bold;" colspan="15">[CMPNAME]</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;" colspan="15">[CMPNAME_ADDRESS]</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold; outline: thin solid; height: 40px">EMP_CODE</td>
+        <td style="font-weight: bold; outline: thin solid">[EMP_CODE]</td>
+        <td colspan="13" style="text-align:right">Salary Slip for the Month of [MONTH_YY]</td>
+    </tr>
+    <tr><td colspan="15"></td></tr>
+    <tr style="outline: thin solid">
+        <td style="width: 50px; border-right: thin solid; width: 12%">Name</td>
+        <td style="border-right: thin solid;width:12%">Department</td>
+        <td style="border-right: thin solid; width: 12%">UAN</td>
+        <td style="border-right: thin solid;">ESIC</td>
+        <td style="width: 60px; border-right: thin solid;">Wages Rate</td>
+        <td style="width: 40px; border-right: thin solid;">Actual Paid Days</td>
+        <td style="width: 14%; border-right: thin solid;text-align:center" colspan="3">
+            <table width="100%" style="text-align: center; border-collapse: collapse; border-style: hidden;">
+                <tr >
+                    <td style="border: 1px solid black;" colspan="3">Earned Wages</td>
+                </tr>
+                <tr>
+                    <td style="width:50px;border: 1px solid black;">Basic + DA</td>
+                    <td style="width:50px;border: 1px solid black;">HR Allowances</td>
+                    <td style="width:50px;border: 1px solid black;">Total</td>
+                </tr>
+            </table>
+        </td>
+        <td style="width: 10%; border-right: thin solid;" colspan="3">
+            <table width="100%" style="text-align: center; border-collapse: collapse; border-style: hidden;">
+                <tr >
+                    <td style="border: 1px solid black;" colspan="3">Deduction</td>
+                </tr>
+                <tr>
+                    <td style="width:40px;border: 1px solid black;">P.F.</td>
+                    <td style="width:40px;border: 1px solid black;">ESI</td>
+                    <td style="width:40px;border: 1px solid black;">Fine / Advance</td>
+                </tr>
+            </table>
+        </td>
+        <td style="border-right: thin solid;width:55px;">Actual Wages Paid</td>
+        <td style="width:10%;" colspan="2">
+            <table width="100%" style="text-align: center; border-collapse: collapse; border-style: hidden;">
+                <tr>
+                    <td style="border: 1px solid black;" colspan="2">Employer's Contribution</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;">EPF</td>
+                    <td style="border: 1px solid black;">ESI</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr style="outline: thin solid">
+        <td style="border-right: thin solid;">[EMP_NAME]</td>
+        <td style="border-right: thin solid;">[DEPARTMENT]</td>
+        <td style="border-right: thin solid;">[UAN]</td>
+        <td style="border-right: thin solid;">[ESIC]</td>
+        <td style="border-right: thin solid;">[WAGES_RATE]</td>
+        <td style="border-right: thin solid;">[ACTUAL_PAID_DAY]</td>
+        <td style="border-right: thin solid;">[BASIC_DA]</td>
+        <td style="border-right: thin solid;">[HR_ALL]</td>
+        <td style="border-right: thin solid;">[TOTAL]</td>
+        <td style="border-right: thin solid;">[WF_EPF]</td>
+        <td style="border-right: thin solid;">[WF_ESI]</td>
+        <td style="border-right: thin solid;">[FINE_OR_ADVANCE]</td>
+        <td style="border-right: thin solid;">[ACTUAL_WAGES_PAID]</td>
+        <td style="border-right: thin solid;">[CONTRI_EPF]</td>
+        <td>[CONTRI_ESI]</td>
+    </tr>
+    <tr>
+        <td style="text-align: right; padding-right: 50px;font-weight:bold;height:80px;" colspan="15">(Signature of Employee)</td>
+    </tr>
+</table>
+
+
+<table style="width: 100%; margin-top: 10px; font-size: 0.8em; border-collapse: collapse;">
+    <thead>
+        <tr>
+            <td colspan="26" style="text-align:right">Issue Date:- [DD_MM_YYYY]</td>
+        </tr>
+        <tr align="center">
+            <td style="font-weight: bold;height:40px" colspan="25">[CMPNAME]</td>
+        </tr>
+        <tr align="center">
+            <td style="font-weight: bold;" colspan="25">[CMPNAME_ADDRESS]</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold; outline: thin solid; height: 40px">EMP_CODE</td>
+            <td style="font-weight: bold; outline: thin solid">[EMP_CODE]</td>
+            <td colspan="24" style="text-align:right">Salary Slip for the Month of [MONTH_YY]</td>
+        </tr>
+        <tr>
+            <td colspan="26" style="height: 20px;"></td>
+        </tr>
+    </thead>
+    <tr align="center" style="border: 1px solid black;">
+        <th style="border: 1px solid black;padding:2.5px; width: 6%;" rowspan="2">Name</th>
+        <th style="border: 1px solid black;padding:2.5px; width: 6%;" rowspan="2">Department</th>
+        <th style="border: 1px solid black;padding:2.5px; width: 6%;" rowspan="2">UAN</th>
+        <th style="border: 1px solid black;padding:2.5px; width: 6%;" rowspan="2">ESIC</th>
+        <th style="border: 1px solid black;padding:2.5px; width: 10%" colspan="4">Wage Rate</th>
+        <th style="border: 1px solid black;padding:2.5px; width: 3%;" rowspan="2">Paid Days</th>
+        <th style="border: 1px solid black;padding:2.5px; width: 10%" colspan="5">Earned Wages</th>
+        <th style="border: 1px solid black;padding:2.5px; width: 10%" colspan="5">Deduction</th>
+        <th style="border: 1px solid black;padding:2.5px; width: 6%;" rowspan="2">Actual Wages Paid</th>
+        <th style="border: 1px solid black;padding: 2.5px; width: 9%;" colspan="3">Employer’s Contribution</th>
+        <th style="border: 1px solid black;padding:2.5px;width: 6%;" colspan="2">Leave</th>
+    </tr>
+    <tr>
+        <th style="border: 1px solid black;width:5%">Basic + DA</th>
+        <th style="border: 1px solid black;width:5%">HRA</th>
+        <th style="border: 1px solid black;width:5%">Spl Allow</th>
+        <th style="border: 1px solid black;width:5%">Actual Gross</th>
+        <th style="border: 1px solid black;width:5%">Basic + DA</th>
+        <th style="border: 1px solid black;width:5%">HRA</th>
+        <th style="border: 1px solid black;width:5%">Spl Allow</th>
+        <th style="border: 1px solid black;width:5%">Production Incentive Bonus</th>
+        <th style="border: 1px solid black;width:5%">Gross Salary</th>
+        <th style="border: 1px solid black;width:3%">P.F.</th>
+        <th style="border: 1px solid black;width:3%">ESI</th>
+        <th style="border: 1px solid black;width:3%">TDS</th>
+        <th style="border: 1px solid black;width:3%">Fine</th>
+        <th style="border: 1px solid black;width:3%">Advance</th>
+        <th style="border: 1px solid black;width:3%">EPF</th>
+        <th style="border: 1px solid black;width:3%">ESI</th>
+        <th style="border: 1px solid black;width:3%">Admin Charges</th>
+        <th style="border: 1px solid black;">Taken</th>
+        <th style="border: 1px solid black;">Balance </th>
+    </tr>
+    <tr align="center" style="border: 1px solid black;">
+        <td style="border: 1px solid black;">[EMP_NAME]</td>
+        <td style="border: 1px solid black;">[DEPARTMENT]</td>
+        <td style="border: 1px solid black;">[UAN]</td>
+        <td style="border: 1px solid black;">[ESIC]</td>
+        <td style="border: 1px solid black;">[W_BASIC_DA]</td>
+        <td style="border: 1px solid black;">[W_HR_ALL]</td>
+        <td style="border: 1px solid black;">[W_SPE_ALL]</td>
+        <td style="border: 1px solid black;">[W_ACTUAL_GROSS]</td>
+        <td style="border: 1px solid black;">[ACTUAL_PAID_DAY]</td>
+        <td style="border: 1px solid black;">[E_BASIC_DA]</td>
+        <td style="border: 1px solid black;">[E_HR_ALL]</td>
+        <td style="border: 1px solid black;">[E_SPE_ALL]</td>
+        <td style="border: 1px solid black;">[E_PRO_BONUS]</td>
+        <td style="border: 1px solid black;">[E_GROSS_SALARY]</td>
+        <td style="border: 1px solid black;">[WF_EPF]</td>
+        <td style="border: 1px solid black;">[WF_ESI]</td>
+        <td style="border: 1px solid black;">[WF_TDS]</td>
+        <td style="border: 1px solid black;">[WF_FINE]</td>
+        <td style="border: 1px solid black;">[WF_ADVANCE]</td>
+        <td style="border: 1px solid black;">[ACTUAL_WAGES_PAID]</td>
+        <td style="border: 1px solid black;">[CONTRI_EPF]</td>
+        <td style="border: 1px solid black;">[CONTRI_ESI]</td>
+        <td style="border: 1px solid black;">[ADMIN_CHARGE]</td>
+        <td style="border: 1px solid black;">[LEAVE_TAKEN]</td>
+        <td style="border: 1px solid black;">[LEAVE_BALANCE]</td>
+    </tr>
+    <tr>
+        <td style="text-align: right; padding-right: 50px;font-weight:bold;height:80px;" colspan="26">(Signature of Employee)</td>
+    </tr>
+</table>
+
+
+<div align="center">
+    <center>
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="980" height="267">
+            <tr>
+                <td width="100%" height="30" align="center"><b><font size="2">[CMPNAME]</font></b></td>
+            </tr>
+            <tr>
+                <td width="100%" height="30" align="center">
+                    <b>
+                        <font size="2">
+                            [CMPNAME_ADDRESS]
+                        </font>
+                    </b>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" height="1" align="left" valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" height="26">
+                        <tr>
+                            <td width="21%" align="left" valign="top" height="26">
+                                <table border="1" cellpadding="2" cellspacing="3" style="border-collapse: collapse" bordercolor="#111111" width="88%">
+                                    <tr>
+                                        <td width="53%" height="35" style="margin-left: 2">
+                                            <b>
+                                                <font size="2">Emp Code</font>
+                                            </b>
+                                        </td>
+                                        <td width="47%" height="35" style="margin-left: 2">
+                                            <b>
+                                                <font size="2">[EMP_CODE]</font>
+                                            </b>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="79%" align="left" height="26">
+                                <p align="right" dir="ltr">
+                                    <b>
+                                        <font size="2">
+                                            Salary slip for the month of [MONTH_YY]
+                                        </font>
+                                    </b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="100%" align="left" valign="top" height="5" colspan="2">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" height="118">
+                    <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%">
+                        <tr>
+                            <td width="11%" rowspan="2" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">Name</font></b>
+                            </td>
+                            <td width="9%" rowspan="2" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">Department</font></b>
+                            </td>
+                            <td width="10%" rowspan="2" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">UAN</font></b>
+                            </td>
+                            <td width="10%" rowspan="2" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">ESIC</font></b>
+                            </td>
+                            <td width="10%" rowspan="2" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">Wage Rate</font></b>
+                            </td>
+                            <td width="10%" rowspan="2" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">Actual Paid Date</font></b>
+                            </td>
+                            <td width="10%" colspan="3" style="margin-left: 2; margin-right: 2" align="center">
+                                <p align="center"><b><font size="2">Earned Wages</font></b>
+                            </td>
+                            <td width="10%" colspan="3" style="margin-left: 2; margin-right: 2" align="center">
+                                <p align="center"><b><font size="2">Deduction</font></b>
+                            </td>
+                            <td width="10%" rowspan="2" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">Actual Wage Paid</font></b>
+                            </td>
+                            <td width="10%" colspan="2" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">Employer's Contribution</font></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="3%" style="margin-left: 2; margin-right: 2" align="center">
+                                <b>
+                                    <font size="2">
+                                        Basic<br>
+                                        +<br>
+                                        DA
+                                    </font>
+                                </b>
+                            </td>
+                            <td width="4%" style="margin-left: 2; margin-right: 2" align="center">
+                                <b>
+                                    <font size="2">
+                                        HR<br>
+                                        Allowances
+                                    </font>
+                                </b>
+                            </td>
+                            <td width="3%" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">Total</font></b>
+                            </td>
+                            <td width="3%" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">P.F</font></b>
+                            </td>
+                            <td width="4%" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">ESI</font></b>
+                            </td>
+                            <td width="3%" style="margin-left: 2; margin-right: 2" align="center">
+                                <b>
+                                    <font size="2">
+                                        Fine/<br>
+                                        Advance
+                                    </font>
+                                </b>
+                            </td>
+                            <td width="5%" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">EPF</font></b>
+                            </td>
+                            <td width="5%" style="margin-left: 2; margin-right: 2" align="center">
+                                <b><font size="2">ESI</font></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="11%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[EMP_NAME]</font>
+                            </td>
+                            <td width="9%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[DEPARTMENT]</font>
+                            </td>
+                            <td width="10%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[UAN]</font>
+                            </td>
+                            <td width="10%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[ESIC]</font>
+                            </td>
+                            <td width="10%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[WAGES_RATE]</font>
+                            </td>
+                            <td width="10%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[ACTUAL_PAID_DAY]</font>
+                            </td>
+                            <td width="3%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[E_BASIC_DA]</font>
+                            </td>
+                            <td width="4%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[E_HR_ALL]</font>
+                            </td>
+                            <td width="3%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[E_GROSS_SALARY]</font>
+                            </td>
+                            <td width="3%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[WF_EPF]</font>
+                            </td>
+                            <td width="4%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[WF_ESI]	</font>
+                            </td>
+                            <td width="3%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[WF_FINE]</font>
+                            </td>
+                            <td width="10%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[ACTUAL_WAGES_PAID]</font>
+                            </td>
+                            <td width="5%" style="margin-left: 2; margin-right: 2" align="center">
+                                <font size="2">[CONTRI_EPF]</font>
+                            </td>
+                            <td width="5%" style="margin-left:2; margin-right: 2" align="center">
+                                <font size="2">[CONTRI_ESI]</font>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" height="34">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="100%" height="27">
+                    <p align="right"><b><font size="2">Signature of the Employee</font></b>
+                </td>
+            </tr>
+        </table>
+    </center>
+</div>

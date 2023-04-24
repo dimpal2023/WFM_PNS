@@ -1,0 +1,30 @@
+﻿@model  Wfm.App.Core.Model.ToolTalkConfigurationMetaData
+
+@{
+    if (Model.TOOL_TALK_CHECK_LIST.Count > 0)
+    {
+        <div class="form-check">
+            <label class="form-check-label">
+                @Html.CheckBox("Select All", false, new { id = "select-all", @class = "form-check-input" }) Select All
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+    }
+}
+
+<br />
+<br />
+
+@foreach (var item in Model.TOOL_TALK_CHECK_LIST)
+{
+    <div class="form-check">
+        <label class="form-check-label">
+            @Html.CheckBox(item.ITEM_NAME, item.CHECK.Value, new { id = item.ID, @class = "form-check-input", TOOL_TALK_ID = item.TOOL_TALK_ID, ITEM_NAME = item.ITEM_NAME, CHECKED = (item.CHECK.Value ? "checked" : "unchecked") }) @item.ITEM_NAME
+            <span class="form-check-sign">
+                <span class="check"></span>
+            </span>
+        </label>
+    </div>
+}

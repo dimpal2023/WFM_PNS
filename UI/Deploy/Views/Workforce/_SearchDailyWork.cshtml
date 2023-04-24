@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.SerchDailyWorkMetaData>
+<table id="tableExport" class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+    <thead>
+        <tr>
+            <th> Item Name </th>
+            <th> Item Code </th>
+            <th>Operation</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr style="background-color: aliceblue; font-weight: bold;">
+                    <td colspan="2">Name:&nbsp @item.WorkforceName</td>
+                    <td style="display: none"></td>
+                    <td colspan="2">Work Date:&nbsp @item.WorkingDate.Value.ToShortDateString()</td>
+                    <td style="display: none"></td>
+                    <td style="display: none"></td>
+                    <td colspan="2" style="text-align:right">Total: &nbsp @Math.Round(item.Total,2)</td>
+                </tr>
+                foreach (var subItem in item.partialDailyWorkMetaDatas)
+                {
+                    <tr>
+                        <td>@subItem.ITEM</td>
+                        <td>@subItem.ITEM_CODE</td>
+                        <td>@subItem.OPERATION_NAME</td>
+                        <td>@subItem.QTY</td>
+                        <td>@Math.Round(subItem.RATE.Value,2)</td>
+                        <td>@Math.Round((subItem.QTY*@subItem.RATE.Value),2)</td>
+                    </tr>
+                }
+            }
+        }
+        else
+        {
+    <tr>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td colspan="6" style="text-align:center">Not found</td>
+
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+    </tr>
+        }
+
+    </tbody>
+</table>
+<script>
+    $("document").ready(function () {
+        $('#tableExport').DataTable({
+            dom: 'Bfrtip',
+            ordering: false,
+            searching: false,
+            paging: false,
+            buttons: [
+                'copy',
+                'csv',
+                'excel',
+                'pdf',
+                'print'
+            ]
+        });
+    });
+</script>
