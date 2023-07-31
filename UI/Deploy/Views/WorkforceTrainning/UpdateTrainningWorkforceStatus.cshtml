@@ -1,0 +1,209 @@
+﻿@model Wfm.App.Core.Model.TRAINNING_WORKFORCE_MAPPING
+<style type="text/css">
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        width: 100%;
+        height: auto !important;
+        overflow: hidden;
+        outline: 0;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Workforce Training</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/WorkforceTrainning/TrainningWorkforce">
+                                <i class="fas fa-layer-group"></i>Workforce Training
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Update</strong> Workforce Training
+                            </h2>
+                        </div>
+                        <div class="body">
+                            @using (Html.BeginForm("UpdateTrainningWorkforceStatus", "WorkforceTrainning", FormMethod.Post, new { @id = "AssetManagementCreate", @class = "login100-form validate-form" }))
+                            {
+                                @Html.HiddenFor(m => m.TRAINNING_MAPPING_ID)
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <span>Workforce Name:&nbsp;&nbsp;</span>@Model.WORKFORCE_NAME
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <span>Workforce Code:&nbsp;&nbsp;</span>@Model.TRAINNING_CODE
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.DEPT_ID, "Department")
+                                                @Html.DropDownListFor(x => x.DEPT_ID, Model.Departments, "-- Select --", new { required = "true" })
+                                                @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                                @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "--Select--", new { required = "true" })
+                                                @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.TRAINNING_ID, "Traning Name")
+                                                @Html.DropDownListFor(x => x.TRAINNING_ID, Model.TrainningMasterByDepart, "-- Select --", new { required = "true" })
+                                                @Html.ValidationMessageFor(m => m.TRAINNING_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.ISTRAINNINGCOMPLETED, "Is Completed")
+                                                @Html.DropDownListFor(m => m.ISTRAINNINGCOMPLETED, new List<SelectListItem>
+                                                {
+                                                    new SelectListItem{ Text="Yes", Value = "Y" },
+                                                    new SelectListItem{ Text="No", Value = "N" }
+                                                 }, "--Select--", new { @class = "col-12 m-t-20 p-l-0" })
+                                                @Html.ValidationMessageFor(m => m.ISTRAINNINGCOMPLETED)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.TRAINNING_START_DATE, "Start Date")
+                                                @Html.TextBoxFor(m => m.TRAINNING_START_DATE, "", new { placeholder = "dd/mm/yyyy", Value = Model.TRAINNING_START_DATE.ToString("dd/MM/yyyy"), @class = "form-control disabled datepicker", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.TRAINNING_START_DATE)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.ACTUAL_START_DATE, " Actual Start Date")
+                                                @Html.TextBoxFor(m => m.ACTUAL_START_DATE, "", new { placeholder = "dd/mm/yyyy", Value = Model.ACTUAL_START_DATE == null ? null : Model.ACTUAL_START_DATE.Value.ToString("dd/MM/yyyy"), @class = "form-control disabled datepicker", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.ACTUAL_START_DATE)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.TRAINNING_END_DATE, "End Date")
+                                                @Html.TextBoxFor(m => m.TRAINNING_END_DATE, "", new { placeholder = "dd/mm/yyyy", Value = Model.TRAINNING_END_DATE.ToString("dd/MM/yyyy"), @class = "form-control disabled datepicker", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.TRAINNING_END_DATE)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.ACTUAL_END_DATE, " Actual End Date")
+                                                @Html.TextBoxFor(m => m.ACTUAL_END_DATE, "", new { placeholder = "dd/mm/yyyy", Value = Model.ACTUAL_END_DATE == null ? null : Model.ACTUAL_END_DATE.Value.ToString("dd/MM/yyyy"), @class = "form-control disabled datepicker", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.ACTUAL_END_DATE)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="col-lg-12 p-t-20 text-center">
+                                    <button type="submit" id="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                    <button type="button" id="cancel" class="btn btn-danger waves-effect">Cancel</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(window).on('load', function () {
+        $(".page-loader-wrapper").remove();
+        getSubDeptbyDeptId();
+    })
+    $(document).ready(function () {
+        //$(".dateddmmyyyy").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+    $("#cancel").click(function () {
+        window.location.href = "/WorkforceTrainning/TrainningWorkforce";
+    });
+
+    function subDepartmentOnChange() {
+        var departId = $('#DEPT_ID').val();
+        var sub_depart_id = $('#SUBDEPT_ID').val();
+        $.get('/WorkforceTrainning/GetTrainningBydeptId?deptId=' + departId + '&sub_deptId=' + sub_depart_id , function (data) {
+            //$('#TRAINNING_ID').material_select('destroy');
+            var idName = 'TRAINNING_ID';
+            $('#' + idName).find('option').not(':first').remove();
+
+            $.each(data, function (i, item) {
+                $('#' + idName).append($('<option>', {
+                    value: item.TRAINNING_ID,
+                    text: item.TRAINNING_NAME
+                }));
+            });
+            $('#TRAINNING_ID').formSelect();
+
+        });
+    }
+    $("#DEPT_ID").change(function () {
+        getSubDeptbyDeptId();
+    });
+
+    function getSubDeptbyDeptId() {
+        var DEPARTMENT_ID = $("#DEPT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').val('@Model.SUBDEPT_ID');
+                $('#SUBDEPT_ID').formSelect();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+        }
+    }
+    $("#SUBDEPT_ID").change(function () {
+        var DEPARTMENT_ID = $("#DEPT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            subDepartmentOnChange();
+        }
+    });
+</script>

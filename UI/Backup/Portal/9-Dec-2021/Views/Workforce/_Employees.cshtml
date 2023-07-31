@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.WorkforceMetaDataList>
+
+<table id="tableExport" class="display table table-hover table-checkable order-column m-t-20 width-per-100" width="100%">
+    <thead>
+        <tr>
+            <th>Employee Id</th>
+            <th>Name</th>
+            <th>Contact No.</th>
+            <th>Department</th>
+            <th>Designation</th>
+            <th>Date of Joining</th>
+            <th>Aadhar No.</th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EMP_ID</td>
+                <td>@item.EMP_NAME</td>
+                <td>@item.MOBILE_NO</td>
+                <td>@item.DEPT</td>
+                <td>@item.WF_DESIGNATION</td>
+                <td>@Wfm.App.Common.Utility.FormatDate(@item.DOJ)</td>
+                <td>@item.AADHAR_NO</td>
+                <td>@item.STATUS</td>
+                <td>
+                    <a href="/Workforce/Edit?wfid=@item.WF_ID">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

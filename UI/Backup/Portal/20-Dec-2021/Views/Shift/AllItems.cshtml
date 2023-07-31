@@ -1,0 +1,116 @@
+﻿@model List<Wfm.App.Core.Model.ShiftMasterMetaData>
+
+@{
+    ViewBag.Title = "Shift - All Items";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Shift</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/GatePass/Create">
+                                <i class="fas fa-layer-group"></i> Shift
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>View</strong> Shifts
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table id="tableExport" 
+                                   class="display table table-hover table-checkable order-column m-t-20 width-per-100" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>                                        
+                                        <th> Name </th>
+                                        <th> Start Time </th>
+                                        <th> End Time </th>
+                                        <th> Company </th>
+                                        <th> Created By </th>
+                                        <th> Active </th>                                       
+                                        <th> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{                                      
+                                        int index = 0;
+                                        foreach (var shift in Model)
+                                        {
+                                            <tr id="row_@shift.SHIFT_ID">
+                                                <td>@(++index)</td>
+                                                <td>@shift.SHIFT_NAME</td>
+                                                <td>@shift.SHIFT_START_TIME</td>
+                                                <td>@shift.SHIFT_END_TIME</td>
+                                                <td>@shift.COMPANY_NAME</td>
+                                                <td>@shift.Created_by</td>
+                                                <td>@shift.status</td>                                                                                              
+                                                <td>
+                                                    <a href="/Shift/Edit/@shift.SHIFT_ID" class="btn btn-tbl-edit">
+                                                        <i class="material-icons">create</i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-tbl-delete" data-toggle="modal" data-target="#exampleModalCenter">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </a>
+                                                </td>                                                
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">
+                                    Delete Shift
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Are you sure you want to delete this gate pass?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="shift_delete_confirm" type="button"
+                                        class="btn btn-info waves-effect">
+                                    Confirm
+                                </button>
+                                <button type="button" class="btn btn-danger waves-effect"
+                                        data-dismiss="modal">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<input type="hidden" id="hiddenShiftId" />
+
+<script src="~/Content/assets/js/pages/shift/shift.js"></script>

@@ -1,0 +1,14 @@
+C:\Users\hp\Desktop\Schedulers\EMailUtility\EMailUtility\bin\Debug\EMailUtility.exe.config
+C:\Users\hp\Desktop\Schedulers\EMailUtility\EMailUtility\bin\Debug\EMailUtility.exe
+C:\Users\hp\Desktop\Schedulers\EMailUtility\EMailUtility\bin\Debug\EMailUtility.pdb
+C:\Users\hp\Desktop\Schedulers\EMailUtility\EMailUtility\obj\Debug\EMailUtility.csprojResolveAssemblyReference.cache
+C:\Users\hp\Desktop\Schedulers\EMailUtility\EMailUtility\obj\Debug\EMailUtility.exe
+C:\Users\hp\Desktop\Schedulers\EMailUtility\EMailUtility\obj\Debug\EMailUtility.pdb
+C:\Users\hp\Desktop\Schedulers\EMailUtility\EMailUtility\bin\Debug\log4net.dll
+C:\Users\hp\Desktop\Schedulers\EMailUtility\EMailUtility\bin\Debug\log4net.xml
+E:\Projects\Schduler_Karam\EMailUtility\EMailUtility\bin\Debug\EMailUtility.exe.config
+E:\Projects\Schduler_Karam\EMailUtility\EMailUtility\obj\Debug\EMailUtility.exe
+E:\Projects\Schduler_Karam\EMailUtility\EMailUtility\obj\Debug\EMailUtility.pdb
+E:\Projects\Schduler_Karam\Biometric\EMailUtility\bin\Debug\EMailUtility.exe.config
+E:\Projects\Schduler_Karam\Biometric\EMailUtility\obj\Debug\EMailUtility.exe
+E:\Projects\Schduler_Karam\Biometric\EMailUtility\obj\Debug\EMailUtility.pdb

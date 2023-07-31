@@ -1,0 +1,438 @@
+﻿@model Wfm.App.Core.Model.WorkforceMetaData
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Employee</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/GatePass/Create">
+                                <i class="fas fa-layer-group"></i> Empoyee
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Create</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Add</strong> Employee Detail
+                            </h2>
+                        </div>
+                        <div class="body">
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.LabelFor(x => x.MRF_ID, "MRF ID")
+                                            @Html.DropDownListFor(m => m.MRF_ID, new SelectList(Model.MRFList, "Value", "Text"), "MRF ID", new {id= "MRF_ID", @class = "col-12 m-t-20 p-l-0" })
+                                            @Html.ValidationMessageFor(m => m.MRF_ID)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <button type="button" id="mrf-search" class="btn btn-primary waves-effect m-r-15">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @using (Html.BeginForm("Create1", "Workforce", FormMethod.Post, new { @id = "EmployeeCreate", @class = "login100-form validate-form", enctype ="multipart/form-data" }))
+                            {
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.MRF_INTERNAL_ID, "MRF internal id")
+                                                @Html.TextBox("MRFINTERNALID", "MRF Internal Id", new { id = "MRFINTERNALID", @class = "col-12 m-t-20 p-l-0", disabled = "disabled" })
+                                                @Html.HiddenFor(x => x.MRF_INTERNAL_ID)
+                                            </div >
+                                        </div >
+                                    </div >
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.WF_EMP_TYPE, "Hiring")
+                                                @Html.TextBox("WF_EMP_TYPE_TEXT", "Hiring", new { id = "WF_EMP_TYPE_TEXT", @class = "col-12 m-t-20 p-l-0", disabled = "disabled" })
+                                                @Html.HiddenFor(x => x.WF_EMP_TYPE)
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.EMP_ID, "Employee id")
+                                                @Html.TextBoxFor(m => m.EMP_ID, "", new {id= "EMP_ID", @class = "form-control disabled", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.EMP_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.EMP_STATUS_ID, "Employee status")
+                                                @Html.DropDownListFor(m => m.EMP_STATUS_ID, new SelectList(Model.EmployeeStatusList, "Value", "Text"),"Employee Status", new { id = "EMP_STATUS_ID"})
+                                                @Html.ValidationMessageFor(m => m.EMP_STATUS_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.COMPANY_ID, "Company")
+                                                @Html.DropDownListFor(m => m.COMPANY_ID, new SelectList(Model.CompanyList, "Value", "Text"), new { id = "COMPANY_ID" })
+                                                @Html.ValidationMessageFor(m => m.COMPANY_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.AGENCY_ID, "Agency")
+                                                @Html.DropDownListFor(m => m.AGENCY_ID, new SelectList(Model.AgencyList, "Value", "Text"), "Agency", new { id = "AGENCY_ID" })
+                                                @Html.ValidationMessageFor(m => m.AGENCY_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        @Html.LabelFor(x => x.BIOMETRIC_CODE, "Biometric")
+                                                        @Html.TextBoxFor(m => m.BIOMETRIC_CODE, "", new {id= "BIOMETRIC_CODE" , @class = "form-control disabled", @type = "text" })
+                                                        @Html.ValidationMessageFor(m => m.BIOMETRIC_CODE)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        @Html.LabelFor(x => x.EMP_NAME, "Emp name")
+                                                        @Html.TextBoxFor(m => m.EMP_NAME, "", new {id= "EMP_NAME", @class = "form-control disabled", @type = "text" })
+                                                        @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-6">
+                                                <div class="form-group form-line">
+                                                    <div class="form-line">
+                                                        @Html.LabelFor(x => x.FATHER_NAME, "Father name")
+                                                        @Html.TextBoxFor(m => m.FATHER_NAME, "", new {id= "FATHER_NAME", @class = "form-control disabled", @type = "text" })
+                                                        @Html.ValidationMessageFor(m => m.FATHER_NAME)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        @Html.LabelFor(x => x.GENDER, "Gender")
+                                                        @Html.DropDownListFor(m => m.GENDER, new List<SelectListItem>
+                                                        {
+                                                            new SelectListItem{ Text="M", Value = "MALE" },
+                                                            new SelectListItem{ Text="F", Value = "FEMALE" }
+                                                         }, "Gender", new { id = "GENDER" })
+                                                        @Html.ValidationMessageFor(m => m.GENDER)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        @Html.LabelFor(x => x.DEPT_ID, "Department name")
+                                                        @Html.DropDownListFor(m => m.DEPT_ID, new SelectList(Model.DepartmentList, "Value", "Text"),"Department", new { id = "DEPT_ID" })
+                                                        @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        @Html.LabelFor(x => x.DATE_OF_BIRTH, "Date of birth")
+                                                        @Html.TextBoxFor(m => m.DATE_OF_BIRTH, "{0:MM-dd-yyyy}", new {id= "DATE_OF_BIRTH", @class = "datepicker form-control" })
+                                                        @Html.ValidationMessageFor(m => m.DATE_OF_BIRTH)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        @Html.LabelFor(x => x.NATIONALITY, "Nationality")
+                                                        @Html.DropDownListFor(m => m.NATIONALITY, new List<SelectListItem>
+                                                        {
+                                                            new SelectListItem{ Text="INDIAN", Value = "INDIAN" },
+                                                            new SelectListItem{ Text="OTHER", Value = "OTHER" }
+                                                         }, "Nationality", new {id = "NATIONALITY" })
+                                                        @Html.ValidationMessageFor(m => m.NATIONALITY)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        @Html.LabelFor(x => x.WF_EDUCATION_ID, "Education")
+                                                        @Html.DropDownListFor(m => m.WF_EDUCATION_ID, new SelectList(Model.EducationList, "Value", "Text"),"Education", new { id = "WF_EDUCATION_ID" })
+                                                        @Html.ValidationMessageFor(m => m.WF_EDUCATION_ID)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        @Html.LabelFor(x => x.MARITAL_ID, "Martial status")
+                                                        @Html.DropDownListFor(m => m.MARITAL_ID, new SelectList(Model.MartialStatusList, "Value", "Text"),"Marital Status", new { id = "MARITAL_ID" })
+                                                        @Html.ValidationMessageFor(m => m.MARITAL_ID)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        @Html.LabelFor(x => x.DOJ, "Date of joining")
+                                                        @Html.TextBoxFor(m => m.DOJ, "{0:MM-dd-yyyy}", new {id= "DOJ", @class = "datepicker form-control" })
+                                                        @Html.ValidationMessageFor(m => m.DOJ)
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                            <div class="row clearfix">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.WF_DESIGNATION_ID, "Designation")
+                                                            @Html.TextBox("DESIGNATION", "Designation", new { id = "DESIGNATION", @class = "col-12 m-t-20 p-l-0", disabled = "disabled" })
+                                                            @Html.HiddenFor(x => x.WF_DESIGNATION_ID)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.DOJ_AS_PER_EPF, "EPF date of Joining")
+                                                            @Html.TextBoxFor(m => m.DOJ_AS_PER_EPF, "{0:mm/dd/yyyy}", new {id= "DOJ_AS_PER_EPF", @class = "datepicker form-control" })
+                                                            @Html.ValidationMessageFor(m => m.DOJ_AS_PER_EPF)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.SKILL_ID, "Skill")
+                                                            @Html.TextBox("SKILL", "Skill", new {id="SKILL", @class = "col-12 m-t-20 p-l-0", disabled = "disabled" })
+                                                            @Html.HiddenFor(x => x.SKILL_ID)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.EMP_TYPE_ID, "Employee type")
+                                                            @Html.TextBox("EMP_TYPE", "Employee Type", new { id = "EMP_TYPE", @class = "col-12 m-t-20 p-l-0", disabled = "disabled" })
+                                                            @Html.HiddenFor(x => x.EMP_TYPE_ID)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row clearfix">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.PRESENT_ADDRESS, "Present address")
+                                                            @Html.TextBoxFor(m => m.PRESENT_ADDRESS, "", new {id= "PRESENT_ADDRESS", @class = "form-control disabled", @type = "text" })
+                                                            @Html.ValidationMessageFor(m => m.PRESENT_ADDRESS)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                         @Html.LabelFor(x => x.PRESENT_ADDRESS_STATE, "Present address state")
+                                                         @Html.DropDownListFor(m => m.PRESENT_ADDRESS_STATE, new SelectList(Model.StateList, "Value", "Text"),"Present Address State", new { id = "PRESENT_ADDRESS_STATE" })
+                                                         @Html.ValidationMessageFor(m => m.PRESENT_ADDRESS_STATE)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.PRESENT_ADDRESS_PIN, "Present address pincode")
+                                                            @Html.TextBoxFor(m => m.PRESENT_ADDRESS_PIN, "", new {id= "PRESENT_ADDRESS_PIN", placeholder = "Present Address Pincode", @class = "form-control disabled", @type = "text" })
+                                                            @Html.ValidationMessageFor(m => m.PRESENT_ADDRESS_PIN)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.PRESENT_ADDRESS_CITY, "Present address city")
+                                                            @Html.DropDownListFor(m => m.PRESENT_ADDRESS_CITY, new SelectList(Model.CityList, "Value", "Text"),"Present Address City", new { id = "PRESENT_ADDRESS_CITY" })
+                                                            @Html.ValidationMessageFor(m => m.PRESENT_ADDRESS_CITY)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row clearfix">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.PERMANENT_ADDRESS, "Permanent address")
+                                                            @Html.TextBoxFor(m => m.PERMANENT_ADDRESS, "", new {id= "PERMANENT_ADDRESS", @class = "form-control disabled", @type = "text" })
+                                                            @Html.ValidationMessageFor(m => m.PERMANENT_ADDRESS)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.PERMANENT_ADDRESS_STATE, "Permanent address state")
+                                                            @Html.DropDownListFor(m => m.PERMANENT_ADDRESS_STATE, new SelectList(Model.StateList, "Value", "Text"), "Permanent Address State", new { id= "PERMANENT_ADDRESS_STATE" })
+                                                            @Html.ValidationMessageFor(m => m.PERMANENT_ADDRESS_STATE)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.PERMANENT_ADDRESS_PIN, "Permanent address pincode")
+                                                            @Html.TextBoxFor(m => m.PERMANENT_ADDRESS_PIN, "", new {id= "PERMANENT_ADDRESS_PIN", @class = "form-control disabled", @type = "text" })
+                                                            @Html.ValidationMessageFor(m => m.PERMANENT_ADDRESS_PIN)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.PERMANENT_ADDRESS_CITY, "Permanent address city")
+                                                            @Html.DropDownListFor(m => m.PERMANENT_ADDRESS_CITY, new SelectList(Model.CityList, "Value", "Text"), "Permanent Address City", new { id = "PERMANENT_ADDRESS_CITY" })
+                                                            @Html.ValidationMessageFor(m => m.PERMANENT_ADDRESS_CITY)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.MOBILE_NO, "Mobile no.")
+                                                            @Html.TextBoxFor(m => m.MOBILE_NO, "", new {id= "MOBILE_NO", @class = "form-control disabled", @type = "text" })
+                                                            @Html.ValidationMessageFor(m => m.MOBILE_NO)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.ALTERNATE_NO, "Alternate contact no.")
+                                                            @Html.TextBoxFor(m => m.ALTERNATE_NO, "", new {id= "ALTERNATE_NO", @class = "form-control disabled", @type = "text" })
+                                                            @Html.ValidationMessageFor(m => m.ALTERNATE_NO)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.EMAIL_ID, "Email address")
+                                                            @Html.TextBoxFor(m => m.EMAIL_ID, "", new {id= "EMAIL_ID", @class = "form-control disabled", @type = "text" })
+                                                            @Html.ValidationMessageFor(m => m.EMAIL_ID)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.AADHAR_NO, "Aadhar no.")
+                                                            @Html.TextBoxFor(m => m.AADHAR_NO, "Aadhar No.", new {id= "AADHAR_NO", @class = "form-control disabled", @type = "text" })
+                                                            @Html.ValidationMessageFor(m => m.AADHAR_NO)
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            @Html.LabelFor(x => x.IDENTIFICATION_MARK, "Identification mark")
+                                                            @Html.TextBoxFor(m => m.IDENTIFICATION_MARK, "", new {id= "IDENTIFICATION_MARK", @class = "form-control disabled", @type = "text" })
+                                                            @Html.ValidationMessageFor(m => m.IDENTIFICATION_MARK)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*<div class="row clearfix">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <span>Employee Photo</span>
+                                                            @Html.TextBox("file", "", new { id="PHOTO", type = "file" })
+                                                            @Html.ValidationMessageFor(model => model.PHOTO)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            <span>Employee Signature</span>
+                                                            <input type="file" name="employeeSignatureFile" id="employeeSignatureFile" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+                                        <div class="col-lg-12 p-t-20 text-center">
+                                            <button type="button" id="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                            <button type="button" id="cancel" class="btn btn-danger waves-effect">Cancel</button>
+                                        </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/assets/js/pages/workforce/workforce.js"></script>
+

@@ -1,0 +1,32 @@
+﻿@model  IEnumerable<Wfm.App.Core.Model.WorkforceAttendance>
+
+<table id="tableExport"
+       class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+    <thead>
+        <tr>
+            <th>BIO METRIC CODE</th>
+            <th>ATTENDANCE DATE</th>
+            <th>IN DATE/TIME</th>
+            <th>OUT DATE/TIME</th>
+            <th>SHIFT IN TIME</th>
+            <th>SHIFT OUT TIME</th>
+            <th>STATUS</th>
+            <th>DB FILE NAME</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BIOMETRIC_CODE</td>
+                <td>@item.ATTENDANCE_DATE</td>
+                <td>@Wfm.App.Common.Utility.FormatDate(@item.START_DATE)</td>
+                <td>@Wfm.App.Common.Utility.FormatDate(@item.END_DATE)</td>
+                <td>@Wfm.App.Common.Utility.FormatTime(@item.SHIFT_STARTTIME)</td>
+                <td>@Wfm.App.Common.Utility.FormatTime(@item.SHIFT_ENDTIME)</td>
+                <td>@item.STATUS_CODE</td>
+                <td>@item.mdbfilename</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,120 @@
+﻿
+@model Wfm.App.Core.Model.ExitManagementMetaData
+@{
+    ViewBag.IS_REFOUND = new List<SelectListItem>
+        {
+                                                            new SelectListItem{ Text="Yes", Value = "Y" },
+                                                            new SelectListItem{ Text="No", Value = "N" }
+                                                         };
+}
+<style>
+    select {
+        display: inline;
+    }
+</style>
+<div class="row clearfix">
+    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6" id="fname"><b>Father Name:</b> @Model.WorkforceMetaData.FATHER_NAME</div>
+    <div class="ccol-lg-4 col-md-4 col-sm-6 col-xs-6" id="mobileno"> Mobile No: @Model.WorkforceMetaData.MOBILE_NO</div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="doj">Date of Joining: @Wfm.App.Common.Utility.FormatDate(@Model.WorkforceMetaData.DOJ.Value)</div>
+</div>
+<hr />
+
+
+@if (Model.IS_NOTICE_SERVE != null)
+{
+<div class="row clearfix">
+    <div class="col-sm-6">
+        <label for="workFlowName">Is Notice Serve: @Html.DisplayFor(x => x.IS_NOTICE_SERVE)</label>
+    </div>
+    <div class="col-sm-6">
+        <label for="workFlowName">Notice Days: @Html.DisplayFor(x => x.NOTICE_DAYS)</label>
+    </div>
+    <div class="col-sm-6">
+        <label for="workFlowName">Reason of Leaving: @Html.DisplayFor(x => x.REASON_OF_LEAVING)</label>
+    </div>
+    <div class="col-sm-6">
+        <label for="workFlowName">
+            Resignation Date:@Model.RESIGNATION_DATE.Value.ToString("dd/MM/yyy")
+        </label>
+    </div>
+    <div class="col-sm-6">
+        <label for="workFlowName">
+            Exit Date:@Model.EXIT_DATE.Value.ToString("dd/MM/yyy")
+        </label>
+    </div>
+</div>
+}
+@if (Model.WorkforceExitApprovers != null && Model.WorkforceExitApprovers.Count > 0)
+{
+    <h2>Approval Status </h2>
+    <table>
+        <thead>
+            <tr>
+                <td>Emp Id</td>
+                <td>Approver Name</td>
+                <td>Approve Date</td>
+                <td>Approver Status</td>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            @foreach (var item in Model.WorkforceExitApprovers)
+            {
+                <tr>
+                    <td>@item.EMP_ID</td>
+                    <td>@item.APPROVER_NAME</td>
+                    <td>@item.APPROVE_DATE</td>
+                    <td>@item.APPROVER_STATUS</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<h2>Asset list and status </h2>
+
+<table id="tblParticipantList">
+    <thead>
+        <tr>
+            <td>S.No</td>
+            <td>Assets</td>
+            <td>Asset Life</td>
+            <td>Refundable</td>
+            <td>Is Refund</td>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        @{ if (Model.AssetMappingMetaDatas != null && Model.AssetMappingMetaDatas.Count > 0)
+            {
+                for (int i = 0; i < Model.AssetMappingMetaDatas.Count; i++)
+                {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>@Model.AssetMappingMetaDatas[i].ASSET_NAME</td>
+                        <td>@Model.AssetMappingMetaDatas[i].ASSET_LIFE</td>
+                        <td>@Model.AssetMappingMetaDatas[i].REFUNDABLE</td>
+                        <td>
+                            @if (Model.AssetMappingMetaDatas[i].IS_REFUNDABLE)
+                            {
+                                if (Model.AssetMappingMetaDatas[i].IS_REFOUND == "Y")
+                                {
+                                    <p>Yes</p>
+                                }
+                                else
+                                {
+                                    <p>No</p>
+                                }
+                            }
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" style="text-align:center">No asset assigned to @Model.WorkforceMetaData.EMP_NAME</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

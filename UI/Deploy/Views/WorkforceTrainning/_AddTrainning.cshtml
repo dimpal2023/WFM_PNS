@@ -1,0 +1,58 @@
+﻿@model Wfm.App.Core.Model.AddWorkforceTrainningMetaData
+@{
+    int i = ViewBag.RowNumber;
+    int row = i + 1;
+}
+<table id="tblParticipantList">
+    <thead>
+        <tr>
+            <td style="width:30%">Department</td>
+            <td style="width:auto">Trainning</td>
+            <td style="width:15%">Start Date</td>
+            <td style="width:15%">End Date</td>
+            <td style="width:12%"></td>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+
+        <tr id="trRemove_@row">
+            <td>
+                @Html.DropDownListFor(x => x.ListMetaDatas[i].DEPT_ID, Model.Departments, "--Select--", new { required = "true", @onchange = "departmentOnChange(" + i + ")", style = "display:block;" })
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.ListMetaDatas[i].TRAINNING_ID, Model.TrainningMasterByDepart, "--Select--", new { required = "true", id = "ListMetaDatas_" + i + "__TRAINNING_ID", style = "display:block;" })
+
+                @*@Html.Action("TrainningDDL", "WorkforceTrainning", new { departId = Model.ListMetaDatas[i].DEPT_ID, index = i, empId = Model.ListMetaDatas[i].TRAINNING_ID })*@
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ListMetaDatas[i].START_DATE, "", new { placeholder = "dd/mm/yyyy", @class = "form-control datepaker dateddmmyyyy", @type = "text", required = "true" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ListMetaDatas[i].END_DATE, "", new { placeholder = "dd/mm/yyyy", @class = "form-control dateddmmyyyy", @type = "text", required = "true" })
+            </td>
+            <td>
+                <div id="ListMetaDatas_remove_@row"></div>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                <div class="row clearfix">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary waves-effect" id="btnTrainning" onclick="addNewRow()">Add More</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="row clearfix">
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary waves-effect" id="btnSaveWorkforceTrainning">Submit</button>
+    </div>
+</div>
+
+

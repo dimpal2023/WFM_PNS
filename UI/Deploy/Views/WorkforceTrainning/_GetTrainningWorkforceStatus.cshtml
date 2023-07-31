@@ -1,0 +1,78 @@
+﻿@model IList<Wfm.App.Core.Model.GetTRAINNING_WORKFORCE>
+
+@{
+    Layout = null;
+}
+<div class="clearfix">
+    <div class="body">
+        <div class="row clearfix">
+            <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                <div class="panel-group" id="accordion_1" role="tablist"
+                     aria-multiselectable="true">
+                    @if (Model != null && Model.Count > 0)
+                    {
+
+                        foreach (var item in Model)
+                        {
+                            <div class="panel panel-primary">
+                                <div class="panel-heading" role="tab" id="headingOne_@item.TRAINNING_WORKFORCE_ID">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion_1"
+                                           href="#collapseOne_@item.TRAINNING_WORKFORCE_ID" aria-expanded="false"
+                                           aria-controls="collapseOne_@item.TRAINNING_WORKFORCE_ID">
+                                            <span>Craeted Date: &nbsp;</span>
+                                            @Wfm.App.Common.Utility.FormatDate(@item.CREATED_DATE.Value) <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Is Completed: &nbsp;</span>   @item.ISCOMPLETED
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne_@item.TRAINNING_WORKFORCE_ID" class="panel-collapse collapse in show"
+                                     role="tabpanel" aria-labelledby="headingOne_@item.TRAINNING_WORKFORCE_ID">
+                                    <div class="panel-body">
+                                        @foreach (var item2 in item.TrainningMapping)
+                                        {
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label>Department:&nbsp;</label>@item2.DEPT_NAME
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <label>Sub Department:&nbsp;</label>@item2.SUBDEPT_NAME
+                                            </div>
+
+                                            <div class="col-sm-2">
+                                                <a role="button" href="/WorkforceTrainning/UpdateTrainningWorkforceStatus?wftm_id=@item2.TRAINNING_MAPPING_ID">
+                                                    Edit
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Training Name:&nbsp;</label>
+                                                @item2.TRAINNING_NAME
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Start Date:&nbsp;</label>@Wfm.App.Common.Utility.FormatDate(@item2.TRAINNING_START_DATE)
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>End Date:&nbsp;</label>@Wfm.App.Common.Utility.FormatDate(@item2.TRAINNING_END_DATE)
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Is Completed:&nbsp;</label>@item2.ISTRAINNINGCOMPLETED
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div style="text-align:center">Workforce Not Found</div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+﻿@model Wfm.App.Core.Model.WorkflowMasterVieweMetaData
+
+@{
+    ViewBag.Title = "Workforce - Employee List";
+    //@model IList<Wfm.App.Core.Model.WorkforceMetaDataList>
+
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Employee List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/WFCreate">
+                                <i class="fas fa-layer-group"></i> Employee List
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>View</strong> Employee List
+                        </h2>
+                    </div>
+
+                    <div class="row col-12">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.DEPT_IDs, "Department")
+                                    @Html.ListBoxFor(x => x.DEPT_IDs, Model.Departments, new { required = "true", @class = "listbox" })
+                                    @Html.ValidationMessageFor(m => m.DEPT_IDs)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.SUBDEPT_IDs, "Sub Department")
+                                    @Html.ListBoxFor(x => x.SUBDEPT_IDs, Enumerable.Empty<SelectListItem>(), new { required = "true", @class = "listbox" })
+                                    @Html.ValidationMessageFor(m => m.SUBDEPT_IDs)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.DEPARTMENT_ID, "Employee type")
+                                    @Html.DropDownListFor(x => x.WF_EMP_TYPE, Model.OnRollOrContracts, "-- Select --", new { required = "true" })
+                                    @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="particalDiv" class="body"></div>                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $("#DEPT_IDs").change(function () {
+        var deptIds = $('#DEPT_IDs').val();
+
+        var departmentIds = JSON.stringify(deptIds);
+
+        $.ajax({
+            type: "POST",
+            url: "/User/GetSubDepartments",
+            data: departmentIds,
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                var uniqueGroups = new Array();
+                var dictionary = new Array();
+
+                $('#SUBDEPT_IDs').empty();
+                $('#SUBDEPT_IDs').formSelect();
+
+                if (data.SubDepartments != null) {
+                    $.each(data.SubDepartments, function (i, subdept) {
+                        var v = { Value: subdept.Value, Text: subdept.Text };
+
+                        if (dictionary.find(x => x.Key === subdept.Group.Name) === undefined) {
+                            var entry = {};
+                            entry.Key = subdept.Group.Name;
+                            entry.Value = new Array();
+                            entry.Value.push(v);
+
+                            dictionary.push(entry);
+                        }
+                        else {
+                            var obj = dictionary.find(x => x.Key === subdept.Group.Name);
+                            obj.Value.push(v);
+                        }
+                    });
+
+                    console.log(dictionary);
+                    var optgroup = "";
+                    $.each(dictionary, function (i, group) {
+                        optgroup += "<optgroup label='" + group.Key + "'>";
+                        $.each(group.Value, function (j, item) {
+                            var option = "<option value='" + item.Value + "'>" + item.Text + "</option>";
+                            optgroup += option;
+                        });
+                        optgroup += "</optgroup>";
+                    });
+
+                    $('#SUBDEPT_IDs').append(optgroup);
+                    $('#SUBDEPT_IDs').formSelect();
+                }
+            },
+            error: function (responseText) {
+                alert(responseText);
+            }
+        });
+    });
+    $("#WF_EMP_TYPE").change(function () {
+        var DEPARTMENT_ID = $("#DEPT_IDs").val();
+        var SUBDEPARTMENT_ID = $("#SUBDEPT_IDs").val();
+        var WF_EMP_TYPE = $("#WF_EMP_TYPE").val();
+
+        if (DEPARTMENT_ID === undefined || SUBDEPARTMENT_ID === undefined || WF_EMP_TYPE === undefined) return;
+
+        if (DEPARTMENT_ID.length === 0 || SUBDEPARTMENT_ID.length === 0) return;
+
+        if (DEPARTMENT_ID.length === 0 || SUBDEPARTMENT_ID.length === 0) return;
+
+        GetEmployeeData();
+    });
+    function GetEmployeeData() {
+        var DEPARTMENT_ID = $("#DEPT_IDs").val();
+        var WF_EMP_TYPE = $("#WF_EMP_TYPE").val();
+        var SUBDEPT_ID = $("#SUBDEPT_IDs").val();
+        $("#particalDiv").empty();
+
+        var metadata = { DEPT_IDs: DEPARTMENT_ID, SUBDEPT_IDs: SUBDEPT_ID, WF_EMP_TYPE: WF_EMP_TYPE };
+
+        $.ajax(
+            {
+                    type: 'POST',
+                    url: '/Workforce/GetEmployessByDeptId',
+                    data: JSON.stringify(metadata),
+                    contentType: "application/json",
+                    success:
+                        function (response) {
+                            $("#particalDiv").append(response);
+                        },
+                    error:
+                        function (response) {
+                            alert("Error: " + response);
+                        }
+           });
+        
+    }
+    $("#SUBDEPT_IDs").change(function () {
+        var DEPARTMENT_ID = $("#DEPT_IDs").val();
+        var SUBDEPARTMENT_ID = $("#SUBDEPT_IDs").val();
+        var WF_EMP_TYPE = $("#WF_EMP_TYPE").val();
+
+        if (DEPARTMENT_ID === undefined || SUBDEPARTMENT_ID === undefined || WF_EMP_TYPE === undefined) return;
+
+        if (DEPARTMENT_ID.length === 0 || SUBDEPARTMENT_ID.length === 0) return;
+
+        if (DEPARTMENT_ID.length === 0 || SUBDEPARTMENT_ID.length === 0) return;
+
+        GetEmployeeData();
+    });    
+ </script>

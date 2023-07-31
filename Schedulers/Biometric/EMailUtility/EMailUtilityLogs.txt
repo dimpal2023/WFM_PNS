@@ -1,0 +1,9 @@
+2021-02-06 16:41:32,365 [10] INFO EMailUtility.Program - ==============================EmailUtility Started==============================
+2021-02-06 16:41:32,556 [10] INFO EMailUtility.Program - Fetched Data From DB Sucessfully
+2021-02-06 16:41:42,548 [10] INFO EMailUtility.Program - Mail Sending For 1234 to abc@xyz.com Started
+2021-02-06 16:41:42,589 [10] INFO EMailUtility.Program - Sent Mail For 1234 abc@xyz.com SuccessFully
+2021-02-06 16:41:54,490 [10] INFO EMailUtility.Program - Data For 1234 Updated SuccessFully
+2021-02-06 16:41:55,530 [10] INFO EMailUtility.Program - Mail Sending For 1234 to abc@xyz.com Started
+2021-02-06 16:41:55,566 [10] INFO EMailUtility.Program - Sent Mail For 1234 abc@xyz.com SuccessFully
+2021-02-06 16:42:07,707 [10] INFO EMailUtility.Program - Data For 1234 Updated SuccessFully
+2021-02-06 16:42:07,715 [10] INFO EMailUtility.Program - ==============================EmailUtility Ended==============================

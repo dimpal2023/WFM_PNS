@@ -1,0 +1,116 @@
+﻿@model List<Wfm.App.Core.Model.ToolTalkDailyCheckListMetaData>
+
+@{
+    ViewBag.Title = "Tooltalk - Daily Check Lists";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Daily Check Lists</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/ToolTalk/ConfiguredCheckLists">
+                                <i class="fas fa-layer-group"></i> Tool Talk
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>View</strong> Daily Check Lists
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th> Department </th>
+                                        <th> Sub Department </th>
+                                        <th> Shift </th>
+                                        <th> Date </th>
+                                        <th> Check List Items </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+
+                                        int index = 0;
+                                        foreach (var tooltalk in Model)
+                                        {
+                                            <tr id="@tooltalk.ID" name="@tooltalk.ID">
+                                                <td>@(++index)</td>
+                                                <td>@tooltalk.DEPT_NAME</td>
+                                                <td>@tooltalk.SUBDEPT_NAME</td>
+                                                <td>@tooltalk.SHIFT_NAME</td>
+                                                <td>@Wfm.App.Common.Utility.FormatDate(tooltalk.DATE)</td>
+                                                <td>
+                                                    @string.Join(", ", @tooltalk.TOOL_TALK_CHECK_LIST.Where(x => x.CHECK.Value).Select(x => x.ITEM_NAME))
+                                                </td>
+                                                <td>
+                                                    <a href="/ToolTalk/EditDailyCheckList/@tooltalk.ID" class="btn btn-tbl-edit">
+                                                        <i class="material-icons">create</i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-tbl-delete" data-toggle="modal" data-target="#dailyModalCenter">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="modal fade" id="dailyModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="dailyModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="dailyModalCenterTitle">
+                                    Delete Daily Check List
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Are you sure you want to delete this daily check list?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="dailyitems_delete_confirm" type="button"
+                                        class="btn btn-info waves-effect">
+                                    Confirm
+                                </button>
+                                <button type="button" class="btn btn-danger waves-effect"
+                                        data-dismiss="modal">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<input type="hidden" id="hiddenId" />
+
+<script src="~/Content/assets/js/pages/tooltalk/tooltalk.js"></script>

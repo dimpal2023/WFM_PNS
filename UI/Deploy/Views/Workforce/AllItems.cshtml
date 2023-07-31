@@ -1,0 +1,133 @@
+﻿@model Wfm.App.Core.Model.WorkflowMasterVieweMetaData
+
+@{
+    ViewBag.Title = "Workforce - Employee List";
+    //@model IList<Wfm.App.Core.Model.WorkforceMetaDataList>
+
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Employee List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/WFCreate">
+                                <i class="fas fa-layer-group"></i> Employee List
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>View</strong> Employee List
+                        </h2>
+                    </div>
+
+                    <div class="row col-12">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.DEPARTMENT_ID, "Department")
+                                    @Html.DropDownListFor(x => x.DEPARTMENT_ID, Model.Departments, "All", new { required = "true" })
+                                    @Html.ValidationMessageFor(m => m.DEPARTMENT_ID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                    @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "All", new { required = "true" })
+                                    @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.DEPARTMENT_ID, "Employee type")
+                                    @Html.DropDownListFor(x => x.WF_EMP_TYPE, Model.OnRollOrContracts, "-- Select --", new { required = "true" })
+                                    @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="particalDiv" class="body"></div>                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        getSubDeptbyDeptId();
+    });
+    $("#DEPARTMENT_ID").change(function () {
+        getSubDeptbyDeptId();
+    });
+    $("#WF_EMP_TYPE").change(function () {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            GetEmployeeData();
+        }
+    });
+    function GetEmployeeData() {
+        debugger;
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        var WF_EMP_TYPE = $("#WF_EMP_TYPE").val();
+        var SUBDEPT_ID = $("#SUBDEPT_ID").val();
+        //if (DEPARTMENT_ID !== "") {
+            $("#particalDiv").empty();
+            $.ajax(
+                {
+                    type: 'Get',
+                    url: '/Workforce/GetEmployessByDeptId?deptId=' + DEPARTMENT_ID + '&sub_dept_id=' + SUBDEPT_ID + "&emptype_id=" + WF_EMP_TYPE,
+                    success:
+                        function (response) {
+                            $("#particalDiv").append(response);
+                        },
+                    error:
+                        function (response) {
+                            alert("Error: " + response);
+                        }
+                });
+        //}
+    }
+    $("#SUBDEPT_ID").change(function () {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            GetEmployeeData();
+        }
+    });
+    function getSubDeptbyDeptId() {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').formSelect();
+                GetEmployeeData();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+            GetEmployeeData();
+        }
+    }
+ </script>

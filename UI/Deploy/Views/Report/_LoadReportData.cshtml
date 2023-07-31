@@ -1,0 +1,32 @@
+﻿@model  Wfm.App.Core.Model.ReportOutputData
+
+<table id="tableExport" class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+    <thead>
+        <tr>
+            @foreach (var col in Model.ReportData.Tables[0].Columns)
+            {
+                <th>@col</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        
+
+                        @foreach (System.Data.DataRow row in Model.ReportData.Tables[0].Rows)
+                        {
+                            <tr>
+                                @{ 
+                                    object[] rowData = row.ItemArray;
+
+                                        foreach (var d in rowData)
+                                        {
+                                        <td>@d</td>
+                                        }    
+                                 }
+                            </tr>
+
+                        }
+            
+    </tbody>
+</table>
+    
