@@ -1,0 +1,450 @@
+﻿@model Wfm.App.Core.Model.WorkforceDailyWorkMetaData
+
+@{
+    ViewBag.Title = "Workforce - Edit Daily Work";
+    //@model IList<Wfm.App.Core.Model.WorkforceMetaDataList>
+
+}
+<link href="~/Content/Toastr/toastr.min.css" rel="stylesheet" />
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Workforce</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/SearchDailyWork">
+                                <i class="fas fa-layer-group"></i> Workforce
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Workforce Daily Works</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Edit</strong> Daily Work
+                        </h2>
+                    </div>
+
+
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "addItems", @class = "login100-form validate-form" }))
+                    {
+                        <div class="row col-12">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", disabled = "true", required = "true", @onchange = "onBuildingChange()" })
+                                        @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                        <input type="hidden" id="hdnDailyWorkId" value="@ViewBag.ID" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.DEPARTMENT_ID, "Department", new { @class = "required" })
+                                        @Html.DropDownListFor(m => m.DEPARTMENT_ID, ViewBag.Departments as SelectList, "-- Select --", new { required = "true", disabled = "true" })
+
+                                        @Html.ValidationMessageFor(m => m.DEPARTMENT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department", new { @class = "required" })
+                                            @Html.DropDownListFor(m => m.SUBDEPT_ID, ViewBag.SubDepartments as SelectList, "--Select--", new { required = "true", disabled = "true" })
+                                            @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.WF_EMP_TYPE, "Workforce type", new { @class = "required" })
+                                        @Html.DropDownListFor(m => m.WF_EMP_TYPE, ViewBag.OnRollOrContracts as SelectList, "All", new { disabled = "true" })
+                                        @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-12">
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.EMP_NAME, "Workforce Name", new { @class = "required" })
+                                        @Html.DropDownListFor(m => m.WF_ID, new SelectList(ViewBag.EmpName, "Value", "Text"), "--Select--", htmlAttributes: new { required = "required", disabled = "true" })
+                                        @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.WORK_DATE, "Work date", new { @class = "required" })
+                                        @Html.TextBoxFor(m => m.WORK_DATE, "{0:dd/MM/yyyy}", new { id = "WORK_DATE", required = "true", @onchange = "onchangeevent()", @class = "datepicker form-control", disabled = "true" })
+                                        @Html.ValidationMessageFor(m => m.WORK_DATE)
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.LabelFor(x => x.ITEM_NAME, "Item name", new { @class = "required" })
+                                            @Html.DropDownListFor(m => m.ITEM_NAME, ViewBag.ItemName as SelectList, "-- Select--", new { id = "ITEM_ID", required = "true" })
+
+                                            @Html.ValidationMessageFor(m => m.ITEM_NAME)
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.ITEM_NAME, "Item Name", new { @class = "required" })
+                                        @Html.TextBoxFor(x => x.ITEM_NAME, new { id = "ITEM_NAME", required = "true" })
+                                        @Html.ValidationMessageFor(m => m.ITEM_NAME)
+                                        @Html.HiddenFor(x => x.ITEM_NAME, new { id = "ITEM_ID" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix col-sm-12">
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.UNIQUE_OPERATION_ID, "Operation", new { @class = "required" })
+                                        @Html.DropDownListFor(m => m.UNIQUE_OPERATION_ID, ViewBag.OperationName as SelectList, "-- Select--", new { id = "UNIQUE_OPERATION_ID", required = "true" })
+                                        @Html.ValidationMessageFor(m => m.UNIQUE_OPERATION_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.QTY, new { @class = "required" })
+                                        @Html.TextBoxFor(m => m.QTY, new { id = "QTY", required = "true", @class = "form-control numberonly disabled", @type = "text", minlength = "1", maxlength = "10" })
+                                        @Html.ValidationMessageFor(m => m.QTY)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 Sandila">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.MachineNo, "Machine No.")
+                                        @Html.TextBoxFor(x => x.MachineNo, new { id = "MachineNo", required = "true" })
+                                        @Html.ValidationMessageFor(m => m.MachineNo)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 Sandila">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.AvgPercentage, "Average Percentage")
+                                        @Html.TextBoxFor(x => x.AvgPercentage, new { id = "AvgPercentage", required = "true", @class = "form-control numberonly" })
+                                        @Html.ValidationMessageFor(m => m.AvgPercentage)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 Sandila">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.WASTE, "WASTE")
+                                        @Html.TextBoxFor(x => x.WASTE, new { id = "WASTE", required = "true", @class = "form-control numberonly" })
+                                        @Html.ValidationMessageFor(m => m.WASTE)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 Sandila">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.REJECTION_ON_LOOM, "REJECTION ON LOOM")
+                                        @Html.TextBoxFor(x => x.REJECTION_ON_LOOM, new { id = "REJECTION_ON_LOOM", required = "true", @class = "form-control numberonly" })
+                                        @Html.ValidationMessageFor(m => m.REJECTION_ON_LOOM)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 Sandila">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.REJECTION_ON_FINISHING, "REJECTION ON FINISHING")
+                                        @Html.TextBoxFor(x => x.REJECTION_ON_FINISHING, new { id = "REJECTION_ON_FINISHING", required = "true", @class = "form-control numberonly" })
+                                        @Html.ValidationMessageFor(m => m.REJECTION_ON_FINISHING)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group" style="text-align:center">
+                                    <div class="form-line">
+                                        <button id="btnUpdate" onclick="UpdateDailyWork1()" type="button" class="btn btn-primary waves-effect">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+    .Show {
+        display: block;
+    }
+
+    .Hide {
+        display: none;
+    }
+
+    .ui-autocomplete {
+        background-color: #f5f5f5;
+        max-width: 500px;
+        max-height: 200px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        z-index: 100;
+        border: 0px 1px 1px 1px;
+    }
+
+    .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+        background-color: #DCDCDC;
+        color: #000000;
+    }
+
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        width: 100%;
+        height: auto !important;
+        overflow: hidden;
+        outline: 0;
+    }
+</style>
+<script>
+    var addItems = [];
+    let items = [];
+    var operations = [];
+    $(document).ready(function () {
+        $('.numberonly').keypress(function (e) {
+            //var charCode = (e.which) ? e.which : event.keyCode
+            //if (String.fromCharCode(charCode).match(/[^0-9]/g))
+            //    return false;
+            var charCode = (e.which) ? e.which : e.keyCode;
+            if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        });
+        $("select[required]").css({ display: "block", height: 0, padding: 0, width: 0, position: 'absolute' });
+        $("#txtOverTime").hide();
+        $("#btnSave").hide();
+        if ($("#BUILDING_ID option:selected").val().toLowerCase() == "b31e2dc8-9a41-eb11-9471-8cdcd4d2c4ef") {
+            $(".Sandila").show();
+        } else {
+            $(".Sandila").hide();
+        }
+    });
+
+    //$("#ITEM_ID").change(function () {
+    //    getItemsOperationData();
+    //});
+
+    function UpdateDailyWork1() {
+        if ($("#ITEM_ID").val() == '') {
+            toastr["error"]('Item Name required');
+            return;
+        } else if ($("#UNIQUE_OPERATION_ID").val() == '') {
+            toastr["error"]('Operation required');
+            return;
+        } else if ($("#QTY").val() == '') {
+            toastr["error"]('Quantity required');
+            return;
+        }
+
+        var MachineNo = $("#MachineNo").val();
+        var AvgPercentage = $("#AvgPercentage").val();
+        var WASTE = $("#WASTE").val();
+        var REJECTION_ON_LOOM = $("#REJECTION_ON_LOOM").val();
+        var REJECTION_ON_FINISHING = $("#REJECTION_ON_FINISHING").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/Workforce/UpdateDailyWork",
+            data: {
+                UNIQUE_OPERATION_ID: $("#UNIQUE_OPERATION_ID").val(),
+                QTY: $('#QTY').val(),
+                ID: $('#hdnDailyWorkId').val(),
+                MachineNo: MachineNo,
+                AvgPercentage: AvgPercentage,
+                WASTE: WASTE,
+                REJECTION_ON_LOOM: REJECTION_ON_LOOM,
+                REJECTION_ON_FINISHING: REJECTION_ON_FINISHING,
+            },
+            success: function (result) {
+                if (result.id == '1') {
+                    alert("Work details Updated Successfully.");
+                    window.location = result.Url;
+                } else {
+                    toastr["error"]('Something went wrong.');
+                }
+            }, error: function (result) {
+                alert(result);
+            }
+        })
+    }
+
+    function bindItemDropdownlist(controlId, data) {
+
+        $('#' + controlId).find('option').not(':first').remove();
+        $.each(data, function (i, item) {
+            $('#' + controlId).append($('<option>', {
+                value: item.ITEM_CODE_NAME + '_' + item.ITEM_NAME,
+                text: item.ITEM_CODE_NAME + '_' + item.ITEM_NAME
+            }));
+        });
+        $('#' + controlId).formSelect();
+        $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+        $('#UNIQUE_OPERATION_ID').formSelect();
+
+    }
+    function bindOperationDropdownlist(controlId, data) {
+        $('#' + controlId).find('option').not(':first').remove();
+        $.each(data, function (i, item) {
+            $('#' + controlId).append($('<option>', {
+                value: item.UNIQUE_OPERATION_ID,
+                text: item.OPERATION
+            }));
+        });
+        $('#' + controlId).formSelect();
+
+    }
+
+    function getDepartmentItemsData() {
+
+        $("#EMP_NAME").val("");
+        var deptId = $("#DEPARTMENT_ID").val();
+        var SUBDEPT_ID = $("#SUBDEPT_ID").val();
+        if (deptId != "") {
+            $.get('/Workforce/GetItemsBydeptId?deptId=' + deptId, function (data) {
+                $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+                addItems = [];
+                items = data;
+                localStorage.setItem('localItems', JSON.stringify(items));
+
+                /* bindItemDropdownlist("ITEM_ID", items);*/
+                $("#ITEM_ID").val("");
+                $("#ITEM_NAME").val("");
+                $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+                $('#UNIQUE_OPERATION_ID').formSelect();
+            });
+        } else {
+            addItems = [];
+            //$('#ITEM_ID').find('option').not(':first').remove();
+            //$('#ITEM_ID').formSelect();
+            $("#ITEM_ID").val("");
+            $("#ITEM_NAME").val("");
+            $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+            $('#UNIQUE_OPERATION_ID').formSelect();
+        }
+    }
+    function getItemsOperationData() {
+        debugger
+        var itemId = $("#ITEM_ID").val();
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID option:selected").val();
+        var Values = itemId.split("_");
+        var ItemCode = Values[0];
+        var ItemName = Values[1];
+        if (itemId != "") {
+            $.get('/Workforce/GetOperationsByitemId?ItemId=' + encodeURIComponent(ItemCode) + '&ItemName=' + encodeURIComponent(ItemName) + '&DEPARTMENT_ID=' + encodeURIComponent(DEPARTMENT_ID), function (data) {
+                operations = data;
+                bindOperationDropdownlist("UNIQUE_OPERATION_ID", operations);
+            });
+        } else {
+            $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+            $('#UNIQUE_OPERATION_ID').formSelect();
+
+        }
+    }
+    //function getItemsOperationData() {
+    //    var itemId = $("#ITEM_ID").val();
+    //    var Values = itemId.split("_");
+    //    var ItemCode = Values[0];
+    //    var ItemName = Values[1];
+    //    if (itemId != "") {
+    //        //$.get('/Workforce/GetOperationsByitemId?ItemId=' + itemId, function (data) {
+    //        $.get('/Workforce/GetOperationsByitemId?ItemId=' + encodeURIComponent(ItemCode) + '&ItemName=' + encodeURIComponent(ItemName), function (data) {
+    //            operations = data;
+    //            bindOperationDropdownlist("UNIQUE_OPERATION_ID", operations);
+    //        });
+    //    } else {
+    //        $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+    //        $('#UNIQUE_OPERATION_ID').formSelect();
+
+    //    }
+    //}
+
+       $("#ITEM_NAME").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            debugger
+            $.ajax({
+                url: '@Url.Action("GetItemsBydeptId_New", "Workforce")',
+                datatype: "json",
+                data: {
+                    BUILDING_ID: $("#BUILDING_ID").val(),
+                    deptId: $("#DEPARTMENT_ID").val(),
+                    query: $('#ITEM_NAME').val()
+                },
+                success: function (data) {
+                    if (!data.length) {
+                        var result = [{ label: "no results", value: response.term }];
+                        response(result);
+                    }
+                    else {
+                        response($.map(data, function (val, item) {
+                            return {
+                                label: val,
+                                value: val,
+                                empId: val
+                            }
+                        }))
+                    }
+                }
+            })
+        },
+        select: function (event, ui) {
+            $("#ITEM_ID").val(ui.item.empId);
+            getItemsOperationData();
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+
+        }
+    });
+
+</script>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Content/Toastr/toastr.min.js"></script>

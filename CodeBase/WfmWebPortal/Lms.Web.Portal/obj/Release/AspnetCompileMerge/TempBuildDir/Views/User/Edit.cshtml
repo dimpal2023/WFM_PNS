@@ -1,0 +1,264 @@
+﻿@model Wfm.App.Core.Model.UserMetaData
+
+@{
+    ViewBag.Title = "User Management - Edit User";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">User Management</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-layer-group"></i> User
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Edit</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Edit</strong> User
+                            </h2>
+                        </div>
+                        <div class="body">
+
+
+
+                            @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { @id = "UserEdit", @class = "login100-form validate-form" }))
+                            {
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                                @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                                                @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.HiddenFor(m => m.USER_ID)
+                                <div class="row clearfix">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.DEPT_ID, "Department", new { @class = "required" })
+                                                @Html.ListBoxFor(x => x.DEPT_IDs, Model.Departments, new { required = "true", @class = "listbox" })
+                                                @Html.ValidationMessageFor(m => m.DEPT_IDs)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.SUBDEPT_IDs, "Sub Department", new { @class = "required" })
+                                                @Html.ListBoxFor(x => x.SUBDEPT_IDs, Model.SubDepartments, new { required = "true", @class = "listbox" })
+                                                @Html.ValidationMessageFor(m => m.SUBDEPT_IDs)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.USER_LOGIN_ID, "Login id", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.USER_LOGIN_ID, "", new { @data_val = "false", disabled = "disabled", @class = "form-control disabled", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.USER_LOGIN_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.USER_NAME, "User name", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.USER_NAME, "", new { @class = "form-control disabled", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.USER_NAME)
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.CURRENT_PASSWORD, "Password", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.CURRENT_PASSWORD, "", new { @class = "form-control disabled", @type = "Password" })
+                                                @Html.ValidationMessageFor(m => m.CURRENT_PASSWORD)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.EditMAIL_ID, "Email", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.EditMAIL_ID, "", new { @class = "form-control disabled", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.EditMAIL_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.EditMOBILE_NO, "Mobile", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.EditMOBILE_NO, "", new { @class = "form-control disabled", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.EditMOBILE_NO)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.USER_ROLES, "Roles", new { @class = "required" })
+                                                @Html.ListBoxFor(x => x.USER_ROLES, Model.Roles, new { required = "true", @class = "listbox" })
+                                                @Html.ValidationMessageFor(m => m.USER_ROLES)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-12 p-t-20 text-center">
+                                    <button type="submit" id="submit" class="btn btn-primary waves-effect m-r-15">Update</button>
+                                    <button type="button" id="cancel" class="btn btn-danger waves-effect">Cancel</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    onBuildingChange();
+    //})
+    $("#DEPT_IDs").change(function () {
+        var deptIds = $('#DEPT_IDs').val();
+
+        var departmentIds = JSON.stringify(deptIds);
+
+        $.ajax({
+            type: "POST",
+            url: "/User/GetSubDepartments",
+            data: departmentIds,
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                var uniqueGroups = new Array();
+                var dictionary = new Array();
+                
+                $('#SUBDEPT_IDs').empty();
+                $('#SUBDEPT_IDs').formSelect();
+
+                if (data.SubDepartments != null) {
+                    $.each(data.SubDepartments, function (i, subdept) {
+                        var v = { Value: subdept.Value, Text: subdept.Text, Selected: subdept.Selected };
+
+                        if (dictionary.find(x => x.Key === subdept.Group.Name) === undefined) {
+                            var entry = {};
+                            entry.Key = subdept.Group.Name;
+                            entry.Value = new Array();
+                            entry.Value.push(v);
+
+                            dictionary.push(entry);
+                        }
+                        else {
+                            var obj = dictionary.find(x => x.Key === subdept.Group.Name);
+                            obj.Value.push(v);
+                        }
+                    });
+
+                    console.log(dictionary);
+                    var optgroup = "";
+                    $.each(dictionary, function (i, group) {
+                        optgroup += "<optgroup label='" + group.Key + "'>";
+                        $.each(group.Value, function (j, item) {
+                            var option;
+                            if (item.Selected) {
+                                option = "<option value='" + item.Value + "' selected='" + item.Selected + "'>" + item.Text + "</option>";
+                            }
+                            else
+                            {
+                                option = "<option value='" + item.Value + "'>" + item.Text + "</option>";
+                            }
+                            optgroup += option;
+                        });
+                        optgroup += "</optgroup>";
+                    });
+
+                    $('#SUBDEPT_IDs').append(optgroup);
+                    $('#SUBDEPT_IDs').formSelect();
+                }
+            },
+            error: function (responseText) {
+                alert(responseText);
+            }
+        });
+    });
+    function onBuildingChange() {
+        var buildingId = $("#BUILDING_ID option:selected").val();
+        $.get('/ManPowerRequest/GetFloorByBuildingId?buildingId=' + buildingId, function (data) {
+
+            var uniqueGroups = new Array();
+            var dictionary = new Array();
+            debugger
+            $('#DEPT_IDs').empty();
+            $('#DEPT_IDs').formSelect();
+
+            if (data != null) {
+                $.each(data, function (i, item) {
+                    var v = { Value: item.DEPT_ID, Text: item.DEPT_NAME };
+
+                    if (dictionary.find(x => x.Key === item.DEPT_NAME) === undefined) {
+                        var entry = {};
+                        entry.Key = item.DEPT_NAME;
+                        entry.Value = new Array();
+                        entry.Value.push(v);
+
+                        dictionary.push(entry);
+                    }
+                    else {
+                        var obj = dictionary.find(x => x.Key === item.DEPT_NAME);
+                        obj.Value.push(v);
+                    }
+                });
+
+                console.log(dictionary);
+                var optgroup = "";
+                $.each(dictionary, function (i, group) {
+                    /* optgroup += "<optgroup label='" + group.Key + "'>";*/
+                    $.each(group.Value, function (j, item) {
+                        var option = "<option value='" + item.Value + "'>" + item.Text + "</option>";
+                        optgroup += option;
+                    });
+                    //optgroup += "</optgroup>";
+                });
+
+                $('#DEPT_IDs').append(optgroup);
+                $('#DEPT_IDs').formSelect();
+            }
+        });
+    }
+</script>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Content/assets/js/pages/user/user.js"></script>

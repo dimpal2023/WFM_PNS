@@ -1,0 +1,331 @@
+﻿@model Wfm.App.Core.Model.ItemCodeMasterMetaData
+@{
+    ViewBag.Title = "Master - ItemCode";
+}
+<link href="~/Content/Toastr/toastr.min.css" rel="stylesheet" />
+<style>
+    .input-validation-error {
+        border: 1px solid white;
+        background-color: #fee;
+    }
+
+    ul.ui-autocomplete {
+        z-index: 1100;
+    }
+</style>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Master</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-layer-group"></i> Item Code
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                <div class="card">
+
+                    <div class="header">
+                        <button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#exampleModal">
+                            Add Item Code
+                        </button>
+                        <h2>
+                            <strong>View </strong>Item Code
+                        </h2>
+                    </div>
+                    <div class="row col-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.DEPT_ID, "Department")
+                                    @Html.DropDownListFor(x => x.DEPT_ID, Model.Departments, "-- Select --", new { required = "true", id = "DEPT_ID2" })
+                                    @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                    @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "All", new { required = "true", id = "SUBDEPT_ID2" })
+                                    @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="body">
+                        <div id="particalDiv">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">
+                                    Disable User
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Are you sure you want to disable this User?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="user_delete_confirm" type="button"
+                                        class="btn btn-info waves-effect">
+                                    Confirm
+                                </button>
+                                <button type="button" class="btn btn-danger waves-effect"
+                                        data-dismiss="modal">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Special Allowance</h5>
+                @*<button type="button" class="close" id="btnClose2" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>*@
+            </div>
+            @using (Html.BeginForm("AddItemCode", "Master", FormMethod.Post, new { @id = "AddItemCode", @class = "login100-form validate-form" }))
+            {
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.LabelFor(x => x.DEPT_ID, "Department", new { @class = "required" })
+                            @Html.DropDownListFor(x => x.DEPT_ID, Model.Departments, "-- Select --", new { required = "true" })
+                            @Html.ValidationMessageFor(m => m.DEPT_ID)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department", new { @class = "required" })
+                            @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "--Select--", new { required = "true" })
+                            @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.LabelFor(x => x.ITEM_CODE_NAME, "Item Code", new { @class = "required" })
+                            @Html.TextBoxFor(x => x.ITEM_CODE_NAME, new { required = "true" })
+                            @Html.ValidationMessageFor(m => m.ITEM_CODE_NAME)
+                            @Html.HiddenFor(m => m.ITEM_CODE_ID)
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnClose">Close</button>
+                    <button type="button" id="btnSave" class="btn btn-primary">Save </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $("#btnClose").click(function () {
+        cleanForm();
+        $('#exampleModal').modal('hide');
+        $('select').formSelect();
+    });
+    function cleanForm() {
+        $("#ITEM_CODE_NAME").val("");
+        $("#ITEM_CODE_ID").val("");
+        $("#DEPT_ID").val("");
+        $("#SUBDEPT_ID").val("");
+        $("#SUBDEPT_ID2").val("");
+        $('#SUBDEPT_ID2').find('option').not(':first').remove();
+        $('#SUBDEPT_ID').find('option').not(':first').remove();
+        $('select').formSelect();
+
+        $("#exampleModalLabel").text("Add Sub Department");
+    }
+    $(document).ready(function () {
+        $("select[required]").css({ display: "block", height: 0, padding: 0, width: 0, position: 'absolute' });
+        $("#btnSave").click(function () {
+            if ($("#AddItemCode").valid()) { //check if form is valid using model annotation
+                $.ajax({
+                    type: "POST",
+                    url: '/Master/AddItemCode',     //your action
+                    data: $('#AddItemCode').serialize(),   //your form name.it takes all the values of model
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.Status === 'Ok') {
+                            $('#exampleModal').modal('hide');
+                            var dept_id = $("#DEPT_ID").val();
+                            $("#DEPT_ID2").val(dept_id);
+                            cleanForm();
+                            getSubDeptbyDeptId2();
+                        } else if (result.Status === 'Dublicate') {
+                            var errorMessage = "Item Code Already Exist.";
+                            toastr["error"](errorMessage);
+
+                        } else {
+                            var errorMessage = "Unknown Error.";
+                            alert(errorMessage);
+
+                        }
+                    }
+                })
+            }
+            else {
+                return false;
+            }
+
+        });
+
+        getItemCodes();
+    });
+
+
+
+
+    function getItemCodes() {
+        var DEPT_ID = $("#DEPT_ID2").val();
+        var SUBDEPT_ID = $("#SUBDEPT_ID2").val();
+        $("#particalDiv").empty();
+        $.ajax(
+            {
+                type: 'Get',
+                url: '/Master/GetItemCodes?dept_id=' + DEPT_ID + '&sub_dept_id=' + SUBDEPT_ID,
+                success:
+                    function (response) {
+                        $("#particalDiv").append(response);
+                    },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
+    }
+
+    function editItemCode(id) {
+        $.ajax(
+            {
+                type: 'Get',
+                url: '/Master/GetItemCodeById?id=' + id,
+                success:
+                    function (data) {
+                        $("#exampleModalLabel").text("Update Item Code");
+                        $("#ITEM_CODE_NAME").val(data.ITEM_CODE_NAME);
+                        $("#ITEM_CODE_ID").val(data.ITEM_CODE_ID);
+                        $("#DEPT_ID").val(data.DEPT_ID);
+                        $('#exampleModal').modal('show');
+                        getSubDeptbyDeptIdPassSubDeptId(data.SUBDEPT_ID);
+                    },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
+    }
+    $("#DEPT_ID").change(function () {
+        getSubDeptbyDeptId();
+    });
+    $("#DEPT_ID2").change(function () {
+        getSubDeptbyDeptId2();
+    });
+
+    $("#SUBDEPT_ID2").change(function () {
+        getItemCodes();
+    });
+
+    function getSubDeptbyDeptId() {
+        var DEPT_ID = $("#DEPT_ID").val();
+        if (DEPT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                   
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('select').formSelect();
+
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('select').formSelect();
+        }
+    }
+
+    function getSubDeptbyDeptId2() {
+        var DEPT_ID = $("#DEPT_ID2").val();
+        if (DEPT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPT_ID, function (data) {
+                $('#SUBDEPT_ID2').find('option').not(':first').remove();
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID2').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                   
+                });
+                $('select').formSelect();
+                getItemCodes();
+
+            });
+        } else {
+            $('#SUBDEPT_ID2').find('option').not(':first').remove();
+            $('select').formSelect();
+        }
+    }
+
+    function getSubDeptbyDeptIdPassSubDeptId(sub_dept_id) {
+        var DEPT_ID = $("#DEPT_ID").val();
+        if (DEPT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').val(sub_dept_id);
+                $('select').formSelect();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+        }
+    }
+
+</script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Content/Toastr/toastr.min.js"></script>
+
+

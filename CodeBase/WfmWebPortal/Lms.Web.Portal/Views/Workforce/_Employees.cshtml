@@ -1,0 +1,163 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.WorkforceMetaDataList>
+<div class="table-responsive">
+    <table id="tableExport1"
+           class="table table-bordered table-striped table-hover js-basic-example dataTable" width="100%" style="display:none">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Employee Id</th>
+                <th>Name</th>
+                <th>Contact No.</th>
+                <th>Hiring Type</th>
+                <th>Bio Metric Code</th>
+                <th>Father Name</th>
+                <th>Gender </th>
+                <th>Date of Birth </th>
+                <th>Unit</th>
+                <th>Department</th>
+                <th>Sub Department</th>
+                <th>Nationality</th>
+                <th>Education</th>
+                <th>Skill</th>
+                <th>Employee Type</th>
+                <th>Employee Status</th>
+                <th>Alternate No.</th>
+                <th>Email</th>
+                <th>Designation</th>
+                <th>Date of Joining</th>
+                <th>Aadhar No.</th>
+                <th>Basic DA</th>
+                <th>HRA</th>
+                <th>Special Allowance</th>
+                <th>Gross</th>
+                <th>Present Address</th>
+                <th>Permanent Address</th>
+                <th>UAN No.</th>
+                <th>PAN No.</th>
+                <th>EPF No.</th>
+                <th>ESIC No.</th>
+                <th>IFSC</th>
+                <th>Branch Name</th>
+                <th>Account No.</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int index1 = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>  @index1</td>
+                    <td>@item.EMP_ID</td>
+                    <td>@item.EMP_NAME</td>
+                    <td>@item.MOBILE_NO</td>
+                    <td>@item.WFEMPTYPE</td>
+                    <td>@item.BIOMETRIC_CODE</td>
+                    <td>@item.FATHER_NAME</td>
+                    <td>@item.GENDER</td>
+                    <td>@Wfm.App.Common.Utility.FormatDate(@item.DATE_OF_BIRTH)</td>
+                    <td>@item.UNIT_NAME</td>
+                    <td>@item.DEPT</td>
+                    <td>@item.SUBDEPT_NAME</td>
+                    <td>@item.NATIONALITY</td>
+                    <td>@item.Education</td>
+                    <td>@item.SKILL_NAME</td>
+                    <td>@item.ETYPE</td>
+                    <td>@item.EMP_Status</td>
+                    <td>@item.ALTERNATE_NO</td>
+                    <td>@item.EMAIL_ID</td>
+                    <td>@item.WF_DESIGNATION</td>
+                    <td>@Wfm.App.Common.Utility.FormatDate(@item.DOJ)</td>
+                    <td>@item.AADHAR_NO</td>
+                    <td>@item.BASIC_DA</td>
+                    <td>@item.HRA</td>
+                    <td>@item.SPECIAL_ALLOWANCE</td>
+                    <td>@item.GROSS</td>
+                    <td>@item.PRESENT_ADDRESS</td>
+                    <td>@item.PERMANENT_ADDRESS</td>
+                    <td>@item.UAN</td>
+                    <td>@item.PAN</td>
+                    <td>@item.EPF</td>
+                    <td>@item.ESIC</td>
+                    <td>@item.IFSC</td>
+                    <td>@item.BranchName</td>
+                    <td>@item.ACCNO</td>
+                    <td>@item.STATUS</td>
+                </tr>
+                index1++;
+            }
+
+        </tbody>
+    </table>
+
+    <table id="tableExport"
+           class="table table-bordered table-striped table-hover js-basic-example dataTable" width="100%">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Employee Id</th>
+                <th>Name</th>
+                <th>Contact No.</th>
+                <th>Department</th>
+                <th>Designation</th>
+                <th>Date of Joining</th>
+                <th>Aadhar No.</th>
+                <th>Status</th>
+                <th>Edit</th>
+                @*<th></th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @{int index = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>  @index</td>
+                    <td>@item.EMP_ID</td>
+                    <td>@item.EMP_NAME</td>
+                    <td>@item.MOBILE_NO</td>
+                    <td>@item.DEPT</td>
+                    <td>@item.WF_DESIGNATION</td>
+                    <td>@Wfm.App.Common.Utility.FormatDate(@item.DOJ)</td>
+                    <td>@item.AADHAR_NO</td>
+                    <td>@item.STATUS</td>
+                    <td>
+                        <a href="/Workforce/Edit?wfid=@item.WF_ID">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+                index++;
+            }
+
+        </tbody>
+    </table>
+
+</div>
+<script>
+    $("document").ready(function () {
+        $('#tableExport').DataTable({
+            //dom: 'Bfrtip',
+            //buttons: [
+            //    'copy',
+            //    'csv',
+            //    'excel',
+            //    'pdf',
+            //    'print'
+            //]
+        });
+        $('#tableExport1').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy',
+                'csv',
+                'excel',
+                /*'pdf',*/
+                'print'
+            ],
+            "paging": false,
+          /*  "bInfo": false,*/
+            "bFilter": false,
+        });
+    });
+</script>

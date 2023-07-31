@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{23326E5E-72DC-43E9-B82D-A78D2C41C3A9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wfm.App.Core</RootNamespace>
+    <AssemblyName>Wfm.App.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\DLLReferences\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountValidateUser_Result.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActiveSession.cs" />
+    <Compile Include="Attribute\FileSizeAttribute.cs" />
+    <Compile Include="Caching\ILmsCacheItem.cs" />
+    <Compile Include="Caching\LmsCache.cs" />
+    <Compile Include="Caching\LmsCacheItemWrapper.cs" />
+    <Compile Include="Caching\WebCache.cs" />
+    <Compile Include="Caching\WebCacheDictionary.cs" />
+    <Compile Include="ConcurrentSessionManager.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Logs_Fatal.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logs_Info.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logs_Trace.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logs_Warn.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ActivityDetailsMetaData.cs" />
+    <Compile Include="Model\AgencyMasterMetaData.cs" />
+    <Compile Include="Model\AssetAllocationMetaData.cs" />
+    <Compile Include="Model\AssetMappingMasterMetaData.cs" />
+    <Compile Include="Model\AssetMasterMetaData.cs" />
+    <Compile Include="Model\BankMasterMetaData.cs" />
+    <Compile Include="Model\BuildingMasterMetaData.cs" />
+    <Compile Include="Model\CompanyMasterMetaData.cs" />
+    <Compile Include="Model\DashBoardMetaData.cs" />
+    <Compile Include="Model\DepartmentMasterMetaData.cs" />
+    <Compile Include="Model\EmplTypeMasterMetaData.cs" />
+    <Compile Include="Model\EmpStatusMasterMetaData.cs" />
+    <Compile Include="Model\ErrorLogsMetaData.cs" />
+    <Compile Include="Model\ExitManagementMetaData.cs" />
+    <Compile Include="Model\GetMonthlyAttendanceReport.cs" />
+    <Compile Include="Model\ItemCodeMasterMetaData.cs" />
+    <Compile Include="Model\ItemOperationsMasterMetaData.cs" />
+    <Compile Include="Model\ItemMasterMetaData.cs" />
+    <Compile Include="Model\FloorMasterMetaData.cs" />
+    <Compile Include="Model\GatePassMetaData.cs" />
+    <Compile Include="Model\LevelMasterMetaData.cs" />
+    <Compile Include="Model\LoginMasterMetaData.cs" />
+    <Compile Include="Model\EntityMetaDataMapping.cs" />
+    <Compile Include="Model\ManPowerRequestFormMetaData.cs" />
+    <Compile Include="Model\MartialStatusMasterMetaData.cs" />
+    <Compile Include="Model\MenuMetaData.cs" />
+    <Compile Include="Model\MRFApprovalMetaData.cs" />
+    <Compile Include="Model\RECMasterMetaData.cs" />
+    <Compile Include="Model\RoleMasterMetaData.cs" />
+    <Compile Include="Model\SalarySlipMetaData.cs" />
+    <Compile Include="Model\ShiftMasterMetaData.cs" />
+    <Compile Include="Model\SkillMasterMetaData.cs" />
+    <Compile Include="Model\SpecialAllowanceMetaData.cs" />
+    <Compile Include="Model\StateMetaData.cs" />
+    <Compile Include="Model\SubDepartmentMasterMetaData.cs" />
+    <Compile Include="Model\SubMenuMetaData.cs" />
+    <Compile Include="Model\ToolTalkConfigurationMetaData.cs" />
+    <Compile Include="Model\ToolTalkDailyCheckListMetaData.cs" />
+    <Compile Include="Model\TrainningMetaData.cs" />
+    <Compile Include="Model\UserMetaData.cs" />
+    <Compile Include="Model\WFDesignationMasterMetaData.cs" />
+    <Compile Include="Model\WorkflowMappingMasterMetaData.cs" />
+    <Compile Include="Model\WorkflowMasterMetaData.cs" />
+    <Compile Include="Model\WorkforceApprovalMetaData.cs" />
+    <Compile Include="Model\WorkforceEduMasterMetaData.cs" />
+    <Compile Include="Model\WorkforceAttendanceMetaData.cs" />
+    <Compile Include="Model\WorkforceFaultyDataMetaData.cs" />
+    <Compile Include="Model\WorkforcePhotoMasterMetaData .cs" />
+    <Compile Include="Model\WorkforceMasterMetaData.cs" />
+    <Compile Include="Model\WorkforceLeavesMetaData.cs" />
+    <Compile Include="Model\WorkforceSalaryData.cs" />
+    <Compile Include="Model\WorkforceDailyWorkData.cs" />
+    <Compile Include="Model\WorkforceSalaryMasterMetaData.cs" />
+    <Compile Include="Model\WorkforceSalaryMetaData.cs" />
+    <Compile Include="Model\WorkforceMetaData.cs" />
+    <Compile Include="Model\ToolTalkMasterMetaData.cs" />
+    <Compile Include="Model\WorkforceTypeMetaData.cs" />
+    <Compile Include="PNICache.cs" />
+    <Compile Include="PortalSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SelectActiveMRF_Result.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ACTIVITY_DETAILS.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_AGENCY_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ALL_MAIL.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ALL_SMS.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ALL_WHATSAPP.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ASSET_ALLOCATION.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ASSET_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_BANK_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_BIOMETRIC.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_BIOMETRIC_DATABASE.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_BUILDING_DEPARTMENT_MAPPING.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_BUILDING_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_COMPANY_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_CONSTANT_DATA.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_DEPARTMENT_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_EMPLOYEE_TRANSFER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_EMPL_TYPE_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_EMP_STATUS_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ERROR_LOGS.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_FAULTY_PUNCHES.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_FLOOR_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_GATEPASS.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_HOLIDAY.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ITEM_CODE.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ITEM_OPERATION_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_LEVEL_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_LOGIN_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_MAIL_TEMPLATE.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_MARITAL_STATUS_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_MENU.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_MENU_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_MENU_ROLE_MAPPING.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_MRF.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_MRF_APPROVER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_MRF_DETAILS.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_REC_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ROLE_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_ROLE_MENU_MAPPING.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_SHIFT_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_SKILL_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_SPECIAL_ALLOWANCE.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_STATE_CITY_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_STATE_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_SUBDEPARTMENT_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_SUBMENU.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_TOOL_TALK_CONFIGURATION.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_TOOL_TALK_CONFIG_DAILY_ITEMS.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_TOOL_TALK_DAILY_CHECKLIST.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_TOOL_TALK_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_TRAINNING_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_TRAINNING_WORKFORCE.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_TRAINNING_WORKFORCE_MAPPING.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_USER_DEPARTMENT_MAPPING.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_USER_ROLE_MAPPING.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WF_DESIGNATION_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WF_WORK_DETAILS.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORFORCE_TYPE.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFLOW_MAPPING_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFLOW_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFORCE_DAILYWORK.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFORCE_DAILYWORK_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFORCE_EDU_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFORCE_EXIT.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFORCE_EXIT_APPROVER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFORCE_LEAVES.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFORCE_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFORCE_PHOTO_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFORCE_SALARY.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAB_WORKFORCE_SALARY_MASTER.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserMenu_Result.cs">
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WfmDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WfmDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WfmDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WfmDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WfmDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WfmDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="WFMSUMITDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WFMSUMITDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <EntityDeploy Include="WfmDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WfmDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-1.12.4.min.map" />
+    <None Include="WfmDataModel.edmx.diagram">
+      <DependentUpon>WfmDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="WFMSUMITDataSet.xsc">
+      <DependentUpon>WFMSUMITDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WFMSUMITDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WFMSUMITDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WFMSUMITDataSet.xss">
+      <DependentUpon>WFMSUMITDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="WfmDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WfmDataModel.edmx</DependentUpon>
+      <LastGenOutput>WfmDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="WfmDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WfmDataModel.edmx</DependentUpon>
+      <LastGenOutput>WfmDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

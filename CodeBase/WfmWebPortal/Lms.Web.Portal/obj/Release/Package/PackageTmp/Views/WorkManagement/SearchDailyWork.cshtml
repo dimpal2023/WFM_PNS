@@ -1,0 +1,383 @@
+﻿@model Wfm.App.Core.Model.FilterDailyWork
+
+@{
+    ViewBag.Title = "Workforce - View Daily Works";
+    //@model IList<Wfm.App.Core.Model.WorkforceMetaDataList>
+
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Workforce</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/DailyWork">
+                                <i class="fas fa-layer-group"></i> Workforce
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">View Daily Works</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>View </strong> Daily Work
+                        </h2>
+                    </div>
+
+
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "filterDailyWork", @class = "login100-form validate-form" }))
+                    {
+                <div class="row col-12">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                                @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.DEPARTMENT_ID, "Department", new { @class = "required" })
+                                @Html.DropDownListFor(x => x.DEPARTMENT_ID, Model.Departments, "-- Select --", new { required = "true" })
+                                @Html.ValidationMessageFor(m => m.DEPARTMENT_ID)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department", new { @class = "required" })
+                                @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "All")
+                                @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row col-12">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.WF_EMP_TYPE, "Workforce type")
+                                @Html.DropDownListFor(x => x.WF_EMP_TYPE, Model.OnRollOrContracts, "--Select--")
+                                @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.EMP_NAME, "Workforce Name")
+                                @Html.DropDownListFor(x => x.EMP_NAME, new SelectList(ViewBag.EmpName, "Value", "Text"), "--Select--")
+                                @Html.ValidationMessageFor(m => m.EMP_NAME)
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.EMP_NAME, "Workforce Name", new { @class = "required" })
+                                @Html.TextBoxFor(x => x.EMP_NAME, new { id = "EMP_NAME", required = "true" })
+                                @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                @Html.HiddenFor(x => x.WF_ID, new { id = "WF_ID" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        @Html.LabelFor(x => x.StartDate, "Work start date", new { @class = "required" })
+                                        @Html.TextBoxFor(m => m.StartDate, "{0:dd/mm/yyyy}", new { required = "true", @class = "datepicker form-control dateddmmyyyy" })
+                                        @Html.ValidationMessageFor(m => m.StartDate)
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @Html.LabelFor(x => x.EndDate, "Work end date", new { @class = "required " })
+                                        @Html.TextBoxFor(m => m.EndDate, "{0:dd/mm/yyyy}", new { required = "true", @class = "datepicker form-control dateddmmyyyy" })
+                                        @Html.ValidationMessageFor(m => m.EndDate)
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                        <div class="row col-12">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <button type="button" id="btnFilter" onclick="getSearchData()">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="body" id="particalDiv">
+
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+    .Show {
+        display: block;
+    }
+
+    .Hide {
+        display: none;
+    }
+
+    .ui-autocomplete {
+        background-color: #f5f5f5;
+        max-width: 500px;
+        max-height: 200px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        z-index: 100;
+        border: 0px 1px 1px 1px;
+    }
+
+    .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+        background-color: #DCDCDC;
+        color: #000000;
+    }
+
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        width: 100%;
+        height: auto !important;
+        overflow: hidden;
+        outline: 0;
+    }
+</style>
+<script>
+    var addItems = [];
+    let items = [];
+    var operations = [];
+    $(document).ready(function () {
+        $("select[required]").css({ display: "block", height: 0, padding: 0, width: 0, position: 'absolute' });
+        //$('#StartDate','#EndDate').bootstrapMaterialDatePicker({
+        //    format: 'DD/MM/YYYY',
+        //    clearButton: true,
+        //    weekStart: 1,
+        //    time: false
+        //});
+        var date = new Date();
+        var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        $("select[required]").css({ position: "absolute", display: "inline", height: 0, padding: 0, width: 0 });
+        $('.dateddmmyyyy').bootstrapMaterialDatePicker({
+            format: 'DD/MM/YYYY',
+            clearButton: true,
+            weekStart: 1,
+            time: false,
+            autoClose: true,
+        });
+        $('#StartDate').bootstrapMaterialDatePicker('setDate', firstDay);
+        $('#EndDate').bootstrapMaterialDatePicker('setDate', lastDay);
+        $('#DEPARTMENT_ID').find('option').not(':first').remove();
+        $('#DEPARTMENT_ID').formSelect();
+    });
+
+    function onBuildingChange() {
+        var buildingId = $("#BUILDING_ID option:selected").val();
+        $.get('/ManPowerRequest/GetFloorByBuildingId?buildingId=' + buildingId, function (data) {
+            $('#DEPARTMENT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#DEPARTMENT_ID').append($('<option>', {
+                    value: item.DEPT_ID,
+                    text: item.DEPT_NAME
+                }));
+            });
+            $('#DEPARTMENT_ID').formSelect();
+        });
+    }
+
+    $("#DEPARTMENT_ID").change(function () {
+        $('#WF_EMP_TYPE').val('');
+        $('#WF_EMP_TYPE').formSelect();
+      /*  $('#EMP_NAME').find('option').not(':first').remove();*/
+        $('#EMP_NAME').val('');
+        getSubDeptbyDeptId();
+    });
+
+    function getSubDeptbyDeptId() {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').formSelect();
+               /* getDepartmentItemsData();*/
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+        }
+    }
+
+  /*  $("#WF_EMP_TYPE").change(function () {*/
+          @*$("#EMP_NAME").val("");
+         $.ajax({
+                url: '@Url.Action("PiecWagerWorkforceByWFType", "Workforce")',
+                datatype: "json",
+                data: {
+                    deptId: $("#DEPARTMENT_ID").val(),
+                    sub_dept_id:$("#SUBDEPT_ID").val(),
+                    query: $('#EMP_NAME').val(),
+                    emp_type_id: $('#WF_EMP_TYPE').val()
+                },
+             success: function (data) {
+                 debugger;
+                 $('#EMP_NAME').find('option').not(':first').remove();
+                 $.each(data, function (i, item) {
+                     $('#EMP_NAME').append($('<option>', {
+                         value: item.ID,
+                         text: item.Name
+                     }));
+                 });
+                 $('#EMP_NAME').formSelect();
+
+                }
+            })*@
+        @*$('#EMP_NAME').formSelect();
+         $.ajax({
+                url: '@Url.Action("BindWorkforceByWFType_New", "Workforce")',
+                datatype: "json",
+                data: {
+                    BUILDING_ID: $("#BUILDING_ID").val(),
+                    deptId: $("#DEPARTMENT_ID").val(),
+                    sub_dept_id: $("#SUBDEPT_ID").val() || '00000000-0000-0000-0000-000000000000',
+                    emp_type_id: $('#WF_EMP_TYPE').val(),
+                    EMPLOYMENT_TYPE: 3
+                },
+             success: function (data) {
+                 debugger;
+                 $('#EMP_NAME').find('option').not(':first').remove();
+                 $.each(data, function (i, item) {
+                     $('#EMP_NAME').append($('<option>', {
+                         value: item.ID,
+                         text: item.Name + ' - ' + item.EmpId,
+                     }));
+                 });
+                 $('#EMP_NAME').formSelect();
+
+                }
+            })
+    });*@
+
+    function getSearchData() {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        var WF_EMP_TYPE = $("#WF_EMP_TYPE").val();
+        var wf_id = $("#WF_ID").val();
+        var startDate = $("#StartDate").val();
+        var endDate = $("#EndDate").val();
+        if ($("#filterDailyWork").valid()) {
+            $("#particalDiv").empty();
+            var filterDailyWork = { DEPARTMENT_ID: DEPARTMENT_ID, WF_ID: wf_id, WF_EMP_TYPE: WF_EMP_TYPE, StartDate: startDate, EndDate: endDate };
+            $.ajax({
+                type: "POST",
+                url: '/Workforce/SearchDailyWork',     //your action
+                data: filterDailyWork,   //your form name.it takes all the values of model
+                beforeSend: function () {
+                    $('.page-loader-wrapper').show();
+                },
+                complete: function () {
+                    $('.page-loader-wrapper').hide();
+                },
+
+                success: function (result) {
+                    $("#particalDiv").append(result);
+                    return false;
+                },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
+        } else {
+            return false;
+        }
+    }
+    $("#EMP_NAME").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("LoadWorkforceByWFType", "Workforce")',
+                datatype: "json",
+                data: {
+                    BUILDING_ID: $("#BUILDING_ID").val(),
+                    deptId: $("#DEPARTMENT_ID").val(),
+                    sub_dept_id: $("#SUBDEPT_ID").val(),
+                    query: $('#EMP_NAME').val(),
+                    emp_type_id: $('#WF_EMP_TYPE').val()
+                },
+                success: function (data) {
+                    if (!data.length) {
+                        var result = [{ label: "no results", value: response.term }];
+                        response(result);
+                    }
+                    else {
+                        response($.map(data, function (val, item) {
+                            return {
+                                label: val.Name,
+                                value: val.Name,
+                                empId: val.ID
+                            }
+                        }))
+                    }
+                }
+            })
+        },
+        select: function (event, ui) {
+            $("#WF_ID").val(ui.item.empId);
+           /* employeeOnChange();*/
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+
+
+</script>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

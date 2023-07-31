@@ -1,0 +1,72 @@
+﻿@model List<Wfm.App.Core.Model.ToolTalkDailyCheckListMetaData>
+
+<div class="table-responsive">
+    <table id="tableExport" class="table table-bordered table-striped table-hover js-basic-example dataTable" width="100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th> Message </th>
+                <th> Department </th>
+                @*<th> Sub Department </th>*@
+                <th> Delivered By </th>
+                <th> Delivered To </th>
+                <th> Date </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+
+                int index = 0;
+                foreach (var tooltalk in Model)
+                {
+
+                    <tr id="@tooltalk.ID" name="@tooltalk.ID">
+                        <td>@(++index)</td>
+                        <td>
+                            @*@string.Join(",", @tooltalk.TOOL_TALK_CHECK_LIST.Where(x => x.CHECK.Value).Select(x => x.ITEM_NAME))*@
+                            @foreach (var tbt in @tooltalk.TOOL_TALK_CHECK_LIST)
+                            {
+                                @tbt.ITEM_NAME<br />
+                            }
+                        </td>
+                        <td>@tooltalk.DEPT_NAME</td>
+                        @*<td>@tooltalk.SUBDEPT_NAME</td>*@
+                        <td>@tooltalk.DELIVERED_BY</td>
+                        <td>@tooltalk.EMP_NAME</td>
+                        <td>@Wfm.App.Common.Utility.FormatDate(tooltalk.DATE)</td>
+
+                        <td>
+
+                            @if (Wfm.App.Common.Utility.FormatDate(tooltalk.DATE) == Wfm.App.Common.Utility.FormatDate(DateTime.Now))
+                            {
+                                <a href="/ToolTalk/EditDailyCheckList/@tooltalk.ID" class="btn btn-tbl-edit">
+                                    <i class="material-icons">create</i>
+                                </a>
+                            }
+                            <a href="#" class="btn btn-tbl-delete" data-toggle="modal" data-target="#dailyModalCenter">
+                                <i class="material-icons">delete_forever</i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<input type="hidden" id="hiddenId" />
+<script>
+    $("document").ready(function () {
+        $('#tableExport').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy',
+                'csv',
+                'excel',
+                'pdf',
+                'print'
+            ]
+        });
+    });
+</script>

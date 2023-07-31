@@ -1,0 +1,75 @@
+﻿@model IList<Wfm.App.Core.Model.ManPowerRequestFormMetaDataList>
+
+@{
+    ViewBag.Title = "New Hiring - All MRF";
+}
+<div class="table-responsive">
+    <table id="tableExport"
+           class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+        @* class="table table-bordered table-striped table-hover js-basic-example dataTable"*@
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>MRF</th>
+                <th>Unit</th>
+                <th>Department</th>
+                <th>Sub Department</th>
+                <th>Skill</th>
+                <th>Designation</th>
+                <th>Quantity</th>
+                <th>Actual Hire</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Creation Date</th>
+                <th>Created By</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int index = 1;}
+            @foreach (var item in Model)
+            {
+                string[] subs = @item.CreationDate.ToString().Split(' ');
+                <tr>
+                    <td>@index</td>
+                    <td>@item.REC_NAME</td>
+                    <td>@item.BUILDING_NAME</td>
+                    <td>@item.FLOOR_NAME</td>
+                    <td>@item.SUBDEPT_NAME</td>
+                    <td>@item.SKILL_NAME</td>
+                    <td>@item.WF_DESIGNATION_NAME</td>
+                    <td>@item.QUANTITY</td>
+                    <td>@item.HIRING_QUANTITY</td>
+                    <td>@item.EMP_TYPE</td>
+                    <td>@item.MRF_STATUS</td>
+                    <td>@subs[0]</td>
+                    <td>@item.CreatedBy</td>
+                    <td>
+                        <a href="/ManPowerRequest/Edit?mrf_INETRNAL_ID=@item.MRP_INETRNAL_ID">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+                index++;
+            }
+
+        </tbody>
+    </table></div>
+    <script>
+        $("document").ready(function () {
+            $('#tableExport').DataTable({
+                dom: 'Bfrtip',
+                //lengthMenu: [
+                //    [10, 25, 50, -1],
+                //    [10, 25, 50, 'All'],
+                //],
+                buttons: [
+                    'copy',
+                    'csv',
+                    'excel',
+                    'pdf',
+                    'print'
+                ]
+            });
+        });
+    </script>

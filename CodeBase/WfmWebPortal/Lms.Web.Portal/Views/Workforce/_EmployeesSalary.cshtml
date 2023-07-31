@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.WorkforceMetaDataList>
+<div class="table-responsive">
+    <table id="tableExport"
+          class="table table-bordered table-striped table-hover js-basic-example dataTable" width="100%">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Employee Id</th>
+                <th>Name</th>
+                <th>Contact No.</th>
+                <th>Department</th>
+                <th>Designation</th>
+                <th>Date of Joining</th>
+                <th>Aadhar No.</th>
+                <th>Status</th>
+                <th>Edit</th>
+                @*<th></th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @{int index = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>  @index</td>
+                    <td>@item.EMP_ID</td>
+                    <td>@item.EMP_NAME</td>
+                    <td>@item.MOBILE_NO</td>
+                    <td>@item.DEPT</td>
+                    <td>@item.WF_DESIGNATION</td>
+                    <td>@Wfm.App.Common.Utility.FormatDate(@item.DOJ)</td>
+                    <td>@item.AADHAR_NO</td>
+                    <td>@item.STATUS</td>
+                    <td>
+                        <a href="/Workforce/Salary?wfid=@item.EMP_ID">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+                index++;
+            }
+
+        </tbody>
+    </table>
+</div>
+<script>
+    $("document").ready(function () {
+        $('#tableExport').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy',
+                'csv',
+                'excel',
+                'pdf',
+                'print'
+            ]
+        });
+    });
+</script>

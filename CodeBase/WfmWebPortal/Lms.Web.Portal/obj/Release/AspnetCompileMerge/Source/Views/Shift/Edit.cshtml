@@ -1,0 +1,91 @@
+﻿@model Wfm.App.Core.Model.ShiftMasterMetaData
+
+@{
+    ViewBag.Title = "Shift - Edit";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Shift</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/GatePass/Create">
+                                <i class="fas fa-layer-group"></i> Shift
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Edit</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Edit</strong> Shift
+                            </h2>
+                        </div>
+                        @using (Html.BeginForm("Edit", "Shift", FormMethod.Post, new { id = "ShiftEdit", @class = "login100-form validate-form" }))
+                        {
+                            @Html.HiddenFor(m => m.SHIFT_ID)
+                            @Html.HiddenFor(m => m.COMPANY_ID)
+                            @Html.HiddenFor(m => m.UPDATED_BY)                                                        
+                            <div class="body">                                                               
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.SHIFT_NAME, "Shift name")
+                                                @Html.TextBoxFor(m => m.SHIFT_NAME, "", new { @class = "form-control", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.SHIFT_NAME)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.COMPANIES, "Company name")
+                                                @Html.DropDownListFor(m => m.COMPANIES, new SelectList(Model.COMPANIES, "COMPANY_ID", "COMPANY_NAME", Model.COMPANY_ID), new { @class = "col-12 m-t-20 p-l-0" })                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.SHIFT_START_TIME, "Start time")
+                                                @Html.TextBoxFor(m => m.SHIFT_START_TIME, "", new { @class = "form-control", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.SHIFT_START_TIME)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.SHIFT_END_TIME, "End time")
+                                                @Html.TextBoxFor(m => m.SHIFT_END_TIME, "", new { @class = "form-control", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.SHIFT_END_TIME)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 p-t-20 text-center">
+                                    <button id="edit" type="button" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                    <button id="cancel" type="button" class="btn btn-danger waves-effect">Cancel</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/assets/js/pages/shift/shift.js"></script>

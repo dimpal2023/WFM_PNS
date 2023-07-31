@@ -1,0 +1,231 @@
+﻿@model Wfm.App.Core.Model.TransferManagementMetaData
+
+@{
+    ViewBag.Title = "Exit/Transfer - Employee Transfer";
+}
+
+<style>
+    .bold {
+        font-weight: bold
+    }
+
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #26b99a;
+    }
+
+    .table-bordered thead th, .table-bordered thead td {
+        border-bottom-width: 0px;
+    }
+
+    .table th, .table td {
+        padding: 0.1rem;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Transfer Management</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-layer-group"></i> Create 
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.New_BUILDING_ID, "Unit", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.New_BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "New_BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                                        @Html.ValidationMessageFor(m => m.New_BUILDING_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.WF_EMP_TYPE, "Employee Type", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.WF_EMP_TYPE, new SelectList(ViewBag.EmployeeTypes, "Value", "Text"), "--Select--", htmlAttributes: new { id = "WF_EMP_TYPE", required = "required" })
+                                        @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.EMP_NAME, "Employee Name")
+                                        @Html.DropDownListFor(x => x.EMP_NAME, new SelectList(ViewBag.EmpName, "Value", "Text"), "--Select--", htmlAttributes: new { required = "required" })
+                                        @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.New_DEPT_ID, "Department")
+                                        @Html.TextBoxFor(m => m.New_DEPT_ID, "", new { id = "New_DEPT_ID", disabled = "true", @class = "form-control", @type = "text" })
+                                        @Html.ValidationMessageFor(m => m.New_DEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.New_SUBDEPT_ID, "Sub Department")
+                                        @Html.TextBoxFor(m => m.New_SUBDEPT_ID, "", new { id = "New_SUBDEPT_ID", disabled = "true", @class = "form-control", @type = "text" })
+                                        @Html.ValidationMessageFor(m => m.New_SUBDEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.New_EMPLOYMENT_TYPE, "Employment Type")
+                                        @Html.TextBoxFor(m => m.New_EMPLOYMENT_TYPE, "", new { id = "New_EMPLOYMENT_TYPE", disabled = "true", @class = "form-control", @type = "text" })
+                                        @Html.ValidationMessageFor(m => m.New_EMPLOYMENT_TYPE)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="row clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.BUILDING_ID, "New Unit", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.TransferBuildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "AllonBuildingChange()" })
+                                        @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.DEPT_ID, "New Department", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.DEPT_ID, ViewBag.Dept as SelectList, "-- Select--", new { id = "DEPT_ID", required = "true", @onchange = "AllonDepartmentChange()" })
+                                        @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SUBDEPT_ID, "New Sub Department", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>
+    (), "All", new { required = "true"})
+                                        @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.EMPLOYMENT_TYPE, "New Employment Type", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.EMPLOYMENT_TYPE, new SelectList(ViewBag.EmpSal_TypeList, "Value", "Text"), "--Select--", htmlAttributes: new { id = "EMPLOYMENT_TYPE", required = "required" })
+                                        @Html.ValidationMessageFor(m => m.EMPLOYMENT_TYPE)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix col-sm-12">
+                            <div class="form-group text-center">
+                                <button type="button" id="workforce-Transfer" class="btn btn-primary waves-effect m-r-15" onclick="TransferEmployee()">Transfer</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $("#WF_EMP_TYPE").change(function () {
+        $('#EMP_NAME').empty();
+        $('#EMP_NAME').formSelect();
+        if ($('#New_BUILDING_ID').val() != "" && $('#WF_EMP_TYPE').val() != "") {
+            $.ajax({
+                url: '@Url.Action("BindEmployeeData", "ExitManagement")',
+            datatype: "json",
+            data: {
+                BUILDING_ID: $("#New_BUILDING_ID").val(),
+                emp_type_id: $('#WF_EMP_TYPE').val(),
+            },
+                success: function (data) {
+                    var dictionary = new Array();
+                    $('#EMP_NAME').empty();
+                    $('#EMP_NAME').formSelect();
+
+                    if (data != null) {
+                        $.each(data, function (i, subdept) {
+                           
+                            var v = { Value: subdept.Name, Text: subdept.ID, Dept: subdept.Dept, subD: subdept.SubDept, EmploymentType: subdept.EmploymentType, EmpID: subdept.EmpID };
+
+                            if (dictionary.find(x => x.Key === subdept.Name) === undefined) {
+                                var entry = {};
+                                entry.Key = subdept.Name;
+                                entry.Dept = subdept.Dept;
+                                entry.SubDept = subdept.SubDept;
+                                entry.EmpID = subdept.EmpID;
+                                entry.EmploymentType = subdept.EmploymentType;
+                                entry.Value = new Array();
+                                entry.Value.push(v);
+
+                                dictionary.push(entry);
+                            }
+                            else {
+                                var obj = dictionary.find(x => x.Key === subdept.Name);
+                                obj.Value.push(v);
+                            }
+                        });
+
+                        var optgroup = "";
+                        optgroup += "<option value='0'>-All-</option>";
+                        $.each(dictionary, function (i, group) {
+                            debugger
+                            $.each(group.Value, function (j, item) {
+                                var FullEmpName = item.Value + " (" + item.EmpID+")";
+                                var option = "<option value='" + item.Text + "' Dept='" + item.Dept + "' SubDept= '" + item.subD + "' EmploymentType='" + item.EmploymentType + "'>" + FullEmpName + "</option>";
+                                optgroup += option;
+                            });
+                            optgroup += "</optgroup>";
+                        });
+
+                        $('#EMP_NAME').append(optgroup);
+                        $('#EMP_NAME').formSelect();
+                    }
+                },
+                error: function (responseText) {
+                    alert(responseText);
+                }
+            });
+        }
+    });
+
+    $("#EMP_NAME").change(function () {
+        debugger
+        $('#New_DEPT_ID').val($("#EMP_NAME option:selected").attr('dept'));
+        $('#New_SUBDEPT_ID').val($("#EMP_NAME option:selected").attr('subdept'));
+        $('#New_EMPLOYMENT_TYPE').val($("#EMP_NAME option:selected").attr('employmenttype'));
+    })
+
+
+</script>
+
+<script src="~/Content/assets/js/pages/exit-management/EmployeeTransfer.js"></script>

@@ -1,0 +1,27 @@
+﻿.field-validation-error { color: #f00; }
+.field-validation-valid {
+    display: none;
+}
+.input-validation-error{
+    border:1px solid #f00;
+    background-color: #fee;
+}
+.required::after {
+    content: "*";
+    font-weight: 200 !important;
+    color: red;
+}
+.ui-autocomplete {
+    background-color: #f5f5f5;
+    max-width: 500px;
+    max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 100;
+    border: 0px 1px 1px 1px;
+}
+
+.ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+    background-color: #DCDCDC;
+    color: #000000;
+}

@@ -1,0 +1,409 @@
+﻿
+@model Wfm.App.Core.Model.DashBoardMetaData
+
+@{
+    ViewBag.Title = "Home - Dashboard";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Dashboard</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Account/MyProfile">
+                                <i class="fas fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-sm-4" style="padding-top:15px;">
+                <div class="form-group">
+                    <div class="form-line">
+                        @Html.LabelFor(x => x.BUILDING_ID, "Unit")
+                        @Html.DropDownListFor(x => x.BUILDING_ID, Model.Buildings, "All", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                        @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4" style="padding-top:15px;">
+                <div class="form-group">
+                    <div class="form-line">
+                        @Html.LabelFor(x => x.DEPARTMENT_ID, "Department")
+                        @Html.DropDownListFor(x => x.DEPARTMENT_ID, Model.Departments, "All", new { required = "true", @onchange = "onDepartmentChange()" })
+                        @Html.ValidationMessageFor(m => m.DEPARTMENT_ID)
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4" style="padding-top:15px;">
+                <div class="form-group">
+                    <div class="form-line">
+                        @Html.LabelFor(x => x.DEPARTMENT_ID, "Sub Department")
+                        @Html.DropDownListFor(x => x.SUBDEPARTMENT_ID, Model.SubDepartments, "All", new { required = "true" })
+                        @Html.ValidationMessageFor(m => m.SUBDEPARTMENT_ID)
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2" style="padding-top:15px;white-space:nowrap">
+                <div class="form-group">
+                    <div class="form-line">
+                        <p style="font-weight:700">Total Freezing Strength</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3" style="padding-top:10px;text-align:left">
+                <h2 class="col-orange">
+                    <span id="TotalFreezingStrength">0</span>
+                </h2>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-5 col-5">
+                                <span class="info-box-icon"><i class="material-icons">monetization_on</i></span>
+                            </div>
+                            <div class="col-lg-7 col-7 pl-0">
+                                <div>
+                                    <h2 class="col-green">
+                                        <span id="TotalPendingMRF">0</span>
+                                    </h2>
+                                    <p>Pending MRF Approval</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon m-b-10">
+                            <canvas id="infoboxChart5"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-5 col-5">
+                                <span class="info-box-icon"><i class="material-icons">work</i></span>
+                            </div>
+                            <div class="col-lg-7 col-7">
+                                <div>
+                                    <h2 class="col-purple">
+                                        <span id="PendingHiring">0</span>
+                                    </h2>
+                                    <p>Pending Hiring</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon m-b-10">
+                            <canvas id="infoboxChart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6">
+                <div class="card">
+                    <div class="card-body" style="max-height: 173px;">
+                        <div class="row">
+                            <div class="col-lg-5 col-5">
+                                <span class="info-box-icon"><i class="material-icons">group</i></span>
+                            </div>
+                            <div class="col-lg-7 col-7">
+                                <div>
+                                    <h2 class="col-green">
+                                        <span id="TolalNewWorkforceCount30Days">0</span>
+                                    </h2>
+                                    <p>New Workforce (Current Month)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon m-b-10">
+                            <canvas id="infoboxChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-5 col-5">
+                                <span class="info-box-icon"><i class="material-icons">local_activity</i></span>
+                            </div>
+                            <div class="col-lg-7 col-7">
+                                <div>
+                                    <h2 class="col-orange">
+                                        <span id="TotalOnTraining">0</span>
+                                    </h2>
+                                    <p>On Training</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon m-b-10">
+                            <canvas id="infoboxChart3"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-5 col-5">
+                                <span class="info-box-icon"><i class="material-icons">monetization_on</i></span>
+                            </div>
+                            <div class="col-lg-7 col-7 pl-0">
+                                <div>
+                                    <h2 class="col-cyan">
+                                        <span id="TolalWorkforceCount">0</span>
+                                    </h2>
+                                    <p>Total Workforce</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon m-b-10">
+                            <canvas id="infoboxChart4"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-4 col-sm-6 admins">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-5 col-5">
+                                <span class="info-box-icon"><i class="material-icons">monetization_on</i></span>
+                            </div>
+                            <div class="col-lg-7 col-7 pl-0">
+                                <div>
+                                    <h2 class="col-cyan">
+                                        <span id="TolalEXITCount">0</span>
+                                    </h2>
+                                    <p>Total Exit Request</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon m-b-10">
+                            <canvas id="infoboxChart7"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6 admins" >
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-5 col-5">
+                                <span class="info-box-icon"><i class="material-icons">monetization_on</i></span>
+                            </div>
+                            <div class="col-lg-7 col-7 pl-0">
+                                <div>
+                                    <h2 class="col-cyan">
+                                        <span id="TolalTransferCount">0</span>
+                                    </h2>
+                                    <p>Total Transfer Request</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon m-b-10">
+                            <canvas id="infoboxChart8"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Retirement </strong> Alert
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                                   role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="#" onClick="return false;">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table id="tblData" class="display table table-bordered table-checkable order-column m-t-20 width-per-100">
+                                <thead>
+                                    <tr style="background: #29c1c9;color:white;font-weight:400!important">
+                                        <td>S No.</td>
+                                        <td>Employee Code</td>
+                                        <td>Worker's Name</td>
+                                        <td>Bio-Metric Code</td>
+                                        <td>Department</td>
+                                        <td>Sub Department</td>
+                                        <td>Joining Date</td>
+                                        <td>Retirement Date</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Salary</strong> Processed
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                                   role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="#" onClick="return false;">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="recent-report__chart" id="barChartId">
+                            <canvas id="desktop-chart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Salary</strong> Processed
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                                   role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="#" onClick="return false;">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="recent-report__chart">
+                            <div id="echart_graph_line" class="chartsh"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Content/assets/js/pages/index.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#DEPARTMENT_ID').find('option').not(':first').remove();
+        $('#SUBDEPARTMENT_ID').find('option').not(':first').remove();
+
+        GetDashboardData();
+    });
+    function onDepartmentChange() {
+
+        var departmentId = $("#DEPARTMENT_ID option:selected").val();
+        $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + departmentId, function (data) {
+            $('#SUBDEPARTMENT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#SUBDEPARTMENT_ID').append($('<option>', {
+                    value: item.SUBDEPT_ID,
+                    text: item.SUBDEPT_NAME
+                }));
+            });
+            $('#SUBDEPARTMENT_ID').formSelect();
+            GetDashboardData();
+        });
+    }
+
+    $("#SUBDEPARTMENT_ID").change(function () {
+        GetDashboardData();
+    });
+
+    function onBuildingChange() {
+        var buildingId = $("#BUILDING_ID option:selected").val();
+        $.get('/ManPowerRequest/GetFloorByBuildingId?buildingId=' + buildingId, function (data) {
+            $('#DEPARTMENT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#DEPARTMENT_ID').append($('<option>', {
+                    value: item.DEPT_ID,
+                    text: item.DEPT_NAME
+                }));
+            });
+            $('#DEPARTMENT_ID').formSelect();
+        });
+        GetDashboardData();
+    }
+</script>

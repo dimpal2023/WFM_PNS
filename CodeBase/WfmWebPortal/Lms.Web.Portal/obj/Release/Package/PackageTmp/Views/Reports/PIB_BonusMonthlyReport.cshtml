@@ -1,0 +1,310 @@
+﻿@model Wfm.App.Core.Model.WorkforceAttendance
+
+@{
+    ViewBag.Title = "Reports - Production Incentive Bonus Monthly Report";
+}
+
+<style>
+    .bold {
+        font-weight: bold
+    }
+
+    .table-bordered tr td {
+        text-align: center;
+    }
+
+    .table-bordered tbody td, .table-bordered thead td {
+        border-width: 2px;
+    }
+</style>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Production Incentive Bonus Monthly Report</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/FaultyAttendanceList">
+                                <i class="fas fa-layer-group"></i> Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                                        @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.DEPT_ID, "Department", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.DEPT_ID, ViewBag.Dept as SelectList, "-- Select--", new { id = "DEPT_ID", required = "true", @onchange = "onDepartmentChange()" })
+                                        @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                        @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>
+    (), "All", new { required = "true", @onchange = "changeOnSubDept()" })
+                                        @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.WF_EMP_TYPE, "Workforce Type", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.WF_EMP_TYPE, new SelectList(ViewBag.EmployeeTypes, "Value", "Text"), "--Select--", htmlAttributes: new { id = "WF_EMP_TYPE", required = "required" })
+                                        @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.EMPLOYMENT_TYPE, "Employment Type")
+                                        @Html.DropDownListFor(x => x.EMPLOYMENT_TYPE, new SelectList(ViewBag.EmpSal_TypeList, "Value", "Text"), "All", htmlAttributes: new { id = "EMPLOYMENT_TYPE", required = "required" })
+                                        @Html.ValidationMessageFor(m => m.EMPLOYMENT_TYPE)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @*<div id="emplyeedll">*@
+                                        <label for="password_2">Workforce Name</label>
+                                        @Html.TextBoxFor(x => x.EMP_NAME, new { id = "EMP_NAME", placeholder = "Workforce Name", required = "true" })
+                                        @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                        @Html.HiddenFor(x => x.WF_ID, new { id = "WF_ID" })
+
+                                        @*</div>*@
+                                        @Html.ValidationMessageFor(m => m.WF_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.MONTH_ID, "Month", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.MONTH_ID, new SelectList(ViewBag.Months, "Value", "Text"), "-- Select--", htmlAttributes: new { id = "MONTH_ID", required = true })
+                                        @Html.ValidationMessageFor(m => m.MONTH_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.YEAR_ID, "Year", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.YEAR_ID, new SelectList(ViewBag.Years, "Value", "Text"), "-- Select--", htmlAttributes: new { id = "YEAR_ID", required = true })
+                                        @Html.ValidationMessageFor(m => m.YEAR_ID)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row clearfix col-sm-12">
+                            <div class="form-group text-center">
+                                <button type="button" id="workforce-loadattendance" class="btn btn-primary waves-effect m-r-15" onclick="GetReport()">Load Data</button>
+                             
+
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <div id="particalDiv">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="particalDivAll" style="display:none">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>*@
+<script type="text/javascript">
+    var tablesToExcel = (function ($) {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+            , html_start = `<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">`
+            , template_ExcelWorksheet = `<x:ExcelWorksheet><x:Name>{SheetName}</x:Name><x:WorksheetSource HRef="sheet{SheetIndex}.htm"/></x:ExcelWorksheet>`
+            , template_ListWorksheet = `<o:File HRef="sheet{SheetIndex}.htm"/>`
+            , template_HTMLWorksheet = `
+------=_NextPart_dummy
+Content-Location: sheet{SheetIndex}.htm
+Content-Type: text/html; charset=windows-1252
+
+` + html_start + `
+<head>
+            <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+            <link id="Main-File" rel="Main-File" href="../WorkBook.htm">
+            <link rel="File-List" href="filelist.xml">
+</head>
+<body><table>{SheetContent}</table></body>
+</html>`
+            , template_WorkBook = `MIME-Version: 1.0
+X-Document-Type: Workbook
+Content-Type: multipart/related; boundary="----=_NextPart_dummy"
+
+------=_NextPart_dummy
+Content-Location: WorkBook.htm
+Content-Type: text/html; charset=windows-1252
+
+` + html_start + `
+<head>
+<meta name="Excel Workbook Frameset">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="File-List" href="filelist.xml">
+<!--[if gte mso 9]><xml>
+         <x:ExcelWorkbook>
+            <x:ExcelWorksheets>{ExcelWorksheets}</x:ExcelWorksheets>
+            <x:ActiveSheet>0</x:ActiveSheet>
+         </x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<frameset>
+            <frame src="sheet0.htm" name="frSheet">
+            <noframes><body><p>This page uses frames, but your browser does not support them.</p></body></noframes>
+</frameset>
+</html>
+{HTMLWorksheets}
+Content-Location: filelist.xml
+Content-Type: text/xml; charset="utf-8"
+
+<xml xmlns:o="urn:schemas-microsoft-com:office:office">
+            <o:MainFile HRef="../WorkBook.htm"/>
+            {ListWorksheets}
+            <o:File HRef="filelist.xml"/>
+</xml>
+------=_NextPart_dummy--
+`
+            , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+            , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+        return function (tables, filename) {
+            var context_WorkBook = {
+                ExcelWorksheets: ''
+                , HTMLWorksheets: ''
+                , ListWorksheets: ''
+            };
+            var tables = jQuery(tables);
+            debugger
+            $.each(tables, function (SheetIndex) {
+                var $table = $(this);
+                var SheetName = $table.attr('data-SheetName');
+                if ($.trim(SheetName) === '') {
+                    SheetName = 'Sheet' + SheetIndex;
+                    SheetName = $(this).id;
+                }
+                context_WorkBook.ExcelWorksheets += format(template_ExcelWorksheet, {
+                    SheetIndex: SheetIndex
+                    , SheetName: SheetName
+                });
+                context_WorkBook.HTMLWorksheets += format(template_HTMLWorksheet, {
+                    SheetIndex: SheetIndex
+                    , SheetContent: $table.html()
+                });
+                context_WorkBook.ListWorksheets += format(template_ListWorksheet, {
+                    SheetIndex: SheetIndex
+                });
+            });
+
+            var link = document.createElement("A");
+            link.href = uri + base64(format(template_WorkBook, context_WorkBook));
+            link.download = filename || 'Workbook.xls';
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    })(jQuery);
+
+</script>
+
+<script type="text/javascript">
+     $("#EMP_NAME").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("LoadWorkforceByWFType_N", "Workforce")',
+                datatype: "json",
+                data: {
+                    BUILDING_ID: $("#BUILDING_ID").val(),
+                    query: $('#EMP_NAME').val(),
+                    deptId: $("#DEPT_ID").val(),
+                    sub_dept_id: $("#SUBDEPT_ID").val() || '00000000-0000-0000-0000-000000000000',
+                    emp_type_id: $('#WF_EMP_TYPE').val(),
+                    EMPLOYMENT_TYPE: $('#EMPLOYMENT_TYPE').val()||0
+                },
+                success: function (data) {
+                    if (!data.length) {
+                        var result = [{ label: "no results", value: response.term }];
+                        response(result);
+                    }
+                    else {
+                        response($.map(data, function (val, item) {
+                            return {
+                                label: val.Name,
+                                value: val.Name,
+                                empId: val.ID
+                            }
+                        }))
+                    }
+                }
+            })
+        },
+        select: function (event, ui) {
+            $("#WF_ID").val(ui.item.empId);
+
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+
+    $("#WF_EMP_TYPE").change(function () {
+        $('#EMPLOYMENT_TYPE').val('');
+        $('#EMPLOYMENT_TYPE').formSelect();
+        $("#EMP_NAME").val('');
+    })
+
+  
+
+</script>
+
+<script src="~/Content/assets/js/pages/Reports/PIB_BonusMonthlyReport.js?v=1"></script>

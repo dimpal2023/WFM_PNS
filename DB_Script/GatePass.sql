@@ -1,0 +1,6 @@
+select * from TAB_GATEPASS where STATUS=1 and CONVERT(date,START_DATE)<CONVERT(date,GETDATE())
+
+--update TAB_GATEPASS set STATUS=0 where STATUS=1 and CONVERT(date,START_DATE)<CONVERT(date,GETDATE())
+
+
+

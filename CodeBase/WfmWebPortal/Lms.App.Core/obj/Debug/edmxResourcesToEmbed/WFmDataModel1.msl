@@ -1,0 +1,959 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WFMSUMITModelStoreContainer" CdmEntityContainer="WFMSUMITEntities1">
+    <EntitySetMapping Name="TAB_AGENCY_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_AGENCY_MASTER">
+        <MappingFragment StoreEntitySet="TAB_AGENCY_MASTER">
+          <ScalarProperty Name="AGENCY_ID" ColumnName="AGENCY_ID" />
+          <ScalarProperty Name="AGENCY_NAME" ColumnName="AGENCY_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="AGENCY_ADDRESS" ColumnName="AGENCY_ADDRESS" />
+          <ScalarProperty Name="AUTTHENTICATED_PERSON_NAME" ColumnName="AUTTHENTICATED_PERSON_NAME" />
+          <ScalarProperty Name="AUTHENTICATED_PERSON_NUM" ColumnName="AUTHENTICATED_PERSON_NUM" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_ALL_MAIL">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_ALL_MAIL">
+        <MappingFragment StoreEntitySet="TAB_ALL_MAIL">
+          <ScalarProperty Name="MAIL_SEQ" ColumnName="MAIL_SEQ" />
+          <ScalarProperty Name="TO_MAIL" ColumnName="TO_MAIL" />
+          <ScalarProperty Name="CC_MAIL" ColumnName="CC_MAIL" />
+          <ScalarProperty Name="MAIL_CONTENT" ColumnName="MAIL_CONTENT" />
+          <ScalarProperty Name="MAIL_INSERT_DATE" ColumnName="MAIL_INSERT_DATE" />
+          <ScalarProperty Name="MAIL_SENT_DATE" ColumnName="MAIL_SENT_DATE" />
+          <ScalarProperty Name="MAIL_FLAG" ColumnName="MAIL_FLAG" />
+          <ScalarProperty Name="MAIL_REMARK" ColumnName="MAIL_REMARK" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_ALL_SMS">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_ALL_SMS">
+        <MappingFragment StoreEntitySet="TAB_ALL_SMS">
+          <ScalarProperty Name="SMS_SEQ" ColumnName="SMS_SEQ" />
+          <ScalarProperty Name="MOBILE_NO" ColumnName="MOBILE_NO" />
+          <ScalarProperty Name="SMS_TEXT" ColumnName="SMS_TEXT" />
+          <ScalarProperty Name="SMS_INSERT_DATE" ColumnName="SMS_INSERT_DATE" />
+          <ScalarProperty Name="SMS_SENT_DATE" ColumnName="SMS_SENT_DATE" />
+          <ScalarProperty Name="SMS_FLAG" ColumnName="SMS_FLAG" />
+          <ScalarProperty Name="SMS_REMARK" ColumnName="SMS_REMARK" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_ALL_WHATSAPP">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_ALL_WHATSAPP">
+        <MappingFragment StoreEntitySet="TAB_ALL_WHATSAPP">
+          <ScalarProperty Name="WHATSAPP_SEQ" ColumnName="WHATSAPP_SEQ" />
+          <ScalarProperty Name="MOBILE_NO" ColumnName="MOBILE_NO" />
+          <ScalarProperty Name="SMS_TEXT" ColumnName="SMS_TEXT" />
+          <ScalarProperty Name="SMS_INSERT_DATE" ColumnName="SMS_INSERT_DATE" />
+          <ScalarProperty Name="SMS_SENT_DATE" ColumnName="SMS_SENT_DATE" />
+          <ScalarProperty Name="SMS_FLAG" ColumnName="SMS_FLAG" />
+          <ScalarProperty Name="SMS_REMARK" ColumnName="SMS_REMARK" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_BANK_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_BANK_MASTER">
+        <MappingFragment StoreEntitySet="TAB_BANK_MASTER">
+          <ScalarProperty Name="BANK_ID" ColumnName="BANK_ID" />
+          <ScalarProperty Name="BANK_NAME" ColumnName="BANK_NAME" />
+          <ScalarProperty Name="COMPANY_NAME" ColumnName="COMPANY_NAME" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_BIOMETRIC">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_BIOMETRIC">
+        <MappingFragment StoreEntitySet="TAB_BIOMETRIC">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WORKFORCE_ID" ColumnName="WORKFORCE_ID" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="BIOMETRIC_CODE" ColumnName="BIOMETRIC_CODE" />
+          <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+          <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+          <ScalarProperty Name="DEVICEID" ColumnName="DEVICEID" />
+          <ScalarProperty Name="ATTENDANCE_DATE" ColumnName="ATTENDANCE_DATE" />
+          <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+          <ScalarProperty Name="SHIFT_ID" ColumnName="SHIFT_ID" />
+          <ScalarProperty Name="SHIFT_STARTTIME" ColumnName="SHIFT_STARTTIME" />
+          <ScalarProperty Name="SHIFT_ENDTIME" ColumnName="SHIFT_ENDTIME" />
+          <ScalarProperty Name="SHIFT_BREAK1STARTTIME" ColumnName="SHIFT_BREAK1STARTTIME" />
+          <ScalarProperty Name="SHIFT_BREAK1ENDTIME" ColumnName="SHIFT_BREAK1ENDTIME" />
+          <ScalarProperty Name="INSERTED_ON" ColumnName="INSERTED_ON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_BUILDING_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_BUILDING_MASTER">
+        <MappingFragment StoreEntitySet="TAB_BUILDING_MASTER">
+          <ScalarProperty Name="BUILDING_ID" ColumnName="BUILDING_ID" />
+          <ScalarProperty Name="BUILDING_NAME" ColumnName="BUILDING_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="BUILDING_ADDRESS" ColumnName="BUILDING_ADDRESS" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_COMPANY_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_COMPANY_MASTER">
+        <MappingFragment StoreEntitySet="TAB_COMPANY_MASTER">
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="COMPANY_NAME" ColumnName="COMPANY_NAME" />
+          <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_DEPARTMENT_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_DEPARTMENT_MASTER">
+        <MappingFragment StoreEntitySet="TAB_DEPARTMENT_MASTER">
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="DEPT_NAME" ColumnName="DEPT_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="DEPT_HEAD_ID" ColumnName="DEPT_HEAD_ID" />
+          <ScalarProperty Name="DEPT_HEAD_NAME" ColumnName="DEPT_HEAD_NAME" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_EMP_STATUS_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_EMP_STATUS_MASTER">
+        <MappingFragment StoreEntitySet="TAB_EMP_STATUS_MASTER">
+          <ScalarProperty Name="EMP_STATUS_ID" ColumnName="EMP_STATUS_ID" />
+          <ScalarProperty Name="EMP_STATUS" ColumnName="EMP_STATUS" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_EMPL_TYPE_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_EMPL_TYPE_MASTER">
+        <MappingFragment StoreEntitySet="TAB_EMPL_TYPE_MASTER">
+          <ScalarProperty Name="EMP_TYPE_ID" ColumnName="EMP_TYPE_ID" />
+          <ScalarProperty Name="EMP_TYPE" ColumnName="EMP_TYPE" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_FLOOR_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_FLOOR_MASTER">
+        <MappingFragment StoreEntitySet="TAB_FLOOR_MASTER">
+          <ScalarProperty Name="FLOOR_ID" ColumnName="FLOOR_ID" />
+          <ScalarProperty Name="FLOOR_NAME" ColumnName="FLOOR_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="BUILDING_ID" ColumnName="BUILDING_ID" />
+          <ScalarProperty Name="FLOOR_INCHARGE_ID" ColumnName="FLOOR_INCHARGE_ID" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_GATEPASS">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_GATEPASS">
+        <MappingFragment StoreEntitySet="TAB_GATEPASS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WORKFORCE_ID" ColumnName="WORKFORCE_ID" />
+          <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+          <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+          <ScalarProperty Name="OUT_TIME" ColumnName="OUT_TIME" />
+          <ScalarProperty Name="IN_TIME" ColumnName="IN_TIME" />
+          <ScalarProperty Name="ACTUAL_OUTTIME" ColumnName="ACTUAL_OUTTIME" />
+          <ScalarProperty Name="ACTUAL_INTIME" ColumnName="ACTUAL_INTIME" />
+          <ScalarProperty Name="PURPOSE" ColumnName="PURPOSE" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_HOLIDAY">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_HOLIDAY">
+        <MappingFragment StoreEntitySet="TAB_HOLIDAY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HOLIDAY_TITLE" ColumnName="HOLIDAY_TITLE" />
+          <ScalarProperty Name="HOLIDAY_DATE" ColumnName="HOLIDAY_DATE" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_ITEM_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_ITEM_MASTER">
+        <MappingFragment StoreEntitySet="TAB_ITEM_MASTER">
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="ITEM_CODE" ColumnName="ITEM_CODE" />
+          <ScalarProperty Name="ITEM_NAME" ColumnName="ITEM_NAME" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_ITEM_OPERATION_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_ITEM_OPERATION_MASTER">
+        <MappingFragment StoreEntitySet="TAB_ITEM_OPERATION_MASTER">
+          <ScalarProperty Name="UNIQUE_OPERATION_ID" ColumnName="UNIQUE_OPERATION_ID" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
+          <ScalarProperty Name="RATE" ColumnName="RATE" />
+          <ScalarProperty Name="OPERATION" ColumnName="OPERATION" />
+          <ScalarProperty Name="PERCENTAGE" ColumnName="PERCENTAGE" />
+          <ScalarProperty Name="RATE_APPLIED_DATE" ColumnName="RATE_APPLIED_DATE" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_LEVEL_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_LEVEL_MASTER">
+        <MappingFragment StoreEntitySet="TAB_LEVEL_MASTER">
+          <ScalarProperty Name="LEVEL_ID" ColumnName="LEVEL_ID" />
+          <ScalarProperty Name="LEVEL_NAME" ColumnName="LEVEL_NAME" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_LOGIN_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_LOGIN_MASTER">
+        <MappingFragment StoreEntitySet="TAB_LOGIN_MASTER">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="USER_LOGIN_ID" ColumnName="USER_LOGIN_ID" />
+          <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="MAIL_ID" ColumnName="MAIL_ID" />
+          <ScalarProperty Name="MOBILE_NO" ColumnName="MOBILE_NO" />
+          <ScalarProperty Name="CURRENT_PASSWORD" ColumnName="CURRENT_PASSWORD" />
+          <ScalarProperty Name="LAST_LOGIN_DATE" ColumnName="LAST_LOGIN_DATE" />
+          <ScalarProperty Name="LAST_LOGIN_IP" ColumnName="LAST_LOGIN_IP" />
+          <ScalarProperty Name="WRONG_ATTEMP_COUNT" ColumnName="WRONG_ATTEMP_COUNT" />
+          <ScalarProperty Name="PASSWORD_CHANGE_DATE" ColumnName="PASSWORD_CHANGE_DATE" />
+          <ScalarProperty Name="PASSWORD_EXPIRY_DAY" ColumnName="PASSWORD_EXPIRY_DAY" />
+          <ScalarProperty Name="PASSWORD1" ColumnName="PASSWORD1" />
+          <ScalarProperty Name="PASSWORD2" ColumnName="PASSWORD2" />
+          <ScalarProperty Name="PASSWORD3" ColumnName="PASSWORD3" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_MARITAL_STATUS_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_MARITAL_STATUS_MASTER">
+        <MappingFragment StoreEntitySet="TAB_MARITAL_STATUS_MASTER">
+          <ScalarProperty Name="MARITAL_ID" ColumnName="MARITAL_ID" />
+          <ScalarProperty Name="MARITAL_NAME" ColumnName="MARITAL_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_MENU">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_MENU">
+        <MappingFragment StoreEntitySet="TAB_MENU">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="ICONCLASS" ColumnName="ICONCLASS" />
+          <ScalarProperty Name="CONTROLLER_NAME" ColumnName="CONTROLLER_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_MENU_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_MENU_MASTER">
+        <MappingFragment StoreEntitySet="TAB_MENU_MASTER">
+          <ScalarProperty Name="MENU_ID" ColumnName="MENU_ID" />
+          <ScalarProperty Name="MENU_NAME" ColumnName="MENU_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_MENU_ROLE_MAPPING">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_MENU_ROLE_MAPPING">
+        <MappingFragment StoreEntitySet="TAB_MENU_ROLE_MAPPING">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MENU_ID" ColumnName="MENU_ID" />
+          <ScalarProperty Name="SUBMENU_ID" ColumnName="SUBMENU_ID" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_MRF">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_MRF">
+        <MappingFragment StoreEntitySet="TAB_MRF">
+          <ScalarProperty Name="MRP_INETRNAL_ID" ColumnName="MRP_INETRNAL_ID" />
+          <ScalarProperty Name="MRF_ID" ColumnName="MRF_ID" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="REC_TYPE" ColumnName="REC_TYPE" />
+          <ScalarProperty Name="WORKFLOW_ID" ColumnName="WORKFLOW_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="MRF_STATUS" ColumnName="MRF_STATUS" />
+          <ScalarProperty Name="FINAL_ACTION_DATE" ColumnName="FINAL_ACTION_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_MRF_DETAILS">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_MRF_DETAILS">
+        <MappingFragment StoreEntitySet="TAB_MRF_DETAILS">
+          <ScalarProperty Name="TAB_MRF_DETAIL_ID" ColumnName="TAB_MRF_DETAIL_ID" />
+          <ScalarProperty Name="MRP_INETRNAL_ID" ColumnName="MRP_INETRNAL_ID" />
+          <ScalarProperty Name="BUILDING_ID" ColumnName="BUILDING_ID" />
+          <ScalarProperty Name="FLOOR_ID" ColumnName="FLOOR_ID" />
+          <ScalarProperty Name="SKILL_ID" ColumnName="SKILL_ID" />
+          <ScalarProperty Name="WF_DESIGNATION_ID" ColumnName="WF_DESIGNATION_ID" />
+          <ScalarProperty Name="WF_EMP_TYPE" ColumnName="WF_EMP_TYPE" />
+          <ScalarProperty Name="WOKFORCE_QUANTITY" ColumnName="WOKFORCE_QUANTITY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_REC_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_REC_MASTER">
+        <MappingFragment StoreEntitySet="TAB_REC_MASTER">
+          <ScalarProperty Name="REC_TYPE" ColumnName="REC_TYPE" />
+          <ScalarProperty Name="REC_NAME" ColumnName="REC_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="WORKFLOW_ID" ColumnName="WORKFLOW_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_ROLE_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_ROLE_MASTER">
+        <MappingFragment StoreEntitySet="TAB_ROLE_MASTER">
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_SHIFT_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_SHIFT_MASTER">
+        <MappingFragment StoreEntitySet="TAB_SHIFT_MASTER">
+          <ScalarProperty Name="SHIFT_ID" ColumnName="SHIFT_ID" />
+          <ScalarProperty Name="SHIFT_NAME" ColumnName="SHIFT_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="SHIFT_START_TIME" ColumnName="SHIFT_START_TIME" />
+          <ScalarProperty Name="SHIFT_END_TIME" ColumnName="SHIFT_END_TIME" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_SKILL_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_SKILL_MASTER">
+        <MappingFragment StoreEntitySet="TAB_SKILL_MASTER">
+          <ScalarProperty Name="SKILL_ID" ColumnName="SKILL_ID" />
+          <ScalarProperty Name="SKILL_NAME" ColumnName="SKILL_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="SKILL_DETAILS" ColumnName="SKILL_DETAILS" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_STATE_CITY_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_STATE_CITY_MASTER">
+        <MappingFragment StoreEntitySet="TAB_STATE_CITY_MASTER">
+          <ScalarProperty Name="STATE_ID" ColumnName="STATE_ID" />
+          <ScalarProperty Name="CITY_ID" ColumnName="CITY_ID" />
+          <ScalarProperty Name="CITY_NAME" ColumnName="CITY_NAME" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_STATE_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_STATE_MASTER">
+        <MappingFragment StoreEntitySet="TAB_STATE_MASTER">
+          <ScalarProperty Name="STATE_ID" ColumnName="STATE_ID" />
+          <ScalarProperty Name="STATE_NAME" ColumnName="STATE_NAME" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_SUBMENU">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_SUBMENU">
+        <MappingFragment StoreEntitySet="TAB_SUBMENU">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MENU_ID" ColumnName="MENU_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="CONTROLLER_NAME" ColumnName="CONTROLLER_NAME" />
+          <ScalarProperty Name="ACTION_NAME" ColumnName="ACTION_NAME" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_USER_ROLE_MAPPING">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_USER_ROLE_MAPPING">
+        <MappingFragment StoreEntitySet="TAB_USER_ROLE_MAPPING">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WF_DESIGNATION_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WF_DESIGNATION_MASTER">
+        <MappingFragment StoreEntitySet="TAB_WF_DESIGNATION_MASTER">
+          <ScalarProperty Name="WF_DESIGNATION_ID" ColumnName="WF_DESIGNATION_ID" />
+          <ScalarProperty Name="WF_DESIGNATION_NAME" ColumnName="WF_DESIGNATION_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORFORCE_TYPE">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORFORCE_TYPE">
+        <MappingFragment StoreEntitySet="TAB_WORFORCE_TYPE">
+          <ScalarProperty Name="WF_EMP_TYPE" ColumnName="WF_EMP_TYPE" />
+          <ScalarProperty Name="EMP_TYPE" ColumnName="EMP_TYPE" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFLOW_MAPPING_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFLOW_MAPPING_MASTER">
+        <MappingFragment StoreEntitySet="TAB_WORKFLOW_MAPPING_MASTER">
+          <ScalarProperty Name="WORKFLOWMAPPING_ID" ColumnName="WORKFLOWMAPPING_ID" />
+          <ScalarProperty Name="WORKFLOW_ID" ColumnName="WORKFLOW_ID" />
+          <ScalarProperty Name="LEVEL_ID" ColumnName="LEVEL_ID" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="DESGINATED_AUTHORITY_EMP_ID" ColumnName="DESGINATED_AUTHORITY_EMP_ID" />
+          <ScalarProperty Name="AUTO_APPROVE" ColumnName="AUTO_APPROVE" />
+          <ScalarProperty Name="AUTO_APPROVE_DAY" ColumnName="AUTO_APPROVE_DAY" />
+          <ScalarProperty Name="AUTO_REJECT" ColumnName="AUTO_REJECT" />
+          <ScalarProperty Name="AUTO_REJECT_DAY" ColumnName="AUTO_REJECT_DAY" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFLOW_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFLOW_MASTER">
+        <MappingFragment StoreEntitySet="TAB_WORKFLOW_MASTER">
+          <ScalarProperty Name="WORKFLOW_ID" ColumnName="WORKFLOW_ID" />
+          <ScalarProperty Name="WORKFLOW_NAME" ColumnName="WORKFLOW_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="WORKFLOW_DETAILS" ColumnName="WORKFLOW_DETAILS" />
+          <ScalarProperty Name="NUMBER_OF_LEVEL" ColumnName="NUMBER_OF_LEVEL" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFORCE">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFORCE">
+        <MappingFragment StoreEntitySet="TAB_WORKFORCE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="MIDDLE_NAME" ColumnName="MIDDLE_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="FATHER_NAME" ColumnName="FATHER_NAME" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PHONE_NO" ColumnName="PHONE_NO" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFORCE_DAILYWORK">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFORCE_DAILYWORK">
+        <MappingFragment StoreEntitySet="TAB_WORKFORCE_DAILYWORK">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WF_ID" ColumnName="WF_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="WORK_DATE" ColumnName="WORK_DATE" />
+          <ScalarProperty Name="UNIQUE_OPERATION_ID" ColumnName="UNIQUE_OPERATION_ID" />
+          <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFORCE_EDU_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFORCE_EDU_MASTER">
+        <MappingFragment StoreEntitySet="TAB_WORKFORCE_EDU_MASTER">
+          <ScalarProperty Name="WF_EDUCATION_ID" ColumnName="WF_EDUCATION_ID" />
+          <ScalarProperty Name="WF_COURSE_NAME" ColumnName="WF_COURSE_NAME" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFORCE_LEAVES">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFORCE_LEAVES">
+        <MappingFragment StoreEntitySet="TAB_WORKFORCE_LEAVES">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WF_ID" ColumnName="WF_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="FROM_DATE" ColumnName="FROM_DATE" />
+          <ScalarProperty Name="TO_DATE" ColumnName="TO_DATE" />
+          <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFORCE_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFORCE_MASTER">
+        <MappingFragment StoreEntitySet="TAB_WORKFORCE_MASTER">
+          <ScalarProperty Name="WF_ID" ColumnName="WF_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="WF_EMP_TYPE" ColumnName="WF_EMP_TYPE" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="AGENCY_ID" ColumnName="AGENCY_ID" />
+          <ScalarProperty Name="BIOMETRIC_CODE" ColumnName="BIOMETRIC_CODE" />
+          <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+          <ScalarProperty Name="FATHER_NAME" ColumnName="FATHER_NAME" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+          <ScalarProperty Name="NATIONALITY" ColumnName="NATIONALITY" />
+          <ScalarProperty Name="WF_EDUCATION_ID" ColumnName="WF_EDUCATION_ID" />
+          <ScalarProperty Name="MARITAL_ID" ColumnName="MARITAL_ID" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="DOJ_AS_PER_EPF" ColumnName="DOJ_AS_PER_EPF" />
+          <ScalarProperty Name="WF_DESIGNATION_ID" ColumnName="WF_DESIGNATION_ID" />
+          <ScalarProperty Name="SKILL_ID" ColumnName="SKILL_ID" />
+          <ScalarProperty Name="EMP_TYPE_ID" ColumnName="EMP_TYPE_ID" />
+          <ScalarProperty Name="MOBILE_NO" ColumnName="MOBILE_NO" />
+          <ScalarProperty Name="ALTERNATE_NO" ColumnName="ALTERNATE_NO" />
+          <ScalarProperty Name="EMAIL_ID" ColumnName="EMAIL_ID" />
+          <ScalarProperty Name="PRESENT_ADDRESS" ColumnName="PRESENT_ADDRESS" />
+          <ScalarProperty Name="PRESENT_ADDRESS_CITY" ColumnName="PRESENT_ADDRESS_CITY" />
+          <ScalarProperty Name="PRESENT_ADDRESS_STATE" ColumnName="PRESENT_ADDRESS_STATE" />
+          <ScalarProperty Name="PRESENT_ADDRESS_PIN" ColumnName="PRESENT_ADDRESS_PIN" />
+          <ScalarProperty Name="PERMANENT_ADDRESS" ColumnName="PERMANENT_ADDRESS" />
+          <ScalarProperty Name="PERMANENT_ADDRESS_CITY" ColumnName="PERMANENT_ADDRESS_CITY" />
+          <ScalarProperty Name="PERMANENT_ADDRESS_STATE" ColumnName="PERMANENT_ADDRESS_STATE" />
+          <ScalarProperty Name="PERMANENT_ADDRESS_PIN" ColumnName="PERMANENT_ADDRESS_PIN" />
+          <ScalarProperty Name="AADHAR_NO" ColumnName="AADHAR_NO" />
+          <ScalarProperty Name="EMP_STATUS_ID" ColumnName="EMP_STATUS_ID" />
+          <ScalarProperty Name="IDENTIFICATION_MARK" ColumnName="IDENTIFICATION_MARK" />
+          <ScalarProperty Name="EXIT_DATE" ColumnName="EXIT_DATE" />
+          <ScalarProperty Name="EXIT_REASON" ColumnName="EXIT_REASON" />
+          <ScalarProperty Name="RETIREMMENT_DATE" ColumnName="RETIREMMENT_DATE" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="MRF_INTERNAL_ID" ColumnName="MRF_INTERNAL_ID" />
+          <ScalarProperty Name="REFERENCE_NAME" ColumnName="REFERENCE_NAME" />
+          <ScalarProperty Name="REFERENCE_ID" ColumnName="REFERENCE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFORCE_PHOTO_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFORCE_PHOTO_MASTER">
+        <MappingFragment StoreEntitySet="TAB_WORKFORCE_PHOTO_MASTER">
+          <ScalarProperty Name="WF_ID" ColumnName="WF_ID" />
+          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+          <ScalarProperty Name="EMP_SIGNATURE" ColumnName="EMP_SIGNATURE" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFORCE_SALARY">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFORCE_SALARY">
+        <MappingFragment StoreEntitySet="TAB_WORKFORCE_SALARY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WF_ID" ColumnName="WF_ID" />
+          <ScalarProperty Name="SALARY_MONTH" ColumnName="SALARY_MONTH" />
+          <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+          <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+          <ScalarProperty Name="PAID_DAYS" ColumnName="PAID_DAYS" />
+          <ScalarProperty Name="OVERTIME_DAYS" ColumnName="OVERTIME_DAYS" />
+          <ScalarProperty Name="TOTAL_LEAVE_TAKEN" ColumnName="TOTAL_LEAVE_TAKEN" />
+          <ScalarProperty Name="TOTAL_LEAVE_AVAILABLE" ColumnName="TOTAL_LEAVE_AVAILABLE" />
+          <ScalarProperty Name="LEAVE_ADJUSTED" ColumnName="LEAVE_ADJUSTED" />
+          <ScalarProperty Name="TOTAL_LEAVE_BALANCE" ColumnName="TOTAL_LEAVE_BALANCE" />
+          <ScalarProperty Name="BASIC_DA" ColumnName="BASIC_DA" />
+          <ScalarProperty Name="HRA" ColumnName="HRA" />
+          <ScalarProperty Name="SPECIAL_ALLOWANCES" ColumnName="SPECIAL_ALLOWANCES" />
+          <ScalarProperty Name="PRODUCTION_INCENTIVE_BONUS" ColumnName="PRODUCTION_INCENTIVE_BONUS" />
+          <ScalarProperty Name="PF" ColumnName="PF" />
+          <ScalarProperty Name="ESI" ColumnName="ESI" />
+          <ScalarProperty Name="TDS" ColumnName="TDS" />
+          <ScalarProperty Name="SHOP_FLOOR_FINE" ColumnName="SHOP_FLOOR_FINE" />
+          <ScalarProperty Name="OTHER_DEDUCTION" ColumnName="OTHER_DEDUCTION" />
+          <ScalarProperty Name="ADVANCE" ColumnName="ADVANCE" />
+          <ScalarProperty Name="OVERTIME_WAGES" ColumnName="OVERTIME_WAGES" />
+          <ScalarProperty Name="WORKINGDAY_WAGES" ColumnName="WORKINGDAY_WAGES" />
+          <ScalarProperty Name="TOTAL_WAGES" ColumnName="TOTAL_WAGES" />
+          <ScalarProperty Name="TOTAL_WAGES_AFTER_DEDUCTION" ColumnName="TOTAL_WAGES_AFTER_DEDUCTION" />
+          <ScalarProperty Name="EMPLOYER_EPF" ColumnName="EMPLOYER_EPF" />
+          <ScalarProperty Name="EMPLOYER_ESI" ColumnName="EMPLOYER_ESI" />
+          <ScalarProperty Name="ADMIN_CHARGES" ColumnName="ADMIN_CHARGES" />
+          <ScalarProperty Name="EDLI_CHARGES" ColumnName="EDLI_CHARGES" />
+          <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
+          <ScalarProperty Name="MODE_OF_PAYMENT" ColumnName="MODE_OF_PAYMENT" />
+          <ScalarProperty Name="PAID_STATUS" ColumnName="PAID_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs_Debug">
+      <EntityTypeMapping TypeName="WFMSUMITModel.Logs_Debug">
+        <MappingFragment StoreEntitySet="Logs_Debug">
+          <ScalarProperty Name="LogDebugId" ColumnName="LogDebugId" />
+          <ScalarProperty Name="LoggedDate" ColumnName="LoggedDate" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Namespace" ColumnName="Namespace" />
+          <ScalarProperty Name="Classname" ColumnName="Classname" />
+          <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs_Error">
+      <EntityTypeMapping TypeName="WFMSUMITModel.Logs_Error">
+        <MappingFragment StoreEntitySet="Logs_Error">
+          <ScalarProperty Name="LogErrorId" ColumnName="LogErrorId" />
+          <ScalarProperty Name="LoggedDate" ColumnName="LoggedDate" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Namespace" ColumnName="Namespace" />
+          <ScalarProperty Name="Classname" ColumnName="Classname" />
+          <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs_Fatal">
+      <EntityTypeMapping TypeName="WFMSUMITModel.Logs_Fatal">
+        <MappingFragment StoreEntitySet="Logs_Fatal">
+          <ScalarProperty Name="LogFatalId" ColumnName="LogFatalId" />
+          <ScalarProperty Name="LoggedDate" ColumnName="LoggedDate" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Namespace" ColumnName="Namespace" />
+          <ScalarProperty Name="Classname" ColumnName="Classname" />
+          <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs_Info">
+      <EntityTypeMapping TypeName="WFMSUMITModel.Logs_Info">
+        <MappingFragment StoreEntitySet="Logs_Info">
+          <ScalarProperty Name="LogInfoId" ColumnName="LogInfoId" />
+          <ScalarProperty Name="LoggedDate" ColumnName="LoggedDate" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Namespace" ColumnName="Namespace" />
+          <ScalarProperty Name="Classname" ColumnName="Classname" />
+          <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs_Trace">
+      <EntityTypeMapping TypeName="WFMSUMITModel.Logs_Trace">
+        <MappingFragment StoreEntitySet="Logs_Trace">
+          <ScalarProperty Name="LogTraceId" ColumnName="LogTraceId" />
+          <ScalarProperty Name="LoggedDate" ColumnName="LoggedDate" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Namespace" ColumnName="Namespace" />
+          <ScalarProperty Name="Classname" ColumnName="Classname" />
+          <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs_Warn">
+      <EntityTypeMapping TypeName="WFMSUMITModel.Logs_Warn">
+        <MappingFragment StoreEntitySet="Logs_Warn">
+          <ScalarProperty Name="LogWarnId" ColumnName="LogWarnId" />
+          <ScalarProperty Name="LoggedDate" ColumnName="LoggedDate" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Namespace" ColumnName="Namespace" />
+          <ScalarProperty Name="Classname" ColumnName="Classname" />
+          <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_ACTIVITY_DETAILS">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_ACTIVITY_DETAILS">
+        <MappingFragment StoreEntitySet="TAB_ACTIVITY_DETAILS">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="USER_OPERATION" ColumnName="USER_OPERATION" />
+          <ScalarProperty Name="PAGE_NAME" ColumnName="PAGE_NAME" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_BIOMETRIC_IMPORTHISTORY">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_BIOMETRIC_IMPORTHISTORY">
+        <MappingFragment StoreEntitySet="TAB_BIOMETRIC_IMPORTHISTORY">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RunDate" ColumnName="RunDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_ERROR_LOGS">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_ERROR_LOGS">
+        <MappingFragment StoreEntitySet="TAB_ERROR_LOGS">
+          <ScalarProperty Name="ErrorID" ColumnName="ErrorID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Db_User" ColumnName="Db_User" />
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="ErrorDateTime" ColumnName="ErrorDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_ROLE_MENU_MAPPING">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_ROLE_MENU_MAPPING">
+        <MappingFragment StoreEntitySet="TAB_ROLE_MENU_MAPPING">
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="MENU_ID" ColumnName="MENU_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WF_WORK_DETAILS">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WF_WORK_DETAILS">
+        <MappingFragment StoreEntitySet="TAB_WF_WORK_DETAILS">
+          <ScalarProperty Name="WF_ID" ColumnName="WF_ID" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="WORK_DATE" ColumnName="WORK_DATE" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="BUILDING_ID" ColumnName="BUILDING_ID" />
+          <ScalarProperty Name="FLOOR_ID" ColumnName="FLOOR_ID" />
+          <ScalarProperty Name="SHIFT_ID" ColumnName="SHIFT_ID" />
+          <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
+          <ScalarProperty Name="UNIQUE_OPERATION_ID" ColumnName="UNIQUE_OPERATION_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WF_WORK_DETAILS_OLD">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WF_WORK_DETAILS_OLD">
+        <MappingFragment StoreEntitySet="TAB_WF_WORK_DETAILS_OLD">
+          <ScalarProperty Name="WF_ID" ColumnName="WF_ID" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="WORK_DATE" ColumnName="WORK_DATE" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="BUILDING_ID" ColumnName="BUILDING_ID" />
+          <ScalarProperty Name="FLOOR_ID" ColumnName="FLOOR_ID" />
+          <ScalarProperty Name="SHIFT_ID" ColumnName="SHIFT_ID" />
+          <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
+          <ScalarProperty Name="UNIQUE_OPERATION_ID" ColumnName="UNIQUE_OPERATION_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFORCE_MASTER_OLD">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFORCE_MASTER_OLD">
+        <MappingFragment StoreEntitySet="TAB_WORKFORCE_MASTER_OLD">
+          <ScalarProperty Name="WF_ID" ColumnName="WF_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="WF_EMP_TYPE" ColumnName="WF_EMP_TYPE" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="AGENCY_ID" ColumnName="AGENCY_ID" />
+          <ScalarProperty Name="BIOMETRIC_CODE" ColumnName="BIOMETRIC_CODE" />
+          <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+          <ScalarProperty Name="FATHER_NAME" ColumnName="FATHER_NAME" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+          <ScalarProperty Name="NATIONALITY" ColumnName="NATIONALITY" />
+          <ScalarProperty Name="WF_EDUCATION_ID" ColumnName="WF_EDUCATION_ID" />
+          <ScalarProperty Name="MARITAL_ID" ColumnName="MARITAL_ID" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="DOJ_AS_PER_EPF" ColumnName="DOJ_AS_PER_EPF" />
+          <ScalarProperty Name="WF_DESIGNATION_ID" ColumnName="WF_DESIGNATION_ID" />
+          <ScalarProperty Name="SKILL_ID" ColumnName="SKILL_ID" />
+          <ScalarProperty Name="EMP_TYPE_ID" ColumnName="EMP_TYPE_ID" />
+          <ScalarProperty Name="MOBILE_NO" ColumnName="MOBILE_NO" />
+          <ScalarProperty Name="ALTERNATE_NO" ColumnName="ALTERNATE_NO" />
+          <ScalarProperty Name="EMAIL_ID" ColumnName="EMAIL_ID" />
+          <ScalarProperty Name="PRESENT_ADDRESS" ColumnName="PRESENT_ADDRESS" />
+          <ScalarProperty Name="PRESENT_ADDRESS_CITY" ColumnName="PRESENT_ADDRESS_CITY" />
+          <ScalarProperty Name="PRESENT_ADDRESS_STATE" ColumnName="PRESENT_ADDRESS_STATE" />
+          <ScalarProperty Name="PRESENT_ADDRESS_PIN" ColumnName="PRESENT_ADDRESS_PIN" />
+          <ScalarProperty Name="PERMANENT_ADDRESS" ColumnName="PERMANENT_ADDRESS" />
+          <ScalarProperty Name="PERMANENT_ADDRESS_CITY" ColumnName="PERMANENT_ADDRESS_CITY" />
+          <ScalarProperty Name="PERMANENT_ADDRESS_STATE" ColumnName="PERMANENT_ADDRESS_STATE" />
+          <ScalarProperty Name="PERMANENT_ADDRESS_PIN" ColumnName="PERMANENT_ADDRESS_PIN" />
+          <ScalarProperty Name="AADHAR_NO" ColumnName="AADHAR_NO" />
+          <ScalarProperty Name="EMP_STATUS_ID" ColumnName="EMP_STATUS_ID" />
+          <ScalarProperty Name="IDENTIFICATION_MARK" ColumnName="IDENTIFICATION_MARK" />
+          <ScalarProperty Name="EXIT_DATE" ColumnName="EXIT_DATE" />
+          <ScalarProperty Name="EXIT_REASON" ColumnName="EXIT_REASON" />
+          <ScalarProperty Name="RETIREMMENT_DATE" ColumnName="RETIREMMENT_DATE" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="MRF_INTERNAL_ID" ColumnName="MRF_INTERNAL_ID" />
+          <ScalarProperty Name="REFERENCE_NAME" ColumnName="REFERENCE_NAME" />
+          <ScalarProperty Name="REFERENCE_ID" ColumnName="REFERENCE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFORCE_SALARY_MASTER">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFORCE_SALARY_MASTER">
+        <MappingFragment StoreEntitySet="TAB_WORKFORCE_SALARY_MASTER">
+          <ScalarProperty Name="WF_ID" ColumnName="WF_ID" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="UAN_NO" ColumnName="UAN_NO" />
+          <ScalarProperty Name="PAN_CARD" ColumnName="PAN_CARD" />
+          <ScalarProperty Name="EPF_NO" ColumnName="EPF_NO" />
+          <ScalarProperty Name="ESIC_NO" ColumnName="ESIC_NO" />
+          <ScalarProperty Name="BANK_ID" ColumnName="BANK_ID" />
+          <ScalarProperty Name="BANK_IFSC" ColumnName="BANK_IFSC" />
+          <ScalarProperty Name="BANK_BRANCH" ColumnName="BANK_BRANCH" />
+          <ScalarProperty Name="BANK_ACCOUNT_NO" ColumnName="BANK_ACCOUNT_NO" />
+          <ScalarProperty Name="BASIC_DA" ColumnName="BASIC_DA" />
+          <ScalarProperty Name="HRA" ColumnName="HRA" />
+          <ScalarProperty Name="SPECIAL_ALLOWANCES" ColumnName="SPECIAL_ALLOWANCES" />
+          <ScalarProperty Name="GROSS" ColumnName="GROSS" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAB_WORKFORCE_SALARY_MASTER_OLD">
+      <EntityTypeMapping TypeName="WFMSUMITModel.TAB_WORKFORCE_SALARY_MASTER_OLD">
+        <MappingFragment StoreEntitySet="TAB_WORKFORCE_SALARY_MASTER_OLD">
+          <ScalarProperty Name="WF_ID" ColumnName="WF_ID" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="UAN_NO" ColumnName="UAN_NO" />
+          <ScalarProperty Name="PAN_CARD" ColumnName="PAN_CARD" />
+          <ScalarProperty Name="EPF_NO" ColumnName="EPF_NO" />
+          <ScalarProperty Name="ESIC_NO" ColumnName="ESIC_NO" />
+          <ScalarProperty Name="BANK_ID" ColumnName="BANK_ID" />
+          <ScalarProperty Name="BANK_IFSC" ColumnName="BANK_IFSC" />
+          <ScalarProperty Name="BANK_BRANCH" ColumnName="BANK_BRANCH" />
+          <ScalarProperty Name="BANK_ACCOUNT_NO" ColumnName="BANK_ACCOUNT_NO" />
+          <ScalarProperty Name="BASIC_DA" ColumnName="BASIC_DA" />
+          <ScalarProperty Name="HRA" ColumnName="HRA" />
+          <ScalarProperty Name="SPECIAL_ALLOWANCES" ColumnName="SPECIAL_ALLOWANCES" />
+          <ScalarProperty Name="GROSS" ColumnName="GROSS" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

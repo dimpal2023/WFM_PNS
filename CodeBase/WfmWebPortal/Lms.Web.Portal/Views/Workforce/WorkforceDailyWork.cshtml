@@ -1,0 +1,641 @@
+﻿@model Wfm.App.Core.Model.WorkforceDailyWorkMetaData
+
+@{
+    ViewBag.Title = "Workforce - Employees Salary";
+    //@model IList<Wfm.App.Core.Model.WorkforceMetaDataList>
+
+}
+<link href="~/Content/Toastr/toastr.min.css" rel="stylesheet" />
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Workforce</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/SearchDailyWork">
+                                <i class="fas fa-layer-group"></i> Workforce
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Workforce Daily Works</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Add</strong> Daily Work
+                        </h2>
+                    </div>
+
+
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "addItems", @class = "login100-form validate-form" }))
+                    {
+                        <div class="row col-12">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                                        @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.DEPARTMENT_ID, "Department", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.DEPARTMENT_ID, Model.Departments, "-- Select --", new { required = "true" })
+                                      
+                                        @Html.ValidationMessageFor(m => m.DEPARTMENT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "--Select--", new { required = "true" })
+                                        @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row col-12">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.WF_EMP_TYPE, "Workforce type", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.WF_EMP_TYPE, Model.OnRollOrContracts, "All")
+                                        @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.EMP_NAME, "Workforce Name", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.EMP_NAME, new SelectList(ViewBag.EmpName, "Value", "Text"), "--Select--", htmlAttributes: new { required = "required" })
+                                        @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="col-sm-4">
+            <div class="form-group">
+                <div class="form-line">
+                    @Html.LabelFor(x => x.EMP_NAME, "Workforce name", new { @class = "required" })
+                    @Html.TextBoxFor(x => x.EMP_NAME, new { id = "EMP_NAME", required = "true" })
+                    @Html.ValidationMessageFor(m => m.EMP_NAME)
+                    @Html.HiddenFor(x => x.WF_ID, new { id = "WF_ID" })
+                </div>
+            </div>
+        </div>*@
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.WORK_DATE, "Work date", new { @class = "required" })
+                                        @Html.TextBoxFor(m => m.WORK_DATE, "{0:dd/mm/yyyy}", new { id = "WORK_DATE", required = "true", @onchange = "onchangeevent()", @class = "datepicker form-control" })
+                                        @Html.ValidationMessageFor(m => m.WORK_DATE)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <table id="tableeExport" class="display table order-column m-t-20 width-per-100">
+                                <thead>
+                                    <tr>
+                                        <th>Biometric Code</th>
+                                        <th>Attendance Date</th>
+                                        <th>In Time</th>
+                                        <th>Out Time</th>
+                                        <th>Duty Hours</th>
+                                        <th>Overtime Hours</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><label id="bioCode"></label></td>
+                                        <td><label id="attendanceDate"></label></td>
+                                        <td><label id="inTime"></label></td>
+                                        <td><label id="outTime"></label></td>
+                                        <td><label id="dutyHours"></label></td>
+                                        <td><label id="overtimeHours"></label></td>
+                                    </tr>
+
+                                </tbody>
+                                <tfoot id="txtOverTime">
+                                    <tr>
+                                        <td colspan="6">
+                                            <label>
+                                                <input type="checkbox" name="OverTime" id="OverTime" class="filled-in" value="@Model.OverTime" />
+                                                <span>Over Time</span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="body">
+
+                            <div class="row clearfix col-sm-12">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.LabelFor(x => x.ITEM_ID, "Item name", new { @class = "required" })
+                                            @Html.DropDownListFor(x => x.ITEM_ID, Enumerable.Empty<SelectListItem>(), "-- Select--", new { id = "ITEM_ID", required = "true" })
+                                            @Html.ValidationMessageFor(m => m.ITEM_ID)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.LabelFor(x => x.UNIQUE_OPERATION_ID, "Operation", new { @class = "required" })
+                                            @Html.DropDownListFor(x => x.UNIQUE_OPERATION_ID, Enumerable.Empty<SelectListItem>(), "-- Select--", new { id = "UNIQUE_OPERATION_ID", required = "true" })
+                                            @Html.ValidationMessageFor(m => m.UNIQUE_OPERATION_ID)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.LabelFor(x => x.QTY, new { @class = "required" })
+                                            @Html.TextBoxFor(x => x.QTY, new { id = "QTY", required = "true" })
+                                            @Html.ValidationMessageFor(m => m.QTY)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <button id="btnAdd" type="button" class="btn btn-primary waves-effect">ADD</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                    <div class="body">
+                        <table id="tableeExport" class="display table order-column m-t-20 width-per-100">
+                            <thead>
+                                <tr>
+                                    <th>Item Name</th>
+                                    <th>Item Code</th>
+                                    <th>Operation</th>
+                                    <th>Quantity</th>
+                                    <th>Rate</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblItemsId">
+                                <tr>
+                                    <td style="text-align:center" colspan="6">No Items</td>
+
+                                </tr>
+
+                            </tbody>
+                            <tfoot id="btnSave">
+                                <tr>
+                                    <td style="text-align:center" colspan="6">
+                                        <button type="button" onclick="btnAddWorkforceDailyWorkItems()" class="btn btn-primary waves-effect">Save</button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+    .Show {
+        display: block;
+    }
+
+    .Hide {
+        display: none;
+    }
+
+    .ui-autocomplete {
+        background-color: #f5f5f5;
+        max-width: 500px;
+        max-height: 200px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        z-index: 100;
+        border: 0px 1px 1px 1px;
+    }
+
+    .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+        background-color: #DCDCDC;
+        color: #000000;
+    }
+
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        width: 100%;
+        height: auto !important;
+        overflow: hidden;
+        outline: 0;
+    }
+</style>
+<script>
+    var addItems = [];
+    let items = [];
+    var operations = [];
+    $(document).ready(function () {
+        $("select[required]").css({ display: "block", height: 0, padding: 0, width: 0, position: 'absolute' });
+        $("#txtOverTime").hide();
+        $("#btnSave").hide();
+        var date = new Date();
+        date.setDate(date.getDate() - 1)
+        $('#WORK_DATE').bootstrapMaterialDatePicker({
+            format: 'DD/MM/YYYY',
+            clearButton: true,
+            weekStart: 1,
+            maxDate: date,
+            time: false
+        });
+        $('#DEPARTMENT_ID').find('option').not(':first').remove();
+        $('#DEPARTMENT_ID').formSelect();
+    });
+
+    function onBuildingChange() {
+        var buildingId = $("#BUILDING_ID option:selected").val();
+        $.get('/ManPowerRequest/GetFloorByBuildingId?buildingId=' + buildingId, function (data) {
+            $('#DEPARTMENT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#DEPARTMENT_ID').append($('<option>', {
+                    value: item.DEPT_ID,
+                    text: item.DEPT_NAME
+                }));
+            });
+            $('#DEPARTMENT_ID').formSelect();
+        });
+    }
+
+    $("#DEPARTMENT_ID").change(function () {
+        $('#WF_EMP_TYPE').val('');
+        $('#WF_EMP_TYPE').formSelect();
+        $('#EMP_NAME').find('option').not(':first').remove();
+        $('#EMP_NAME').formSelect();
+        getSubDeptbyDeptId();
+    });
+    function getSubDeptbyDeptId() {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').formSelect();
+                getDepartmentItemsData();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+        }
+       
+
+
+    }
+    $("#ITEM_ID").change(function () {
+        getItemsOperationData();
+    });
+
+
+    $("#WF_EMP_TYPE").change(function () {
+        $("#EMP_NAME").val("");
+         $.ajax({
+                url: '@Url.Action("PiecWagerWorkforceByWFType", "Workforce")',
+                datatype: "json",
+                data: {
+                    deptId: $("#DEPARTMENT_ID").val(),
+                    sub_dept_id:$("#SUBDEPT_ID").val(),
+                    query: $('#EMP_NAME').val(),
+                    emp_type_id: $('#WF_EMP_TYPE').val()
+                },
+             success: function (data) {
+                 debugger;
+                 $('#EMP_NAME').find('option').not(':first').remove();
+                 $.each(data, function (i, item) {
+                     $('#EMP_NAME').append($('<option>', {
+                         value: item.ID,
+                         text: item.Name
+                     }));
+                 });
+                 $('#EMP_NAME').formSelect();
+                    //if (!data.length) {
+                    //    var result = [{ label: "no results", value: response.term }];
+                    //    response(result);
+                    //}
+                    //else {
+                    //    response($.map(data, function (val, item) {
+                    //        return {
+                    //            label: val.Name,
+                    //            value: val.Name,
+                    //            empId: val.ID
+                    //        }
+                           
+                    //    }))
+                    //}
+
+                }
+            })
+    });
+    $("#btnAdd").click(function () {
+        addWorkforceDailyWorkItems();
+    });
+    function bindItemDropdownlist(controlId,data) {
+        $('#' + controlId).find('option').not(':first').remove();
+        $.each(data, function (i, item) {
+            $('#' + controlId).append($('<option>', {
+                value: item.ITEM_ID,
+                text: item.ITEM_NAME
+            }));
+        });
+        $('#' + controlId).formSelect();
+        $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+        $('#UNIQUE_OPERATION_ID').formSelect();
+
+    }
+    function bindOperationDropdownlist(controlId, data) {
+        $('#' + controlId).find('option').not(':first').remove();
+        $.each(data, function (i, item) {
+            $('#' + controlId).append($('<option>', {
+                value: item.UNIQUE_OPERATION_ID,
+                text: item.OPERATION
+            }));
+        });
+        $('#' + controlId).formSelect();
+
+    }
+
+    function getDepartmentItemsData() {
+        $("#EMP_NAME").val("");
+        var deptId = $("#DEPARTMENT_ID").val();
+        var SUBDEPT_ID = $("#SUBDEPT_ID").val();
+        if (deptId != "") {
+            $.get('/Workforce/GetItemsBydeptId?deptId=' + deptId, function (data) {
+                $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+                addItems = [];
+                items = data;
+                localStorage.setItem('localItems', JSON.stringify(items));
+
+                bindItemDropdownlist("ITEM_ID", items);
+                $('#UNIQUE_OPERATION_ID').formSelect();
+            });
+        } else {
+            addItems = [];
+            $('#ITEM_ID').find('option').not(':first').remove();
+            $('#ITEM_ID').formSelect();
+            $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+            $('#UNIQUE_OPERATION_ID').formSelect();
+        }
+    }
+
+    function getItemsOperationData() {
+        var itemId = $("#ITEM_ID option:selected").val();
+        if (itemId != "") {
+            $.get('/Workforce/GetOperationsByitemId?ItemId=' + itemId, function (data) {
+                operations = data;
+                bindOperationDropdownlist("UNIQUE_OPERATION_ID", operations);
+            });
+        } else {
+            $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+            $('#UNIQUE_OPERATION_ID').formSelect();
+
+        }
+    }
+
+
+    function addWorkforceDailyWorkItems() {
+        if ($("#addItems").valid()) {
+            var operationId = $("#UNIQUE_OPERATION_ID").val();
+            var itemId = $("#ITEM_ID").val();
+            var itemName = $("#ITEM_ID option:selected").text();
+            var operationName = $("#UNIQUE_OPERATION_ID option:selected").text();
+            var qty = $("#QTY").val();
+
+            $.get('/Workforce/GetOperationsById?id=' + operationId, function (data) {
+                toastr["success"]("Item Added");
+                var item = {
+                    ITEM_ID: itemId,
+                    ITEM_CODE: data.ITEM_CODE,
+                    ITEM_NAME: itemName,
+                    RATE: data.RATE,
+                    QTY: qty,
+                    PRICE: qty * data.RATE,
+                    UNIQUE_OPERATION_ID: operationId,
+                    OPERATION_NAME: operationName
+                };
+                addItems.push(item);
+
+                items = $.grep(items, function (e) {
+                    return e.ITEM_ID != itemId;
+                });
+
+                addHTMLItems(addItems);
+                bindItemDropdownlist("ITEM_ID", items);
+                $("#QTY").val("");
+                $("#ITEM_ID").val("");
+                $("#UNIQUE_OPERATION_ID").val("");
+            });
+
+        } else {
+            return false;
+        }
+        return false;
+    }
+
+    function addHTMLItems(data) {
+        var html = '';
+        if (data.length > 0) {
+            $.each(data, function (i, item) {
+                html += '<tr>' +
+                    '<td>' + item.ITEM_NAME + '</td>' +
+                    '<td>' + item.ITEM_CODE + '</td>' +
+                    '<td>' + item.OPERATION_NAME + '</td>' +
+                    '<td>' + item.QTY + '</td>' +
+                    '<td>' + item.RATE + '</td>' +
+                    '<td>' + item.PRICE + '</td>' +
+                    '<td><button type="button" onclick="removeItems(\'' + item.ITEM_ID + '\')" class="btn btn-primary waves-effect Delete">Delete</button></td>' +
+                    '</tr>';
+            });
+            $("#tblItemsId").empty();
+            $("#tblItemsId").append(html);
+        } else {
+            $("#tblItemsId").empty();
+            $("#tblItemsId").append('<tr><td style="text-align:center" colspan="6">No Items</td></tr>');
+
+        }
+
+    }
+    function removeItems(itemId) {
+        addItems = $.grep(addItems, function (e) {
+            return e.ITEM_ID != itemId;
+        });
+        addHTMLItems(addItems);
+        var localItems = JSON.parse(localStorage.getItem('localItems'));
+        var result = $.grep(localItems, function (e) { return e.ITEM_ID == itemId; });
+        items.push(result[0]);
+        bindItemDropdownlist("ITEM_ID", items);
+    }
+    function onchangeevent() {
+        getWorkforceAttendance();
+    }
+    function getWorkforceAttendance() {
+        var attdate = $("#WORK_DATE").val();
+        var wfid = $("#EMP_NAME").val();
+        if (wfid != '' && attdate != '') {
+            $.get('/Workforce/GetAttendanceBywfId?wfId=' + wfid + '&attdate=' + attdate, function (data) {
+
+                if (data.ATTENDANCE_DATE !== null) {
+                    $("#btnSave").show();
+                    if (data.OVERTIME_HOURS !== "0:0") {
+                        $("#txtOverTime").show();
+                    } else {
+                        $("#txtOverTime").hide();
+                    }
+                    $("#bioCode").text(data.BIOMETRIC_CODE);
+                    $("#attendanceDate").text(data.ATTENDANCE_DATE);
+                    $("#inTime").text(data.START_DATE);
+                    $("#outTime").text(data.END_DATE);
+                    $("#dutyHours").text(data.DUTY_HOURS);
+                    $("#overtimeHours").text(data.OVERTIME_HOURS);
+                } else {
+                    cleanBioData();
+                    if (data.START_DATE !== null) {
+                        $("#inTime").text(data.START_DATE);
+                    }
+                }
+            });
+
+        }
+    }
+    function cleanBioData() {
+        $("#inTime").text("No Record found");
+        $("#bioCode").text("");
+        $("#attendanceDate").text("");
+        $("#outTime").text("");
+        $("#dutyHours").text("");
+        $("#overtimeHours").text("");
+        $('input[name="OverTime"]').prop('checked', false);
+        $("#txtOverTime").hide();
+        $("#btnSave").hide();
+        var localItems = JSON.parse(localStorage.getItem('localItems'));
+        items = localItems;
+        bindItemDropdownlist("ITEM_ID", items);
+        addItems = [];
+        addHTMLItems(addItems);
+    }
+    function btnAddWorkforceDailyWorkItems() {
+        if (addItems.length > 0) {
+            var wf_id = $("#EMP_NAME").val();
+            var work_day = $("#WORK_DATE").val();
+            var overtimeHours = $("#overtimeHours").text();
+            var isOverTime = $('#OverTime').is(":checked");
+            var arrayOperation = [];
+            $.each(addItems, function (i, item) {
+                arrayOperation.push({ UNIQUE_OPERATION_ID: item.UNIQUE_OPERATION_ID, QTY: item.QTY });
+            });
+            var data = { WF_ID: wf_id, Operations: arrayOperation, WORK_DATE: work_day, IsOverTime: isOverTime, OverTime: overtimeHours};
+            $.ajax({
+                type: "POST",
+                url: '/Workforce/AddWorkforceDailyWork',     //your action
+                data: data,   //your form name.it takes all the values of model
+                dataType: 'json',
+                success: function (result) {
+                    if (result.Status == true) {
+
+                        $("#EMP_NAME").val("");
+                        $("#WORK_DATE").val("");
+                        $("#tblItemsId").empty();
+                        $("#tblItemsId").append('<tr><td style="text-align:center" colspan="6">No Items</td></tr>');
+
+                        cleanBioData();
+                        toastr["success"](result.Message);
+                        addItems = [];
+                    } else {
+                        alert(result.Message);
+                    }
+                }
+            });
+        }
+    }
+     @*$("#EMP_NAME").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("PiecWagerWorkforceByWFType", "Workforce")',
+                datatype: "json",
+                data: {
+                    deptId: $("#DEPARTMENT_ID").val(),
+                    sub_dept_id:$("#SUBDEPT_ID").val(),
+                    query: $('#EMP_NAME').val(),
+                    emp_type_id: $('#WF_EMP_TYPE').val()
+                },
+                success: function (data) {
+                    if (!data.length) {
+                        var result = [{ label: "no results", value: response.term }];
+                        response(result);
+                    }
+                    else {
+                        response($.map(data, function (val, item) {
+                            return {
+                                label: val.Name,
+                                value: val.Name,
+                                empId: val.ID
+                            }
+                        }))
+                    }
+
+                }
+            })
+        },
+         select: function (event, ui) {
+             var label = ui.item.label;
+             if (label === "no results") {
+                 event.preventDefault();
+             }
+             else {
+                 /* do something with the selected result */
+                 $("#WF_ID").val(ui.item.empId);
+                 getWorkforceAttendance();
+             }
+
+
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });*@
+
+</script>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Content/Toastr/toastr.min.js"></script>
+

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ce5598431b0424a8257f66458c99796" Name="Diagram1" ZoomLevel="76">
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_AGENCY_MASTER" Width="1.5" PointX="3" PointY="25.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_BUILDING_MASTER" Width="1.5" PointX="3" PointY="29.5" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_DEPARTMENT_MASTER" Width="1.5" PointX="3" PointY="17.875" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_FLOOR_MASTER" Width="1.5" PointX="5.875" PointY="23" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_LEVEL_MASTER" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_SHIFT_MASTER" Width="1.5" PointX="3" PointY="6.125" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_SKILL_MASTER" Width="1.5" PointX="3" PointY="12.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFLOW_MASTER" Width="4.625" PointX="3" PointY="84.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ACTIVITY_DETAILS" Width="1.5" PointX="5.75" PointY="0.75" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_FLOOR__BUILD__5BE2A6F2" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_MENU_ROLE_MAPPING" Width="1.5" PointX="5.25" PointY="10.5" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ERROR_LOGS" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_BANK_MASTER" Width="1.5" PointX="6.125" PointY="47" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_EMP_STATUS_MASTER" Width="1.5" PointX="3" PointY="40.5" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_EMPL_TYPE_MASTER" Width="1.5" PointX="3" PointY="50.5" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_MARITAL_STATUS_MASTER" Width="1.5" PointX="3" PointY="56.625" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_MENU_MASTER" Width="1.5" PointX="3" PointY="46.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_STATE_CITY_MASTER" Width="1.5" PointX="3" PointY="60" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_STATE_MASTER" Width="1.5" PointX="0.75" PointY="60.125" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WF_DESIGNATION_MASTER" Width="1.5" PointX="3" PointY="43.625" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORFORCE_TYPE" Width="1.5" PointX="3" PointY="33.375" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFORCE_EDU_MASTER" Width="2.625" PointX="3" PointY="53.5" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ROLE_MENU_MAPPING" Width="1.5" PointX="5.25" PointY="28.5" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_ROLE___MENU___5B78929E" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_STATE__STATE__79FD19BE" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_REC_MASTER" Width="1.5" PointX="5.25" PointY="19.5" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WF_WORK_DETAILS" Width="4" PointX="13.5" PointY="22.75" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_WO__BUILD__147C05D0" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_WO__DEPT___1387E197" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_WO__FLOOR__15702A09" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_REC_M__WORKF__7132C993" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_WO__SHIFT__16644E42" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ALL_MAIL" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ALL_SMS" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ALL_WHATSAPP" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.Logs_Fatal" Width="1.5" PointX="9.375" PointY="4.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.Logs_Info" Width="1.5" PointX="9.375" PointY="8.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.Logs_Trace" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.Logs_Warn" Width="1.5" PointX="11.375" PointY="4.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFORCE_MASTER" Width="1.5" PointX="21.5" PointY="32.75" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__AGENC__1D4655FB" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__DEPT___1E3A7A34" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__EMP_S__27C3E46E" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__EMP_T__22FF2F51" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__MARIT__2022C2A6" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__SKILL__220B0B18" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__PERMA__25DB9BFC" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__PRESE__23F3538A" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__PARMA__26CFC035" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__PRESE__24E777C3" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__WF_DE__2116E6DF" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__WF_EM__1C5231C2" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__WF_ED__1F2E9E6D" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_WO__WF_ID__119F9925" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_HOLIDAY" Width="1.5" PointX="11.375" PointY="8.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFORCE_LEAVES" Width="1.5" PointX="12.625" PointY="42.75" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__WF_ID__55209ACA" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFORCE_DAILYWORK_MASTER" Width="1.5" PointX="7.375" PointY="12.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFORCE_SALARY" Width="1.5" PointX="23.75" PointY="36.125" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_FAULTY_PUNCHES" Width="1.5" PointX="9.375" PointY="12.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_BIOMETRIC_DATABASE" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_BIOMETRIC" Width="1.5" PointX="15.625" PointY="39.25" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_BIOMETRIC_TAB_WORKFORCE_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__WF_ID__0E591826" />
+        <AssociationConnector ManuallyRouted="true" Association="ApplicationDataModel.FK__TAB_TOOL___DEPT___2AF556D4">
+          <ConnectorPoint PointX="4.5" PointY="20.982517381059552" />
+          <ConnectorPoint PointX="4.6887377354681741" PointY="21.156559720206033" />
+          <ConnectorPoint PointX="4.8737622645318259" PointY="21.327177968633332" />
+          <ConnectorPoint PointX="4.9141815506176423" PointY="21.3644501499465" />
+          <ConnectorPoint PointX="4.9141815506176423" PointY="21.889669934713762" />
+          <ConnectorPoint PointX="4.9219940506176432" PointY="21.901195977586003" />
+          <ConnectorPoint PointX="5.2030059493823577" PointY="22.315782242260852" />
+          <ConnectorPoint PointX="5.317708333333333" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="7.291666666666667" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="7.458333333333333" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="10.208335833333335" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="10.395835833333335" PointY="29.82278837359793" />
+          <ConnectorPoint PointX="7.2083203949223753" PointY="29.694491180863213" />
+          <ConnectorPoint PointX="7.5898926487530316" PointY="28.991001642003575" />
+          <ConnectorPoint PointX="7.5898926487530316" PointY="28.873062774086986" />
+          <ConnectorPoint PointX="9.6211426487530325" PointY="24.500296058180258" />
+          <ConnectorPoint PointX="9.6913573512469675" PointY="24.349141589733353" />
+          <ConnectorPoint PointX="10.191423089345784" PointY="23.272626726804695" />
+          <ConnectorPoint PointX="10.26163779183972" PointY="23.121472258357791" />
+          <ConnectorPoint PointX="10.557290666666665" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="13.391783660961888" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="14.451966839038112" PointY="28.666919752772827" />
+          <ConnectorPoint PointX="14.451966839038112" PointY="28.831055909414545" />
+          <ConnectorPoint PointX="14.604166666666666" PointY="29.694491180863213" />
+          <ConnectorPoint PointX="14.770833333333334" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="14.947916666666666" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="15.084209680135336" PointY="38.065161478781732" />
+          <ConnectorPoint PointX="15.021026757044215" PointY="37.910994692947433" />
+          <ConnectorPoint PointX="14.957823013311845" PointY="37.756777104599045" />
+          <ConnectorPoint PointX="14.80177381195303" PointY="37.376015933248965" />
+          <ConnectorPoint PointX="14.80177381195303" PointY="37.217902966408573" />
+          <ConnectorPoint PointX="14.567396311953029" PointY="36.6729241720582" />
+          <ConnectorPoint PointX="14.567396311953029" PointY="36.514811205217811" />
+          <ConnectorPoint PointX="14.496177681551801" PointY="36.378558171051033" />
+          <ConnectorPoint PointX="14.418972517687005" PointY="36.230851906964538" />
+          <ConnectorPoint PointX="14.347753887285776" PointY="36.094598872797754" />
+          <ConnectorPoint PointX="14.347753887285776" PointY="35.938872255273758" />
+          <ConnectorPoint PointX="14.148731404271764" PointY="35.417002220120025" />
+          <ConnectorPoint PointX="14.148731404271764" PointY="35.258889253279634" />
+          <ConnectorPoint PointX="13.915118865115815" PointY="34.804355007199476" />
+          <ConnectorPoint PointX="13.915118865115815" PointY="34.648705850119384" />
+          <ConnectorPoint PointX="13.74109758100653" PointY="34.194171604039227" />
+          <ConnectorPoint PointX="13.74109758100653" PointY="34.036058637198835" />
+          <ConnectorPoint PointX="11.942396311953029" PointY="28.798380441854771" />
+          <ConnectorPoint PointX="11.942396311953029" PointY="28.640267475014387" />
+          <ConnectorPoint PointX="11.7539085" PointY="28.062050960047323" />
+          <ConnectorPoint PointX="11.887886278747706" PointY="28.059010091061591" />
+          <ConnectorPoint PointX="12.054510033205323" PointY="28.055228262373635" />
+          <ConnectorPoint PointX="13.166688122771191" PointY="28.029985360970247" />
+          <ConnectorPoint PointX="13.489561877228809" PointY="28.022657154789979" />
+          <ConnectorPoint PointX="14.254862303400454" PointY="28.005287271870095" />
+          <ConnectorPoint PointX="14.421486057858072" PointY="28.00150544318214" />
+          <ConnectorPoint PointX="14.560109165971339" PointY="27.998359140010766" />
+          <ConnectorPoint PointX="14.726732920428956" PointY="27.994577311322811" />
+          <ConnectorPoint PointX="14.912748268585585" PointY="27.990355355201675" />
+          <ConnectorPoint PointX="15.079372023043202" PointY="27.98657352651372" />
+          <ConnectorPoint PointX="18.272049083051197" PointY="27.914109922892386" />
+          <ConnectorPoint PointX="18.272049083051197" PointY="27.686312923511444" />
+          <ConnectorPoint PointX="18.838064986795896" PointY="25.623325331912547" />
+          <ConnectorPoint PointX="18.88216315289829" PointY="25.46259845325131" />
+          <ConnectorPoint PointX="19.246001424182193" PointY="24.136498189916594" />
+          <ConnectorPoint PointX="19.166666666666668" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="20.768261376055392" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="19.579309196742472" PointY="25.318788184604525" />
+          <ConnectorPoint PointX="19.579309196742472" PointY="25.473650263193168" />
+          <ConnectorPoint PointX="19.220227139694185" PointY="26.376267176811741" />
+          <ConnectorPoint PointX="19.220227139694185" PointY="26.531933759399717" />
+          <ConnectorPoint PointX="18.469142678460081" PointY="28.36182457024357" />
+          <ConnectorPoint PointX="18.405857321539919" PointY="28.516008685434684" />
+          <ConnectorPoint PointX="18.345227139694185" PointY="28.663723913675472" />
+          <ConnectorPoint PointX="18.345227139694185" PointY="28.819390496263448" />
+          <ConnectorPoint PointX="18.220824658457371" PointY="29.144607974877989" />
+          <ConnectorPoint PointX="18.220824658457371" PointY="29.300726441310569" />
+          <ConnectorPoint PointX="18.095824658457371" PointY="29.479048075185975" />
+          <ConnectorPoint PointX="18.095824658457371" PointY="29.635166541618556" />
+          <ConnectorPoint PointX="17.093942957563495" PointY="32.104556094190166" />
+          <ConnectorPoint PointX="17.031283661782904" PointY="32.25899569542657" />
+          <ConnectorPoint PointX="16.743281076037828" PointY="32.9688505372886" />
+          <ConnectorPoint PointX="16.743281076037828" PointY="33.124249585376333" />
+          <ConnectorPoint PointX="16.46747454008867" PointY="33.835732690576016" />
+          <ConnectorPoint PointX="16.46747454008867" PointY="33.991851157008604" />
+          <ConnectorPoint PointX="15.470824658457373" PointY="36.502290181653763" />
+          <ConnectorPoint PointX="15.470824658457373" PointY="36.65840864808635" />
+          <ConnectorPoint PointX="15.125439103940934" PointY="37.137150147674028" />
+          <ConnectorPoint PointX="15.027926417589383" PointY="37.272313211335224" />
+          <ConnectorPoint PointX="14.98942488517803" PointY="37.3256804732893" />
+          <ConnectorPoint PointX="14.98942488517803" PointY="37.946403755796645" />
+          <ConnectorPoint PointX="14.770833333333334" PointY="38.2998990320072" />
+          <ConnectorPoint PointX="14.770833333333334" PointY="38.53125" />
+          <ConnectorPoint PointX="15.292430853839585" PointY="38.625" />
+          <ConnectorPoint PointX="15.114583333333334" PointY="38.625" />
+          <ConnectorPoint PointX="15.276213282374089" PointY="38.295459749459077" />
+          <ConnectorPoint PointX="15.276213282374089" PointY="38.137253450322525" />
+          <ConnectorPoint PointX="15.52345788383049" PointY="37.391149760984995" />
+          <ConnectorPoint PointX="15.52345788383049" PointY="37.231222625943566" />
+          <ConnectorPoint PointX="17.8988500892214" PointY="29.438366748436547" />
+          <ConnectorPoint PointX="17.8988500892214" PointY="29.27867181816541" />
+          <ConnectorPoint PointX="18.0238500892214" PointY="29.019880551202984" />
+          <ConnectorPoint PointX="18.0238500892214" PointY="28.860185620931848" />
+          <ConnectorPoint PointX="18.148457883830488" PointY="28.443012484038924" />
+          <ConnectorPoint PointX="18.272049083051197" PointY="28.283085348997496" />
+          <ConnectorPoint PointX="18.272049083051197" PointY="27.686312923511444" />
+          <ConnectorPoint PointX="18.838064986795896" PointY="25.623325331912547" />
+          <ConnectorPoint PointX="18.88216315289829" PointY="25.46259845325131" />
+          <ConnectorPoint PointX="19.246001424182193" PointY="24.136498189916594" />
+          <ConnectorPoint PointX="19.166666666666668" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="20.768261376055392" PointY="22.485006510416667" />
+          <ConnectorPoint PointX="20.768261376055392" PointY="38.53125" />
+          <ConnectorPoint PointX="19.9375" PointY="38.53125" />
+          <ConnectorPoint PointX="19.9375" PointY="38.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_TOOL___WF_ID__2A01329B" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_GATEP__DEPT___2BE97B0D" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_GATEP__WF_EM__2CDD9F46" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_BUILDING_DEPARTMENT_MAPPING" Width="1.5" PointX="8.25" PointY="28.125" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_CONSTANT_DATA" Width="1.5" PointX="13.375" PointY="4.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_MAIL_TEMPLATE" Width="1.5" PointX="13.375" PointY="7.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_MRF_APPROVER" Width="1.5" PointX="13.375" PointY="10.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_SPECIAL_ALLOWANCE" Width="1.5" PointX="13.375" PointY="13.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_USER_DEPARTMENT_MAPPING" Width="1.5" PointX="5.25" PointY="42.5" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFORCE_EXIT" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFORCE_EXIT_APPROVER" Width="3.625" PointX="16.375" PointY="19.75" IsExpanded="true" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_BUILING_DEPARTMENT_MAPPING_TAB_BUILDING_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_BUILING_DEPARTMENT_MAPPING_TAB_BUILDING_MASTER1" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_USER_DEPARTMENT_MAPPING_TAB_DEPARTMENT_MASTER" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFORCE_PHOTO_MASTER" Width="1.5" PointX="12.625" PointY="47" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_WORKFORCE_PHOTO_MASTER_TAB_WORKFORCE_MASTER" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_USER_ROLE_MAPPING" Width="1.5" PointX="5.25" PointY="37.375" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFLOW_MAPPING_MASTER" Width="1.5" PointX="19.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_COMPANY_MASTER" Width="1.5" PointX="0.75" PointY="24.625" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_LOGIN_MASTER" Width="1.5" PointX="3" PointY="63.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_MENU" Width="1.5" PointX="3" PointY="80.125" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_MRF" Width="1.5" PointX="8.375" PointY="52.625" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_MRF_DETAILS" Width="1.5" PointX="10.5" PointY="28.875" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ROLE_MASTER" Width="1.5" PointX="3" PointY="70.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_SUBMENU" Width="1.5" PointX="3" PointY="76.5" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_AGENC__COMPA__2704CA5F" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_AGENC__COMPA__473C8FC7" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_AGENC__COMPA__5EDF0F2E" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_BIOME__COMPA__28ED12D1" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_BIOME__COMPA__4924D839" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_BIOME__COMPA__60C757A0" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_BUILD__COMPA__2AD55B43" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_BUILD__COMPA__4A18FC72" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_BUILD__COMPA__61BB7BD9" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF_D__BUILD__49AEE81E" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_DEPAR__COMPA__2BC97F7C" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_DEPAR__COMPA__4B0D20AB" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_DEPAR__COMPA__62AFA012" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_EMP_S__COMPA__2CBDA3B5" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_EMP_S__COMPA__4C0144E4" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_EMP_S__COMPA__63A3C44B" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_EMPL___COMPA__2DB1C7EE" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_EMPL___COMPA__4CF5691D" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_EMPL___COMPA__6497E884" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_FLOOR__COMPA__2F9A1060" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_FLOOR__COMPA__4EDDB18F" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_FLOOR__COMPA__668030F6" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_LOGIN__COMPA__3552E9B6" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_LOGIN__COMPA__53A266AC" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_LOGIN__COMPA__6B44E613" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MARIT__COMPA__36470DEF" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MARIT__COMPA__54968AE5" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MARIT__COMPA__6C390A4C" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MENU___COMPA__373B3228" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MENU___COMPA__558AAF1E" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MENU___COMPA__6D2D2E85" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF__COMPANY__3B0BC30C" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF__COMPANY__567ED357" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF__COMPANY__6E2152BE" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_REC_M__COMPA__42ACE4D4" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_REC_M__COMPA__5E1FF51F" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_REC_M__COMPA__75C27486" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_ROLE___COMPA__44952D46" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_ROLE___COMPA__60083D91" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_ROLE___COMPA__77AABCF8" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_SHIFT__COMPA__477199F1" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_SHIFT__COMPA__62E4AA3C" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_SHIFT__COMPA__7A8729A3" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_SKILL__COMPA__4865BE2A" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_SKILL__COMPA__63D8CE75" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_SKILL__COMPA__7B7B4DDC" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_DE__COMPA__031C6FA4" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_DE__COMPA__52E34C9D" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_DE__COMPA__6B79F03D" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_WO__COMPA__0504B816" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_WO__COMPA__54CB950F" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WF_WO__COMPA__6D6238AF" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORFO__COMPA__0BB1B5A5" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORFO__COMPA__5B78929E" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORFO__COMPA__740F363E" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__COMPA__0CA5D9DE" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__COMPA__116A8EFB" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__COMPA__1446FBA6" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__COMPA__5C6CB6D7" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__COMPA__61316BF4" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__COMPA__640DD89F" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__COMPA__75035A77" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__COMPA__79C80F94" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_WORKF__COMPA__7CA47C3F" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF_D__FLOOR__4AA30C57" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_USER___USER___02284B6B" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_USER___USER___51EF2864" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_USER___USER___6A85CC04" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_USER_DEPARTMENT_MAPPING_TAB_LOGIN_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_MENU_ROLE_MAPPING_TAB_MENU" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_SUBMENU_TAB_MENU" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_MENU_ROLE_MAPPING_TAB_ROLE_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_MENU_ROLE_MAPPING_TAB_SUBMENU" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF__WORKFLO__3BFFE745" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF__WORKFLO__5772F790" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF__WORKFLO__6F1576F7" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF_D__MRP_I__4B973090" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF_D__SKILL__4C8B54C9" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF_D__WF_DE__4D7F7902" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_MRF_D__WF_EM__4E739D3B" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_ROLE___ROLE___467D75B8" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_ROLE___ROLE___61F08603" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_ROLE___ROLE___7993056A" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_USER___ROLE___01342732" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_USER___ROLE___50FB042B" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_USER___ROLE___6991A7CB" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_SUBDEPARTMENT_MASTER" Width="3.125" PointX="13.375" PointY="28.875" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_SUBDEPARTMENT_MASTER_TAB_COMPANY_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_SUBDEPARTMENT_MASTER_TAB_DEPARTMEASTER_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_USER_DEPARTMENT_MAPPING_TAB_SUBDEPARTMEASTER_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_WORKFORCE_MASTER_TAB_SUBDEPARTMEASTER_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_MRF_DETAILS_TAB_SUBDEPARTMEASTER_MASTER" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ASSET_ALLOCATION" Width="1.5" PointX="15.375" PointY="10.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ASSET_MASTER" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_TRAINNING_MASTER" Width="2.375" PointX="17.375" PointY="10.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_TRAINNING_WORKFORCE" Width="4.75" PointX="19.375" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_GATEPASS" Width="1.5" PointX="18.5" PointY="31.625" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_TOOL_TALK_MASTER" Width="1.5" PointX="5.25" PointY="57.25" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_TOOL___DEPT___2704CA5F" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_TOOL___DEPT___4183B671" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_GATEPASS_TAB_SUBDEPARTMEASTER_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_GATEPASS_TAB_WORKFORCE_MASTER" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_TOOL_TALK_CONFIGURATION" Width="1.5" PointX="7.5" PointY="31.625" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_TOOL_TALK_DAILY_CHECKLIST" Width="2.375" PointX="18.75" PointY="38.625" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_TOOL___DEPT___24285DB4" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_TOOL___DEPT___3EA749C6" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_TOOL___SHIFT__251C81ED" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_TOOL___SHIFT__3F9B6DFF" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_TOOL___TOOL___2610A626" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_TOOL___TOOL___408F9238" />
+        <AssociationConnector Association="ApplicationDataModel.FK__TAB_TOOL___TOOL___290D0E62" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_TRAINNING_WORKFORCE_MAPPING" Width="2.125" PointX="7.375" PointY="16.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ITEM_CODE" Width="1.5" PointX="18.5" PointY="26.625" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_ITEM_CODE_TAB_COMPANY_MASTER1" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_ITEM_CODE_TAB_DEPARTMENT_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_ITEM_CODE_TAB_SUBDEPARTMENT_MASTER" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_TOOL_TALK_CONFIG_DAILY_ITEMS" Width="1.5" PointX="7.5" PointY="57.875" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_TOOL_TALK_MASTER_TAB_SUBDEPARTMEASTER_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_TOOL_TALK_CONFIG_DAILY_ITEMS_TAB_TOOL_TALK_MASTER" />
+        <AssociationConnector Association="ApplicationDataModel.FK_TAB_TOOL_TALK_DAILY_CHECKLIST_TAB_SHIFT_MASTER" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_ITEM_OPERATION_MASTER" Width="1.5" PointX="15.375" PointY="4.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFORCE_DAILYWORK" Width="1.5" PointX="10.375" PointY="16.75" />
+        <EntityTypeShape EntityType="ApplicationDataModel.TAB_WORKFORCE_SALARY_MASTER" Width="1.5" PointX="20.375" PointY="13.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

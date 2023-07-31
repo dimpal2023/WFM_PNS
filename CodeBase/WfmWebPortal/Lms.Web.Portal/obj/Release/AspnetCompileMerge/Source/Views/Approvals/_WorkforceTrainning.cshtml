@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.TRAINNING_WORKFORCE_MAPPING>
+@{
+    Layout = null;
+}
+<div class="table-responsive">
+    @using (Html.BeginForm("WorkForceTrainningApprovals", "Approvals", FormMethod.Post))
+    {
+    <div class="row">
+        <div class="col-9">
+            <label class="col-12">Remark</label>
+            @Html.TextArea("Remark")
+        </div>
+        <div class="col-sm-3" style="margin-top:20px">
+            <div class="form-group">
+                <input type="submit" id="btnSubmit" name="Approve" class="btn btn-primary waves-effect m-r-15" value="Approve" />
+            </div>
+        </div>
+      
+    </div>
+      
+        <table class="table table-bordered table-striped table-hover js-basic-example dataTable" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="checkAll" />
+                            <span></span>
+                        </label>
+                    </th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Trainning Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Is Completed </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="checkbox" name="twfmIds" class="filled-in" value="@item.TRAINNING_MAPPING_ID" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WORKFORCE_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WORKFORCE_CODE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TRAINNING_NAME)
+                        </td>
+
+                        <td>
+                            @Convert.ToDateTime(item.TRAINNING_START_DATE).ToString("dd/MM/yyyy")
+
+                        </td>
+                        <td>
+                            @Convert.ToDateTime(item.TRAINNING_END_DATE).ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ISTRAINNINGCOMPLETED)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -1,0 +1,313 @@
+﻿@model Wfm.App.Core.Model.ToolTalkDailyCheckListMetaData
+
+@{
+    ViewBag.Title = "Tooltalk - Edit Daily Check List";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Daily Check List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/ToolTalk/Configure">
+                                <i class="fas fa-layer-group"></i> Tool Talk
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Edit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Edit</strong> Daily Check List
+                        </h2>
+                    </div>
+                    <div class="body">
+
+                        <div class="row clearfix">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()", @disabled = "disabled" })
+                                        @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.HiddenFor(x => x.ID)
+                                        @Html.LabelFor(x => x.DEPT_NAME, "Department")
+                                        @Html.DropDownListFor(x => x.DEPT_ID, ViewBag.Dept as SelectList, "-- Select--", new { id = "DEPT_ID", required = "true", @disabled = "disabled" })
+                                        @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                        @Html.DropDownListFor(x => x.SUBDEPT_ID, ViewBag.SubDepartments as SelectList, "All", new { id = "SUBDEPT_ID", required = "true", @disabled = "disabled" })
+                                        @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SHIFT_AUTOID, "Shift", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.SHIFT_AUTOID, ViewBag.Shift as SelectList, "--Select--", new { id = "SHIFT_ID", required = "true", @onchange = "BindEmployeeList()", @disabled = "disabled" })
+                                        @Html.ValidationMessageFor(m => m.SHIFT_ID)
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.DELIVERED_BY, "Delivered By", new { @class = "required" })
+                                        @Html.TextBoxFor(m => m.DELIVERED_BY, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.DELIVERED_BY)
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <span id="errorCheckbox" style="display:none;color:red;">Please check at least one item from list.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix col-sm-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <div id="partialPlaceHolder">
+                                        <table id="tableExports"
+                                               class="display table table-bordered table-checkable order-column m-t-20 width-per-100" width="100%" style="max-height: 600px; overflow-y: scroll">
+                                            <thead>
+                                                <tr style="background: #cdcdcd">
+                                                    <th>
+                                                        <label class="form-check-label">
+                                                            @Html.CheckBox("Select All", false, new { id = "select-all", @class = "form-check-input" })
+                                                            <span class="form-check-sign">
+                                                                <span class="check" style="font-weight: bold; font-size: 14px;">Select All</span>
+                                                            </span>
+                                                        </label>
+                                                    </th>
+                                                    <th>Message</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.TOOL_TALK_CHECK_LIST)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <label class="form-check-label">
+                                                                @Html.CheckBox(item.ITEM_NAME, item.CHECK.Value, new { id = item.ID, @class = "form-check-input instruction_list", TOOL_TALK_ID = item.TOOL_TALK_ID, ITEM_NAME = item.ITEM_NAME, CHECKED = (item.CHECK.Value ? "checked" : "unchecked") })
+                                                                <span class="form-check-sign">
+                                                                    <span class="check"></span>
+                                                                </span>
+                                                            </label>
+                                                        </td>
+                                                        <td>@item.ITEM_NAME</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <h4 class="text-center">Employee List</h4>
+                        <div class="row clearfix col-sm-12" id="AllEmployeeList">
+                            <div class="table-responsive" style="max-height:400px;overflow-y:scroll">
+                                    <table id="tableExport2" class="display table table-hover table-checkable order-column m-t-20 width-per-100" width="100%">
+                                        <thead style="background: #cdcdcd;">
+                                            <tr>
+                                                <th><label><input type="checkbox" class="form-check-input" id="list_emp" onchange="SelectAll()" /><span class="check form-check-sign" style="font-weight: bold; font-size: 14px;"> Select All</span></label></th>
+                                                <th>Employee Code</th>
+                                                <th>Employee Name</th>
+                                                <th>Employee Type</th>
+                                                <th>Employment Type</th>
+                                                <th style="display:none"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                        <br />
+                        <br />
+                        <input type="hidden" id="EMP_NAME" value="@Model.EMP_NAME" />
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line align-center">
+                                        <button id="editdailychecklist" type="button" class="btn btn-primary waves-effect m-r-15">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("select[required]").css({ position: "absolute", display: "inline", height: 0, padding: 0, width: 0 });
+        BindEmployeeList();
+    });
+
+    $("#partialPlaceHolder input[type='hidden']").remove();
+
+    $("#SUBDEPT_ID").on("change", function () {
+        var deptId = $("#DEPT_ID option:selected").val();
+        var subDeptId = $("#SUBDEPT_ID option:selected").val() || '00000000-0000-0000-0000-000000000000';
+        var BUILDING_ID = $("#BUILDING_ID option:selected").val();
+
+        if (deptId !== "" && subDeptId !== "") {
+            $.get('/ToolTalk/GetConfiguredCheckListBySubDeptId?deptId=' + deptId + '&subDeptId=' + subDeptId + '&BUILDING_ID=' + BUILDING_ID, function (data) {
+
+                $('#partialPlaceHolder').empty();
+                $('#errorCheckbox').text("");
+                $('#errorCheckbox').css("display", "none");
+
+                if (data.indexOf("div") === -1) {
+                    $('#errorCheckbox').text("There is no configration exist for this department and sub department.");
+                    $('#errorCheckbox').css("display", "block");
+                    return;
+                }
+                $('#partialPlaceHolder').html(data);
+                $('#partialPlaceHolder').fadeIn('fast');
+
+                // delete extra hidden fields created by checkboxes as the grid links mess this up by doubling the querystring parameters
+                $("#partialPlaceHolder input[type='hidden']").remove();
+
+                $('#select-all').on("change", function () {
+                    if (this.checked) {
+                        $('.instruction_list').each(function () {
+                            this.checked = true;
+                        });
+                    }
+                    else {
+                        $('.instruction_list').each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
+            });
+        }
+    });
+
+    $('#select-all').on("change", function () {
+        if (this.checked) {
+            $('.instruction_list').each(function () {
+                this.checked = true;
+            });
+        }
+        else {
+            $('.instruction_list').each(function () {
+                this.checked = false;
+            });
+        }
+    });
+    function SelectAll() {
+        if ($("#list_emp").prop('checked') == true) {
+            $('.emplist_chk').each(function () {
+                this.checked = true;
+            });
+        }
+        else {
+            $('.emplist_chk').each(function () {
+                this.checked = false;
+            });
+        }
+    }
+    function BindEmployeeList() {
+        debugger;
+        var str = $("#EMP_NAME").val();
+        var GetSelectEmp = str.split(",");
+        console.log(GetSelectEmp);
+        var deptId = $("#DEPT_ID").val();
+        var sub_dept_id = $('#SUBDEPT_ID').val()||'0';
+        var BUILDING_ID = $('#BUILDING_ID').val();
+        var SHIFT_ID = $('#SHIFT_ID').val();
+        $.ajax({
+            type: 'Get',
+            url: '/Reports/BindEmployeeList?deptId=' + deptId + '&sub_dept_id=' + sub_dept_id + '&BUILDING_ID=' + BUILDING_ID + '&SHIFT_ID=' + SHIFT_ID,
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            success: function (data) {
+                var details = $.parseJSON(data);
+
+                var List = details['Table'];
+                debugger;
+                $("#AllEmployeeList").html('');
+                var html = "";
+                html += '<div class="table-responsive"  style="max-height:400px;overflow-y:scroll">';
+                html += '<table id="tableExport2" class="display table table-hover table-checkable order-column m-t-20 width-per-100" width="100%">';
+                html += '<thead  style="background: #cdcdcd;">';
+                html += '<tr>';
+                html += '<th><label><input type = "checkbox"  class="form-check-input" id="list_emp" onchange="SelectAll()" /><span class="form-check-sign"><span class="check" style = "font-weight: bold; font-size: 14px;" > Select All</span></label></th> ';
+                html += '<th>Employee Code</th>';
+                html += '<th>Employee Name</th>';
+                html += '<th>Employee Type</th>';
+                html += '<th>Employment Type</th>';
+                html += '<th style="display:none"></th>';
+                html += '</tr>';
+                html += '</thead>';
+                html += '<tbody>';
+                for (var i = 0; i < List.length; i++) {
+                    debugger;
+                    html += '<tr>';
+                    html += '<td>'; var checked = '';
+
+                    $.each(GetSelectEmp, function (jj) {
+                        if (GetSelectEmp[jj].trim() == List[i].EMP_NAME.trim()) {
+                            checked = 'checked';
+                        }
+                    })
+                    html += '<label><input type = "checkbox" ' + checked+' name = "twfmIds" class="form-check-input emplist_chk" value = ""/><span class="form-check-sign"><span class="check" style = "font-weight: bold; font-size: 14px;" ></span></label></td>';
+                    html += '<td>' + List[i].EMP_ID + '</td>';
+                    html += '<td>' + List[i].EMP_NAME + '</td>';
+                    html += '<td>' + List[i].EMP_TYPE + '</td>';
+                    html += '<td>' + List[i].SalaryType + '</td>';
+                    html += '<td style="display:none" class="hdnEmp">' + List[i].EMP_NAME + '</td>';
+                    html += '</tr>';
+                }
+                html += '</tbody>';
+                html += '</table>';
+                html += '</div>';
+                $("#AllEmployeeList").html(html);
+                console.log(html);
+            },
+            error: function (data) {
+
+            }
+        })
+    }
+</script>
+<script src="~/Content/assets/js/pages/tooltalk/tooltalk.js"></script>

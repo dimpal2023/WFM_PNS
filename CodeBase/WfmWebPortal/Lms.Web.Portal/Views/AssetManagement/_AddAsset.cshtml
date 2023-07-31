@@ -1,0 +1,34 @@
+﻿@model Wfm.App.Core.Model.AssetAllocationMetaDataForm
+    @{ 
+        int i = ViewBag.RowNumber;
+        int row = i +1;
+    }
+
+    
+            <tr id="trRemove_@row">
+                <td>@row
+                </td>
+                <td>
+                    @Html.DropDownListFor(x => x.ListMetaDatas[i].ASSET_ID, Model.Assets, "--Select Asset--", new { required = "true" })
+                    @Html.ValidationMessageFor(m => m.ListMetaDatas[i].ASSET_ID)
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.ListMetaDatas[i].ASSET_TYPE, new List<SelectListItem>
+                   {
+                       new SelectListItem{ Text="New", Value = "New" },
+                       new SelectListItem{ Text="Replace", Value = "Replace" }
+                    }, "New/Replace", new { required = "true" })
+                    @Html.ValidationMessageFor(m => m.ListMetaDatas[i].ASSET_TYPE)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.ListMetaDatas[i].QUANTITY, "", new { placeholder = "Asset Quantity", @class = "form-control", @type = "text", required = "true" })
+                    @Html.ValidationMessageFor(m => m.ListMetaDatas[i].QUANTITY)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.ListMetaDatas[i].PURPOSE, "", new { placeholder = "Remark", @class = "form-control", @type = "text", required = "true" })
+                    @Html.ValidationMessageFor(m => m.ListMetaDatas[i].PURPOSE)
+                </td>
+                <td id="remove_@row">
+                </td>
+            </tr>
+  

@@ -1,0 +1,87 @@
+﻿@model IList<Wfm.App.Core.Model.WorkflowMappingMasterVieweMetaData>
+
+@{
+    ViewBag.Title = "New Hiring - All Workflows";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Work Flow Approval</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/WorkFlowMapping/Index">
+                                <i class="fas fa-layer-group"></i> Work Flow Approval
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>View</strong> Work Flow Approval
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Levels</th>
+                                    <th>Role</th>
+                                    <th>Approval Name</th>
+                                    <th>Auto Approval</th>
+                                    <th>Auto Approval Days</th>
+                                    <th>Auto Reject</th>
+                                    <th>Auto Reject Days</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th colspan="7">
+                                                Workflow: @item.WORKFLOW_NAME
+                                            </th>
+                                            <td>
+                                                <a href="/WorkFlowMapping/Edit?workflowId=@item.WORKFLOW_ID&levelId=@item.listMetaDatas.LastOrDefault().LEVEL_ID">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        foreach (var child in item.listMetaDatas)
+                                        {
+                                            <tr>
+                                                <td>@child.LEVEL_NAME</td>
+                                                <td>@child.ROLE_NAME</td>
+                                                <td>@child.APPROVAL_NAME</td>
+                                                <td>@(child.AUTO_APPROVE == "Y" ? "Yes" : "No")</td>
+                                                <td>@child.AUTO_APPROVE_DAY</td>
+                                                <td>@(child.AUTO_REJECT == "Y" ? "Yes" : "No")</td>
+                                                <td>@child.AUTO_REJECT_DAY</td>
+                                                <td>@(child.Status == "Y" ? "Yes" : "No")</td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

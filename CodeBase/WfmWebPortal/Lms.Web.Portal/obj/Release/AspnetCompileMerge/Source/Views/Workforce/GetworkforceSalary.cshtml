@@ -1,0 +1,310 @@
+﻿
+@model Wfm.App.Core.Model.FilteSalarySlipMetaData
+
+@{
+    ViewBag.Title = "Workforce - Employees Salary";
+    //@model IList<Wfm.App.Core.Model.WorkforceMetaDataList>
+
+}
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <ul class="breadcrumb breadcrumb-style ">
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">Employees Salary</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="/Workforce/GetworkforceSalary">
+                                    <i class="fas fa-layer-group"></i> Workforce
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active">View</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>View</strong> Employees Salary
+                        </h2>
+                    </div>
+
+
+                    @using (Html.BeginForm("ExportSalarySlip", "Workforce", FormMethod.Post, new { @id = "downloadSalaryForm", @class = "login100-form validate-form" }))
+                    {
+                <div class="row col-12">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.DEPARTMENT_ID, "Department")
+                                @Html.DropDownListFor(x => x.DEPARTMENT_ID, Model.Departments, "-- Select --", new { required = "true" })
+                                @Html.ValidationMessageFor(m => m.DEPARTMENT_ID)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "All", new { required = "true" })
+                                @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.WF_EMP_TYPE, "Workforce type")
+                                @Html.DropDownListFor(x => x.WF_EMP_TYPE, Model.OnRollOrContracts, "All")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-12">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.EMP_NAME, "Workforce name")
+                                @Html.TextBoxFor(x => x.EMP_NAME, new { id = "EMP_NAME" })
+                                @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                @Html.HiddenFor(x => x.WF_ID, new { id = "WF_ID" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.LabelFor(x => x.MM_YYYY, "Work date")
+                                @Html.TextBoxFor(m => m.MM_YYYY, new { id = "MM_YYYY", required = "true", @class = "datepicker form-control" })
+                                @Html.ValidationMessageFor(m => m.MM_YYYY)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4" style="margin-top:20px">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <button type="submit" id="btnSubmit" class="btn btn-primary">Export Salary Slip</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                       
+                        <div class="body" id="particalDiv">
+
+                        </div>
+
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+    .Show {
+        display: block;
+    }
+
+    .Hide {
+        display: none;
+    }
+
+    .ui-autocomplete {
+        background-color: #f5f5f5;
+        max-width: 500px;
+        max-height: 200px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        z-index: 100;
+        border: 0px 1px 1px 1px;
+    }
+
+    .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+        background-color: #DCDCDC;
+        color: #000000;
+    }
+
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        width: 100%;
+        height: auto !important;
+        overflow: hidden;
+        outline: 0;
+    }
+</style>
+<script>
+    var addItems = [];
+    let items = [];
+    var operations = [];
+    $(document).ready(function () {
+        $("select[required]").css({ display: "block", height: 0, padding: 0, width: 0, position: 'absolute' });
+        $("#txtOverTime").hide();
+        $("#btnSave").hide();
+        var date = new Date();
+        date.setDate(date.getDate() - 1)
+        $('#MM_YYYY').bootstrapMaterialDatePicker({
+            format: 'MM-YYYY',
+            clearButton: true,
+            weekStart: 2,
+            maxDate: date,
+            time: false,
+            year: true
+
+        });
+    });
+    $("#DEPARTMENT_ID").change(function () {
+        $("#EMP_NAME").val("");
+        $("#WF_ID").val("");
+        getSubDeptbyDeptId();
+    });
+    $("#SUBDEPT_ID").change(function () {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $("#EMP_NAME").val("");
+            $("#WF_ID").val("");
+            GetEmployeeData();
+        }
+    });
+    $("#WF_EMP_TYPE").change(function () {
+        $("#EMP_NAME").val("");
+        $("#WF_ID").val("");
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            GetEmployeeData();
+        }
+    });
+    function getDownloadSalarySlip() {
+        var form = $("#downloadSalaryForm");
+        var download = new FormData(form[0]);
+        $.ajax({
+            type: "POST",
+            url: '/Workforce/ExportSalarySlipAsync',
+            data: download,
+            cache: false,
+            contentType: false,
+            processData: false,
+            error: function (xhr, status, error) {
+            },
+            success: function (response) {
+                window.location.href = response.Url;
+            }
+        });
+    }
+    function GetEmployeeData() {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        var WF_EMP_TYPE = $("#WF_EMP_TYPE").val();
+        var SUBDEPT_ID = $("#SUBDEPT_ID").val();
+        var wf_id = $("#WF_ID").val();
+        if (DEPARTMENT_ID !== "") {
+            $("#particalDiv").empty();
+            $.ajax(
+                {
+                    type: 'Get',
+                    url: '/Workforce/GetworkforceSalarySlipByDept?deptId=' + DEPARTMENT_ID + '&sub_dept_id=' + SUBDEPT_ID +  "&emptype_id=" + WF_EMP_TYPE + "&wf_id=" + wf_id,
+                    success:
+                        function (response) {
+                            $("#particalDiv").append(response);
+                        },
+                    error:
+                        function (response) {
+                            alert("Error: " + response);
+                        }
+                });
+        }
+    }
+
+    function getSubDeptbyDeptId() {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').formSelect();
+                GetEmployeeData();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+            GetEmployeeData();
+        }
+    }
+
+
+    $(document).on('click', "#checkAll", function () {
+        $("input[name='wfIds']").attr("checked", this.checked);
+
+        $("input[name='wfIds']").click(function () {
+            if ($("input[name='wfIds']").length == $("input[name='wfIds']:checked").length) {
+                $("#checkAll").attr("checked", "checked");
+            }
+            else {
+                $("#checkAll").removeAttr("checked");
+            }
+        });
+    });
+
+
+    $(document).on('click', "#btnSubmit", function () {
+        var count = $("input[name='wfIds']:checked").length;
+        if (count == 0) {
+            alert("No rows selected");
+            return false;
+        }
+    });
+
+    $("#EMP_NAME").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("PiecWagerWorkforceByWFType", "Workforce")',
+                datatype: "json",
+                data: {
+                    deptId: $("#DEPARTMENT_ID").val(),
+                    query: $('#EMP_NAME').val(),
+                    emp_type_id: $('#WF_EMP_TYPE').val()
+                },
+                success: function (data) {
+                    response($.map(data, function (val, item) {
+                        return {
+                            label: val.Name,
+                            value: val.Name,
+                            empId: val.ID
+                        }
+                    }))
+                }
+            })
+        },
+        select: function (event, ui) {
+            $("#WF_ID").val(ui.item.empId);
+             GetEmployeeData()
+         },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+
+</script>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Content/Toastr/toastr.min.js"></script>

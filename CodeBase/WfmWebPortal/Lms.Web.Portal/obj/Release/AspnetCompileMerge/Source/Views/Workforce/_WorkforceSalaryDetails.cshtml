@@ -1,0 +1,90 @@
+﻿@model  IEnumerable<Wfm.App.Core.Model.WorkforceSalaryData>
+
+
+        <table id="tableExport" class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+            <thead>
+                <tr>
+                    <th>EMP_ID</th>
+                    <th>EMP NAME</th>
+                    <th>DEPARTMENT</th>
+                    <th>DESIGNATION</th>
+                    <th>SALARY_MONTH</th>
+                    <th>STARTDATE</th>
+                    <th>ENDDATE</th>
+                    <th>PAID_DAYS</th>
+                    <th>OVERTIME_DAYS</th>
+                    <th>TOTAL_LEAVE_TAKEN</th>
+                    <th>TOTAL_LEAVE_AVAILABLE</th>
+                    <th>LEAVE_ADJUSTED</th>
+                    <th>TOTAL_LEAVE_BALANCE</th>
+                    <th>BASIC_DA</th>
+                    <th>HRA</th>
+                    <th>SPECIAL_ALLOWANCES</th>
+                    <th>PRODUCTION_INCENTIVE_BONUS</th>
+                    <th>PF</th>
+                    <th>ESI</th>
+                    <th>TDS</th>
+                    <th>SHOP_FLOOR_FINE</th>
+                    <th>OTHER_DEDUCTION</th>
+                    <th>ADVANCE</th>
+                    <th>OVERTIME_WAGES</th>
+                    <th>WORKINGDAY_WAGES</th>
+                    <th>TOTAL_WAGES</th>
+                    <th>TOTAL_WAGES_AFTER_DEDUCTION</th>
+                    <th>EMPLOYER_EPF</th>
+                    <th>EMPLOYER_ESI</th>
+                    <th>ADMIN_CHARGES</th>
+                    <th>EDLI_CHARGES</th>
+                    <th>CREATED_ON</th>
+                    <th>MODE_OF_PAYMENT</th>
+                    <th>PAID_STATUS</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>@item.EMP_ID</td>
+                        <td>@item.EMP_NAME</td>
+                        <td>@item.DEPT</td>
+                        <td>@item.DESIGNATION</td>
+                        <td>@item.SALARY_MONTH				</td>
+                        <td>@Wfm.App.Common.Utility.FormatDate(@item.STARTDATE.Value)					</td>
+                        <td>@Wfm.App.Common.Utility.FormatDate(@item.ENDDATE.Value)					</td>
+                        <td>@item.PAID_DAYS					</td>
+                        <td>@item.OVERTIME_DAYS				</td>
+                        <td>@item.TOTAL_LEAVE_TAKEN			</td>
+                        <td>@item.TOTAL_LEAVE_AVAILABLE		</td>
+                        <td>@item.LEAVE_ADJUSTED				</td>
+                        <td>@item.TOTAL_LEAVE_BALANCE		</td>
+                        <td>@item.BASIC_DA					</td>
+                        <td>@item.HRA						</td>
+                        <td>@item.SPECIAL_ALLOWANCES			</td>
+                        <td>@item.PRODUCTION_INCENTIVE_BONUS	</td>
+                        <td>@item.PF							</td>
+                        <td>@item.ESI						</td>
+                        <td>@item.TDS						</td>
+                        <td>@item.SHOP_FLOOR_FINE			</td>
+                        <td>@item.OTHER_DEDUCTION			</td>
+                        <td>@item.ADVANCE					</td>
+                        <td>@item.OVERTIME_WAGES				</td>
+                        <td>@item.WORKINGDAY_WAGES			</td>
+                        <td>@item.TOTAL_WAGES				</td>
+                        <td>@item.TOTAL_WAGES_AFTER_DEDUCTION</td>
+                        <td>@item.EMPLOYER_EPF				</td>
+                        <td>@item.EMPLOYER_ESI				</td>
+                        <td>@item.ADMIN_CHARGES				</td>
+                        <td>@item.EDLI_CHARGES				</td>
+                        <td>@item.CREATED_ON.Value.ToShortDateString()					</td>
+                        <td>@item.MODE_OF_PAYMENT			</td>
+                        <td>@item.PAID_STATUS				</td>
+                        <td>
+                            <a href="/Workforce/SalarySlip?EMP_ID=@item.EMP_ID">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>    

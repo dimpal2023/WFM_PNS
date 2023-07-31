@@ -1,0 +1,36 @@
+﻿@model  Wfm.App.Core.Model.ToolTalkConfigurationMetaData
+
+<div class="table-responsive" style="max-height: 600px; overflow-y: scroll">
+    <table id="tableExport"
+           class="display table table-bordered table-checkable order-column m-t-20 width-per-100" width="100%">
+        <thead>
+            <tr style="background: #cdcdcd">
+                <th>
+                    <label class="form-check-label">
+                        @Html.CheckBox("Select All", false, new { id = "select-all", @class = "form-check-input" })
+                        <span class="form-check-sign">
+                            <span class="check" style="font-weight: bold; font-size: 14px;">Select All</span>
+                        </span>
+                    </label>
+                </th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.TOOL_TALK_CHECK_LIST)
+            {
+                <tr>
+                    <td>
+                        <label class="form-check-label">
+                            @Html.CheckBox(item.ITEM_NAME, item.CHECK.Value, new { id = item.ID, @class = "form-check-input instruction_list", TOOL_TALK_ID = item.TOOL_TALK_ID, ITEM_NAME = item.ITEM_NAME, CHECKED = (item.CHECK.Value ? "checked" : "unchecked") })
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </td>
+                    <td>@item.ITEM_NAME</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

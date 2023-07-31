@@ -1,0 +1,104 @@
+﻿@model Wfm.App.Core.Model.AddWorkforceTrainningMetaData
+@{
+    int i = ViewBag.RowNumber;
+    int row = i + 1;
+}
+<table id="tblParticipantList">
+    <thead>
+        <tr>
+
+            <td style="width:28%" class="required">Trainning</td>
+            <td style="width:15%" class="required">Start Date</td>
+            @*<td style="width:15%">End Date</td>*@
+            <td style="width:15%" class="required">Time</td>
+            <td style="width:20%" class="required">Venue</td>
+            <td style="width:15%" class="required">Trainner Name</td>
+            @*<td style="width:15%" class="required">Upload Group Photo</td>*@
+            <td style="width:12%"></td>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+
+        <tr id="trRemove_@row">
+
+            <td>
+                @Html.DropDownListFor(x => x.ListMetaDatas[i].TRAINNING_ID, Model.TrainningMasterByDepart, "--Select--", new { required = "true", @class = "required", id = "ListMetaDatas_" + i + "__TRAINNING_ID", style = "display:block;" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ListMetaDatas[i].START_DATE, "", new { placeholder = "dd/mm/yyyy", @class = "form-control datepaker dateddmmyyyy required", @type = "text", required = "true" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ListMetaDatas[i].Time, "", new { @class = "form-control", @type = "time", required = "true" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ListMetaDatas[i].Venue, "", new { @class = "form-control required", @type = "text", required = "true" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.ListMetaDatas[i].TRAINNER_NAME, "", new { @class = "form-control required", @type = "text", required = "true" })
+            </td>
+            @*<td>
+                    @Html.TextBoxFor(m => m.ListMetaDatas[i].PHOTOfile, "", new { @class = "form-control required", @type = "file", required = "true" })
+                </td>*@
+            <td>
+                <div id="ListMetaDatas_remove_@row"></div>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                <div class="row clearfix">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary waves-effect" id="btnTrainning" onclick="addNewRow()">Add More</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div class="row clearfix">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <div class="form-line">
+                <img id="img2" alt="No Group photo found." src="@Model.PHOTOBase64" height="150" width="170" />
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group">
+            <div class="form-line">
+                <span>Group Photo </span><span class="text-danger">*</span>
+                @Html.TextBoxFor(x => x.PHOTOfile, new { type = "file", required = "true", id = "PHOTOfile" })
+
+            </div>
+            @Html.ValidationMessageFor(m => m.PHOTOfile)
+        </div>
+    </div>
+    @*@Html.TextBoxFor(m=>m.PHOTOBase64)*@
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary waves-effect" id="btnSaveWorkforceTrainning">Submit</button>
+    </div>
+</div>
+
+
+<script>
+    $('#PHOTOfile').change(function () {
+        debugger
+        var input = this;
+        var url = $(this).val();
+        var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+        if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img2').attr('src', e.target.result);
+               
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+        else {
+            $('#img2').attr('src', '/assets/no_preview.png');
+        }
+    });
+</script>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.DepartmentMasterMetaData>
+@{
+    int i = 0;
+}
+<table id="tableExport" class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th> Unit </th>
+            <th> Department Head </th>
+            <th> Department Name </th>
+            <th>Created By</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            i = i + 1;
+        <tr>
+            <td>@i</td>
+            <td>@item.DEPT_HEAD_ID</td>
+            <td>@item.DEPT_HEAD_NAME</td>
+            <td>@item.DEPT_NAME</td>
+            <td>@item.Created_by</td>
+            <td>
+                <a href="javascript:void(0)" onclick="editDepartment('@item.DEPT_ID')">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+<script>
+    $("document").ready(function () {
+        $('#tableExport').DataTable({
+            //lengthMenu: [
+            //    [10, 25, 50, -1],
+            //    ['10', '25', '50', 'Show all']
+            //],
+            dom: 'Bfrtip',
+            buttons: [
+                
+                'copy',
+                'csv',
+                'excel',
+                'pdf',
+                'print',
+               /* 'pageLength'*/
+            ]});
+    });
+</script>
+

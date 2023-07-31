@@ -1,0 +1,522 @@
+﻿@model Wfm.App.Core.Model.TRAINNING_WORKFORCE_MAPPING
+@{
+    int i = 0;
+
+}
+<style type="text/css">
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        width: 100%;
+        height: auto !important;
+        overflow: hidden;
+        outline: 0;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Workforce Training</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/WorkforceTrainning/TrainningWorkforce">
+                                <i class="fas fa-layer-group"></i>Workforce Training
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Update</strong> Workforce Training
+                            </h2>
+                        </div>
+                        <div class="body">
+                            @using (Html.BeginForm("UpdateTrainningWorkforceStatus", "WorkforceTrainning", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.HiddenFor(m => m.TRAINNING_MAPPING_ID)
+                                <div class="row clearfix">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                                @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                                                @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.DEPT_ID, "Department", new { @class = "required" })
+                                                @Html.DropDownListFor(x => x.DEPT_ID, Model.Departments, "-- Select --", new { required = "true" })
+                                                @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                                @Html.HiddenFor(m => m.TRAINNING_WORKFORCE_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department", new { @class = "required" })
+                                                @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "--Select--", new { required = "true" })
+                                                @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="password_2">Employee Type  <span class="text-danger">*</span></label>
+                                                @Html.DropDownListFor(x => x.WF_EMP_TYPE, new SelectList(ViewBag.EmployeeTypes, "Value", "Text"), "-- Select--", htmlAttributes: new { id = "WF_EMP_TYPE" })
+                                                @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+
+                                                @Html.LabelFor(x => x.EMP_NAMES, "Employee Name", new { @class = "required" })
+                                                &nbsp;&nbsp;&nbsp;<label>
+                                                    <input type="checkbox" name="twfmIds" class="filled-in" value="" id="chk" />
+                                                    <span class="text-primary">Please select checkbox if you want to select all</span>
+                                                </label>
+                                                @Html.ListBoxFor(m => m.EMP_NAMES, new MultiSelectList(ViewBag.Employees, "EMP_NAME", "EMP_NAME", new[] { ViewBag.EmpName }), new { required = "required", @class = "listbox", multiple = "multiple", @onchange = "addTrainning()" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row col-sm-12" style="display:none">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Is completed ?<span class="text-danger">*</span></label>
+                                            @Html.DropDownListFor(m => m.ISTRAINNINGCOMPLETED, new List<SelectListItem>
+                                                                            {
+                                                                                new SelectListItem{ Text="Yes", Value = "Y" },
+                                                                                new SelectListItem{ Text="No", Value = "N"}
+                                                                             }, "-- Select--", new { required = "true" })
+                                            @Html.ValidationMessageFor(m => m.ISTRAINNINGCOMPLETED)
+                                        </div>
+                                    </div>
+                                </div>
+                                <table id="tblParticipantList">
+                                    <thead>
+                                        <tr>
+
+                                            <td style="width:28%" class="required">Trainning</td>
+                                            <td style="width:15%" class="required">Start Date</td>
+                                            @*<td style="width:15%">End Date</td>*@
+                                            <td style="width:15%" class="required">Time</td>
+                                            <td style="width:20%" class="required">Venue</td>
+                                            <td style="width:15%" class="required">Trainner Name</td>
+                                            <td style="display:none" class="presentemployees"></td>
+                                            <td style="width:12%"></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody">
+                                        @*@Html.HiddenFor(m => Model.ListMetaDatas,new { id= "ListMetaDatas" })*@
+
+                                        @foreach (var dt in Model.ListMetaDatas)
+                                        {
+                                            string[] tr1 = dt.START_DATE.ToString().Split(' ');
+                                            string[] tr2 = dt.END_DATE.ToString().Split(' ');
+
+                                            <tr id="row_@dt.TRAINNING_ID">
+                                                <td>
+                                                    @Html.DropDownListFor(x => Model.ListMetaDatas[i].TRAINNING_ID, new SelectList(ViewBag.TranningList, "Value", "Text", dt.TRAINNING_ID), new { required = "true", id = "ListMetaDatas_" + i + "__TRAINNING_ID" })
+                                                    @Html.HiddenFor(m => Model.ListMetaDatas[i].TRAINNING_MAPPING_ID)
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => Model.ListMetaDatas[i].START_DATE, tr1[0], new { placeholder = "dd/mm/yyyy", id = "START_DATE", @class = "form-control datepaker dateddmmyyyy required", @type = "text", required = "true" })
+                                                </td>
+                                                @*<td>
+                                                        @Html.TextBoxFor(m => Model.ListMetaDatas[i].END_DATE, tr2[0], new { placeholder = "dd/mm/yyyy", id = "END_DATE", @class = "form-control dateddmmyyyy required", @type = "text", required = "true" })
+                                                    </td>*@
+                                                <td>
+                                                    @Html.TextBoxFor(m => Model.ListMetaDatas[i].Time, dt.Time, new { @class = "form-control", id = "Time", @type = "Time", required = "true" })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => Model.ListMetaDatas[i].Venue, dt.Venue, new { @class = "form-control required", id = "Venue", @type = "text", required = "true" })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ListMetaDatas[i].TRAINNER_NAME, "", new { @class = "form-control required", @type = "text", required = "true" })
+                                                </td>
+                                                <td style="display:none" class="presentemployees">@Model.ListMetaDatas[i].PRESENTED_EMP</td>
+                                                <td><button type="button" id="View" onclick="Views('@Model.ListMetaDatas[i].TRAINNING_MAPPING_ID',this)" class="btn btn-default m-r-15">View</button></td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    </tbody>
+
+                                </table>
+                                <div class="row clearfix">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <img id="img2" alt="No Trainning photo found." required="required" src="@Model.PHOTOBase64" height="150" width="170" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <span>Trainning Photo </span><span class="text-danger">*</span>
+                                                @Html.TextBoxFor(m => m.PHOTOfile, new { type = "file", id = "PHOTOfile" })
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.PHOTOfile)
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="col-lg-12 p-t-20 text-center">
+                                    <button type="submit" id="submit" class="btn btn-primary waves-effect m-r-15">Update</button>
+                                    <button type="button" id="cancel" class="btn btn-danger waves-effect">Cancel</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">View Total Attendance Strength in Trainning</h4>
+                        <h5 class="modal-title" style="margin-left: 90px;">Present - <span id="TotalPresentEmp"></span></h5>&nbsp;&nbsp;&nbsp;
+                        <h5 class="modal-title">Absent - <span id="TotalAbsentEmp"></span></h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="hdnTrainningID" />
+                        <table id="AllEmployee">
+                            <thead>
+                                <tr>
+                                    <th style="width:20%">
+                                        <label>
+                                            <input type="checkbox" class="filled-in" id="checkAll" />
+                                            <span></span>
+                                        </label>
+                                    </th>
+                                    <th>Employee Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary waves-effect" id="btnTrainning" onclick="SavePresentedEmployee()">Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    
+    $(window).on('load', function () {
+        $(".page-loader-wrapper").remove();
+
+        var str = '@ViewData["EmpName"]';
+        var res = str.split(", ");
+        $("#EMP_NAMES").val(res);
+        var str1 = '@ViewData["ISComplete"]';
+        $("#ISTRAINNINGCOMPLETED").val(str1);
+
+        var msg = '@ViewData["Msg"]';
+        if (msg != '') {
+            alert(msg);
+            window.location.href = "@Url.Action("TrainningWorkforce", "WorkforceTrainning")";
+        } else {
+
+        }
+    })
+    var Employee_Data = "";
+    function Views(e,t) {
+        
+        var tr = $(t).closest("tr");
+        $("#hdnTrainningID").val(e);
+        $("#checkAll").prop("checked", false);
+        var Present = $("#EMP_NAMES").val();
+        var html = ''; var count_presentEmp = 0;
+         var Saved_PEmp = $(tr).find('.presentemployees').text();
+        var Saved = Saved_PEmp.split(", ");
+        $.each(Present, function (i, item) {
+        html +='<tr>';
+        html +='<td class="action">';
+            html += '<label>';
+            var ischecked = '';
+             
+            $.each(Saved, function (j, attentemp) {
+                if (attentemp == item) {
+                    ischecked = 'checked';
+                    count_presentEmp +=1;
+                }
+            })
+            html += '<input type="checkbox" name="lst" ' + ischecked+' class="filled-in" value="" id="chk1" /><span></span>';
+        html += '</label>';
+        html += '</td>';
+            html += '<td class="names">' + item + '</td>';
+        html += '</tr>';
+    })
+        $("#AllEmployee tbody").html(html);
+        $("#TotalPresentEmp").html(count_presentEmp);
+        $("#TotalAbsentEmp").html(Number(Present.length) - Number(count_presentEmp));
+        $("#myModal").modal('show');
+    }
+
+    function SavePresentedEmployee() {
+      
+        var EmpList = '';
+        WF_ID = $("#hdnTrainningID").val();
+        $("#AllEmployee tbody tr").each(function (index) {
+            if ($(this).find('.action input[name="lst"]').prop('checked') == true) {
+                EmpList += $(this).find('.names').text() + ', ';
+
+            }
+        })
+        $.get('/WorkforceTrainning/SaveAttendTranning_Emp?WF_ID=' + WF_ID + '&EmpList=' + EmpList, function (data) {
+            if (data == "true") {
+                alert('Details saved successfully.');
+                location.reload();
+            } else {
+                alert(data);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $("select[required]").css({ position: "absolute", display: "inline", height: 0, padding: 0, width: 0 });
+        $('.dateddmmyyyy').bootstrapMaterialDatePicker({
+            format: 'DD/MM/YYYY',
+            clearButton: true,
+            weekStart: 1,
+            time: false,
+            autoClose: true,
+        });
+        //$('#DEPT_ID').find('option').not(':first').remove();
+        //onBuildingChange();
+        getSubDeptbyDeptId();
+    });
+    $("#cancel").click(function () {
+        window.location.href = "/WorkforceTrainning/TrainningWorkforce";
+    });
+    $('input[name="twfmIds"]').click(function () {
+        if ($('#DEPT_ID').val() != "" && $('#SUBDEPT_ID').val() != "" && $('#WF_EMP_TYPE').val() != "") {
+            if ($(this).is(":checked")) {
+                flag = 0; var str = '';
+                $("#EMP_NAMES option").each(function () {
+                    str += $(this).val() + ', ';
+                });
+                res = str.split(", ");
+                $("#EMP_NAMES").val(res);
+                $('#EMP_NAMES').formSelect();
+            }
+            else if ($(this).is(":not(:checked)")) {
+                $("#EMP_NAMES").val('');
+                $('#EMP_NAMES').formSelect();
+            }
+        } else {
+            $('#chk').prop("checked", false);
+            alert('Please select above fields.');
+
+        }
+        addTrainning();
+    });
+    function subDepartmentOnChange() {
+        var departId = $('#DEPT_ID').val();
+        var sub_depart_id = $('#SUBDEPT_ID').val();
+        $.get('/WorkforceTrainning/GetTrainningBydeptId?deptId=' + departId + '&sub_deptId=' + sub_depart_id , function (data) {
+            //$('#TRAINNING_ID').material_select('destroy');
+            var idName = 'TRAINNING_ID';
+            $('#' + idName).find('option').not(':first').remove();
+
+            $.each(data, function (i, item) {
+                $('#' + idName).append($('<option>', {
+                    value: item.TRAINNING_ID,
+                    text: item.TRAINNING_NAME
+                }));
+            });
+            $('#TRAINNING_ID').formSelect();
+
+        });
+    }
+    $("#DEPT_ID").change(function () {
+        getSubDeptbyDeptId();
+    });
+
+    function getSubDeptbyDeptId() {
+        var DEPARTMENT_ID = $("#DEPT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').val('@Model.SUBDEPT_ID');
+                $('#SUBDEPT_ID').formSelect();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+        }
+    }
+    $("#SUBDEPT_ID").change(function () {
+        var DEPARTMENT_ID = $("#DEPT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            subDepartmentOnChange();
+        }
+    });
+    $("#WF_EMP_TYPE").change(function () {
+        debugger;
+          $('#EMP_NAMES').empty();
+          $('#EMP_NAMES').formSelect();
+        if ($('#DEPT_ID').val() != "" && $('#SUBDEPT_ID').val() != "" && $('#WF_EMP_TYPE').val()!="") {
+            $.ajax({
+                url: '@Url.Action("BindWorkforceByWFType", "Workforce")',
+            datatype: "json",
+            data: {
+                deptId: $("#DEPT_ID").val(),
+                sub_dept_id: $("#SUBDEPT_ID").val(),
+                emp_type_id: $('#WF_EMP_TYPE').val()
+            },
+                success: function (data) {
+                    debugger;
+                    var uniqueGroups = new Array();
+                    var dictionary = new Array();
+
+                    $('#EMP_NAMES').empty();
+                    $('#EMP_NAMES').formSelect();
+
+                    if (data != null) {
+                        $.each(data, function (i, subdept) {
+                            var v = { Value: subdept.Name, Text: subdept.ID };
+
+                            if (dictionary.find(x => x.Key === subdept.Name) === undefined) {
+                                var entry = {};
+                                entry.Key = subdept.Name;
+                                entry.Value = new Array();
+                                entry.Value.push(v);
+
+                                dictionary.push(entry);
+                            }
+                            else {
+                                var obj = dictionary.find(x => x.Key === subdept.Name);
+                                obj.Value.push(v);
+                            }
+                        });
+
+                        var optgroup = "";
+                        $.each(dictionary, function (i, group) {
+                            /*  optgroup += "<optgroup label='" + group.Key + "'>";*/
+                            $.each(group.Value, function (j, item) {
+                                var option = "<option value='" + item.Value + "'>" + item.Value + "</option>";
+                                optgroup += option;
+                            });
+                            optgroup += "</optgroup>";
+                        });
+                        Employee_Data = optgroup;
+                        $('#EMP_NAMES').append(optgroup);
+                        $('#EMP_NAMES').formSelect();
+                    }
+                },
+                error: function (responseText) {
+                    alert(responseText);
+                }
+            });
+        }
+     });
+    function addTrainning() {
+        var departId = $('#DEPT_ID').val();
+        var subdepartId = $('#SUBDEPT_ID').val();
+        var rowNumber = $('#rowValue').val();
+        if (rowNumber => 0) {
+            var url = "/WorkforceTrainning/AddWorkforceTrainningByDeptId?row=" + 1 + '&deptId=' + departId + '&sub_Id=' + subdepartId;
+            $.get(url, function (data) {
+                //$("#tblParticipantList tbody").append(data);
+                $('#trainningForWorkforce').html(data);
+                $('#trainningForWorkforce').fadeIn('fast');
+                if (rowNumber >= 1) {
+                    var removeTd = parseInt(rowNumber) + 1;
+                    $('#ListMetaDatas_remove_' + removeTd).html('<button type="button" onclick="remodeAsset(' + rowNumber + ')" id="btnRemoveAsset" value="' + rowNumber + '">Remove</button>');
+                    if (rowNumber > 1) {
+                        $('#ListMetaDatas_remove_' + rowNumber).empty();
+                    }
+                }
+
+            });
+        }
+
+    }
+    function onBuildingChange() {
+        var buildingId = $("#BUILDING_ID option:selected").val();
+        $.get('/ManPowerRequest/GetFloorByBuildingId?buildingId=' + buildingId, function (data) {
+            $('#DEPT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#DEPT_ID').append($('<option>', {
+                    value: item.DEPT_ID,
+                    text: item.DEPT_NAME
+                }));
+            });
+            $('#DEPT_ID').formSelect();
+        });
+    }
+
+    $(document).on('click', "#checkAll", function () {
+        $("input[name='lst']").attr("checked", this.checked);
+
+        $("input[name='lst']").click(function () {
+            if ($("input[name='lst']").length == $("input[name='lst']:checked").length) {
+                $("#checkAll").attr("checked", "checked");
+            }
+            else {
+                $("#checkAll").removeAttr("checked");
+            }
+        });
+    });
+</script>
+<script>
+    $('#PHOTOfile').change(function () {
+        debugger
+        var input = this;
+        var url = $(this).val();
+        var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+        if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img2').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+        else {
+            $('#img2').attr('src', '/assets/no_preview.png');
+        }
+    });
+</script>

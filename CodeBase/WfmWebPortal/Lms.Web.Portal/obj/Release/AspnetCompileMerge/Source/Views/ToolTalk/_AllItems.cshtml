@@ -1,0 +1,40 @@
+﻿@model List<Wfm.App.Core.Model.ToolTalkMasterMetaData>
+
+<div class="table-responsive">
+    <table id="tableExport"
+           class="display table table-hover table-checkable order-column m-t-20 width-per-100" width="100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th> Department </th>
+                <th> Sub Department </th>
+                <th> Check List Name </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+
+                int index = 0;
+                foreach (var tooltalk in Model)
+                {
+                    <tr id="row_@tooltalk.ID">
+                        <td>@(++index)</td>
+                        <td>@tooltalk.DEPT_NAME</td>
+                        <td>@tooltalk.SUBDEPT_NAME</td>
+                        <td>@tooltalk.ITEM_NAME</td>
+
+                        <td style="width:10%">
+                            <a href="/ToolTalk/Edit/@tooltalk.ID" class="btn btn-tbl-edit">
+                                <i class="material-icons">create</i>
+                            </a>
+                            <a href="#" class="btn btn-tbl-delete" data-toggle="modal" data-target="#exampleModalCenter">
+                                <i class="material-icons">delete_forever</i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

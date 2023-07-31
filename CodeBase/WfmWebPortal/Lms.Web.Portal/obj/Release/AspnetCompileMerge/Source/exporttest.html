@@ -1,0 +1,420 @@
+﻿<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        var tablesToExcel = (function ($) {
+            var uri = 'data:application/vnd.ms-excel;base64,'
+                , html_start = `<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">`
+                , template_ExcelWorksheet = `<x:ExcelWorksheet><x:Name>{SheetName}</x:Name><x:WorksheetSource HRef="sheet{SheetIndex}.htm"/></x:ExcelWorksheet>`
+                , template_ListWorksheet = `<o:File HRef="sheet{SheetIndex}.htm"/>`
+                , template_HTMLWorksheet = `
+------=_NextPart_dummy
+Content-Location: sheet{SheetIndex}.htm
+Content-Type: text/html; charset=windows-1252
+
+` + html_start + `
+<head>
+            <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+            <link id="Main-File" rel="Main-File" href="../WorkBook.htm">
+            <link rel="File-List" href="filelist.xml">
+</head>
+<body><table>{SheetContent}</table></body>
+</html>`
+                , template_WorkBook = `MIME-Version: 1.0
+X-Document-Type: Workbook
+Content-Type: multipart/related; boundary="----=_NextPart_dummy"
+
+------=_NextPart_dummy
+Content-Location: WorkBook.htm
+Content-Type: text/html; charset=windows-1252
+
+` + html_start + `
+<head>
+<meta name="Excel Workbook Frameset">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="File-List" href="filelist.xml">
+<!--[if gte mso 9]><xml>
+         <x:ExcelWorkbook>
+            <x:ExcelWorksheets>{ExcelWorksheets}</x:ExcelWorksheets>
+            <x:ActiveSheet>0</x:ActiveSheet>
+         </x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<frameset>
+            <frame src="sheet0.htm" name="frSheet">
+            <noframes><body><p>This page uses frames, but your browser does not support them.</p></body></noframes>
+</frameset>
+</html>
+{HTMLWorksheets}
+Content-Location: filelist.xml
+Content-Type: text/xml; charset="utf-8"
+
+<xml xmlns:o="urn:schemas-microsoft-com:office:office">
+            <o:MainFile HRef="../WorkBook.htm"/>
+            {ListWorksheets}
+            <o:File HRef="filelist.xml"/>
+</xml>
+------=_NextPart_dummy--
+`
+                , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+                , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+            return function (tables, filename) {
+                var context_WorkBook = {
+                    ExcelWorksheets: ''
+                    , HTMLWorksheets: ''
+                    , ListWorksheets: ''
+                };
+                var tables = jQuery(tables);
+                $.each(tables, function (SheetIndex) {
+                    var $table = $(this);
+                    var SheetName = $table.attr('data-SheetName');
+                    if ($.trim(SheetName) === '') {
+                        SheetName = 'Sheet' + SheetIndex;
+                    }
+                    context_WorkBook.ExcelWorksheets += format(template_ExcelWorksheet, {
+                        SheetIndex: SheetIndex
+                        , SheetName: SheetName
+                    });
+                    context_WorkBook.HTMLWorksheets += format(template_HTMLWorksheet, {
+                        SheetIndex: SheetIndex
+                        , SheetContent: $table.html()
+                    });
+                    context_WorkBook.ListWorksheets += format(template_ListWorksheet, {
+                        SheetIndex: SheetIndex
+                    });
+                });
+
+                var link = document.createElement("A");
+                link.href = uri + base64(format(template_WorkBook, context_WorkBook));
+                link.download = filename || 'Workbook.xls';
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        })(jQuery);
+
+        function tablesToExcel(){
+
+        }
+    </script>
+</head>
+<body>
+    <button onclick="tablesToExcel('#PNIW0000669_DINESH,#PNIW0000642_ANIL', 'WorkSheet.xls');">HTML Tables to XLS sheets</button>
+
+
+
+    <table class="display table table-bordered table-checkable order-column m-t-20 width-per-100 table2excel" width="100%" id="PNIW0000669_DINESH" kumar="">
+        <tbody>
+            <tr style="background: #29c1c9;color:white;font-weight:400!important">
+                <th class="bold" colspan="7" style="text-align: center; font-size: 1.7rem; ">Production Incentive Bonus Monthly Report</th>
+            </tr>
+            <tr>
+            <th class="bold" colspan="3" style="font-size: 1rem; "> Worker Name : DINESH KUMAR</th>
+            <th class="bold" colspan="4" style="font-size: 1rem; "> Department : MACHINE SHOP</th>
+            </tr>
+            <tr>
+            <th class="bold" colspan="3" style="font-size: 1rem; ">Sub Department : CNC SECTION</th>
+            <th class="bold" colspan="4" style="font-size: 1rem; "> Employee Code : PNIW0000669</th>
+            </tr>
+            <tr>
+            <th class="bold" colspan="3" style="font-size: 1rem; "> Month : January</th>
+            <th class="bold" colspan="4" style="font-size: 1rem; "> Year : 2023</th>
+            </tr>
+            <tr style="border: 1px solid black;"><td class="bold">Date</td>
+            <td class="bold">Item Code</td><td class="bold">Item Name</td>
+            <td class="bold">Operation Name</td>
+            <td class="bold">Quantity</td>
+            <td class="bold">Piece Rate</td>
+            <td class="bold">Total Piece <br> Rate Amount</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+            <td style="text-align:center">06/01/2023</td>
+            <td style="text-align:left">DUTY_HRMS</td>
+            <td style="text-align:left">DUTY_HRMS</td>
+            <td style="text-align:left">DUTY_HRMS</td>
+            <td style="text-align:center">238.47</td>
+            <td style="text-align:right">0.64</td>
+            <td style="text-align:right">153.12</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+            <td style="text-align:center">13/01/2023</td>
+            <td style="text-align:left">PN-4000(03)(11)</td>
+            <td style="text-align:left">CABLE EXTRIMITY HOUSING</td>
+            <td style="text-align:left">Outer Turning on CNC</td>
+            <td style="text-align:center">87</td><td style="text-align:right">2.037</td>
+            <td style="text-align:right">177.22</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+            <td style="text-align:center">02/01/2023</td>
+            <td style="text-align:left">PN-4000(03)(11)</td>
+            <td style="text-align:left">CABLE EXTRIMITY HOUSING</td>
+            <td style="text-align:left">Internal Boring on CNC</td>
+            <td style="text-align:center">38</td>
+            <td style="text-align:right">8.967</td>
+            <td style="text-align:right">340.75</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+            <td style="text-align:center">27/01/2023</td>
+            <td style="text-align:left">ALWB2X2(17)</td>
+            <td style="text-align:left">Main Shaft Housing</td>
+            <td style="text-align:left">Machining 2nd on CNC Lathe</td>
+            <td style="text-align:center">22</td>
+            <td style="text-align:right">5.265</td>
+            <td style="text-align:right">115.83</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+            <td style="text-align:center">09/01/2023</td>
+            <td style="text-align:left">PN-4000(03)(11)</td>
+            <td style="text-align:left">CABLE EXTRIMITY HOUSING</td>
+            <td style="text-align:left">Internal Boring on CNC</td>
+            <td style="text-align:center">44</td>
+            <td style="text-align:right">8.967</td>
+            <td style="text-align:right">394.55</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+            <td style="text-align:center">11/01/2023</td>
+            <td style="text-align:left">PN-4000(03)(11)</td>
+            <td style="text-align:left">CABLE EXTRIMITY HOUSING</td>
+            <td style="text-align:left">Internal Boring on CNC</td>
+            <td style="text-align:center">45</td>
+            <td style="text-align:right">8.967</td>
+            <td style="text-align:right">403.51</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+            <td style="text-align:center">12/01/2023</td>
+            <td style="text-align:left">PCGS-20(04)</td>
+            <td style="text-align:left">Brass Brake</td>
+            <td style="text-align:left">Machining on CNC Lathe</td>
+            <td style="text-align:center">670</td>
+            <td style="text-align:right">0.636</td>
+            <td style="text-align:right">426.12</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+            <td style="text-align:center">07/01/2023</td>
+            <td style="text-align:left">PCGS-20(04)</td>
+            <td style="text-align:left">Brass Brake</td>
+            <td style="text-align:left">Machining on CNC Lathe</td>
+            <td style="text-align:center">40</td>
+            <td style="text-align:right">0.636</td>
+            <td style="text-align:right">25.44</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+            <td style="text-align:center">25/01/2023</td>
+            <td style="text-align:left">ALWB2X2(17)</td>
+            <td style="text-align:left">Main Shaft Housing</td>
+            <td style="text-align:left">Machining 2nd on CNC Lathe</td>
+            <td style="text-align:center">42</td>
+            <td style="text-align:right">5.265</td>
+            <td style="text-align:right">221.13</td>
+            </tr>
+            <tr style="border: 1px solid black;">
+            <td style="text-align:center">23/01/2023</td>
+            <td style="text-align:left">ALWB2X2(08)</td>
+            <td style="text-align:left">Brass Brake</td>
+            <td style="text-align:left">Machining on CNC Lathe</td>
+            <td style="text-align:center">460</td>
+            <td style="text-align:right">0.636</td>
+            <td style="text-align:right">292.56</td>
+            </tr>
+           
+
+        </tbody>
+    </table><table class="display table table-bordered table-checkable order-column m-t-20 width-per-100 table2excel" width="100%" id="PNIW0000642_ANIL" kumar="">
+    <tbody>
+        <tr style="background: #29c1c9;color:white;font-weight:400!important">
+            <th class="bold" colspan="7" style="text-align: center; font-size: 1.7rem; ">Production Incentive Bonus Monthly Report</th>
+        </tr>
+        <tr>
+            <th class="bold" colspan="3" style="font-size: 1rem; "> Worker Name : DINESH KUMAR</th>
+            <th class="bold" colspan="4" style="font-size: 1rem; "> Department : MACHINE SHOP</th>
+        </tr>
+        <tr>
+            <th class="bold" colspan="3" style="font-size: 1rem; ">Sub Department : CNC SECTION</th>
+            <th class="bold" colspan="4" style="font-size: 1rem; "> Employee Code : PNIW0000669</th>
+        </tr>
+        <tr>
+            <th class="bold" colspan="3" style="font-size: 1rem; "> Month : January</th>
+            <th class="bold" colspan="4" style="font-size: 1rem; "> Year : 2023</th>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td class="bold">Date</td>
+            <td class="bold">Item Code</td>
+            <td class="bold">Item Name</td>
+            <td class="bold">Operation Name</td>
+            <td class="bold">Quantity</td>
+            <td class="bold">Piece Rate</td>
+            <td class="bold">Total Piece <br> Rate Amount</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="text-align:center">06/01/2023</td>
+            <td style="text-align:left">DUTY_HRMS</td>
+            <td style="text-align:left">DUTY_HRMS</td>
+            <td style="text-align:left">DUTY_HRMS</td>
+            <td style="text-align:center">238.47</td>
+            <td style="text-align:right">0.64</td>
+            <td style="text-align:right">153.12</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="text-align:center">13/01/2023</td>
+            <td style="text-align:left">PN-4000(03)(11)</td>
+            <td style="text-align:left">CABLE EXTRIMITY HOUSING</td>
+            <td style="text-align:left">Outer Turning on CNC</td>
+            <td style="text-align:center">87</td>
+            <td style="text-align:right">2.037</td>
+            <td style="text-align:right">177.22</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="text-align:center">02/01/2023</td>
+            <td style="text-align:left">PN-4000(03)(11)</td>
+            <td style="text-align:left">CABLE EXTRIMITY HOUSING</td>
+            <td style="text-align:left">Internal Boring on CNC</td>
+            <td style="text-align:center">38</td>
+            <td style="text-align:right">8.967</td>
+            <td style="text-align:right">340.75</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="text-align:center">27/01/2023</td>
+            <td style="text-align:left">ALWB2X2(17)</td>
+            <td style="text-align:left">Main Shaft Housing</td>
+            <td style="text-align:left">Machining 2nd on CNC Lathe</td>
+            <td style="text-align:center">22</td>
+            <td style="text-align:right">5.265</td>
+            <td style="text-align:right">115.83</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="text-align:center">09/01/2023</td>
+            <td style="text-align:left">PN-4000(03)(11)</td>
+            <td style="text-align:left">CABLE EXTRIMITY HOUSING</td>
+            <td style="text-align:left">Internal Boring on CNC</td>
+            <td style="text-align:center">44</td>
+            <td style="text-align:right">8.967</td>
+            <td style="text-align:right">394.55</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="text-align:center">11/01/2023</td>
+            <td style="text-align:left">PN-4000(03)(11)</td>
+            <td style="text-align:left">CABLE EXTRIMITY HOUSING</td>
+            <td style="text-align:left">Internal Boring on CNC</td>
+            <td style="text-align:center">45</td>
+            <td style="text-align:right">8.967</td>
+            <td style="text-align:right">403.51</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="text-align:center">12/01/2023</td>
+            <td style="text-align:left">PCGS-20(04)</td>
+            <td style="text-align:left">Brass Brake</td>
+            <td style="text-align:left">Machining on CNC Lathe</td>
+            <td style="text-align:center">670</td>
+            <td style="text-align:right">0.636</td>
+            <td style="text-align:right">426.12</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="text-align:center">07/01/2023</td>
+            <td style="text-align:left">PCGS-20(04)</td>
+            <td style="text-align:left">Brass Brake</td>
+            <td style="text-align:left">Machining on CNC Lathe</td>
+            <td style="text-align:center">40</td>
+            <td style="text-align:right">0.636</td>
+            <td style="text-align:right">25.44</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="text-align:center">25/01/2023</td>
+            <td style="text-align:left">ALWB2X2(17)</td>
+            <td style="text-align:left">Main Shaft Housing</td>
+            <td style="text-align:left">Machining 2nd on CNC Lathe</td>
+            <td style="text-align:center">42</td>
+            <td style="text-align:right">5.265</td>
+            <td style="text-align:right">221.13</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="text-align:center">23/01/2023</td>
+            <td style="text-align:left">ALWB2X2(08)</td>
+            <td style="text-align:left">Brass Brake</td>
+            <td style="text-align:left">Machining on CNC Lathe</td>
+            <td style="text-align:center">460</td>
+            <td style="text-align:right">0.636</td>
+            <td style="text-align:right">292.56</td>
+        </tr>
+
+
+    </tbody>
+</table>
+    <!--<table id="table_1" data-SheetName="My custom sheet 1">
+        <thead>
+            <tr>
+                <td colspan="4" style="border-color:#fff;">
+                    Left info
+                </td>
+                <td colspan="3" class="text-right" style="border-color:#fff;">
+                    Right info
+                </td>
+            </tr>
+            <tr>
+                <th colspan="7" style="border-color:#fff;text-decoration:underline;font-size:2em;" class="text-center">
+                    Title
+                </th>
+            </tr>
+            <tr>
+                <th colspan="7" style="border-left-color:#fff; border-right-color:#fff;border-top-color:#fff;text-decoration:underline;font-size:1.5em;" class="text-center">
+                    Subtitle
+                </th>
+            </tr>
+            <tr>
+                <th colspan="7" style="border-left-color:#fff;border-right-color:#fff;border-top-color:#fff;height:50px;">
+                    Spacer
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="mso-number-format:'\@'">1</td>
+                <td style="mso-number-format:'General'">2</td>
+                <td style="mso-number-format:'0\.00'">3</td>
+                <td>info</td>
+                <td>info</td>
+                <td>info</td>
+                <td>info</td>
+            </tr>
+        </tbody>
+    </table>
+    <table id="table_2" data-SheetName="My custom worksheet 2">
+        <thead>
+            <tr>
+                <td colspan="2" style="border-color:#fff;">
+                    Left info 2
+                </td>
+                <td colspan="2" class="text-right" style="border-color:#fff;">
+                    Right info 2
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4" style="border-color:#fff;text-decoration:underline;font-size:2em;" class="text-center">
+                    Title 2
+                </th>
+            </tr>
+            <tr>
+                <th colspan="4" style="border-left-color:#fff; border-right-color:#fff;border-top-color:#fff;text-decoration:underline;font-size:1.5em;" class="text-center">
+                    Subtitle 2
+                </th>
+            </tr>
+            <tr>
+                <th colspan="4" style="border-left-color:#fff;border-right-color:#fff;border-top-color:#fff;height:50px;">
+                    Spacer 2
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="mso-number-format:'\@'">3</td>
+                <td style="mso-number-format:'General'">4</td>
+                <td style="mso-number-format:'0\.00'">5</td>
+                <td>info2</td>
+                <td>info3</td>
+                <td>info4</td>
+                <td>info5</td>
+            </tr>
+        </tbody>
+    </table>-->
+</body>
+</html>

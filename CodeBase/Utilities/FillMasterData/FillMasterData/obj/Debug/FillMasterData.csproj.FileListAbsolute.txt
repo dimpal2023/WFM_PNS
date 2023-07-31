@@ -1,0 +1,7 @@
+E:\Projects\FillMasterData\FillMasterData\bin\Debug\FillMasterData.exe.config
+E:\Projects\FillMasterData\FillMasterData\bin\Debug\FillMasterData.exe
+E:\Projects\FillMasterData\FillMasterData\bin\Debug\FillMasterData.pdb
+E:\Projects\FillMasterData\FillMasterData\obj\Debug\FillMasterData.csprojResolveAssemblyReference.cache
+E:\Projects\FillMasterData\FillMasterData\obj\Debug\FillMasterData.csproj.ResolveComReference.cache
+E:\Projects\FillMasterData\FillMasterData\obj\Debug\FillMasterData.exe
+E:\Projects\FillMasterData\FillMasterData\obj\Debug\FillMasterData.pdb

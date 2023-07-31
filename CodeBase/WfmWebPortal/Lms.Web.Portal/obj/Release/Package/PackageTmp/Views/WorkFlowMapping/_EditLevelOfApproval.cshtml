@@ -1,0 +1,122 @@
+﻿@model Wfm.App.Core.Model.WorkflowMappingMasterMetaData
+<div class="body table-responsive">
+
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Levels</th>
+                <th>Role</th>
+                <th>NAME</th>
+                <th>Auto Approval</th>
+                <th>Auto Approval Days</th>
+                <th>Auto Reject</th>
+                <th>Auto Reject Days</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                for (var i = 0; i < Model.ListMetaDatas.Count(); i++)
+                {
+                    <tr>
+                        <th scope="row">
+                            @Html.HiddenFor(m => Model.ListMetaDatas[i].LEVEL_ID)
+                            @Html.DisplayFor(m => Model.ListMetaDatas[i].LEVEL_ID)
+                        </th>
+                        <td>
+                            @Html.DropDownListFor(m => Model.ListMetaDatas[i].ROLE_ID, new SelectList(Model.Roles, "ROLE_ID", "ROLE_NAME", Model.ListMetaDatas[i].ROLE_ID), "-- Select--", new { @onchange = "roleOnChange(" + i + ")", style = "display:block", id = "ROLE_ID" + i, required = "true" })
+                        </td>
+                        <td>
+                            @Html.Action("EmployeeDDL", "WorkFlowMapping", new { role_Id = Model.ListMetaDatas[i].ROLE_ID, index = i, empId = Model.ListMetaDatas[i].EMP_ID })
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => Model.ListMetaDatas[i].AUTO_APPROVE, new SelectList(Model.IsAutoApprovalOrRejects, "Value", "Text", Model.ListMetaDatas[i].AUTO_APPROVE), "-- Select--", new { @onchange = "autoApprovalChange(" + i + ")", style = "display:block", id = "AUTO_APPROVE" + i, required = "true" })
+                        </td>
+                        <td>
+                            @if (Model.ListMetaDatas[i].AUTO_APPROVE == "N")
+                            {
+                                @Html.DropDownListFor(m => Model.ListMetaDatas[i].AUTO_APPROVE_DAY, new SelectList(Model.ApprovalOrRejectDays, "Value", "Text", Model.ListMetaDatas[i].AUTO_APPROVE_DAY), "-- Select--", new { style = "display:block", id = "AUTO_APPROVE_DAY" + i })
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(m => Model.ListMetaDatas[i].AUTO_APPROVE_DAY, new SelectList(Model.ApprovalOrRejectDays, "Value", "Text", Model.ListMetaDatas[i].AUTO_APPROVE_DAY), "-- Select--", new { style = "display:block", id = "AUTO_APPROVE_DAY" + i, required = "true" })
+                            }
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => Model.ListMetaDatas[i].AUTO_REJECT, new SelectList(Model.IsAutoApprovalOrRejects, "Value", "Text", Model.ListMetaDatas[i].AUTO_REJECT), "-- Select--", new { @onchange = "autoRejectChange(" + i + ")", style = "display:block", id = "AUTO_REJECT" + i, required = "true" })
+                        </td>
+                        <td>
+                            @if (Model.ListMetaDatas[i].AUTO_REJECT == "N")
+                            {
+                                @Html.DropDownListFor(m => Model.ListMetaDatas[i].AUTO_REJECT_DAY, new SelectList(Model.ApprovalOrRejectDays, "Value", "Text", Model.ListMetaDatas[i].AUTO_REJECT_DAY), "-- Select--", new { style = "display:block", id = "AUTO_REJECT_DAY" + i })
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(m => Model.ListMetaDatas[i].AUTO_REJECT_DAY, new SelectList(Model.ApprovalOrRejectDays, "Value", "Text", Model.ListMetaDatas[i].AUTO_REJECT_DAY), "-- Select--", new { style = "display:block", id = "AUTO_REJECT_DAY" + i, required = "true" })
+                            }
+                        </td>
+                    </tr>
+                }
+
+            }
+            <tr>
+                <td colspan="7">
+                    <div class="row clearfix">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                            <input type="submit" id="btnApprovalSave2" value="Save" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<script>
+    $('#btnApprovalSave').on("click", function () {
+        var validator = $("#submitApprovalForm").validate();
+        debugger
+        if ($("#submitApprovalForm").valid()) {
+            debugger
+            var levelId = $("#LEVEL_ID option:selected").val();
+            var datas = new Array();
+
+            for (var i = 0; i < levelId; i++) {
+                var dataFromForm = {};
+
+                dataFromForm.WORKFLOW_ID = $("#WORKFLOW_ID" + i).val();
+                dataFromForm.LEVEL_ID = $("#LEVEL_ID" + i).val();
+                dataFromForm.ROLE_ID = $("#ROLE_ID" + i + " option:selected").val();
+                dataFromForm.EMP_ID = $("#EMP_ID" + i + " option:selected").val();
+                dataFromForm.AUTO_APPROVE = $("#AUTO_APPROVE" + i + " option:selected").val();
+                dataFromForm.AUTO_APPROVE_DAY = $("#AUTO_APPROVE_DAY" + i + " option:selected").val();
+                dataFromForm.AUTO_REJECT = $("#AUTO_REJECT" + i + " option:selected").val();
+                dataFromForm.AUTO_REJECT_DAY = $("#AUTO_REJECT_DAY" + i + " option:selected").val();
+                datas.push(dataFromForm);
+            }
+            console.log(datas);
+            console.log(JSON.stringify(datas));
+            //$.ajax({
+            //    contentType: 'application/json; charset=utf-8',
+            //    dataType: 'json',
+            //    type: 'POST',
+            //    url: '/WorkFlowMapping/Create',
+            //    data: JSON.stringify(datas),
+            //    success: function (data) {
+            //        //alertify.alert('Alert Title', ' Successfully!');
+            //        window.location.href = '/WorkFlowMapping/Index';
+            //    },
+            //    failure: function (response) {
+            //        alertify.error(response);
+            //    }
+            //});
+        }
+    });
+
+
+</script>

@@ -1,0 +1,239 @@
+﻿@model Wfm.App.Core.Model.SubDepartmentMasterMetaData
+@{
+    ViewBag.Title = "Master - Sub Department";
+}
+<style>
+    .input-validation-error {
+        border: 1px solid white;
+        background-color: #fee;
+    }
+
+    ul.ui-autocomplete {
+        z-index: 1100;
+    }
+</style>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Master</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-layer-group"></i> Sub Departments
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                <div class="card">
+
+                    <div class="header">
+                        <button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#exampleModal">
+                            Add Sub Department
+                        </button>
+                        <h2>
+                            <strong>View </strong>Sub Departments
+                        </h2>
+                    </div>
+                    <div class="row col-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.DEPT_ID, "Department")
+                                    @Html.DropDownListFor(x => x.DEPT_ID, Model.Departments, "All", new { required = "true", id = "DEPT_ID2" })
+                                    @Html.ValidationMessageFor(m => m.SUBDEPT_NAME)
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="body">
+                        <div id="particalDiv">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">
+                                    Disable User
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Are you sure you want to disable this User?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="user_delete_confirm" type="button"
+                                        class="btn btn-info waves-effect">
+                                    Confirm
+                                </button>
+                                <button type="button" class="btn btn-danger waves-effect"
+                                        data-dismiss="modal">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Special Allowance</h5>
+                @*<button type="button" class="close" id="btnClose2" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>*@
+            </div>
+            @using (Html.BeginForm("AddSubDepartment", "Master", FormMethod.Post, new { @id = "AddSubDepartment", @class = "login100-form validate-form" }))
+            {
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.LabelFor(x => x.DEPT_ID, "Department")
+                            @Html.DropDownListFor(x => x.DEPT_ID, Model.Departments, "-- Select --", new { required = "true" })
+                            @Html.ValidationMessageFor(m => m.DEPT_ID)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.LabelFor(x => x.SUBDEPT_NAME, "Sub Department")
+                            @Html.TextBoxFor(x => x.SUBDEPT_NAME, new { required = "true" })
+                            @Html.ValidationMessageFor(m => m.SUBDEPT_NAME)
+                            @Html.HiddenFor(m => m.SUBDEPT_ID)
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnClose">Close</button>
+                    <button type="button" id="btnSave" class="btn btn-primary">Save </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $("#btnClose").click(function () {
+        cleanForm();
+        $('#exampleModal').modal('hide');
+        $('select').formSelect();
+    });
+    function cleanForm() {
+        $("#SUBDEPT_NAME").val("");
+        $("#DEPT_ID").val("");
+        $("#SUBDEPT_ID").val("");
+        $("#exampleModalLabel").text("Add Sub Department");
+    }
+    $(document).ready(function () {
+        $("select[required]").css({ display: "block", height: 0, padding: 0, width: 0, position: 'absolute' });
+        $("#btnSave").click(function () {
+            if ($("#AddSubDepartment").valid()) { //check if form is valid using model annotation
+                $.ajax({
+                    type: "POST",
+                    url: '/Master/AddSubDepartment',     //your action
+                    data: $('#AddSubDepartment').serialize(),   //your form name.it takes all the values of model
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.Status === 'Ok') {
+                            $('#exampleModal').modal('hide');
+                            var dept_id = $("#DEPT_ID").val();
+                            $("#DEPT_ID2").val(dept_id);
+                            cleanForm();
+                            $('select').formSelect();
+                            getSubDepartments();
+                        } else if (result.Status === 'Dublicate') {
+                            var errorMessage = "Sub Department Already Exist.";
+                            alert(errorMessage);
+                            $('#DEPT_NAME').parent().next('span').text(errorMessage).show();
+                            $('#DEPT_NAME').parent().next('span').addClass("field-validation-error");
+                        } else {
+                            var errorMessage = "Unknown Error.";
+                            alert(errorMessage);
+                            $('#DEPT_NAME').parent().next('span').text(errorMessage).show();
+                            $('#DEPT_NAME').parent().next('span').addClass("field-validation-error");
+                        }
+                    }
+                })
+            }
+            else {
+                return false;
+            }
+
+        });
+
+        getSubDepartments();
+    });
+
+
+    $("#DEPT_ID2").change(function () {
+        getSubDepartments();
+    });
+
+    function getSubDepartments() {
+        var dept_id = $("#DEPT_ID2").val();
+            $("#particalDiv").empty();
+            $.ajax(
+                {
+                    type: 'Get',
+                    url: '/Master/GetSubDepartments?dept_id=' + dept_id,
+                    success:
+                        function (response) {
+                            $("#particalDiv").append(response);
+                        },
+                    error:
+                        function (response) {
+                            alert("Error: " + response);
+                        }
+                });
+    }
+
+    function editSubDepartment(id) {
+        $.ajax(
+            {
+                type: 'Get',
+                url: '/Master/GetSubDepartmentById?id=' + id,
+                success:
+                    function (data) {
+                        $("#exampleModalLabel").text("Update Department");
+                        $("#DEPT_ID").val(data.DEPT_ID);
+                        $("#SUBDEPT_ID").val(data.SUBDEPT_ID);
+                        $("#SUBDEPT_NAME").val(data.SUBDEPT_NAME);
+                        $('#exampleModal').modal('show');
+                        $('select').formSelect();
+
+                    },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
+    }
+
+</script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

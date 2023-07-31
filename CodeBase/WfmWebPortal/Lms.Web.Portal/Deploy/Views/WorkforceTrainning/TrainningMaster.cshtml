@@ -1,0 +1,125 @@
+﻿@model Wfm.App.Core.Model.TrainningByDepartments
+
+@{
+    ViewBag.Title = "Workforce Tranning - Master";
+}
+
+<h2>TrainningMaster</h2>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Training Master</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/WorkforceTrainning/AddTrainning">
+                                <i class="fas fa-layer-group"></i> Workforce Training
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Create</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>All</strong> Training
+                        </h2>
+                    </div>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.DEPARTMENT_ID, "Department")
+                                    @Html.DropDownListFor(x => x.DEPARTMENT_ID, Model.Departments, "-- Select --", new { required = "true" })
+                                    @Html.ValidationMessageFor(m => m.DEPARTMENT_ID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.SUBDEPARTMENT_ID, "Sub Department")
+                                    @Html.DropDownListFor(x => x.SUBDEPARTMENT_ID, Enumerable.Empty<SelectListItem>(), "All", new { required = "true" })
+                                    @Html.ValidationMessageFor(m => m.SUBDEPARTMENT_ID)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body" id="tblBody">
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        GetTrainnings();
+        getSubDeptbyDeptId()
+    });
+   
+
+    $("#DEPARTMENT_ID").change(function () {
+        getSubDeptbyDeptId();
+    });
+
+    function getSubDeptbyDeptId() {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPARTMENT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPARTMENT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPARTMENT_ID').formSelect();
+                GetTrainnings();
+            });
+        } else {
+            $('#SUBDEPARTMENT_ID').find('option').not(':first').remove();
+            $('#SUBDEPARTMENT_ID').formSelect();
+            GetTrainnings();
+        }
+    }
+
+    $("#SUBDEPARTMENT_ID").change(function () {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            GetTrainnings();
+        }
+    });
+
+    function GetTrainnings() {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        var SUBDEPT_ID = $("#SUBDEPARTMENT_ID").val();
+        if (DEPARTMENT_ID !== "") {
+            $("#tblBody").empty();
+            $.ajax(
+                {
+                    type: 'Get',
+                    url: '/WorkforceTrainning/GetTrainningMasterByDeptId?deptId=' + DEPARTMENT_ID + '&sub_dept_id=' + SUBDEPT_ID ,
+                    success:
+                        function (response) {
+                            $("#tblBody").append(response);
+                        },
+                    error:
+                        function (response) {
+                            alert("Error: " + response);
+                        }
+                });
+        }
+    }
+</script>
+

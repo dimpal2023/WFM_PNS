@@ -1,0 +1,592 @@
+﻿@model Wfm.App.Core.Model.SpecialAllowanceMetaData
+@{
+    ViewBag.Title = "Workforce - Other Allowance / Fine";
+}
+<style>
+    .input-validation-error {
+        border: 1px solid white;
+        background-color: #fee;
+    }
+
+    ul.ui-autocomplete {
+        z-index: 1100;
+    }
+</style>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Workforce</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-layer-group"></i> Add Other Allowance / Fine
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                <div class="card">
+
+                    <div class="header">
+                        <button type="button" class="btn btn-primary mb-5" onclick="OpenModel(1)">
+                            Add Other Allowance
+                        </button>
+                        <button type="button" class="btn btn-primary mb-5" onclick="OpenModel(2)" >
+                             Fine
+                        </button>
+                        <h2>
+                            <strong>View Other</strong> Allowance / Fine
+                        </h2>
+
+
+                    </div>
+                    <div class="row col-12">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                    @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID2", required = "true", @onchange = "onBuildingChangeList()" })
+                                    @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.DEPARTMENT_ID, "Department")
+                                    @Html.DropDownListFor(x => x.DEPARTMENT_ID, Model.Departments, "-- Select --", new { required = "true", id = "DEPARTMENT_ID2" })
+                                    @Html.ValidationMessageFor(m => m.DEPARTMENT_ID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                    @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "All", new { required = "true", id = "SUBDEPT_ID2" })
+                                    @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row col-12">
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.WF_EMP_TYPE, "Worforce type")
+                                    @Html.DropDownListFor(x => x.WF_EMP_TYPE, Model.OnRollOrContracts, "All", new { required = "true", id = "WF_EMP_TYPE2" })
+                                    @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.YEAR_ID, "Year")
+                                    @Html.DropDownListFor(x => x.YEAR_ID, new SelectList(ViewBag.Years, "Value", "Text"), "All", htmlAttributes: new { id = "YEAR_ID2" })
+                                    @Html.ValidationMessageFor(m => m.YEAR_ID)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div id="particalDiv">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">
+                                    Disable User
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Are you sure you want to disable this User?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="user_delete_confirm" type="button"
+                                        class="btn btn-info waves-effect">
+                                    Confirm
+                                </button>
+                                <button type="button" class="btn btn-danger waves-effect"
+                                        data-dismiss="modal">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Other Allowance / Fine</h5>
+                @*<button type="button" class="close" id="btnClose2" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>*@
+            </div>
+            @using (Html.BeginForm("AddSpecialAllowance", "Workforce", FormMethod.Post, new { @id = "AddSpecialAllowance", @class = "login100-form validate-form" }))
+            {
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                    @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                                    @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.DEPARTMENT_ID, "Department")
+                                    @Html.DropDownListFor(x => x.DEPARTMENT_ID, Model.Departments, "-- Select --", new { required = "true" })
+                                    @Html.ValidationMessageFor(m => m.DEPARTMENT_ID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                    @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "--Select--", new { required = "true" })
+                                    @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.WF_EMP_TYPE, "Workforce type")
+                                    @Html.DropDownListFor(x => x.WF_EMP_TYPE, Model.OnRollOrContracts, "-- Select --", new { required = "true" })
+                                    @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.WorkforceName, "Serach Workforce")
+                                    @Html.TextBoxFor(x => x.WorkforceName, new { required = "true", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(m => m.WorkforceName)
+                                    @Html.HiddenFor(x => x.WF_ID)
+                                    @Html.HiddenFor(x => x.SpecialAllowanceId)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.YEAR_ID, "Year")
+                                    @Html.DropDownListFor(x => x.YEAR_ID, new SelectList(ViewBag.Years, "Value", "Text"), "-- Select--", htmlAttributes: new { id = "YEAR_ID", required = true })
+                                    @Html.ValidationMessageFor(m => m.YEAR_ID)
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.MONTH_ID, "Month")
+                                    @Html.DropDownListFor(x => x.MONTH_ID, new SelectList(ViewBag.Months, "Value", "Text"), "-- Select--", htmlAttributes: new { id = "MONTH_ID", required = true })
+                                    @Html.ValidationMessageFor(m => m.MONTH_ID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="display:none">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.ALLOWANCE_TYPE, "Type", new { @class = "required" })
+                                    @Html.TextBoxFor(x => x.ALLOWANCE_TYPE)
+                                    @*@Html.DropDownListFor(m => m.ALLOWANCE_TYPE, new List<SelectListItem>
+        {
+            new SelectListItem{ Text="Addition", Value = "1" },
+            new SelectListItem{ Text="Deduction", Value = "2" }
+         }, "--Select--", new { id = "ALLOWANCE_TYPE", @class = "col-12 m-t-20 p-l-0", required = true,@disabled=true })*@
+                                    @Html.ValidationMessageFor(m => m.ALLOWANCE_TYPE)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.Amount, "Amount")
+                                    @Html.TextBoxFor(x => x.Amount, new { required = "true", @class = "form-control numberonly" })
+                                    @Html.ValidationMessageFor(m => m.Amount)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.LabelFor(x => x.Remarks, "Remark")
+                                    @Html.TextBoxFor(x => x.Remarks, new { required = "true", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Remarks)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnClose">Close</button>
+                    <button type="button" id="btnSave" class="btn btn-primary">Save </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $("#btnClose").click(function () {
+        cleanForm();
+        $('#exampleModal').modal('hide');
+        $('select').formSelect();});
+    function cleanForm() {
+        $("#BUILDING_ID").val("");
+        $("#SUBDEPT_ID").val("");
+        $("#DEPARTMENT_ID").val("");
+        $("#Remarks").val("");
+        $("#WF_EMP_TYPE").val("");
+        $("#WorkforceName").val("");
+        $("#YEAR_ID").val("");
+        $("#MONTH_ID").val("");
+        $("#Amount").val("");
+        $("#WF_ID").val("");
+        $("#SpecialAllowanceId").val("");
+        $("#WorkforceName").attr("disabled", "disabled");
+        $("#DEPARTMENT_ID").removeAttr("disabled");
+        $("#SUBDEPT_ID").removeAttr("disabled");
+        $("#WF_EMP_TYPE").removeAttr("disabled");
+        $("#BUILDING_ID").removeAttr("disabled");
+        $("#exampleModalLabel").text("Add Other Allowance / Fine");
+        $("#btnSave").text("Save");
+    }
+    $(document).ready(function () {
+        $("select[required]").css({ display: "block", height: 0, padding: 0, width: 0, position: 'absolute' });
+        $('#DEPARTMENT_ID2').find('option').not(':first').remove();
+        $('#DEPARTMENT_ID2').formSelect();
+        $("#btnSave").click(function () {
+            if ($("#AddSpecialAllowance").valid()) { //check if form is valid using model annotation
+                $.ajax({
+                    type: "POST",
+                    url: '/Workforce/AddSpecialAllowance',     //your action
+                    data: $('#AddSpecialAllowance').serialize(),   //your form name.it takes all the values of model
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#exampleModal').modal('hide');
+                        var dept = $("#DEPARTMENT_ID").val();
+                        var wf_type = $("#WF_EMP_TYPE").val();
+                        var year_id = $("#YEAR_ID").val();
+                        $("#DEPARTMENT_ID2").val(dept);
+                        $("#WF_EMP_TYPE2").val(wf_type);
+                        $("#YEAR_ID2").val(year_id);
+                        cleanForm();
+                        $('select').formSelect();
+                        getSpecialAllowance();
+                        /*location.reload();*/
+                    }
+                })
+            }
+            else {
+                return false;
+            }
+
+        });
+
+        getSpecialAllowance();
+        $('.numberonly').keypress(function (e) {
+
+            var charCode = (e.which) ? e.which : event.keyCode
+
+            if (String.fromCharCode(charCode).match(/[^0-9]/g))
+
+                return false;
+
+        });
+    });
+     $("#WorkforceName").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("LoadWorkforceByWFType", "Workforce")',
+                datatype: "json",
+                data: {
+                    deptId: $("#DEPARTMENT_ID").val(),
+                    sub_dept_id: $("#SUBDEPT_ID").val(),
+                    query: $('#WorkforceName').val(),
+                    emp_type_id: $('#WF_EMP_TYPE').val()
+                },
+                success: function (data) {
+                    if (!data.length) {
+                        var result = [{ label: "no results", value: response.term }];
+                        response(result);
+                    }
+                    else {
+                        response($.map(data, function (val, item) {
+                            return {
+                                label: val.Name,
+                                value: val.Name,
+                                empId: val.ID
+                            }
+                        }))
+                    }
+                }
+            })
+        },
+        select: function (event, ui) {
+            var label = ui.item.label;
+            if (label === "no results") {
+                event.preventDefault();
+            }
+            else {
+                /* do something with the selected result */
+                $("#WF_ID").val(ui.item.empId);
+            }
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+     });
+
+    $("#DEPARTMENT_ID2").change(function () {
+        getSpecialAllowance();
+        getSubDeptbyDeptId2();
+    });
+
+    function getSubDeptbyDeptId2() {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID2").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID2').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID2').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID2').formSelect();
+            });
+        } else {
+            $('#SUBDEPT_ID2').find('option').not(':first').remove();
+            $('#SUBDEPT_ID2').formSelect();
+        }
+    }
+    $("#WF_EMP_TYPE2").change(function () {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID2").val();
+        if (DEPARTMENT_ID != null) {
+            getSpecialAllowance();
+        }
+    });
+    $("#YEAR_ID2").change(function () {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID2").val();
+        if (DEPARTMENT_ID != null) {
+            getSpecialAllowance();
+        }
+    });
+    function getSpecialAllowance() {
+        var BUILDING_ID2 = $("#BUILDING_ID2").val();
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID2").val();
+        var SUBDEPT_ID = $("#SUBDEPT_ID2").val();
+        var WF_EMP_TYPE = $("#WF_EMP_TYPE2").val();
+        var year_id = $("#YEAR_ID2").val();
+        if (BUILDING_ID2 !== "") {
+            $("#particalDiv").empty();
+            $.ajax(
+                {
+                    type: 'Get',
+                    url: '/Workforce/GetSpecialAllowanceByDept?deptId=' + DEPARTMENT_ID + '&sub_dept_id=' + SUBDEPT_ID + "&emptype_id=" + WF_EMP_TYPE + "&year_id=" + year_id + "&BUILDING_ID2=" + BUILDING_ID2,
+                    success:
+                        function (response) {
+                            $("#particalDiv").append(response);
+                        },
+                    error:
+                        function (response) {
+                            alert("Error: " + response);
+                        }
+                });
+        }
+    }
+
+    function editSpecialAllowance(id) {
+        $.ajax(
+            {
+                type: 'Get',
+                url: '/Workforce/GetSpecialAllowanceById?id=' + id,
+                success:
+                    function (data) {
+                        
+                        $("#btnSave").text("Update");
+                        $("#DEPARTMENT_ID").attr("disabled", "disabled");
+                        $("#SUBDEPT_ID").attr("disabled", "disabled");
+                        $("#WF_EMP_TYPE").attr("disabled", "disabled");
+                        $("#BUILDING_ID").attr("disabled", "disabled");
+                        $("#BUILDING_ID").val(data.BUILDING_ID);
+                        $("#DEPARTMENT_ID").val(data.DEPARTMENT_ID);
+                        $("#Remarks").val(data.Remarks);
+                        getSubDeptbySubDeptId(data.SUBDEPT_ID);
+                        $("#WF_EMP_TYPE").val(data.WF_EMP_TYPE);
+                        $("#WorkforceName").val(data.WorkforceName + ' - ' + data.WorkforceCode);
+                        $("#YEAR_ID").val(data.YEAR_ID);
+                        $("#MONTH_ID").val(data.MONTH_ID);
+                       
+                        $("#WF_ID").val(data.WF_ID);
+                        $("#SpecialAllowanceId").val(data.SpecialAllowanceId);
+                       
+                        var Amt = String(data.Amount)[0];
+                        if (Amt[0] == '-') {
+                            $("#exampleModalLabel").text("Update Fine");
+                            $("#ALLOWANCE_TYPE").val(2);
+                            $("#Amount").val(data.Amount.toString().substring(1));
+                        } else {
+                            $("#exampleModalLabel").text("Update Other Allowance");
+                            $("#ALLOWANCE_TYPE").val(1);
+                            $("#Amount").val(data.Amount);
+                        }
+                        $('#exampleModal').modal('show');
+                        $('select').formSelect();
+
+                    },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
+    }
+
+    //$("#DEPARTMENT_ID2").change(function () {
+    //    $("#WorkforceName").val("");
+    //    getSubDeptbySubDeptId();
+    //});
+    $("#WF_EMP_TYPE").change(function () {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID2").val();
+        if (DEPARTMENT_ID != null) {
+            $("#WorkforceName").removeAttr("disabled");
+        } else {
+            $("#WorkforceName").attr("disabled", "disabled");
+        }
+    });
+
+    $("#DEPARTMENT_ID").change(function () {
+        $("#WorkforceName").val("");
+        getSubDeptbyDeptId();
+    });
+    $("#SUBDEPT_ID2").change(function () {
+        getSpecialAllowance();
+    });
+
+    function getSubDeptbySubDeptId(sub_dept_id) {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').val(sub_dept_id);
+                $('#SUBDEPT_ID').formSelect();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+        }
+    }
+
+    function getSubDeptbyDeptId() {
+        var DEPARTMENT_ID = $("#DEPARTMENT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').formSelect();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+        }
+    }
+    function onBuildingChange() {
+        var buildingId = $("#BUILDING_ID option:selected").val();
+        $.get('/ManPowerRequest/GetFloorByBuildingId?buildingId=' + buildingId, function (data) {
+            $('#DEPARTMENT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#DEPARTMENT_ID').append($('<option>', {
+                    value: item.DEPT_ID,
+                    text: item.DEPT_NAME
+                }));
+            });
+            $('#DEPARTMENT_ID').formSelect();
+        });
+    }
+
+    function onBuildingChangeList() {
+        var buildingId = $("#BUILDING_ID2 option:selected").val();
+        $.get('/ManPowerRequest/GetFloorByBuildingId?buildingId=' + buildingId, function (data) {
+            $('#DEPARTMENT_ID2').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#DEPARTMENT_ID2').append($('<option>', {
+                    value: item.DEPT_ID,
+                    text: item.DEPT_NAME
+                }));
+            });
+            $('#DEPARTMENT_ID2').formSelect();
+        });
+        getSpecialAllowance();
+    }
+
+    function OpenModel(e) {
+        cleanForm();
+        $("#exampleModal").modal('show');
+        $("#ALLOWANCE_TYPE").val(e);
+        /*$("#ALLOWANCE_TYPE").formSelect();*/
+        if (e == 1) {
+            $("#exampleModalLabel").text("Add Other Allowance");
+        } else {
+            $("#exampleModalLabel").text("Add Fine");
+        }
+       
+    }
+</script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

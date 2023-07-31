@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.SerchDailyWorkMetaData>
+<div class="table-responsive">
+    <table id="tableExport" class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+        <thead>
+            <tr>
+                <th> Date </th>
+                <th> Name </th>
+                <th> Item Name </th>
+                <th> Item Code </th>
+                <th>Operation</th>
+                <th>Quantity</th>
+                <th>Rate</th>
+                <th>Price</th>
+                <th>Date-wise Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+
+                    foreach (var subItem in item.partialDailyWorkMetaDatas)
+                    {
+                        <tr>
+                            <td>@item.WorkingDate.Value.ToShortDateString()</td>
+                            <td>@item.WorkforceName</td>
+                            <td>@subItem.ITEM</td>
+                            <td>@subItem.ITEM_CODE</td>
+                            <td>@subItem.OPERATION_NAME</td>
+                            <td>@subItem.QTY</td>
+                            <td>@Math.Round(subItem.RATE.Value, 3)</td>
+                            <td>@subItem.TotalPrice</td>
+                            @*<td>@Math.Round(((double)subItem.QTY * @subItem.RATE.Value), 2)</td>*@
+                            <td></td>
+                        </tr>
+                    }
+                    <tr style="background-color: aliceblue; font-weight: bold;">
+                        <td></td>
+                        <td><b>Total</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align:right">@Math.Round(item.Total, 3)</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" style="text-align:center">Not found</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<script>
+    $("document").ready(function () {
+        $('#tableExport').DataTable({
+            dom: 'Bfrtip',
+            ordering: false,
+            searching: false,
+            paging: false,
+            buttons: [
+                'copy',
+                'csv',
+                'excel',
+                'pdf',
+                'print'
+            ]
+        });
+    });
+</script>

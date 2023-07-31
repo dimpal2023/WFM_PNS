@@ -1,0 +1,254 @@
+﻿@model Wfm.App.Core.Model.ExitManagementMetaData
+
+@{
+    ViewBag.Title = "Exit Management - Employee Details";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Employee Asset And Approval</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/ExitManagement/ExitEmployeeRequest">
+                                <i class="fas fa-layer-group"></i> Exit Management
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Employee</strong> > Asset And Approval
+                            </h2>
+                        </div>
+                        <div class="body">
+
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="card">
+                                        <div class="body">
+                                            @using (Html.BeginForm("ExitEmployeeRequest", "ExitManagement", FormMethod.Post, new { id = "exitEmployeeRequest" }))
+                                            {
+                                                <div class="clearfix">
+                                                    <div class="row col-12">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <label for="Unit">Unit</label>
+                                                                    @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                                                                    @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <label for="workFlowName">Department Name</label>
+                                                                    @Html.DropDownListFor(x => x.DEPT_ID, Model.Departments, "All", new { required = "true", @onchange = "departmentonChange()" })
+                                                                    @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <label>Sub Department</label>
+                                                                    @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>(), "All", new { required = "true" })
+                                                                    @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="clearfix">
+                                                    <div class="row col-12">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <label for="password_2">Employee Type</label>
+                                                                    @Html.DropDownListFor(x => x.WorkforceMetaData.WF_EMP_TYPE, new SelectList(ViewBag.EmployeeTypes, "Value", "Text"), "All", htmlAttributes: new { id = "WF_EMP_TYPE", required = true })
+                                                                    @Html.ValidationMessageFor(m => m.WorkforceMetaData.WF_EMP_TYPE)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <label>Employee Name</label>
+                                                                    @Html.TextBoxFor(x => x.EMP_NAME, new { id = "EMP_NAME", placeholder = "Workforce Name", required = "true" })
+                                                                    @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                                                    @Html.HiddenFor(x => x.WF_ID, new { id = "WF_ID" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <button type="button" id="workforce-loadattendance" class="btn btn-primary waves-effect m-r-15" onclick="GetAll()" style="margin-top: 20px;">Export All</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="card">
+                                                            <div id="emplyeedetail" style="display:none;"> </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix" style="display:none">
+                                <div id="particalDiv">
+                                    <div class="table-responsive">
+                                        <table id="tabledata"
+                                               class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+                                            <thead>
+                                                <tr>
+                                                    <th>S.No</th>
+                                                    <th>Emp Id</th>
+                                                    <th>Workforce Name</th>
+                                                    <th>Mobile No.</th>
+                                                    <th>Type</th>
+                                                    <th>Employment Type</th>
+                                                    <th>Unit</th>
+                                                    <th>Department</th>
+                                                    <th>Sub Department</th>
+                                                    <th>Asset Name</th>
+                                                    <th>Asset Life</th>
+                                                    <th>Quantity</th>
+                                                    <th>Asset Allocation Date</th>
+                                                    <th>Purpose</th>
+                                                    <th>Asset Type</th>
+                                                    <th>Is Return</th>
+                                                    <th>Asset Assigned By</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/assets/js/pages/exit-management/exit-management.js?v=3"></script>
+<script>
+    $(document).ready(function () {
+        $('#DEPT_ID').find('option').not(':first').remove();
+        $('#DEPT_ID').formSelect();
+        getSubDeptbyDeptId();
+      /*  getEmployeeOnLoad();*/
+        $("select[required]").css({ position: "absolute", display: "inline", height: 0, padding: 0, width: 0 });
+        $("#EMP_NAME").val('');
+    });
+
+    $("#EMP_NAME").autocomplete({
+    max: 10,
+    minLength: 1,
+    source: function (request, response) {
+        $.ajax({
+            url: '@Url.Action("LoadWorkforceByWFType", "Workforce")',
+            datatype: "json",
+            data: {
+                deptId: $("#DEPT_ID").val(),
+                sub_dept_id: $("#SUBDEPT_ID").val(),
+                query: $('#EMP_NAME').val(),
+                emp_type_id: $('#WF_EMP_TYPE').val()
+            },
+            success: function (data) {
+                if (!data.length) {
+                    var result = [{ label: "no results", value: response.term }];
+                    response(result);
+                }
+                else {
+                    response($.map(data, function (val, item) {
+                        return {
+                            label: val.Name,
+                            value: val.Name,
+                            empId: val.ID
+                        }
+                    }))
+                }
+            }
+        })
+    },
+        select: function (event, ui) {
+            var label = ui.item.label;
+            if (label === "no results") {
+                event.preventDefault();
+            }
+            else {
+                /* do something with the selected result */
+                $("#WF_ID").val(ui.item.empId);
+                exitEmployeeOnChange();
+            }
+    },
+    open: function () {
+        $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+    },
+    close: function () {
+        $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+    }
+    });
+
+    $("#DEPT_ID").change(function () {
+        getSubDeptbyDeptId();
+    });
+
+    function getSubDeptbyDeptId() {
+        var DEPARTMENT_ID = $("#DEPT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').formSelect();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+        }
+    }
+    function onBuildingChange() {
+        var buildingId = $("#BUILDING_ID option:selected").val();
+        $.get('/ManPowerRequest/GetFloorByBuildingId?buildingId=' + buildingId, function (data) {
+            $('#DEPT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#DEPT_ID').append($('<option>', {
+                    value: item.DEPT_ID,
+                    text: item.DEPT_NAME
+                }));
+            });
+            $('#DEPT_ID').formSelect();
+        });
+    }
+
+</script>

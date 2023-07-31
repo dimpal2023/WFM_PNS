@@ -1,0 +1,355 @@
+﻿@model Wfm.App.Core.Model.WorkforceSalaryMetaData
+
+@{
+    ViewBag.Title = "Workforce - Salary";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Employee</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/GetworkforceSalary">
+                                <i class="fas fa-layer-group"></i> Workforce
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Salary Details</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong></strong> Employee Salary Details
+                            </h2>
+                        </div>
+                        <div class="body">
+
+                            <div class="row clearfix">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.LabelFor(x => x.EMP_ID, "Employee id", new { @class = "required" })
+                                            @Html.TextBoxFor(m => m.EMP_ID, "", new { id = "EMP_ID", @class = "form-control disabled", @type = "text" })
+                                            @Html.ValidationMessageFor(m => m.EMP_ID)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <button type="button" id="emp-search" class="btn btn-primary waves-effect m-r-15">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @using (Html.BeginForm("Salary", "Workforce", FormMethod.Post, new { @id = "EmployeeCreate", @class = "login100-form validate-form" }))
+                            {
+                                <div class="row clearfix">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.EMP_NAME, "Employee name", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.EMP_NAME, "", new { @class = "form-control disabled", @type = "text" })
+                                                @Html.HiddenFor(m => m.WF_ID)
+                                                @Html.HiddenFor(m => m.ACTION)
+                                                @Html.HiddenFor(m => m.COMPANY_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.UAN_NO, "UAN No.", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.UAN_NO, "", new { id = "UAN_NO", @class = "form-control disabled", @type = "text", @onkeyup = "CheckUAN()" })
+                                                @Html.ValidationMessageFor(m => m.UAN_NO)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.PAN_CARD, "PAN No.", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.PAN_CARD, "", new { id = "PAN_CARD", @class = "form-control disabled", @type = "text", @onkeyup = "CheckPAN()" })
+                                                @Html.ValidationMessageFor(m => m.PAN_CARD)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.EPF_NO, "EPF No.", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.EPF_NO, "", new { id = "EPF_NO", @class = "form-control disabled", @type = "text", @onkeyup = "CheckEPF()" })
+                                                @Html.ValidationMessageFor(m => m.EPF_NO)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.ESIC_NO, "ESIC No.", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.ESIC_NO, "", new { id = "ESIC_NO", @class = "form-control disabled", @type = "text", @onkeyup = "CheckESIC()" })
+                                                @Html.ValidationMessageFor(m => m.ESIC_NO)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+
+                                                @Html.HiddenFor(m => m.SELECTEDBANKID)
+
+                                                @Html.LabelFor(x => x.BANK_ID, "Bank", new { @class = "required" })
+                                                @Html.DropDownListFor(x => x.BANK_ID, ViewBag.Bank as SelectList, "-- Select--", new { id = "BANK_ID", required = "true", @onchange = "SelectBankData()" })
+
+                                                @Html.ValidationMessageFor(m => m.BANK_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.BANK_IFSC, "Bank IFCS Code", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.BANK_IFSC, "", new { id = "BANK_IFSC", @class = "form-control", @type = "text", @disabled = "true" })
+                                                @Html.ValidationMessageFor(m => m.BANK_IFSC)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.BANK_BRANCH, "Bank Branch", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.BANK_BRANCH, "", new { id = "BANK_BRANCH", @class = "form-control disabled", @type = "text", @disabled = "true" })
+                                                @Html.ValidationMessageFor(m => m.BANK_BRANCH)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-line">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.BANK_ACCOUNT_NO, "Bank Account No.", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.BANK_ACCOUNT_NO, "", new { id = "BANK_ACCOUNT_NO", @class = "form-control disabled", @type = "text", @onkeyup = "CheckAccountNo()" })
+                                                @Html.ValidationMessageFor(m => m.BANK_ACCOUNT_NO)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.BASIC_DA, "Basic salary", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.BASIC_DA, "", new { id = "BASIC_DA", @class = "form-control disabled", @type = "text", @onkeyup = "SalCalculation()" })
+                                                @Html.ValidationMessageFor(m => m.BASIC_DA)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.HRA, "HRA", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.HRA, "", new { id = "HRA", @class = "form-control disabled", @type = "text", @onkeyup = "SalCalculation()" })
+                                                @Html.ValidationMessageFor(m => m.HRA)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.SPECIAL_ALLOWANCES, "Special allowance", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.SPECIAL_ALLOWANCES, "", new { id = "SPECIAL_ALLOWANCES", @class = "form-control disabled", @type = "text", @onkeyup = "SalCalculation()" })
+                                                @Html.ValidationMessageFor(m => m.SPECIAL_ALLOWANCES)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.GROSS, "Gross salary", new { @class = "required" })
+                                                @Html.TextBoxFor(m => m.GROSS, "", new { id = "GROSS", @class = "form-control disabled", @type = "text", @disabled = "true" })
+                                                @Html.ValidationMessageFor(m => m.GROSS)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-12 p-t-20 text-center">
+                                    @if (Model.WF_ID == new Guid())
+                                    {
+                                        <button type="button" id="submitSal" class="btn btn-primary waves-effect m-r-15">Submit</button>
+
+                                    }
+                                    else
+                                    {
+                                        <button type="button" id="submitSal" class="btn btn-primary waves-effect m-r-15">Update</button>
+
+                                    }
+                                    <button type="button" id="cancel1" class="btn btn-danger waves-effect">Cancel</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/assets/js/pages/workforce/workforce.js"></script>
+<script>
+    $(window).on('load', function () {
+        debugger
+        var str = '@ViewData["MyQSVal"]';
+        if (str != '') {
+            var res = str.split(", ");
+            $("#EMP_ID").val(res);
+            $("#emp-search").hide();
+            $("#EMP_ID").prop('disabled',true);
+            EmpSearchClick();
+        } else {
+            $("#EMP_ID").val('');
+            $("#emp-search").show();
+            $("#EMP_ID").prop('disabled', false);
+        }
+
+    })
+    function SalCalculation() {
+        var BASIC_DA= Number($("#BASIC_DA").val());
+        var HRA = Number($("#HRA").val());
+        var SPECIAL_ALLOWANCES = Number($("#SPECIAL_ALLOWANCES").val());
+        $("#GROSS").val(BASIC_DA + HRA + SPECIAL_ALLOWANCES);
+    }
+    function SelectBankData() {
+        var BANK_ID = $("#BANK_ID option:selected").val();
+        $.ajax({
+            type: "GET",
+            url: "/Workforce/SelectBankData",
+            data: { BANK_ID: BANK_ID },
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+                $("#BANK_IFSC").val(result[0].IFSC_CODE);
+                $("#BANK_BRANCH").val(result[0].BRANCH_NAME);
+            },
+            error: function (responseText) {
+                alert(responseText);
+            }
+        });
+
+    }
+    function CheckUAN() {
+        if ($("#UAN_NO").val() != "") {
+            $.ajax({
+                type: "GET",
+                url: "/Workforce/CheckUAN",
+                data: { UAN_NO: $("#UAN_NO").val() },
+                contentType: "application/json",
+                dataType: "json",
+                success: function (result) {
+                    if (result != 'NotFound') {
+                        alert("UAN No. already exist.");
+                        $("#UAN_NO").val('');
+                    }
+                },
+                error: function (responseText) {
+                    alert(responseText);
+                }
+            });
+        }
+    }
+    function CheckPAN() {
+        if ($("#PAN_CARD").val() != "") {
+            $.ajax({
+                type: "GET",
+                url: "/Workforce/CheckPAN",
+                data: { PAN: $("#PAN_CARD").val() },
+                contentType: "application/json",
+                dataType: "json",
+                success: function (result) {
+                    if (result != 'NotFound') {
+                        alert("PAN No. already exist.");
+                        $("#PAN_CARD").val('');
+                    }
+                },
+                error: function (responseText) {
+                    alert(responseText);
+                }
+            });
+        }
+    }
+    function CheckEPF() {
+        if ($("#EPF_NO").val() != "") {
+            $.ajax({
+                type: "GET",
+                url: "/Workforce/CheckEPF",
+                data: { EPF: $("#EPF_NO").val() },
+                contentType: "application/json",
+                dataType: "json",
+                success: function (result) {
+                    if (result != 'NotFound') {
+                        alert("EPF No. already exist.");
+                        $("#EPF_NO").val('');
+                    }
+                },
+                error: function (responseText) {
+                    alert(responseText);
+                }
+            });
+        }
+    }
+    function CheckESIC() {
+        if ($("#ESIC_NO").val() != "") {
+            $.ajax({
+                type: "GET",
+                url: "/Workforce/CheckESIC",
+                data: { ESIC: $("#ESIC_NO").val() },
+                contentType: "application/json",
+                dataType: "json",
+                success: function (result) {
+                    if (result != 'NotFound') {
+                        alert("ESIC No. already exist.");
+                        $("#ESIC_NO").val('');
+                    }
+                },
+                error: function (responseText) {
+                    alert(responseText);
+                }
+            });
+        }
+    }
+    function CheckAccountNo() {
+        if ($("#BANK_ACCOUNT_NO").val() != "") {
+            $.ajax({
+                type: "GET",
+                url: "/Workforce/CheckAccountNo",
+                data: { ACC: $("#BANK_ACCOUNT_NO").val() },
+                contentType: "application/json",
+                dataType: "json",
+                success: function (result) {
+                    if (result != 'NotFound') {
+                        alert("Account No. already exist.");
+                        $("#BANK_ACCOUNT_NO").val('');
+                    }
+                },
+                error: function (responseText) {
+                    alert(responseText);
+                }
+            });
+        }
+    }
+
+
+    $("#cancel1").click(function () {
+        window.location.href = "/Workforce/Salary";
+    });
+</script>
+

@@ -1,0 +1,104 @@
+﻿@model Wfm.App.Core.Model.WorkforceLeavesMetaData
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Add Leave</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="">
+                                <i class="fas fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Leaves</a>
+                        </li>
+                        <li class="breadcrumb-item active">Add Leave</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>New</strong> Leave Request
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.TextBoxFor(m => m.EMP_ID, "", new { id = "EMP_ID", placeholder = "Employee ID", @class = "form-control disabled", @type = "text" })
+                                        @Html.ValidationMessageFor(m => m.EMP_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <button type="button" id="emp-search" class="btn btn-primary waves-effect m-r-15">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @using (Html.BeginForm("Create", "Leave", FormMethod.Post, new { @id = "LeaveCreate", @class = "login100-form validate-form" }))
+                        {
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.TextBoxFor(m => m.EMP_NAME, "", new {id="EMP_NAME", placeholder = "Employee Name", @class = "form-control disabled", @type = "text" })
+                                            @Html.HiddenFor(m => m.WF_ID)
+                                            @Html.HiddenFor(m => m.HIDDENEMP_ID)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.TextBoxFor(m => m.FROM_DATE, "{0:MM-dd-yyyy}", new {id= "FROM_DATE", placeholder = "From Date", @class = "datepicker form-control" })
+                                            @Html.ValidationMessageFor(m => m.FROM_DATE)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.TextBoxFor(m => m.TO_DATE, "{0:MM-dd-yyyy}", new {id= "TO_DATE", placeholder = "To Date", @class = "datepicker form-control" })
+                                            @Html.ValidationMessageFor(m => m.TO_DATE)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                       @Html.TextBoxFor(m => m.REMARKS, "", new { id = "REMARKS", placeholder = "Remarks", @class = "form-control disabled", @type = "text" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 p-t-20 text-center">
+                                <button type="button" id="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                <button type="button" id="cancel" class="btn btn-danger waves-effect">Cancel</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="../../assets/js/app.min.js"></script>
+<script src="../../assets/js/form.min.js"></script>
+<!-- Custom Js -->
+<script src="../../assets/js/admin.js"></script>
+<script src="../../assets/js/pages/forms/form-data.js"></script>
+<script src="~/Content/assets/js/pages/leave/leave.js"></script>
+

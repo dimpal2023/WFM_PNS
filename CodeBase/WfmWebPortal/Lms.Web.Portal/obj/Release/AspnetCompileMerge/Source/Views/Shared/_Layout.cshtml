@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>@ViewBag.Title</title>
+    <!-- Favicon-->
+    <link rel="icon" href="~/Content/assets/images/karam.png" type="image/x-icon">
+    <!-- Plugins Core Css -->
+    <link href="~/Content/assets/css/app.min.css" rel="stylesheet">
+    <link href="~/Content/assets/css/form.min.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet" />
+    <!-- You can choose a theme from css/styles instead of get all themes -->
+    <!---->
+    <link href="~/Content/assets/css/styles/all-themes.css" rel="stylesheet" />
+    <link href="~/Content/Toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet">
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+</head>
+<body class="light">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30">
+                <img class="loading-img-spin" src="~/Content/assets/images/karam.png" alt="admin">
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#" onClick="return false;" class="navbar-toggle collapsed" data-toggle="collapse"
+                   data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="#" onClick="return false;" class="bars"></a>
+                <a class="navbar-brand" href="~/Dashboard">
+                    <img src="~/Content/assets/images/karam.png" style="height:37px;width:90px" alt="" />
+                    <span class="logo-name">WFM</span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="#" onClick="return false;" class="sidemenu-collapse">
+                            <i class="nav-hdr-btn ti-align-left"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Full Screen Button -->
+                    <li class="fullscreen">
+                        <a href="javascript:;" class="fullscreen-btn">
+                            <i class="nav-hdr-btn ti-fullscreen"></i>
+                        </a>
+                    </li>
+                    <!-- #END# Full Screen Button -->
+                    <!-- #START# Notifications-->
+                    @*<li class="dropdown">
+                            <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                               role="button">
+                                <i class="nav-hdr-btn ti-bell"></i>
+                                <span class="notify"></span>
+                                <span class="heartbeat"></span>
+                            </a>
+                            <ul class="dropdown-menu pullDown">
+                                <li class="header">NOTIFICATIONS</li>
+                                <li class="body">
+                                    <ul class="menu">
+                                        <li>
+                                            <a href="#" onClick="return false;">
+                                                <span class="table-img msg-user">
+                                                    <img src="~/Content/assets/images/user/user1.jpg" alt="">
+                                                </span>
+                                                <span class="menu-info">
+                                                    <span class="menu-title">Manoj Gupta</span>
+                                                    <span class="menu-desc">
+                                                        <i class="material-icons"></i> BirthdayToday
+                                                    </span>
+                                                    <span class="menu-desc">Please check your email.</span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" onClick="return false;">
+                                                <span class="table-img msg-user">
+                                                    <img src="~/Content/assets/images/user/user2.jpg" alt="">
+                                                </span>
+                                                <span class="menu-info">
+                                                    <span class="menu-title">Rakesh Kumar</span>
+                                                    <span class="menu-desc">
+                                                        <i class="material-icons"></i> BirthdayToday
+                                                    </span>
+                                                    <span class="menu-desc">Please check your email.</span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="footer">
+                                    <a href="#" onClick="return false;">View All Notifications</a>
+                                </li>
+                            </ul>
+                        </li>*@
+                    <!-- #END# Notifications-->
+                    <li class="dropdown user_profile">
+                        <div class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="~/Content/assets/images/profile.png" alt="user">
+                        </div>
+                        <ul class="dropdown-menu pullDown">
+                            <li class="body">
+                                <ul class="user_dw_menu">
+                                    <li>
+                                        <a href="/Account/MyProfile">
+                                            <i class="material-icons">person</i>Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Account/ChangePassword">
+                                            <i class="material-icons">feedback</i>Change Password
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Account/Logout">
+                                            <i class="material-icons">power_settings_new</i>Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- #END# Tasks -->
+                    @*<li class="pull-right">
+                            <a href="#" onClick="return false;" class="js-right-sidebar" data-close="true">
+                                <i class="nav-hdr-btn ti-layout-grid2"></i>
+                            </a>
+                        </li>*@
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <div>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li>
+                        <div class="sidebar-profile clearfix">
+                            <div class="profile-img">
+                                <img src="~/Content/assets/images/profile.png" alt="profile">
+                            </div>
+                            <div class="profile-info">
+                                <h3>@Context.User.Identity.Name</h3>
+                                <p>Welcome @Session["UserName"]</p>
+                                <p>Company - @Session["CompanyName"]</p>
+                            </div>
+                        </div>
+                    </li>
+                    @{
+                        var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+                        var actionName = this.ViewContext.RouteData.Values["action"].ToString();
+
+                        if (controllerName == "GatePass")
+                        {
+                            if (actionName == "Search" || actionName == "Edit") { actionName = "Create"; }
+                        }
+
+                        if (Request.IsAuthenticated && Session["MENU"] != null)
+                        {
+                            Dictionary<Wfm.App.Core.Model.MenuMetaData, List<Wfm.App.Core.Model.SubMenuMetaData>> userMenus = Session["MENU"] as Dictionary<Wfm.App.Core.Model.MenuMetaData, List<Wfm.App.Core.Model.SubMenuMetaData>>;
+                            foreach (KeyValuePair<Wfm.App.Core.Model.MenuMetaData, List<Wfm.App.Core.Model.SubMenuMetaData>> item in userMenus)
+                            {
+
+                                <li @(item.Key.CONTROLLER_NAME.Contains(",") ? (item.Key.CONTROLLER_NAME.Contains(controllerName) ? "class=active" : "") : (item.Key.CONTROLLER_NAME == controllerName ? "class=active" : ""))>
+                                    <a href="#" class="menu-toggle">
+                                        <i class="menu-icon @item.Key.ICONCLASS"></i>
+                                        <span>@item.Key.NAME</span>
+                                    </a>
+                                    <ul class="ml-menu">
+                                        @foreach (var subItem in item.Value)
+                                        {
+                                            if (@subItem.CONTROLLER_NAME == "Dashboard" && subItem.ACTION_NAME == "Index" && Wfm.App.Common.Utility.NavBarActions.Contains(actionName))
+                                            {
+                                                <li class="active">
+                                                    <a id="@String.Concat(@subItem.CONTROLLER_NAME, '_', @subItem.ACTION_NAME)" href="~/@subItem.CONTROLLER_NAME/@subItem.ACTION_NAME">@subItem.NAME</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li @(controllerName == subItem.CONTROLLER_NAME && subItem.ACTION_NAME == actionName ? "class=active" : "")>
+                                                    <a id="@String.Concat(@subItem.CONTROLLER_NAME, '_', @subItem.ACTION_NAME)" href="~/@subItem.CONTROLLER_NAME/@subItem.ACTION_NAME">@subItem.NAME</a>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+            <!-- #Menu -->
+        </aside>
+    </div>
+    <!-- #END# Left Sidebar -->
+    <div id="content">
+        @RenderBody()
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $("ul .ml-menu a").click(function (e) {
+                var ulr = $(this).attr("href");
+                var id = $(this).attr("id");
+
+                $.ajax({
+                    url: url,
+                    success: function (data) {
+                        $("#content").html(data);
+                    }
+                })
+            });
+        });
+
+    </script>
+
+    <script src="~/Content/assets/js/app.min.js"></script>
+    <script src="~/Content/assets/js/form.min.js"></script>
+    <!-- Custom Js -->
+    <script src="~/Content/assets/js/admin.js"></script>
+    <script src="~/Content/assets/js/chart.min.js"></script>
+    <script src="~/Content/assets/js/bundles/echart/echarts.js"></script>
+    <script src="~/Content/assets/js/bundles/apexcharts/apexcharts.min.js"></script>
+    <script src="~/Content/assets/js/pages/forms/form-data.js"></script>
+    <script src="~/Content/assets/js/table.min.js"></script>
+
+    <script src="~/Content/assets/js/bundles/export-tables/dataTables.buttons.min.js"></script>
+    <script src="~/Content/assets/js/bundles/export-tables/buttons.flash.min.js"></script>
+    <script src="~/Content/assets/js/bundles/export-tables/jszip.min.js"></script>
+    <script src="~/Content/assets/js/bundles/export-tables/pdfmake.min.js"></script>
+    <script src="~/Content/assets/js/bundles/export-tables/vfs_fonts.js"></script>
+    <script src="~/Content/assets/js/bundles/export-tables/buttons.html5.min.js"></script>
+    <script src="~/Content/assets/js/bundles/export-tables/buttons.print.min.js"></script>
+
+    @*<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js">
+        </script>*@
+    <script src="~/Content/assets/js/pages/tables/jquery-datatable.js"></script>
+
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js">
+        </script>*@
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js">
+    </script>
+    <script src="~/Content/Toastr/toastr.min.js"></script>
+</body>
+</html>

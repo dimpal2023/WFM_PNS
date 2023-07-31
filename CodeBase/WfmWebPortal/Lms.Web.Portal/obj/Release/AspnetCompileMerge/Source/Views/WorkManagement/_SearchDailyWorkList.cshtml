@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.SerchDailyWorkMetaData>
+<div class="table-responsive">
+    <table id="table" class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+        <thead>
+            <tr>
+                <th> Date </th>
+                <th> Employee Name </th>
+                <th> Item Name </th>
+                <th> Item Code </th>
+                <th>Operation</th>
+                <th>Quantity</th>
+                <th>Rate</th>
+                <th>Price</th>
+                <th>Edit</th>
+                    @*<th>Delete</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+
+                    foreach (var subItem in item.partialDailyWorkMetaDatas)
+                    {
+                        <tr>
+                            <td>@item.WorkingDate</td>
+                            <td>@item.WorkforceName</td>
+                            <td>@subItem.ITEM</td>
+                            <td>@subItem.ITEM_CODE</td>
+                            <td>@subItem.OPERATION_NAME</td>
+                            <td>@subItem.QTY</td>
+                            <td>@Math.Round(subItem.RATE.Value, 2)</td>
+                            <td>@Math.Round(((double)subItem.QTY * @subItem.RATE.Value), 2)</td>
+                            <td>
+                                    <a href="/Workforce/EditDailyWork/@subItem.UNIQUE_OPERATION_ID"  class="btn btn-tbl-edit">
+                                        <i class="material-icons">create</i>
+                                    </a>
+                                </td>
+                                @*<td>
+                                    <a href="" class="btn btn-tbl-delete"  data-toggle="modal" onclick="Delete('@subItem.UNIQUE_OPERATION_ID')">
+                                        <i class="material-icons">delete_forever</i>
+                                    </a>
+
+                                </td>*@
+                        </tr>
+                    }
+                }
+            }
+            else
+            {
+                <tr>
+                    <td style="display: none"></td>
+                    <td style="display: none"></td>
+                    <td colspan="6" style="text-align:center">Not found</td>
+
+                    <td style="display: none"></td>
+                    <td style="display: none"></td>
+                    <td style="display: none"></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    @*<div class="row col-12">
+        <div class="form-group">
+            <div class="form-line">
+                <button type="button" class="btn btn-danger pull-center" onclick="Delete()">Delete</button>
+            </div>
+        </div>
+    </div>*@
+</div>

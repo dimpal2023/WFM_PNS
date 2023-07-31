@@ -1,0 +1,304 @@
+﻿@model Wfm.App.Core.Model.WorkforceDailyWorkData
+
+@{
+    ViewBag.Title = "Workforce - Daily Work";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Workforce</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/AllItems">
+                                <i class="fas fa-layer-group"></i> Workforce
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Daily Work</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Add</strong> Daily Work
+                            </h2>
+                        </div>
+                        <div class="body">
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.LabelFor(x => x.DEPT_ID, "Department name", new { @class = "required" })
+                                            @Html.DropDownListFor(x => x.DEPT_ID, ViewBag.Dept as SelectList, "-- Select--", new { id = "DEPT_ID", required = "true" })
+                                            @Html.ValidationMessageFor(m => m.DEPT_ID)
+
+                                            @Html.HiddenFor(x => x.EMP_ID, new { id = "EMP_ID" })
+                                            @Html.LabelFor(x => x.EMP_NAME, "Employee name", new { @class = "required" })
+                                            @Html.TextBoxFor(x => x.EMP_NAME, new { id = "EMP_NAME", required = "true"})
+                                            @Html.ValidationMessageFor(m => m.EMP_NAME)                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line" style="padding-top:28px;">
+                                            @Html.LabelFor(x => x.WORK_DATE, "Work date", new { @class = "required" })
+                                            @Html.TextBoxFor(m => m.WORK_DATE, "{0:mm/dd/yyyy}", new { id = "WORK_DATE", @onchange = "onchangeevent()", @class = "datepicker form-control" })
+                                            @Html.ValidationMessageFor(m => m.WORK_DATE)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-10">
+                                    <div class="card">
+                                        <table id="tblAttendace" class="display dataTable table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Bio Metric Code</th>
+                                                    <th>Attendance Date</th>
+                                                    <th>In Time</th>
+                                                    <th>Out Time</th>
+                                                    <th>Shift In Time</th>
+                                                    <th>Shift Out Time</th>
+                                                    <th>Duty Hours</th>
+                                                    <th>Overtime Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="BIOMETRIC_CODE"> 
+                                                        <input type="text" id="txtBioMetric" value="" disabled>
+                                                    </td>
+                                                    <td class="ATTENDANCE_DATE">
+                                                        <span></span>
+                                                        <label class="hide"></label>
+                                                    </td>
+                                                    <td class="IN_TIME">
+                                                        <span></span>
+                                                        <label class="hide"></label>
+                                                    </td>
+                                                    <td class="OUT_TIME">
+                                                        <span></span>
+                                                        <label class="hide"></label>
+                                                    </td>
+                                                    <td class="SHIFT_INTIME">
+                                                        <span></span>
+                                                        <label class="hide"></label>
+                                                    </td>
+                                                    <td class="SHIFT_OUTTIME">
+                                                        <span></span>
+                                                        <label class="hide"></label>
+                                                    </td>
+                                                    <td class="DUTY_HOURS">
+                                                        <span></span>
+                                                        <label class="hide"></label>
+                                                    </td>
+                                                    <td class="OVERTIME_HOURS">
+                                                        <span></span>
+                                                        <label class="hide"></label>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <table id="tblDailyWorkItems" class="display dataTable table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Item</th>
+                                                    <th>Operation</th>
+                                                    <th>Qty/Hours</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="ItemId">
+                                                        <span></span>
+                                                        <label class="hide"></label>
+                                                    </td>
+                                                    <td class="UniqueOperationId">
+                                                        <span></span>
+                                                        <label class="hide"></label>
+                                                    </td>
+                                                    <td class="Qty">
+                                                        <span></span>
+                                                        <label class="hide"></label>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" id="btnDelete" class="btn btn-primary waves-effect Delete">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <table class="display dataTable">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DropDownListFor(x => x.ITEM_ID, ViewBag.Item as SelectList, "-- Select--", new { id = "ITEM_ID", required = "true" })
+                                                        @Html.ValidationMessageFor(m => m.ITEM_ID)
+                                                        @Html.LabelFor(x => x.ITEM_ID, "Item name", new { @class = "required" })
+                                                    </td>
+                                                    <td>
+
+                                                        @Html.DropDownListFor(x => x.UNIQUE_OPERATION_ID, ViewBag.ItemOperations as SelectList, "-- Select--", new { id = "UNIQUE_OPERATION_ID", required = "true" })
+                                                        @Html.ValidationMessageFor(m => m.UNIQUE_OPERATION_ID)
+                                                        @Html.LabelFor(x => x.UNIQUE_OPERATION_ID, "Operation", new { @class = "required" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(x => x.QTY, new { id = "QTY", required = "true" })
+                                                        @Html.ValidationMessageFor(m => m.QTY)
+                                                        @Html.LabelFor(x => x.UNIQUE_OPERATION_ID, "Hours", new { @class = "required" })
+                                                    </td>
+                                                    <td>
+                                                        <button id="btnAdd" class="btn btn-primary waves-effect">ADD</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4">
+                                                        <button class="btn btn-primary waves-effect" id="btnWorkItemSave" type="submit">
+                                                            SUBMIT
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+    .Show {
+        display: block;
+    }
+
+    .Hide {
+        display: none;
+    }
+
+    .ui-autocomplete {
+        background-color: #f5f5f5;
+        max-width: 500px;
+        max-height: 200px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        z-index: 100;
+        border: 0px 1px 1px 1px;
+    }
+
+    .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+        background-color: #DCDCDC;
+        color: #000000;
+    }
+</style>
+<script src="~/Content/assets/js/pages/workforce/workforce-workitem.js?v=3"></script>
+<script src="~/Content/assets/js/pages/workforce/workforce.js?v=4"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("select[required]").css({ position: "absolute", display: "inline", height: 0, padding: 0, width: 0 });
+    });
+
+    $("#DEPT_ID").on("change", function () {
+        var deptId = $("#DEPT_ID").val();
+
+        $.get('/Workforce/GetItemsBydeptId?deptId=' + deptId, function (data) {
+            $('#ITEM_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#ITEM_ID').append($('<option>', {
+                    value: item.ITEM_ID,
+                    text: item.ITEM_NAME
+                }));
+            });
+
+            $('#ITEM_ID').formSelect();
+        });
+    });
+
+    function onchangeevent() {
+      
+        var attdate = $("#WORK_DATE").val();
+        var wfid = $("#EMP_ID").val();
+        debugger;
+        if (wfid != '' && attdate != '') {
+            $.get('/Workforce/GetAttendanceBywfId?wfId=' + wfid + '&attdate=' + attdate, function (data) {
+                $.each(data, function (i, item) {
+                    $("#txtBioMetric").text = item.BIOMETRIC_CODE;
+                });
+            });
+        }
+    }
+
+
+    $("#ITEM_ID").on("change", function () {
+        var itemId = $("#ITEM_ID option:selected").val();
+        $.get('/Workforce/GetOperationsByitemId?ItemId=' + itemId, function (data) {
+            $('#UNIQUE_OPERATION_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#UNIQUE_OPERATION_ID').append($('<option>', {
+                    value: item.UNIQUE_OPERATION_ID,
+                    text: item.OPERATION
+                }));
+            });
+            $('#UNIQUE_OPERATION_ID').formSelect();
+        });
+    });
+
+    $("#EMP_NAME").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("LoadWorkforce", "Workforce")',
+                datatype: "json",
+                data: {
+                    deptId: $("#DEPT_ID").val(),
+                    query: $('#EMP_NAME').val()
+                },
+                success: function (data) {
+                    response($.map(data, function (val, item) {
+                        return {
+                            label: val.Name,
+                            value: val.Name,
+                            empId: val.ID
+                        }
+                    }))
+                }
+            })
+        },
+        select: function (event, ui) {
+            $("#EMP_ID").val(ui.item.empId);
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+
+  
+</script>
+

@@ -1,0 +1,153 @@
+﻿@model IList<Wfm.App.Core.Model.GetTRAINNING_WORKFORCE>
+
+@{
+    Layout = null;
+    int index = 0;
+}
+
+<div class="table-responsive">
+    <table id="tableExport"
+           class="display table table-hover table-checkable order-column m-t-20 width-per-100" width="100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th> Department </th>
+                <th> Sub Department </th>
+                <th style="width:40%;white-space:nowrap"> Employee Name  </th>
+                <th> Traininng Name  </th>
+                <th> Traininng Date </th>
+                <th> Trainner Name </th>
+                <th> Venue </th>
+                <th style="width:20%"> Present Employee </th>
+                <th style="width:10%"> Status </th>
+                <th>Created By</th>
+                <th> Action </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var gatepass in Model)
+            {
+                string[] fromdate = @gatepass.CREATED_DATE.ToString().Split(' ');
+
+
+            <tr id="row">
+                <td>@(++index)</td>
+                <td>@gatepass.DEPT_NAME</td>
+                <td>@gatepass.SUBDEPT_NAME</td>
+                @if (@gatepass.WORKFORCE_NAME != null)
+                {
+                    string[] TotalEmp = @gatepass.WORKFORCE_NAME.Split(',');
+                    <td>
+
+                        @foreach (var tx in @TotalEmp)
+                        {
+                            @tx <br />
+                        }
+
+                    </td>
+                }
+                @*<td>@gatepass.WORKFORCE_NAME</td>*@
+                <td>@gatepass.ISCOMPLETED</td>
+                <td>@fromdate[0]</td>
+
+                <td>@gatepass.UPDATED_BY</td>
+                <td>@gatepass.VENUE</td>
+                @*<td>@gatepass.STATUS</td>*@
+                @if (@gatepass.STATUS != null)
+                {
+                    string[] TotalEmp = @gatepass.STATUS.Split(',');
+                    <td>
+
+                        @foreach (var tx in @TotalEmp)
+                        {
+                            @tx <br />
+                        }
+
+
+
+
+                    </td>
+                }
+                else
+                {
+            <td> </td>
+                        }
+
+                        @*<td>@gatepass.STATUS</td>*@
+                        @if (@gatepass.STATUS != null)
+                        {
+                            string[] TotalPresent = @gatepass.STATUS.Split(',');
+                            string[] TotalEmp = @gatepass.WORKFORCE_NAME.Split(',');
+                            int count = int.Parse(@TotalEmp.Length.ToString()) - int.Parse(@TotalPresent.Length.ToString());
+                        <td>
+                            <h5>Present -  @TotalPresent.Length</h5>
+                            <h5>Absent - @count</h5>
+
+                        </td>
+                    }
+                    else
+                    {
+                        ;
+                        <td>
+                            <h5>Present - 0</h5>
+                            <h5>Absent - 0</h5>
+                        </td>
+                    }
+                        <td>@gatepass.CREATED_BY</td>
+
+                        <td>
+                            <a role="button" href="/WorkforceTrainning/UpdateTrainningWorkforceStatus?wftm_id=@gatepass.TRAINNING_WORKFORCE_ID">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                @*}*@
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $("document").ready(function () {
+        var oTable = $('#tableExport').DataTable({
+            dom: 'Blfrtip',
+            buttons: [
+                {
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: [0,1,2,3,4,5,6,7,8,9,10]
+                    },
+                },
+                {
+                    extend: 'csv',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    },
+                },
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    },
+                },
+                {
+                    extend: 'copy',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    },
+                },
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    },
+                }
+            ],
+        });
+       
+    });
+</script>
+
+
+
+

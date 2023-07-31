@@ -1,0 +1,231 @@
+﻿@model Wfm.App.Core.Model.WorkforceAttendance
+
+@{
+    ViewBag.Title = "Reports - Daily Attendance Report";
+}
+
+<style>
+    .bold {
+        font-weight: bold
+    }
+
+  
+    .table-bordered  tr td {
+       text-align:center;
+    }
+    .table-bordered tbody td, .table-bordered thead td {
+        border-width:2px;
+    }
+
+    
+</style>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title"> Daily Attendance Report</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/FaultyAttendanceList">
+                                <i class="fas fa-layer-group"></i> Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                                        @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.DEPT_ID, "Department", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.DEPT_ID, ViewBag.Dept as SelectList, "--Select--", new { id = "DEPT_ID", required = "true", @onchange = "onDepartmentChange()" })
+                                        @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.SUBDEPT_ID, Enumerable.Empty<SelectListItem>
+    (), "--Select--", new { required = "true", @onchange = "changeOnSubDept()" })
+                                        @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.WF_EMP_TYPE, "Workforce Type")
+                                        @Html.DropDownListFor(x => x.WF_EMP_TYPE, new SelectList(ViewBag.EmployeeTypes, "Value", "Text"), "All", htmlAttributes: new { id = "WF_EMP_TYPE", required = "required" })
+                                        @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.EMPLOYMENT_TYPE, "Employment Type")
+                                        @Html.DropDownListFor(x => x.EMPLOYMENT_TYPE, new SelectList(ViewBag.EmpSal_TypeList, "Value", "Text"), "All", htmlAttributes: new { id = "EMPLOYMENT_TYPE", required = "required" })
+                                        @Html.ValidationMessageFor(m => m.EMPLOYMENT_TYPE)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SHIFT_AUTOID, "Shift")
+                                        @Html.DropDownListFor(x => x.SHIFT_AUTOID, ViewBag.Shift as SelectList, "All", new { id = "SHIFT_ID", required = "true", @onchange = "BindEmployeeList()" })
+                                        @Html.ValidationMessageFor(m => m.SHIFT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.FROM_DATE, "Date", new { @class = "required" })
+                                        @Html.TextBoxFor(m => m.FROM_DATE, "{0:MM-dd-yyyy}", new { placeholder = "dd/mm/yyyy", @class = "form-control datepicker dateddmmyyyy required", @type = "text", required = "true" })
+                                        @Html.ValidationMessageFor(m => m.FROM_DATE)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <div id="emplyeedll">
+                                            <label for="password_2">Workforce Name</label>
+                                            @Html.TextBoxFor(x => x.EMP_NAME, new { id = "EMP_NAME", placeholder = "Workforce Name", required = "true" })
+                                            @Html.ValidationMessageFor(m => m.EMP_NAME)
+                                            @Html.HiddenFor(x => x.WF_ID, new { id = "WF_ID" })
+
+                                        </div>
+                                        @Html.ValidationMessageFor(m => m.WF_ID)
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row clearfix col-sm-12">
+                            <div class="form-group text-center">
+                                <button type="button" id="workforce-loadattendance" class="btn btn-primary waves-effect m-r-15" onclick="GetReport()">Load Attendance</button>
+                                <button type="button" id="workforce-loadattendance" class="btn btn-default waves-effect m-r-15" onclick="Export()">Export</button>
+                                @*<button type="button" id="workforce-loadattendance" class="btn btn-sidebar-light waves-effect m-r-15" onclick="GetAll()">Export All Attendance</button>*@
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <div id="particalDiv">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="particalDivAll" style="display:none">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+
+    })
+    function Export() {
+        if ($("#tableExports tbody tr").length == 0 || $("#tableExports tbody tr").html() == 'undefined') {
+            alert('No data found.');
+            return;
+        }
+        var contents = $("#particalDiv").html();
+        /* window.open('data:application/vnd.ms-excel,' + encodeURIComponent(contents));*/
+        var result = 'data:application/vnd.ms-excel,' + encodeURIComponent(contents);
+        var link = document.createElement("a");
+        document.body.appendChild(link);
+        var txt = $("#FROM_DATE").val();
+        link.download = "Daily Attendance Report - " + txt + ".xls"; //You need to change file_name here.
+        link.href = result;
+        link.click();
+    }
+</script>
+
+<script type="text/javascript">
+     $("#EMP_NAME").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("LoadWorkforceByWFType_N", "Workforce")',
+                datatype: "json",
+                data: {
+                    BUILDING_ID: $("#BUILDING_ID").val(),
+                    query: $('#EMP_NAME').val(),
+                    deptId: $("#DEPT_ID").val() || '00000000-0000-0000-0000-000000000000',
+                    sub_dept_id: $("#SUBDEPT_ID").val() || '00000000-0000-0000-0000-000000000000',
+                    emp_type_id: $('#WF_EMP_TYPE').val()||0,
+                    EMPLOYMENT_TYPE: $('#EMPLOYMENT_TYPE').val()||0
+                },
+                success: function (data) {
+                    if (!data.length) {
+                        var result = [{ label: "no results", value: response.term }];
+                        response(result);
+                    }
+                    else {
+                        response($.map(data, function (val, item) {
+                            return {
+                                label: val.Name,
+                                value: val.Name,
+                                empId: val.ID
+                            }
+                        }))
+                    }
+                }
+            })
+        },
+        select: function (event, ui) {
+            $("#WF_ID").val(ui.item.empId);
+
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+
+
+    $("#WF_EMP_TYPE").change(function () {
+        $('#EMPLOYMENT_TYPE').val('');
+        $('#EMPLOYMENT_TYPE').formSelect();
+        $("#EMP_NAME").val('');
+    })
+</script>
+
+<script src="~/Content/assets/js/pages/Reports/GetDailyAttendance.js"></script>

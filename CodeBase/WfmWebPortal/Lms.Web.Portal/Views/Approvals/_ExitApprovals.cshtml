@@ -1,0 +1,70 @@
+﻿@model IList<Wfm.App.Core.Model.ExitApprovalMetaData>
+@{
+    Layout = null;
+}
+<div class="table-responsive">
+    @using (Html.BeginForm("ExitApprovals", "Approvals", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-9">
+                <label class="col-12">Remark</label>
+                @Html.TextArea("Remark")
+            </div>
+            <div class="col-sm-3" style="margin-top:20px">
+                <div class="form-group">
+                    <input type="submit" id="btnApprove" name="Approve" class="btn btn-primary waves-effect m-r-15" value="Approve" />
+                    <input type="submit" id="btnSubmit" name="Reject" class="btn btn-primary waves-effect m-r-15" value="Reject" />
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+
+        </div>
+        <table id="tableExport"
+               class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+            <thead>
+                <tr>
+                    <th>
+                        <label>
+                            <input type="checkbox" class="filled-in" id="checkAll" />
+                            <span></span>
+                        </label>
+                    </th>
+                    <th>Approver</th>
+                    <th>Is Approved</th>
+                    <th>Workforce/Code</th>
+                    <th>Serveing Notice/Day</th>
+                    <th>Resignation/Exit Date</th>
+                    <th>Reason Of Leaving</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @*@if (ViewBag.LoginUerrId == item.USER_ID && item.APPROVER_STATUS == "")*@
+                            @if (item.APPROVER_STATUS == "No")
+                            {
+                                <label>
+                                    <input type="checkbox" name="twfmIds" class="filled-in" value="@item.EXIT_APPROVER_ID" />
+                                    <span></span>
+                                </label>
+                            }
+                        </td>
+                        <td>@item.APPROVER_NAME</td>
+                        <td>@item.APPROVER_STATUS</td>
+                        <td>@item.WORKFORCE_NAME/@item.EMP_ID</td>
+                        <td>@item.IS_NOTICE_SERVE/@item.NOTICE_DAYS Days</td>
+                        <td>@Convert.ToDateTime(item.RESIGNATION_DATE).ToString("dd/MM/yyyy")--@Convert.ToDateTime(item.EXIT_DATE.Value.AddDays(item.NOTICE_DAYS)).ToString("dd/MM/yyyy")</td>
+                        <td>@item.REASON_OF_LEAVING</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+</div>
+
+

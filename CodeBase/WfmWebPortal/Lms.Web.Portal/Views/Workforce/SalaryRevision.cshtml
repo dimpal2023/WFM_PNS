@@ -1,0 +1,125 @@
+﻿@model Wfm.App.Core.Model.SalaryRevision
+
+@{
+    ViewBag.Title = "Workforce - Monthly Salary";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Monthly Salary</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/SalaryList">
+                                <i class="fas fa-layer-group"></i> Workforce
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="body">
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="card">
+                                <div class="body">
+                                    <div class="row col-sm-12">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    @Html.LabelFor(x => x.WF_EMP_TYPE, "Employee Type", new { @class = "required" })
+                                                    @Html.DropDownListFor(x => x.WF_EMP_TYPE, new SelectList(ViewBag.wfemptypeList, "Value", "Text"), "-- Select--", htmlAttributes: new { id = "WF_EMP_TYPE", required = true })
+                                                    @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    @Html.LabelFor(m => m.SKILL_ID, "Skill")
+                                                    @Html.DropDownListFor(m => m.SKILL_ID, new SelectList(ViewBag.skillList, "Value", "Text"), "-- Select--", new { id = "SKILL_ID" })
+                                                    @Html.ValidationMessageFor(m => m.SKILL_ID)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    @Html.LabelFor(x => x.PERCENTAGE, "PERCENTAGE", new { @class = "required" })
+                                                    @Html.TextBoxFor(m => m.PERCENTAGE, "PERCENTAGE", new { id = "AADHAR_NO", @class = "form-control numberonly",maxlength = "5" })
+                                                    @Html.ValidationMessageFor(m => m.PERCENTAGE)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row  col-sm-12">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    @Html.LabelFor(x => x.WEF, "WEF", new { @class = "required" })
+                                                    @Html.TextBoxFor(m => m.WEF, "{0:MM-dd-yyyy}", new { id = "WEF", @class = "datepicker form-control" })
+                                                    @*@Html.TextBoxFor(m => m.WEF, "WEF", new { id = "WEF", @class = "form-control", maxlength = "5" })*@
+                                                    @Html.ValidationMessageFor(m => m.WEF)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4" style="margin-top:20px">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <button type="button" id="workforce-loadsalary" class="btn btn-primary waves-effect m-r-15">CALCULATE</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+
+
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div id="partialPlaceHolder" class="body" style="overflow:scroll;display:none">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Content/assets/js/pages/workforce/workforce.js"></script>
+<script>
+    $("#DEPT_ID").change(function () {
+        getSubDeptbyDeptId();
+    });
+    function getSubDeptbyDeptId() {
+        var DEPARTMENT_ID = $("#DEPT_ID").val();
+        if (DEPARTMENT_ID != null) {
+            $.get('/Dashboard/GetSubDepartmentByDepartmentId?departmentId=' + DEPARTMENT_ID, function (data) {
+                $('#SUBDEPT_ID').find('option').not(':first').remove();
+                $.each(data, function (i, item) {
+                    $('#SUBDEPT_ID').append($('<option>', {
+                        value: item.SUBDEPT_ID,
+                        text: item.SUBDEPT_NAME
+                    }));
+                });
+                $('#SUBDEPT_ID').formSelect();
+            });
+        } else {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $('#SUBDEPT_ID').formSelect();
+            GetEmployeeData();
+        }
+    }
+</script>

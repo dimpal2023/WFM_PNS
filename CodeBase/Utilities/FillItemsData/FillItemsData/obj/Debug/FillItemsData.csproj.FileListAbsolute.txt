@@ -1,0 +1,7 @@
+E:\Projects\FillItemsData\FillItemsData\bin\Debug\FillItemsData.exe.config
+E:\Projects\FillItemsData\FillItemsData\bin\Debug\FillItemsData.exe
+E:\Projects\FillItemsData\FillItemsData\bin\Debug\FillItemsData.pdb
+E:\Projects\FillItemsData\FillItemsData\obj\Debug\FillItemsData.csprojResolveAssemblyReference.cache
+E:\Projects\FillItemsData\FillItemsData\obj\Debug\FillItemsData.csproj.ResolveComReference.cache
+E:\Projects\FillItemsData\FillItemsData\obj\Debug\FillItemsData.exe
+E:\Projects\FillItemsData\FillItemsData\obj\Debug\FillItemsData.pdb

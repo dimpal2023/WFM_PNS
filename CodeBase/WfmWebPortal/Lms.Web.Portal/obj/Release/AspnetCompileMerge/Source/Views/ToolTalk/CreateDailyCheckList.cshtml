@@ -1,0 +1,274 @@
+﻿@model Wfm.App.Core.Model.ToolTalkDailyCheckListMetaData
+
+@{
+    ViewBag.Title = "Tooltalk - Daily";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Tool Talk</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/ToolTalk/Configure">
+                                <i class="fas fa-layer-group"></i> Tool Talk
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Create </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Generate </strong> Daily TBT
+                        </h2>
+                    </div>
+                    <div class="body">
+
+                        <div class="row clearfix">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.BUILDING_ID, "Unit", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.BUILDING_ID, ViewBag.Buildings as SelectList, "-- Select--", new { id = "BUILDING_ID", required = "true", @onchange = "onBuildingChange()" })
+                                        @Html.ValidationMessageFor(m => m.BUILDING_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.DEPT_NAME, "Department", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.DEPT_ID, ViewBag.Dept as SelectList, "-- Select--", new { id = "DEPT_ID", required = "true", @onchange = "onDepartmentChange()" })
+                                        @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.SUBDEPT_ID, ViewBag.SubDepartments as SelectList, "All", new { id = "SUBDEPT_ID", required = "true",@onchange="GetCheckListByDept()" })
+                                        @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.SHIFT_ID, "Shift", new { @class = "required" })
+                                        @Html.DropDownListFor(x => x.SHIFT_ID, ViewBag.Shift as SelectList, "--Select--", new { id = "SHIFT_ID", required = "true", @onchange = "BindEmployeeList()" })
+                                        @Html.ValidationMessageFor(m => m.SHIFT_ID)
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(x => x.DELIVERED_BY, "Delivered By", new { @class = "required" })
+                                        @Html.TextBoxFor(m => m.DELIVERED_BY, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.DELIVERED_BY)
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <span id="errorCheckbox" style="display:none;color:red;">Please check at least one item from list.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row clearfix col-sm-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <div id="partialPlaceHolder"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        
+                        <div class="row clearfix col-sm-12" id="AllEmployeeList">
+
+                        </div>
+                        <br />
+                        <br />
+                        <input type="hidden" id="EMP_NAME" />
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-line align-center">
+                                    <button id="createdailychecklist" type="submit" class="btn btn-primary waves-effect m-r-15" >Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*</div>*@
+</section>
+
+<script type="text/javascript">
+    /*const { error } = require("toastr");*/
+
+    $(document).ready(function () {
+        $("select[required]").css({ position: "absolute", display: "inline", height: 0, padding: 0, width: 0 });
+        $('#DEPT_ID').find('option').not(':first').remove();
+    });
+    function onBuildingChange() {
+        var buildingId = $("#BUILDING_ID option:selected").val();
+        $.get('/ManPowerRequest/GetFloorByBuildingId?buildingId=' + buildingId, function (data) {
+            $('#DEPT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#DEPT_ID').append($('<option>', {
+                    value: item.DEPT_ID,
+                    text: item.DEPT_NAME
+                }));
+            });
+            $('#DEPT_ID').formSelect();
+        });
+    }
+    function onDepartmentChange() {
+        var departmentId = $("#DEPT_ID option:selected").val();
+        $.get('/ToolTalk/GetSubDepartmentByDepartmentId?departmentId=' + departmentId, function (data) {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#SUBDEPT_ID').append($('<option>', {
+                    value: item.SUBDEPT_ID,
+                    text: item.SUBDEPT_NAME
+                }));
+            });
+            $('#SUBDEPT_ID').formSelect();
+            GetCheckListByDept();
+        });
+    }
+
+    function GetCheckListByDept() {
+        var deptId = $("#DEPT_ID option:selected").val();
+        var subDeptId = $("#SUBDEPT_ID option:selected").val() || '00000000-0000-0000-0000-000000000000';
+        var BUILDING_ID = $("#BUILDING_ID option:selected").val();
+
+        if (deptId !== "" && subDeptId !== "") {
+            $.get('/ToolTalk/GetConfiguredCheckListBySubDeptId?deptId=' + deptId + '&subDeptId=' + subDeptId + '&BUILDING_ID=' + BUILDING_ID, function (data) {
+
+                $('#partialPlaceHolder').empty();
+                $('#errorCheckbox').text("");
+                $('#errorCheckbox').css("display", "none");
+
+                if (data.indexOf("div") === -1) {
+                    $('#errorCheckbox').text("There is no configration exist for this department and sub department.");
+                    $('#errorCheckbox').css("display", "block");
+                    return;
+                }
+                $('#partialPlaceHolder').html(data);
+                $('#partialPlaceHolder').fadeIn('fast');
+
+                // delete extra hidden fields created by checkboxes as the grid links mess this up by doubling the querystring parameters
+                $("#partialPlaceHolder input[type='hidden']").remove();
+
+                $('#select-all').on("change", function () {
+                    if (this.checked) {
+                        $('.instruction_list').each(function () {
+                            this.checked = true;
+                        });
+                    }
+                    else {
+                        $('.instruction_list').each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
+            });
+        }
+    }
+
+    function BindEmployeeList() {
+        debugger;
+        var deptId = $("#DEPT_ID").val();
+        var sub_dept_id = $('#SUBDEPT_ID').val() || '0';
+        var BUILDING_ID = $('#BUILDING_ID').val();
+        var SHIFT_ID = $('#SHIFT_ID').val();
+        $.ajax({
+            type: 'Get',
+            url: '/Reports/BindEmployeeList?deptId=' + deptId + '&sub_dept_id=' + sub_dept_id + '&BUILDING_ID=' + BUILDING_ID + '&SHIFT_ID=' + SHIFT_ID,
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            success: function (data) {
+                var details = $.parseJSON(data);
+               
+                var List = details['Table'];
+                debugger;
+                $("#AllEmployeeList").html('');
+                var html = "";
+                html += '<h4 class="text-center">Employee List</h4><div class="table-responsive"  style="max-height:400px;overflow-y:scroll">';
+                html += '<table id="tableExport2" class="display table table-hover table-checkable order-column m-t-20 width-per-100" width="100%">';
+                html += '<thead  style="background: #cdcdcd;">';
+                html += '<tr>';
+                html += '<th><label><input type = "checkbox"  class="form-check-input" id="list_emp" onchange="SelectAll()" /><span class="form-check-sign"><span class="check" style = "font-weight: bold; font-size: 14px;" > Select All</span></label></th> ';
+                html += '<th>Employee Code</th>';
+                html += '<th>Employee Name</th>';
+                html += '<th>Employee Type</th>';
+                html += '<th>Employment Type</th>';
+                html += '<th style="display:none"></th>';
+                html += '</tr>';
+                html += '</thead>';
+                html += '<tbody>';
+                for (var i = 0; i < List.length; i++) {
+                    debugger;
+                    html += '<tr>';
+                    html += '<td>';
+                    html += '<label><input type = "checkbox" name = "twfmIds" class="form-check-input emplist_chk" value = ""/><span class="form-check-sign"><span class="check" style = "font-weight: bold; font-size: 14px;" ></span></label></td>';
+                    html += '<td>' + List[i].EMP_ID + '</td>';
+                    html += '<td>' + List[i].EMP_NAME + '</td>';
+                    html += '<td>' + List[i].EMP_TYPE + '</td>';
+                    html += '<td>' + List[i].SalaryType + '</td>';
+                    html += '<td style="display:none" class="hdnEmp">' + List[i].EMP_NAME + '</td>';
+                    html += '</tr>';
+                }
+                html += '</tbody>';
+                html += '</table>';
+                html += '</div>';
+                $("#AllEmployeeList").html(html);
+                console.log(html);
+            },
+            error: function (data) {
+
+            }
+        })
+    }
+
+    function SelectAll() {
+        if ($("#list_emp").prop('checked') == true) {
+            $('.emplist_chk').each(function () {
+                this.checked = true;
+            });
+        }
+        else {
+            $('.emplist_chk').each(function () {
+                this.checked = false;
+            });
+        }
+    }
+
+  
+</script>
+<script src="~/Content/assets/js/pages/tooltalk/tooltalk.js"></script>

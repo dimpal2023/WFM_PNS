@@ -1,0 +1,2361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WFMSUMITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TAB_AGENCY_MASTER">
+    <Key>
+      <PropertyRef Name="AGENCY_ID" />
+    </Key>
+    <Property Name="AGENCY_ID" Type="Guid" Nullable="false" />
+    <Property Name="AGENCY_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="AGENCY_ADDRESS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="AUTTHENTICATED_PERSON_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AUTHENTICATED_PERSON_NUM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_AGENC__COMPA__3E52440B" FromRole="TAB_AGENCY_MASTER" ToRole="TAB_COMPANY_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_ALL_MAIL">
+    <Key>
+      <PropertyRef Name="MAIL_SEQ" />
+    </Key>
+    <Property Name="MAIL_SEQ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TO_MAIL" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="CC_MAIL" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL_INSERT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="MAIL_SENT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="MAIL_FLAG" Type="Int16" />
+    <Property Name="MAIL_REMARK" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TAB_ALL_SMS">
+    <Key>
+      <PropertyRef Name="SMS_SEQ" />
+    </Key>
+    <Property Name="SMS_SEQ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MOBILE_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SMS_TEXT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="SMS_INSERT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="SMS_SENT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="SMS_FLAG" Type="Int16" />
+    <Property Name="SMS_REMARK" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TAB_ALL_WHATSAPP">
+    <Key>
+      <PropertyRef Name="WHATSAPP_SEQ" />
+    </Key>
+    <Property Name="WHATSAPP_SEQ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MOBILE_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SMS_TEXT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="SMS_INSERT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="SMS_SENT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="SMS_FLAG" Type="Int16" />
+    <Property Name="SMS_REMARK" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TAB_BANK_MASTER">
+    <Key>
+      <PropertyRef Name="BANK_ID" />
+    </Key>
+    <Property Name="BANK_ID" Type="Guid" Nullable="false" />
+    <Property Name="BANK_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COMPANY_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_WORKFORCE_SALARY_MASTER" Relationship="Self.FK__TAB_WORKF__BANK___60A82766" FromRole="TAB_BANK_MASTER" ToRole="TAB_WORKFORCE_SALARY_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_BIOMETRIC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WORKFORCE_ID" Type="Guid" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="BIOMETRIC_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="START_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="END_DATE" Type="DateTime" Precision="3" />
+    <Property Name="DEVICEID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ATTENDANCE_DATE" Type="DateTime" Precision="0" />
+    <Property Name="STATUS_CODE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="SHIFT_ID" Type="Int32" />
+    <Property Name="SHIFT_STARTTIME" Type="Time" Precision="7" />
+    <Property Name="SHIFT_ENDTIME" Type="Time" Precision="7" />
+    <Property Name="SHIFT_BREAK1STARTTIME" Type="Time" Precision="7" />
+    <Property Name="SHIFT_BREAK1ENDTIME" Type="Time" Precision="7" />
+    <Property Name="INSERTED_ON" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_BIOME__COMPA__42EE72A4" FromRole="TAB_BIOMETRIC" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK_TAB_BIOMETRIC_TAB_WORKFORCE_MASTER" FromRole="TAB_BIOMETRIC" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_BUILDING_MASTER">
+    <Key>
+      <PropertyRef Name="BUILDING_ID" />
+    </Key>
+    <Property Name="BUILDING_ID" Type="Guid" Nullable="false" />
+    <Property Name="BUILDING_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="BUILDING_ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_BUILD__COMPA__5535A963" FromRole="TAB_BUILDING_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_FLOOR_MASTER" Relationship="Self.FK__TAB_FLOOR__BUILD__5BE2A6F2" FromRole="TAB_BUILDING_MASTER" ToRole="TAB_FLOOR_MASTER" />
+    <NavigationProperty Name="TAB_MRF_DETAILS" Relationship="Self.FK__TAB_MRF_D__BUILD__1D114BD1" FromRole="TAB_BUILDING_MASTER" ToRole="TAB_MRF_DETAILS" />
+    <NavigationProperty Name="TAB_WF_WORK_DETAILS" Relationship="Self.FK__TAB_WF_WO__BUILD__147C05D0" FromRole="TAB_BUILDING_MASTER" ToRole="TAB_WF_WORK_DETAILS" />
+  </EntityType>
+  <EntityType Name="TAB_COMPANY_MASTER">
+    <Key>
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="COMPANY_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_AGENCY_MASTER" Relationship="Self.FK__TAB_AGENC__COMPA__3E52440B" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_AGENCY_MASTER" />
+    <NavigationProperty Name="TAB_BIOMETRIC" Relationship="Self.FK__TAB_BIOME__COMPA__42EE72A4" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_BIOMETRIC" />
+    <NavigationProperty Name="TAB_BUILDING_MASTER" Relationship="Self.FK__TAB_BUILD__COMPA__5535A963" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_BUILDING_MASTER" />
+    <NavigationProperty Name="TAB_DEPARTMENT_MASTER" Relationship="Self.FK__TAB_DEPAR__COMPA__4F7CD00D" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_DEPARTMENT_MASTER" />
+    <NavigationProperty Name="TAB_EMP_STATUS_MASTER" Relationship="Self.FK__TAB_EMP_S__COMPA__7EC1CEDB" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_EMP_STATUS_MASTER" />
+    <NavigationProperty Name="TAB_EMPL_TYPE_MASTER" Relationship="Self.FK__TAB_EMPL___COMPA__6F7F8B4B" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_EMPL_TYPE_MASTER" />
+    <NavigationProperty Name="TAB_FLOOR_MASTER" Relationship="Self.FK__TAB_FLOOR__COMPA__5AEE82B9" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_FLOOR_MASTER" />
+    <NavigationProperty Name="TAB_ITEM_MASTER" Relationship="Self.FK__TAB_ITEM___COMPA__062DE679" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_ITEM_MASTER" />
+    <NavigationProperty Name="TAB_ITEM_OPERATION_MASTER" Relationship="Self.FK__TAB_ITEM___COMPA__0CDAE408" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_ITEM_OPERATION_MASTER" />
+    <NavigationProperty Name="TAB_LOGIN_MASTER" Relationship="Self.FK__TAB_LOGIN__COMPA__787EE5A0" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_LOGIN_MASTER" />
+    <NavigationProperty Name="TAB_MARITAL_STATUS_MASTER" Relationship="Self.FK__TAB_MARIT__COMPA__038683F8" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_MARITAL_STATUS_MASTER" />
+    <NavigationProperty Name="TAB_MENU_MASTER" Relationship="Self.FK__TAB_MENU___COMPA__57A801BA" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_MENU_MASTER" />
+    <NavigationProperty Name="TAB_MRF" Relationship="Self.FK__TAB_MRF__COMPANY__76EBA2E9" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_MRF" />
+    <NavigationProperty Name="TAB_REC_MASTER" Relationship="Self.FK__TAB_REC_M__COMPA__703EA55A" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_REC_MASTER" />
+    <NavigationProperty Name="TAB_ROLE_MASTER" Relationship="Self.FK__TAB_ROLE___COMPA__00200768" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_ROLE_MASTER" />
+    <NavigationProperty Name="TAB_SHIFT_MASTER" Relationship="Self.FK__TAB_SHIFT__COMPA__440B1D61" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_SHIFT_MASTER" />
+    <NavigationProperty Name="TAB_SKILL_MASTER" Relationship="Self.FK__TAB_SKILL__COMPA__49C3F6B7" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_SKILL_MASTER" />
+    <NavigationProperty Name="TAB_WF_DESIGNATION_MASTER" Relationship="Self.FK__TAB_WF_DE__COMPA__6ABAD62E" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_WF_DESIGNATION_MASTER" />
+    <NavigationProperty Name="TAB_WF_WORK_DETAILS" Relationship="Self.FK__TAB_WF_WO__COMPA__1293BD5E" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_WF_WORK_DETAILS" />
+    <NavigationProperty Name="TAB_WORFORCE_TYPE" Relationship="Self.FK__TAB_WORFO__COMPA__61316BF4" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_WORFORCE_TYPE" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__COMPA__1B5E0D89" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_SALARY_MASTER" Relationship="Self.FK__TAB_WORKF__COMPA__5FB4032D" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_WORKFORCE_SALARY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFLOW_MASTER" Relationship="Self.FK__TAB_WORKF__COMPA__619B8048" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_WORKFLOW_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_EDU_MASTER" Relationship="Self.FK__TAB_WORKF__COMPA__65F62111" FromRole="TAB_COMPANY_MASTER" ToRole="TAB_WORKFORCE_EDU_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_DEPARTMENT_MASTER">
+    <Key>
+      <PropertyRef Name="DEPT_ID" />
+    </Key>
+    <Property Name="DEPT_ID" Type="Guid" Nullable="false" />
+    <Property Name="DEPT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="DEPT_HEAD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DEPT_HEAD_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_DEPAR__COMPA__4F7CD00D" FromRole="TAB_DEPARTMENT_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_ITEM_MASTER" Relationship="Self.FK__TAB_ITEM___DEPT___07220AB2" FromRole="TAB_DEPARTMENT_MASTER" ToRole="TAB_ITEM_MASTER" />
+    <NavigationProperty Name="TAB_LOGIN_MASTER" Relationship="Self.FK__TAB_LOGIN__DEPT___778AC167" FromRole="TAB_DEPARTMENT_MASTER" ToRole="TAB_LOGIN_MASTER" />
+    <NavigationProperty Name="TAB_WF_WORK_DETAILS" Relationship="Self.FK__TAB_WF_WO__DEPT___1387E197" FromRole="TAB_DEPARTMENT_MASTER" ToRole="TAB_WF_WORK_DETAILS" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__DEPT___1E3A7A34" FromRole="TAB_DEPARTMENT_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+    <NavigationProperty Name="TAB_WORKFLOW_MAPPING_MASTER" Relationship="Self.FK__TAB_WORKF__DEPT___60083D91" FromRole="TAB_DEPARTMENT_MASTER" ToRole="TAB_WORKFLOW_MAPPING_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_EMP_STATUS_MASTER">
+    <Key>
+      <PropertyRef Name="EMP_STATUS_ID" />
+    </Key>
+    <Property Name="EMP_STATUS_ID" Type="Int16" Nullable="false" />
+    <Property Name="EMP_STATUS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_EMP_S__COMPA__7EC1CEDB" FromRole="TAB_EMP_STATUS_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__EMP_S__27C3E46E" FromRole="TAB_EMP_STATUS_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_EMPL_TYPE_MASTER">
+    <Key>
+      <PropertyRef Name="EMP_TYPE_ID" />
+    </Key>
+    <Property Name="EMP_TYPE_ID" Type="Int16" Nullable="false" />
+    <Property Name="EMP_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_EMPL___COMPA__6F7F8B4B" FromRole="TAB_EMPL_TYPE_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__EMP_T__22FF2F51" FromRole="TAB_EMPL_TYPE_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_FLOOR_MASTER">
+    <Key>
+      <PropertyRef Name="FLOOR_ID" />
+    </Key>
+    <Property Name="FLOOR_ID" Type="Guid" Nullable="false" />
+    <Property Name="FLOOR_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="BUILDING_ID" Type="Guid" Nullable="false" />
+    <Property Name="FLOOR_INCHARGE_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_BUILDING_MASTER" Relationship="Self.FK__TAB_FLOOR__BUILD__5BE2A6F2" FromRole="TAB_FLOOR_MASTER" ToRole="TAB_BUILDING_MASTER" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_FLOOR__COMPA__5AEE82B9" FromRole="TAB_FLOOR_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_MRF_DETAILS" Relationship="Self.FK__TAB_MRF_D__FLOOR__1E05700A" FromRole="TAB_FLOOR_MASTER" ToRole="TAB_MRF_DETAILS" />
+    <NavigationProperty Name="TAB_WF_WORK_DETAILS" Relationship="Self.FK__TAB_WF_WO__FLOOR__15702A09" FromRole="TAB_FLOOR_MASTER" ToRole="TAB_WF_WORK_DETAILS" />
+  </EntityType>
+  <EntityType Name="TAB_GATEPASS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="WORKFORCE_ID" Type="Guid" Nullable="false" />
+    <Property Name="START_DATE" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="END_DATE" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OUT_TIME" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="IN_TIME" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="ACTUAL_OUTTIME" Type="Time" Precision="7" />
+    <Property Name="ACTUAL_INTIME" Type="Time" Precision="7" />
+    <Property Name="PURPOSE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="REMARK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS" Type="Boolean" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK_TAB_GATEPASS_TAB_WORKFORCE_MASTER" FromRole="TAB_GATEPASS" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_HOLIDAY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="HOLIDAY_TITLE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="HOLIDAY_DATE" Type="DateTime" Precision="0" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TAB_ITEM_MASTER">
+    <Key>
+      <PropertyRef Name="ITEM_ID" />
+    </Key>
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="ITEM_ID" Type="Guid" Nullable="false" />
+    <Property Name="DEPT_ID" Type="Guid" Nullable="false" />
+    <Property Name="ITEM_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ITEM_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_ITEM___COMPA__062DE679" FromRole="TAB_ITEM_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_DEPARTMENT_MASTER" Relationship="Self.FK__TAB_ITEM___DEPT___07220AB2" FromRole="TAB_ITEM_MASTER" ToRole="TAB_DEPARTMENT_MASTER" />
+    <NavigationProperty Name="TAB_ITEM_OPERATION_MASTER" Relationship="Self.FK__TAB_ITEM___ITEM___0DCF0841" FromRole="TAB_ITEM_MASTER" ToRole="TAB_ITEM_OPERATION_MASTER" />
+    <NavigationProperty Name="TAB_WF_WORK_DETAILS" Relationship="Self.FK__TAB_WF_WO__ITEM___1758727B" FromRole="TAB_ITEM_MASTER" ToRole="TAB_WF_WORK_DETAILS" />
+    <NavigationProperty Name="TAB_WORKFORCE_DAILYWORK" Relationship="Self.FK__TAB_WORKF__ITEM___59D1D7FC" FromRole="TAB_ITEM_MASTER" ToRole="TAB_WORKFORCE_DAILYWORK" />
+  </EntityType>
+  <EntityType Name="TAB_ITEM_OPERATION_MASTER">
+    <Key>
+      <PropertyRef Name="UNIQUE_OPERATION_ID" />
+    </Key>
+    <Property Name="UNIQUE_OPERATION_ID" Type="Guid" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="ITEM_ID" Type="Guid" Nullable="false" />
+    <Property Name="RATE" Type="Double" />
+    <Property Name="OPERATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PERCENTAGE" Type="Double" />
+    <Property Name="RATE_APPLIED_DATE" Type="DateTime" Precision="0" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_ITEM___COMPA__0CDAE408" FromRole="TAB_ITEM_OPERATION_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_ITEM_MASTER" Relationship="Self.FK__TAB_ITEM___ITEM___0DCF0841" FromRole="TAB_ITEM_OPERATION_MASTER" ToRole="TAB_ITEM_MASTER" />
+    <NavigationProperty Name="TAB_WF_WORK_DETAILS" Relationship="Self.FK__TAB_WF_WO__UNIQU__184C96B4" FromRole="TAB_ITEM_OPERATION_MASTER" ToRole="TAB_WF_WORK_DETAILS" />
+    <NavigationProperty Name="TAB_WORKFORCE_DAILYWORK" Relationship="Self.FK__TAB_WORKF__UNIQU__58DDB3C3" FromRole="TAB_ITEM_OPERATION_MASTER" ToRole="TAB_WORKFORCE_DAILYWORK" />
+  </EntityType>
+  <EntityType Name="TAB_LEVEL_MASTER">
+    <Key>
+      <PropertyRef Name="LEVEL_ID" />
+    </Key>
+    <Property Name="LEVEL_ID" Type="Int32" Nullable="false" />
+    <Property Name="LEVEL_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_WORKFLOW_MAPPING_MASTER" Relationship="Self.FK__TAB_WORKF__LEVEL__60FC61CA" FromRole="TAB_LEVEL_MASTER" ToRole="TAB_WORKFLOW_MAPPING_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_LOGIN_MASTER">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="Guid" Nullable="false" />
+    <Property Name="USER_LOGIN_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DEPT_ID" Type="Guid" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="MAIL_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MOBILE_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CURRENT_PASSWORD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="LAST_LOGIN_DATE" Type="DateTime" Precision="3" />
+    <Property Name="LAST_LOGIN_IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WRONG_ATTEMP_COUNT" Type="Int32" Nullable="false" />
+    <Property Name="PASSWORD_CHANGE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="PASSWORD_EXPIRY_DAY" Type="Int32" />
+    <Property Name="PASSWORD1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD3" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_LOGIN__COMPA__787EE5A0" FromRole="TAB_LOGIN_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_DEPARTMENT_MASTER" Relationship="Self.FK__TAB_LOGIN__DEPT___778AC167" FromRole="TAB_LOGIN_MASTER" ToRole="TAB_DEPARTMENT_MASTER" />
+    <NavigationProperty Name="TAB_USER_ROLE_MAPPING" Relationship="Self.FK__TAB_USER___USER___03F0984C" FromRole="TAB_LOGIN_MASTER" ToRole="TAB_USER_ROLE_MAPPING" />
+  </EntityType>
+  <EntityType Name="TAB_MARITAL_STATUS_MASTER">
+    <Key>
+      <PropertyRef Name="MARITAL_ID" />
+    </Key>
+    <Property Name="MARITAL_ID" Type="Int16" Nullable="false" />
+    <Property Name="MARITAL_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_MARIT__COMPA__038683F8" FromRole="TAB_MARITAL_STATUS_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__MARIT__2022C2A6" FromRole="TAB_MARITAL_STATUS_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_MENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <Property Name="ICONCLASS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CONTROLLER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TAB_MENU_ROLE_MAPPING" Relationship="Self.FK_TAB_MENU_ROLE_MAPPING_TAB_MENU" FromRole="TAB_MENU" ToRole="TAB_MENU_ROLE_MAPPING" />
+    <NavigationProperty Name="TAB_SUBMENU" Relationship="Self.FK_TAB_SUBMENU_TAB_MENU" FromRole="TAB_MENU" ToRole="TAB_SUBMENU" />
+  </EntityType>
+  <EntityType Name="TAB_MENU_MASTER">
+    <Key>
+      <PropertyRef Name="MENU_ID" />
+    </Key>
+    <Property Name="MENU_ID" Type="Guid" Nullable="false" />
+    <Property Name="MENU_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_MENU___COMPA__57A801BA" FromRole="TAB_MENU_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_ROLE_MENU_MAPPING" Relationship="Self.FK__TAB_ROLE___MENU___5B78929E" FromRole="TAB_MENU_MASTER" ToRole="TAB_ROLE_MENU_MAPPING" />
+  </EntityType>
+  <EntityType Name="TAB_MENU_ROLE_MAPPING">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="MENU_ID" Type="Guid" Nullable="false" />
+    <Property Name="SUBMENU_ID" Type="Guid" Nullable="false" />
+    <Property Name="ROLE_ID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="TAB_MENU" Relationship="Self.FK_TAB_MENU_ROLE_MAPPING_TAB_MENU" FromRole="TAB_MENU_ROLE_MAPPING" ToRole="TAB_MENU" />
+    <NavigationProperty Name="TAB_ROLE_MASTER" Relationship="Self.FK_TAB_MENU_ROLE_MAPPING_TAB_ROLE_MASTER" FromRole="TAB_MENU_ROLE_MAPPING" ToRole="TAB_ROLE_MASTER" />
+    <NavigationProperty Name="TAB_SUBMENU" Relationship="Self.FK_TAB_MENU_ROLE_MAPPING_TAB_SUBMENU" FromRole="TAB_MENU_ROLE_MAPPING" ToRole="TAB_SUBMENU" />
+  </EntityType>
+  <EntityType Name="TAB_MRF">
+    <Key>
+      <PropertyRef Name="MRP_INETRNAL_ID" />
+    </Key>
+    <Property Name="MRP_INETRNAL_ID" Type="Guid" Nullable="false" />
+    <Property Name="MRF_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="REC_TYPE" Type="Int16" />
+    <Property Name="WORKFLOW_ID" Type="Guid" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="MRF_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FINAL_ACTION_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_MRF__COMPANY__76EBA2E9" FromRole="TAB_MRF" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFLOW_MASTER" Relationship="Self.FK__TAB_MRF__WORKFLO__77DFC722" FromRole="TAB_MRF" ToRole="TAB_WORKFLOW_MASTER" />
+    <NavigationProperty Name="TAB_MRF_DETAILS" Relationship="Self.FK__TAB_MRF_D__MRP_I__1FEDB87C" FromRole="TAB_MRF" ToRole="TAB_MRF_DETAILS" />
+  </EntityType>
+  <EntityType Name="TAB_MRF_DETAILS">
+    <Key>
+      <PropertyRef Name="TAB_MRF_DETAIL_ID" />
+    </Key>
+    <Property Name="TAB_MRF_DETAIL_ID" Type="Guid" Nullable="false" />
+    <Property Name="MRP_INETRNAL_ID" Type="Guid" Nullable="false" />
+    <Property Name="BUILDING_ID" Type="Guid" />
+    <Property Name="FLOOR_ID" Type="Guid" />
+    <Property Name="SKILL_ID" Type="Guid" />
+    <Property Name="WF_DESIGNATION_ID" Type="Int16" />
+    <Property Name="WF_EMP_TYPE" Type="Int16" />
+    <Property Name="WOKFORCE_QUANTITY" Type="Int16" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TAB_BUILDING_MASTER" Relationship="Self.FK__TAB_MRF_D__BUILD__1D114BD1" FromRole="TAB_MRF_DETAILS" ToRole="TAB_BUILDING_MASTER" />
+    <NavigationProperty Name="TAB_FLOOR_MASTER" Relationship="Self.FK__TAB_MRF_D__FLOOR__1E05700A" FromRole="TAB_MRF_DETAILS" ToRole="TAB_FLOOR_MASTER" />
+    <NavigationProperty Name="TAB_MRF" Relationship="Self.FK__TAB_MRF_D__MRP_I__1FEDB87C" FromRole="TAB_MRF_DETAILS" ToRole="TAB_MRF" />
+    <NavigationProperty Name="TAB_SKILL_MASTER" Relationship="Self.FK__TAB_MRF_D__SKILL__1EF99443" FromRole="TAB_MRF_DETAILS" ToRole="TAB_SKILL_MASTER" />
+    <NavigationProperty Name="TAB_WF_DESIGNATION_MASTER" Relationship="Self.FK__TAB_MRF_D__WF_DE__20E1DCB5" FromRole="TAB_MRF_DETAILS" ToRole="TAB_WF_DESIGNATION_MASTER" />
+    <NavigationProperty Name="TAB_WORFORCE_TYPE" Relationship="Self.FK__TAB_MRF_D__WF_EM__21D600EE" FromRole="TAB_MRF_DETAILS" ToRole="TAB_WORFORCE_TYPE" />
+  </EntityType>
+  <EntityType Name="TAB_REC_MASTER">
+    <Key>
+      <PropertyRef Name="REC_TYPE" />
+    </Key>
+    <Property Name="REC_TYPE" Type="Int16" Nullable="false" />
+    <Property Name="REC_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="WORKFLOW_ID" Type="Guid" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_REC_M__COMPA__703EA55A" FromRole="TAB_REC_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFLOW_MASTER" Relationship="Self.FK__TAB_REC_M__WORKF__7132C993" FromRole="TAB_REC_MASTER" ToRole="TAB_WORKFLOW_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_ROLE_MASTER">
+    <Key>
+      <PropertyRef Name="ROLE_ID" />
+    </Key>
+    <Property Name="ROLE_ID" Type="Guid" Nullable="false" />
+    <Property Name="ROLE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_ROLE___COMPA__00200768" FromRole="TAB_ROLE_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_MENU_ROLE_MAPPING" Relationship="Self.FK_TAB_MENU_ROLE_MAPPING_TAB_ROLE_MASTER" FromRole="TAB_ROLE_MASTER" ToRole="TAB_MENU_ROLE_MAPPING" />
+    <NavigationProperty Name="TAB_ROLE_MENU_MAPPING" Relationship="Self.FK__TAB_ROLE___ROLE___5C6CB6D7" FromRole="TAB_ROLE_MASTER" ToRole="TAB_ROLE_MENU_MAPPING" />
+    <NavigationProperty Name="TAB_USER_ROLE_MAPPING" Relationship="Self.FK__TAB_USER___ROLE___04E4BC85" FromRole="TAB_ROLE_MASTER" ToRole="TAB_USER_ROLE_MAPPING" />
+  </EntityType>
+  <EntityType Name="TAB_SHIFT_MASTER">
+    <Key>
+      <PropertyRef Name="SHIFT_ID" />
+    </Key>
+    <Property Name="SHIFT_ID" Type="Guid" Nullable="false" />
+    <Property Name="SHIFT_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="SHIFT_START_TIME" Type="Time" Precision="7" />
+    <Property Name="SHIFT_END_TIME" Type="Time" Precision="7" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_SHIFT__COMPA__440B1D61" FromRole="TAB_SHIFT_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_WF_WORK_DETAILS" Relationship="Self.FK__TAB_WF_WO__SHIFT__16644E42" FromRole="TAB_SHIFT_MASTER" ToRole="TAB_WF_WORK_DETAILS" />
+  </EntityType>
+  <EntityType Name="TAB_SKILL_MASTER">
+    <Key>
+      <PropertyRef Name="SKILL_ID" />
+    </Key>
+    <Property Name="SKILL_ID" Type="Guid" Nullable="false" />
+    <Property Name="SKILL_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="SKILL_DETAILS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_SKILL__COMPA__49C3F6B7" FromRole="TAB_SKILL_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_MRF_DETAILS" Relationship="Self.FK__TAB_MRF_D__SKILL__1EF99443" FromRole="TAB_SKILL_MASTER" ToRole="TAB_MRF_DETAILS" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__SKILL__220B0B18" FromRole="TAB_SKILL_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_STATE_CITY_MASTER">
+    <Key>
+      <PropertyRef Name="CITY_ID" />
+    </Key>
+    <Property Name="STATE_ID" Type="Guid" Nullable="false" />
+    <Property Name="CITY_ID" Type="Guid" Nullable="false" />
+    <Property Name="CITY_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_STATE_MASTER" Relationship="Self.FK__TAB_STATE__STATE__79FD19BE" FromRole="TAB_STATE_CITY_MASTER" ToRole="TAB_STATE_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__PERMA__25DB9BFC" FromRole="TAB_STATE_CITY_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER1" Relationship="Self.FK__TAB_WORKF__PRESE__23F3538A" FromRole="TAB_STATE_CITY_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_STATE_MASTER">
+    <Key>
+      <PropertyRef Name="STATE_ID" />
+    </Key>
+    <Property Name="STATE_ID" Type="Guid" Nullable="false" />
+    <Property Name="STATE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_STATE_CITY_MASTER" Relationship="Self.FK__TAB_STATE__STATE__79FD19BE" FromRole="TAB_STATE_MASTER" ToRole="TAB_STATE_CITY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__PARMA__26CFC035" FromRole="TAB_STATE_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER1" Relationship="Self.FK__TAB_WORKF__PRESE__24E777C3" FromRole="TAB_STATE_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_SUBMENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="MENU_ID" Type="Guid" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CONTROLLER_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ACTION_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TAB_MENU" Relationship="Self.FK_TAB_SUBMENU_TAB_MENU" FromRole="TAB_SUBMENU" ToRole="TAB_MENU" />
+    <NavigationProperty Name="TAB_MENU_ROLE_MAPPING" Relationship="Self.FK_TAB_MENU_ROLE_MAPPING_TAB_SUBMENU" FromRole="TAB_SUBMENU" ToRole="TAB_MENU_ROLE_MAPPING" />
+  </EntityType>
+  <EntityType Name="TAB_USER_ROLE_MAPPING">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_ID" Type="Guid" />
+    <Property Name="ROLE_ID" Type="Guid" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_LOGIN_MASTER" Relationship="Self.FK__TAB_USER___USER___03F0984C" FromRole="TAB_USER_ROLE_MAPPING" ToRole="TAB_LOGIN_MASTER" />
+    <NavigationProperty Name="TAB_ROLE_MASTER" Relationship="Self.FK__TAB_USER___ROLE___04E4BC85" FromRole="TAB_USER_ROLE_MAPPING" ToRole="TAB_ROLE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WF_DESIGNATION_MASTER">
+    <Key>
+      <PropertyRef Name="WF_DESIGNATION_ID" />
+    </Key>
+    <Property Name="WF_DESIGNATION_ID" Type="Int16" Nullable="false" />
+    <Property Name="WF_DESIGNATION_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_WF_DE__COMPA__6ABAD62E" FromRole="TAB_WF_DESIGNATION_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_MRF_DETAILS" Relationship="Self.FK__TAB_MRF_D__WF_DE__20E1DCB5" FromRole="TAB_WF_DESIGNATION_MASTER" ToRole="TAB_MRF_DETAILS" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__WF_DE__2116E6DF" FromRole="TAB_WF_DESIGNATION_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WORFORCE_TYPE">
+    <Key>
+      <PropertyRef Name="WF_EMP_TYPE" />
+    </Key>
+    <Property Name="WF_EMP_TYPE" Type="Int16" Nullable="false" />
+    <Property Name="EMP_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_WORFO__COMPA__61316BF4" FromRole="TAB_WORFORCE_TYPE" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_MRF_DETAILS" Relationship="Self.FK__TAB_MRF_D__WF_EM__21D600EE" FromRole="TAB_WORFORCE_TYPE" ToRole="TAB_MRF_DETAILS" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__WF_EM__1C5231C2" FromRole="TAB_WORFORCE_TYPE" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFLOW_MAPPING_MASTER">
+    <Key>
+      <PropertyRef Name="WORKFLOWMAPPING_ID" />
+    </Key>
+    <Property Name="WORKFLOWMAPPING_ID" Type="Guid" Nullable="false" />
+    <Property Name="WORKFLOW_ID" Type="Guid" Nullable="false" />
+    <Property Name="LEVEL_ID" Type="Int32" />
+    <Property Name="DEPT_ID" Type="Guid" />
+    <Property Name="EMP_ID" Type="Guid" />
+    <Property Name="DESGINATED_AUTHORITY_EMP_ID" Type="Guid" />
+    <Property Name="AUTO_APPROVE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="AUTO_APPROVE_DAY" Type="Int32" />
+    <Property Name="AUTO_REJECT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="AUTO_REJECT_DAY" Type="Int32" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_DEPARTMENT_MASTER" Relationship="Self.FK__TAB_WORKF__DEPT___60083D91" FromRole="TAB_WORKFLOW_MAPPING_MASTER" ToRole="TAB_DEPARTMENT_MASTER" />
+    <NavigationProperty Name="TAB_LEVEL_MASTER" Relationship="Self.FK__TAB_WORKF__LEVEL__60FC61CA" FromRole="TAB_WORKFLOW_MAPPING_MASTER" ToRole="TAB_LEVEL_MASTER" />
+    <NavigationProperty Name="TAB_WORKFLOW_MASTER" Relationship="Self.FK__TAB_WORKF__WORKF__61F08603" FromRole="TAB_WORKFLOW_MAPPING_MASTER" ToRole="TAB_WORKFLOW_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFLOW_MASTER">
+    <Key>
+      <PropertyRef Name="WORKFLOW_ID" />
+    </Key>
+    <Property Name="WORKFLOW_ID" Type="Guid" Nullable="false" />
+    <Property Name="WORKFLOW_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="WORKFLOW_DETAILS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="NUMBER_OF_LEVEL" Type="Int32" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_WORKF__COMPA__619B8048" FromRole="TAB_WORKFLOW_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_MRF" Relationship="Self.FK__TAB_MRF__WORKFLO__77DFC722" FromRole="TAB_WORKFLOW_MASTER" ToRole="TAB_MRF" />
+    <NavigationProperty Name="TAB_REC_MASTER" Relationship="Self.FK__TAB_REC_M__WORKF__7132C993" FromRole="TAB_WORKFLOW_MASTER" ToRole="TAB_REC_MASTER" />
+    <NavigationProperty Name="TAB_WORKFLOW_MAPPING_MASTER" Relationship="Self.FK__TAB_WORKF__WORKF__61F08603" FromRole="TAB_WORKFLOW_MASTER" ToRole="TAB_WORKFLOW_MAPPING_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFORCE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="FIRST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MIDDLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LAST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FULL_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FATHER_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="STATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PHONE_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFORCE_DAILYWORK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="WF_ID" Type="Guid" Nullable="false" />
+    <Property Name="EMP_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WORK_DATE" Type="DateTime" Precision="0" />
+    <Property Name="UNIQUE_OPERATION_ID" Type="Guid" Nullable="false" />
+    <Property Name="ITEM_ID" Type="Guid" Nullable="false" />
+    <Property Name="QTY" Type="Int32" Nullable="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TAB_ITEM_MASTER" Relationship="Self.FK__TAB_WORKF__ITEM___59D1D7FC" FromRole="TAB_WORKFORCE_DAILYWORK" ToRole="TAB_ITEM_MASTER" />
+    <NavigationProperty Name="TAB_ITEM_OPERATION_MASTER" Relationship="Self.FK__TAB_WORKF__UNIQU__58DDB3C3" FromRole="TAB_WORKFORCE_DAILYWORK" ToRole="TAB_ITEM_OPERATION_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__WF_ID__57E98F8A" FromRole="TAB_WORKFORCE_DAILYWORK" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFORCE_EDU_MASTER">
+    <Key>
+      <PropertyRef Name="WF_EDUCATION_ID" />
+    </Key>
+    <Property Name="WF_EDUCATION_ID" Type="Int16" Nullable="false" />
+    <Property Name="WF_COURSE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_WORKF__COMPA__65F62111" FromRole="TAB_WORKFORCE_EDU_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__WF_ED__1F2E9E6D" FromRole="TAB_WORKFORCE_EDU_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFORCE_LEAVES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="WF_ID" Type="Guid" Nullable="false" />
+    <Property Name="EMP_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FROM_DATE" Type="DateTime" Precision="0" />
+    <Property Name="TO_DATE" Type="DateTime" Precision="0" />
+    <Property Name="REMARKS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__WF_ID__5EAA0504" FromRole="TAB_WORKFORCE_LEAVES" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFORCE_MASTER">
+    <Key>
+      <PropertyRef Name="WF_ID" />
+    </Key>
+    <Property Name="WF_ID" Type="Guid" Nullable="false" />
+    <Property Name="EMP_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WF_EMP_TYPE" Type="Int16" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="AGENCY_ID" Type="Guid" />
+    <Property Name="BIOMETRIC_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMP_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FATHER_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GENDER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DEPT_ID" Type="Guid" />
+    <Property Name="DATE_OF_BIRTH" Type="DateTime" Precision="0" />
+    <Property Name="NATIONALITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WF_EDUCATION_ID" Type="Int16" />
+    <Property Name="MARITAL_ID" Type="Int16" />
+    <Property Name="DOJ" Type="DateTime" Precision="0" />
+    <Property Name="DOJ_AS_PER_EPF" Type="DateTime" Precision="0" />
+    <Property Name="WF_DESIGNATION_ID" Type="Int16" />
+    <Property Name="SKILL_ID" Type="Guid" />
+    <Property Name="EMP_TYPE_ID" Type="Int16" />
+    <Property Name="MOBILE_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ALTERNATE_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PRESENT_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PRESENT_ADDRESS_CITY" Type="Guid" />
+    <Property Name="PRESENT_ADDRESS_STATE" Type="Guid" />
+    <Property Name="PRESENT_ADDRESS_PIN" Type="Int32" />
+    <Property Name="PERMANENT_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PERMANENT_ADDRESS_CITY" Type="Guid" />
+    <Property Name="PERMANENT_ADDRESS_STATE" Type="Guid" />
+    <Property Name="PERMANENT_ADDRESS_PIN" Type="Int32" />
+    <Property Name="AADHAR_NO" Type="Int64" />
+    <Property Name="EMP_STATUS_ID" Type="Int16" />
+    <Property Name="IDENTIFICATION_MARK" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EXIT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="EXIT_REASON" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RETIREMMENT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="MRF_INTERNAL_ID" Type="Guid" />
+    <Property Name="REFERENCE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="REFERENCE_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TAB_BIOMETRIC" Relationship="Self.FK_TAB_BIOMETRIC_TAB_WORKFORCE_MASTER" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_BIOMETRIC" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_WORKF__COMPA__1B5E0D89" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_DEPARTMENT_MASTER" Relationship="Self.FK__TAB_WORKF__DEPT___1E3A7A34" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_DEPARTMENT_MASTER" />
+    <NavigationProperty Name="TAB_EMP_STATUS_MASTER" Relationship="Self.FK__TAB_WORKF__EMP_S__27C3E46E" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_EMP_STATUS_MASTER" />
+    <NavigationProperty Name="TAB_EMPL_TYPE_MASTER" Relationship="Self.FK__TAB_WORKF__EMP_T__22FF2F51" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_EMPL_TYPE_MASTER" />
+    <NavigationProperty Name="TAB_GATEPASS" Relationship="Self.FK_TAB_GATEPASS_TAB_WORKFORCE_MASTER" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_GATEPASS" />
+    <NavigationProperty Name="TAB_MARITAL_STATUS_MASTER" Relationship="Self.FK__TAB_WORKF__MARIT__2022C2A6" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_MARITAL_STATUS_MASTER" />
+    <NavigationProperty Name="TAB_SKILL_MASTER" Relationship="Self.FK__TAB_WORKF__SKILL__220B0B18" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_SKILL_MASTER" />
+    <NavigationProperty Name="TAB_STATE_CITY_MASTER" Relationship="Self.FK__TAB_WORKF__PERMA__25DB9BFC" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_STATE_CITY_MASTER" />
+    <NavigationProperty Name="TAB_STATE_CITY_MASTER1" Relationship="Self.FK__TAB_WORKF__PRESE__23F3538A" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_STATE_CITY_MASTER" />
+    <NavigationProperty Name="TAB_STATE_MASTER" Relationship="Self.FK__TAB_WORKF__PARMA__26CFC035" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_STATE_MASTER" />
+    <NavigationProperty Name="TAB_STATE_MASTER1" Relationship="Self.FK__TAB_WORKF__PRESE__24E777C3" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_STATE_MASTER" />
+    <NavigationProperty Name="TAB_WF_DESIGNATION_MASTER" Relationship="Self.FK__TAB_WORKF__WF_DE__2116E6DF" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_WF_DESIGNATION_MASTER" />
+    <NavigationProperty Name="TAB_WORFORCE_TYPE" Relationship="Self.FK__TAB_WORKF__WF_EM__1C5231C2" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_WORFORCE_TYPE" />
+    <NavigationProperty Name="TAB_WORKFORCE_DAILYWORK" Relationship="Self.FK__TAB_WORKF__WF_ID__57E98F8A" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_WORKFORCE_DAILYWORK" />
+    <NavigationProperty Name="TAB_WORKFORCE_EDU_MASTER" Relationship="Self.FK__TAB_WORKF__WF_ED__1F2E9E6D" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_WORKFORCE_EDU_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_LEAVES" Relationship="Self.FK__TAB_WORKF__WF_ID__5EAA0504" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_WORKFORCE_LEAVES" />
+    <NavigationProperty Name="TAB_WF_WORK_DETAILS" Relationship="Self.FK__TAB_WF_WO__WF_ID__119F9925" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_WF_WORK_DETAILS" />
+    <NavigationProperty Name="TAB_WORKFORCE_SALARY_MASTER" Relationship="Self.FK__TAB_WORKF__WF_ID__5EBFDEF4" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_WORKFORCE_SALARY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_SALARY" Relationship="Self.FK__TAB_WORKF__WF_ID__68BE4A7A" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_WORKFORCE_SALARY" />
+    <NavigationProperty Name="TAB_WORKFORCE_PHOTO_MASTER" Relationship="Self.FK_TAB_WORKFORCE_PHOTO_MASTER_TAB_WORKFORCE_MASTER" FromRole="TAB_WORKFORCE_MASTER" ToRole="TAB_WORKFORCE_PHOTO_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFORCE_PHOTO_MASTER">
+    <Key>
+      <PropertyRef Name="WF_ID" />
+    </Key>
+    <Property Name="WF_ID" Type="Guid" Nullable="false" />
+    <Property Name="PHOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="EMP_SIGNATURE" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK_TAB_WORKFORCE_PHOTO_MASTER_TAB_WORKFORCE_MASTER" FromRole="TAB_WORKFORCE_PHOTO_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFORCE_SALARY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="WF_ID" Type="Guid" />
+    <Property Name="SALARY_MONTH" Type="Int32" />
+    <Property Name="STARTDATE" Type="DateTime" Precision="0" />
+    <Property Name="ENDDATE" Type="DateTime" Precision="0" />
+    <Property Name="PAID_DAYS" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="OVERTIME_DAYS" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TOTAL_LEAVE_TAKEN" Type="Int32" />
+    <Property Name="TOTAL_LEAVE_AVAILABLE" Type="Int32" />
+    <Property Name="LEAVE_ADJUSTED" Type="Int32" />
+    <Property Name="TOTAL_LEAVE_BALANCE" Type="Int32" />
+    <Property Name="BASIC_DA" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="HRA" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="SPECIAL_ALLOWANCES" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="PRODUCTION_INCENTIVE_BONUS" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="PF" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="ESI" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TDS" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="SHOP_FLOOR_FINE" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="OTHER_DEDUCTION" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="ADVANCE" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="OVERTIME_WAGES" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="WORKINGDAY_WAGES" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TOTAL_WAGES" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TOTAL_WAGES_AFTER_DEDUCTION" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="EMPLOYER_EPF" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="EMPLOYER_ESI" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="ADMIN_CHARGES" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="EDLI_CHARGES" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="CREATED_ON" Type="DateTime" Precision="3" />
+    <Property Name="MODE_OF_PAYMENT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PAID_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__WF_ID__68BE4A7A" FromRole="TAB_WORKFORCE_SALARY" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="Logs_Debug">
+    <Key>
+      <PropertyRef Name="LogDebugId" />
+      <PropertyRef Name="LoggedDate" />
+    </Key>
+    <Property Name="LogDebugId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoggedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApplicationId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Namespace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Classname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Functionname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Logs_Error">
+    <Key>
+      <PropertyRef Name="LogErrorId" />
+      <PropertyRef Name="LoggedDate" />
+    </Key>
+    <Property Name="LogErrorId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoggedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApplicationId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Namespace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Classname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Functionname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Logs_Fatal">
+    <Key>
+      <PropertyRef Name="LogFatalId" />
+      <PropertyRef Name="LoggedDate" />
+    </Key>
+    <Property Name="LogFatalId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoggedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApplicationId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Namespace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Classname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Functionname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Logs_Info">
+    <Key>
+      <PropertyRef Name="LogInfoId" />
+      <PropertyRef Name="LoggedDate" />
+    </Key>
+    <Property Name="LogInfoId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoggedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApplicationId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Namespace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Classname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Functionname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Logs_Trace">
+    <Key>
+      <PropertyRef Name="LogTraceId" />
+      <PropertyRef Name="LoggedDate" />
+    </Key>
+    <Property Name="LogTraceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoggedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApplicationId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Namespace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Classname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Functionname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Logs_Warn">
+    <Key>
+      <PropertyRef Name="LogWarnId" />
+      <PropertyRef Name="LoggedDate" />
+    </Key>
+    <Property Name="LogWarnId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoggedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApplicationId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Namespace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Classname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Functionname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TAB_ACTIVITY_DETAILS">
+    <Key>
+      <PropertyRef Name="created_date" />
+    </Key>
+    <Property Name="USER_ID" Type="Guid" />
+    <Property Name="USER_OPERATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PAGE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="REMARK" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="TAB_BIOMETRIC_IMPORTHISTORY">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RunDate" Type="DateTime" Precision="3" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="TAB_ERROR_LOGS">
+    <Key>
+      <PropertyRef Name="ErrorID" />
+    </Key>
+    <Property Name="ErrorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Db_User" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ErrorNumber" Type="Int32" />
+    <Property Name="ErrorState" Type="Int32" />
+    <Property Name="ErrorSeverity" Type="Int32" />
+    <Property Name="ErrorLine" Type="Int32" />
+    <Property Name="ErrorProcedure" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ErrorDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TAB_ROLE_MENU_MAPPING">
+    <Key>
+      <PropertyRef Name="CREATED_DATE" />
+      <PropertyRef Name="STATUS" />
+    </Key>
+    <Property Name="ROLE_ID" Type="Guid" />
+    <Property Name="MENU_ID" Type="Guid" />
+    <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TAB_MENU_MASTER" Relationship="Self.FK__TAB_ROLE___MENU___5B78929E" FromRole="TAB_ROLE_MENU_MAPPING" ToRole="TAB_MENU_MASTER" />
+    <NavigationProperty Name="TAB_ROLE_MASTER" Relationship="Self.FK__TAB_ROLE___ROLE___5C6CB6D7" FromRole="TAB_ROLE_MENU_MAPPING" ToRole="TAB_ROLE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WF_WORK_DETAILS">
+    <Key>
+      <PropertyRef Name="WF_ID" />
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="WF_ID" Type="Guid" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="WORK_DATE" Type="DateTime" Precision="0" />
+    <Property Name="DEPT_ID" Type="Guid" />
+    <Property Name="BUILDING_ID" Type="Guid" />
+    <Property Name="FLOOR_ID" Type="Guid" />
+    <Property Name="SHIFT_ID" Type="Guid" />
+    <Property Name="ITEM_ID" Type="Guid" />
+    <Property Name="UNIQUE_OPERATION_ID" Type="Guid" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="TAB_BUILDING_MASTER" Relationship="Self.FK__TAB_WF_WO__BUILD__147C05D0" FromRole="TAB_WF_WORK_DETAILS" ToRole="TAB_BUILDING_MASTER" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_WF_WO__COMPA__1293BD5E" FromRole="TAB_WF_WORK_DETAILS" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_DEPARTMENT_MASTER" Relationship="Self.FK__TAB_WF_WO__DEPT___1387E197" FromRole="TAB_WF_WORK_DETAILS" ToRole="TAB_DEPARTMENT_MASTER" />
+    <NavigationProperty Name="TAB_FLOOR_MASTER" Relationship="Self.FK__TAB_WF_WO__FLOOR__15702A09" FromRole="TAB_WF_WORK_DETAILS" ToRole="TAB_FLOOR_MASTER" />
+    <NavigationProperty Name="TAB_ITEM_MASTER" Relationship="Self.FK__TAB_WF_WO__ITEM___1758727B" FromRole="TAB_WF_WORK_DETAILS" ToRole="TAB_ITEM_MASTER" />
+    <NavigationProperty Name="TAB_ITEM_OPERATION_MASTER" Relationship="Self.FK__TAB_WF_WO__UNIQU__184C96B4" FromRole="TAB_WF_WORK_DETAILS" ToRole="TAB_ITEM_OPERATION_MASTER" />
+    <NavigationProperty Name="TAB_SHIFT_MASTER" Relationship="Self.FK__TAB_WF_WO__SHIFT__16644E42" FromRole="TAB_WF_WORK_DETAILS" ToRole="TAB_SHIFT_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WF_WO__WF_ID__119F9925" FromRole="TAB_WF_WORK_DETAILS" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WF_WORK_DETAILS_OLD">
+    <Key>
+      <PropertyRef Name="WF_ID" />
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="WF_ID" Type="Guid" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="WORK_DATE" Type="DateTime" Precision="0" />
+    <Property Name="DEPT_ID" Type="Guid" />
+    <Property Name="BUILDING_ID" Type="Guid" />
+    <Property Name="FLOOR_ID" Type="Guid" />
+    <Property Name="SHIFT_ID" Type="Guid" />
+    <Property Name="ITEM_ID" Type="Guid" />
+    <Property Name="UNIQUE_OPERATION_ID" Type="Guid" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFORCE_MASTER_OLD">
+    <Key>
+      <PropertyRef Name="WF_ID" />
+      <PropertyRef Name="WF_EMP_TYPE" />
+      <PropertyRef Name="COMPANY_ID" />
+      <PropertyRef Name="EMP_NAME" />
+      <PropertyRef Name="FATHER_NAME" />
+      <PropertyRef Name="GENDER" />
+    </Key>
+    <Property Name="WF_ID" Type="Guid" Nullable="false" />
+    <Property Name="EMP_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WF_EMP_TYPE" Type="Int16" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="AGENCY_ID" Type="Guid" />
+    <Property Name="BIOMETRIC_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMP_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FATHER_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GENDER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DEPT_ID" Type="Guid" />
+    <Property Name="DATE_OF_BIRTH" Type="DateTime" Precision="0" />
+    <Property Name="NATIONALITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WF_EDUCATION_ID" Type="Int16" />
+    <Property Name="MARITAL_ID" Type="Int16" />
+    <Property Name="DOJ" Type="DateTime" Precision="0" />
+    <Property Name="DOJ_AS_PER_EPF" Type="DateTime" Precision="0" />
+    <Property Name="WF_DESIGNATION_ID" Type="Int16" />
+    <Property Name="SKILL_ID" Type="Guid" />
+    <Property Name="EMP_TYPE_ID" Type="Int16" />
+    <Property Name="MOBILE_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ALTERNATE_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PRESENT_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PRESENT_ADDRESS_CITY" Type="Guid" />
+    <Property Name="PRESENT_ADDRESS_STATE" Type="Guid" />
+    <Property Name="PRESENT_ADDRESS_PIN" Type="Int32" />
+    <Property Name="PERMANENT_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PERMANENT_ADDRESS_CITY" Type="Guid" />
+    <Property Name="PERMANENT_ADDRESS_STATE" Type="Guid" />
+    <Property Name="PERMANENT_ADDRESS_PIN" Type="Int32" />
+    <Property Name="AADHAR_NO" Type="Int64" />
+    <Property Name="EMP_STATUS_ID" Type="Int16" />
+    <Property Name="IDENTIFICATION_MARK" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EXIT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="EXIT_REASON" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RETIREMMENT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="MRF_INTERNAL_ID" Type="Guid" />
+    <Property Name="REFERENCE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="REFERENCE_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFORCE_SALARY_MASTER">
+    <Key>
+      <PropertyRef Name="WF_ID" />
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="WF_ID" Type="Guid" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="UAN_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PAN_CARD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EPF_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ESIC_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BANK_ID" Type="Guid" />
+    <Property Name="BANK_IFSC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BANK_BRANCH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BANK_ACCOUNT_NO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BASIC_DA" Type="Int32" />
+    <Property Name="HRA" Type="Int32" />
+    <Property Name="SPECIAL_ALLOWANCES" Type="Int32" />
+    <Property Name="GROSS" Type="Int32" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="TAB_BANK_MASTER" Relationship="Self.FK__TAB_WORKF__BANK___60A82766" FromRole="TAB_WORKFORCE_SALARY_MASTER" ToRole="TAB_BANK_MASTER" />
+    <NavigationProperty Name="TAB_COMPANY_MASTER" Relationship="Self.FK__TAB_WORKF__COMPA__5FB4032D" FromRole="TAB_WORKFORCE_SALARY_MASTER" ToRole="TAB_COMPANY_MASTER" />
+    <NavigationProperty Name="TAB_WORKFORCE_MASTER" Relationship="Self.FK__TAB_WORKF__WF_ID__5EBFDEF4" FromRole="TAB_WORKFORCE_SALARY_MASTER" ToRole="TAB_WORKFORCE_MASTER" />
+  </EntityType>
+  <EntityType Name="TAB_WORKFORCE_SALARY_MASTER_OLD">
+    <Key>
+      <PropertyRef Name="WF_ID" />
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="WF_ID" Type="Guid" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Guid" Nullable="false" />
+    <Property Name="UAN_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PAN_CARD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EPF_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ESIC_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BANK_ID" Type="Guid" />
+    <Property Name="BANK_IFSC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BANK_BRANCH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BANK_ACCOUNT_NO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BASIC_DA" Type="Int32" />
+    <Property Name="HRA" Type="Int32" />
+    <Property Name="SPECIAL_ALLOWANCES" Type="Int32" />
+    <Property Name="GROSS" Type="Int32" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__TAB_AGENC__COMPA__3E52440B">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_AGENCY_MASTER" Type="Self.TAB_AGENCY_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_AGENCY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__BANK___60A82766">
+    <End Role="TAB_BANK_MASTER" Type="Self.TAB_BANK_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_SALARY_MASTER" Type="Self.TAB_WORKFORCE_SALARY_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_BANK_MASTER">
+        <PropertyRef Name="BANK_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_SALARY_MASTER">
+        <PropertyRef Name="BANK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_BIOME__COMPA__42EE72A4">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_BIOMETRIC" Type="Self.TAB_BIOMETRIC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_BIOMETRIC">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAB_BIOMETRIC_TAB_WORKFORCE_MASTER">
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="1" />
+    <End Role="TAB_BIOMETRIC" Type="Self.TAB_BIOMETRIC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_ID" />
+      </Principal>
+      <Dependent Role="TAB_BIOMETRIC">
+        <PropertyRef Name="WORKFORCE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_BUILD__COMPA__5535A963">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_BUILDING_MASTER" Type="Self.TAB_BUILDING_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_BUILDING_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_FLOOR__BUILD__5BE2A6F2">
+    <End Role="TAB_BUILDING_MASTER" Type="Self.TAB_BUILDING_MASTER" Multiplicity="1" />
+    <End Role="TAB_FLOOR_MASTER" Type="Self.TAB_FLOOR_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_BUILDING_MASTER">
+        <PropertyRef Name="BUILDING_ID" />
+      </Principal>
+      <Dependent Role="TAB_FLOOR_MASTER">
+        <PropertyRef Name="BUILDING_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_MRF_D__BUILD__1D114BD1">
+    <End Role="TAB_BUILDING_MASTER" Type="Self.TAB_BUILDING_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_MRF_DETAILS" Type="Self.TAB_MRF_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_BUILDING_MASTER">
+        <PropertyRef Name="BUILDING_ID" />
+      </Principal>
+      <Dependent Role="TAB_MRF_DETAILS">
+        <PropertyRef Name="BUILDING_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WF_WO__BUILD__147C05D0">
+    <End Role="TAB_BUILDING_MASTER" Type="Self.TAB_BUILDING_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WF_WORK_DETAILS" Type="Self.TAB_WF_WORK_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_BUILDING_MASTER">
+        <PropertyRef Name="BUILDING_ID" />
+      </Principal>
+      <Dependent Role="TAB_WF_WORK_DETAILS">
+        <PropertyRef Name="BUILDING_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_DEPAR__COMPA__4F7CD00D">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_DEPARTMENT_MASTER" Type="Self.TAB_DEPARTMENT_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_DEPARTMENT_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_EMP_S__COMPA__7EC1CEDB">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_EMP_STATUS_MASTER" Type="Self.TAB_EMP_STATUS_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_EMP_STATUS_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_EMPL___COMPA__6F7F8B4B">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_EMPL_TYPE_MASTER" Type="Self.TAB_EMPL_TYPE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_EMPL_TYPE_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_FLOOR__COMPA__5AEE82B9">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_FLOOR_MASTER" Type="Self.TAB_FLOOR_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_FLOOR_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_ITEM___COMPA__062DE679">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_ITEM_MASTER" Type="Self.TAB_ITEM_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_ITEM_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_ITEM___COMPA__0CDAE408">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_ITEM_OPERATION_MASTER" Type="Self.TAB_ITEM_OPERATION_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_ITEM_OPERATION_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_LOGIN__COMPA__787EE5A0">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_LOGIN_MASTER" Type="Self.TAB_LOGIN_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_LOGIN_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_MARIT__COMPA__038683F8">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_MARITAL_STATUS_MASTER" Type="Self.TAB_MARITAL_STATUS_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_MARITAL_STATUS_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_MENU___COMPA__57A801BA">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_MENU_MASTER" Type="Self.TAB_MENU_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_MENU_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_MRF__COMPANY__76EBA2E9">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_MRF" Type="Self.TAB_MRF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_MRF">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_REC_M__COMPA__703EA55A">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_REC_MASTER" Type="Self.TAB_REC_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_REC_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_ROLE___COMPA__00200768">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_ROLE_MASTER" Type="Self.TAB_ROLE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_ROLE_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_SHIFT__COMPA__440B1D61">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_SHIFT_MASTER" Type="Self.TAB_SHIFT_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_SHIFT_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_SKILL__COMPA__49C3F6B7">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_SKILL_MASTER" Type="Self.TAB_SKILL_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_SKILL_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WF_DE__COMPA__6ABAD62E">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_WF_DESIGNATION_MASTER" Type="Self.TAB_WF_DESIGNATION_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_WF_DESIGNATION_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WF_WO__COMPA__1293BD5E">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_WF_WORK_DETAILS" Type="Self.TAB_WF_WORK_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_WF_WORK_DETAILS">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORFO__COMPA__61316BF4">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORFORCE_TYPE" Type="Self.TAB_WORFORCE_TYPE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORFORCE_TYPE">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__COMPA__1B5E0D89">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__COMPA__5FB4032D">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFORCE_SALARY_MASTER" Type="Self.TAB_WORKFORCE_SALARY_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_SALARY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__COMPA__619B8048">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFLOW_MASTER" Type="Self.TAB_WORKFLOW_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFLOW_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__COMPA__65F62111">
+    <End Role="TAB_COMPANY_MASTER" Type="Self.TAB_COMPANY_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFORCE_EDU_MASTER" Type="Self.TAB_WORKFORCE_EDU_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_COMPANY_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_EDU_MASTER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_ITEM___DEPT___07220AB2">
+    <End Role="TAB_DEPARTMENT_MASTER" Type="Self.TAB_DEPARTMENT_MASTER" Multiplicity="1" />
+    <End Role="TAB_ITEM_MASTER" Type="Self.TAB_ITEM_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_DEPARTMENT_MASTER">
+        <PropertyRef Name="DEPT_ID" />
+      </Principal>
+      <Dependent Role="TAB_ITEM_MASTER">
+        <PropertyRef Name="DEPT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_LOGIN__DEPT___778AC167">
+    <End Role="TAB_DEPARTMENT_MASTER" Type="Self.TAB_DEPARTMENT_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_LOGIN_MASTER" Type="Self.TAB_LOGIN_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_DEPARTMENT_MASTER">
+        <PropertyRef Name="DEPT_ID" />
+      </Principal>
+      <Dependent Role="TAB_LOGIN_MASTER">
+        <PropertyRef Name="DEPT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WF_WO__DEPT___1387E197">
+    <End Role="TAB_DEPARTMENT_MASTER" Type="Self.TAB_DEPARTMENT_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WF_WORK_DETAILS" Type="Self.TAB_WF_WORK_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_DEPARTMENT_MASTER">
+        <PropertyRef Name="DEPT_ID" />
+      </Principal>
+      <Dependent Role="TAB_WF_WORK_DETAILS">
+        <PropertyRef Name="DEPT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__DEPT___1E3A7A34">
+    <End Role="TAB_DEPARTMENT_MASTER" Type="Self.TAB_DEPARTMENT_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_DEPARTMENT_MASTER">
+        <PropertyRef Name="DEPT_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="DEPT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__DEPT___60083D91">
+    <End Role="TAB_DEPARTMENT_MASTER" Type="Self.TAB_DEPARTMENT_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFLOW_MAPPING_MASTER" Type="Self.TAB_WORKFLOW_MAPPING_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_DEPARTMENT_MASTER">
+        <PropertyRef Name="DEPT_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFLOW_MAPPING_MASTER">
+        <PropertyRef Name="DEPT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__EMP_S__27C3E46E">
+    <End Role="TAB_EMP_STATUS_MASTER" Type="Self.TAB_EMP_STATUS_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_EMP_STATUS_MASTER">
+        <PropertyRef Name="EMP_STATUS_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="EMP_STATUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__EMP_T__22FF2F51">
+    <End Role="TAB_EMPL_TYPE_MASTER" Type="Self.TAB_EMPL_TYPE_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_EMPL_TYPE_MASTER">
+        <PropertyRef Name="EMP_TYPE_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="EMP_TYPE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_MRF_D__FLOOR__1E05700A">
+    <End Role="TAB_FLOOR_MASTER" Type="Self.TAB_FLOOR_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_MRF_DETAILS" Type="Self.TAB_MRF_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_FLOOR_MASTER">
+        <PropertyRef Name="FLOOR_ID" />
+      </Principal>
+      <Dependent Role="TAB_MRF_DETAILS">
+        <PropertyRef Name="FLOOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WF_WO__FLOOR__15702A09">
+    <End Role="TAB_FLOOR_MASTER" Type="Self.TAB_FLOOR_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WF_WORK_DETAILS" Type="Self.TAB_WF_WORK_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_FLOOR_MASTER">
+        <PropertyRef Name="FLOOR_ID" />
+      </Principal>
+      <Dependent Role="TAB_WF_WORK_DETAILS">
+        <PropertyRef Name="FLOOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAB_GATEPASS_TAB_WORKFORCE_MASTER">
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="1" />
+    <End Role="TAB_GATEPASS" Type="Self.TAB_GATEPASS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_ID" />
+      </Principal>
+      <Dependent Role="TAB_GATEPASS">
+        <PropertyRef Name="WORKFORCE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_ITEM___ITEM___0DCF0841">
+    <End Role="TAB_ITEM_MASTER" Type="Self.TAB_ITEM_MASTER" Multiplicity="1" />
+    <End Role="TAB_ITEM_OPERATION_MASTER" Type="Self.TAB_ITEM_OPERATION_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ITEM_MASTER">
+        <PropertyRef Name="ITEM_ID" />
+      </Principal>
+      <Dependent Role="TAB_ITEM_OPERATION_MASTER">
+        <PropertyRef Name="ITEM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WF_WO__ITEM___1758727B">
+    <End Role="TAB_ITEM_MASTER" Type="Self.TAB_ITEM_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WF_WORK_DETAILS" Type="Self.TAB_WF_WORK_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ITEM_MASTER">
+        <PropertyRef Name="ITEM_ID" />
+      </Principal>
+      <Dependent Role="TAB_WF_WORK_DETAILS">
+        <PropertyRef Name="ITEM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__ITEM___59D1D7FC">
+    <End Role="TAB_ITEM_MASTER" Type="Self.TAB_ITEM_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFORCE_DAILYWORK" Type="Self.TAB_WORKFORCE_DAILYWORK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ITEM_MASTER">
+        <PropertyRef Name="ITEM_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_DAILYWORK">
+        <PropertyRef Name="ITEM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WF_WO__UNIQU__184C96B4">
+    <End Role="TAB_ITEM_OPERATION_MASTER" Type="Self.TAB_ITEM_OPERATION_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WF_WORK_DETAILS" Type="Self.TAB_WF_WORK_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ITEM_OPERATION_MASTER">
+        <PropertyRef Name="UNIQUE_OPERATION_ID" />
+      </Principal>
+      <Dependent Role="TAB_WF_WORK_DETAILS">
+        <PropertyRef Name="UNIQUE_OPERATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__UNIQU__58DDB3C3">
+    <End Role="TAB_ITEM_OPERATION_MASTER" Type="Self.TAB_ITEM_OPERATION_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFORCE_DAILYWORK" Type="Self.TAB_WORKFORCE_DAILYWORK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ITEM_OPERATION_MASTER">
+        <PropertyRef Name="UNIQUE_OPERATION_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_DAILYWORK">
+        <PropertyRef Name="UNIQUE_OPERATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__LEVEL__60FC61CA">
+    <End Role="TAB_LEVEL_MASTER" Type="Self.TAB_LEVEL_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFLOW_MAPPING_MASTER" Type="Self.TAB_WORKFLOW_MAPPING_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_LEVEL_MASTER">
+        <PropertyRef Name="LEVEL_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFLOW_MAPPING_MASTER">
+        <PropertyRef Name="LEVEL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_USER___USER___03F0984C">
+    <End Role="TAB_LOGIN_MASTER" Type="Self.TAB_LOGIN_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_USER_ROLE_MAPPING" Type="Self.TAB_USER_ROLE_MAPPING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_LOGIN_MASTER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="TAB_USER_ROLE_MAPPING">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__MARIT__2022C2A6">
+    <End Role="TAB_MARITAL_STATUS_MASTER" Type="Self.TAB_MARITAL_STATUS_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_MARITAL_STATUS_MASTER">
+        <PropertyRef Name="MARITAL_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="MARITAL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAB_MENU_ROLE_MAPPING_TAB_MENU">
+    <End Role="TAB_MENU" Type="Self.TAB_MENU" Multiplicity="1" />
+    <End Role="TAB_MENU_ROLE_MAPPING" Type="Self.TAB_MENU_ROLE_MAPPING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_MENU">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TAB_MENU_ROLE_MAPPING">
+        <PropertyRef Name="MENU_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAB_SUBMENU_TAB_MENU">
+    <End Role="TAB_MENU" Type="Self.TAB_MENU" Multiplicity="1" />
+    <End Role="TAB_SUBMENU" Type="Self.TAB_SUBMENU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_MENU">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TAB_SUBMENU">
+        <PropertyRef Name="MENU_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_ROLE___MENU___5B78929E">
+    <End Role="TAB_MENU_MASTER" Type="Self.TAB_MENU_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_ROLE_MENU_MAPPING" Type="Self.TAB_ROLE_MENU_MAPPING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_MENU_MASTER">
+        <PropertyRef Name="MENU_ID" />
+      </Principal>
+      <Dependent Role="TAB_ROLE_MENU_MAPPING">
+        <PropertyRef Name="MENU_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAB_MENU_ROLE_MAPPING_TAB_ROLE_MASTER">
+    <End Role="TAB_ROLE_MASTER" Type="Self.TAB_ROLE_MASTER" Multiplicity="1" />
+    <End Role="TAB_MENU_ROLE_MAPPING" Type="Self.TAB_MENU_ROLE_MAPPING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ROLE_MASTER">
+        <PropertyRef Name="ROLE_ID" />
+      </Principal>
+      <Dependent Role="TAB_MENU_ROLE_MAPPING">
+        <PropertyRef Name="ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAB_MENU_ROLE_MAPPING_TAB_SUBMENU">
+    <End Role="TAB_SUBMENU" Type="Self.TAB_SUBMENU" Multiplicity="1" />
+    <End Role="TAB_MENU_ROLE_MAPPING" Type="Self.TAB_MENU_ROLE_MAPPING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_SUBMENU">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TAB_MENU_ROLE_MAPPING">
+        <PropertyRef Name="SUBMENU_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_MRF__WORKFLO__77DFC722">
+    <End Role="TAB_WORKFLOW_MASTER" Type="Self.TAB_WORKFLOW_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_MRF" Type="Self.TAB_MRF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFLOW_MASTER">
+        <PropertyRef Name="WORKFLOW_ID" />
+      </Principal>
+      <Dependent Role="TAB_MRF">
+        <PropertyRef Name="WORKFLOW_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_MRF_D__MRP_I__1FEDB87C">
+    <End Role="TAB_MRF" Type="Self.TAB_MRF" Multiplicity="1" />
+    <End Role="TAB_MRF_DETAILS" Type="Self.TAB_MRF_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_MRF">
+        <PropertyRef Name="MRP_INETRNAL_ID" />
+      </Principal>
+      <Dependent Role="TAB_MRF_DETAILS">
+        <PropertyRef Name="MRP_INETRNAL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_MRF_D__SKILL__1EF99443">
+    <End Role="TAB_SKILL_MASTER" Type="Self.TAB_SKILL_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_MRF_DETAILS" Type="Self.TAB_MRF_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_SKILL_MASTER">
+        <PropertyRef Name="SKILL_ID" />
+      </Principal>
+      <Dependent Role="TAB_MRF_DETAILS">
+        <PropertyRef Name="SKILL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_MRF_D__WF_DE__20E1DCB5">
+    <End Role="TAB_WF_DESIGNATION_MASTER" Type="Self.TAB_WF_DESIGNATION_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_MRF_DETAILS" Type="Self.TAB_MRF_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WF_DESIGNATION_MASTER">
+        <PropertyRef Name="WF_DESIGNATION_ID" />
+      </Principal>
+      <Dependent Role="TAB_MRF_DETAILS">
+        <PropertyRef Name="WF_DESIGNATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_MRF_D__WF_EM__21D600EE">
+    <End Role="TAB_WORFORCE_TYPE" Type="Self.TAB_WORFORCE_TYPE" Multiplicity="0..1" />
+    <End Role="TAB_MRF_DETAILS" Type="Self.TAB_MRF_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORFORCE_TYPE">
+        <PropertyRef Name="WF_EMP_TYPE" />
+      </Principal>
+      <Dependent Role="TAB_MRF_DETAILS">
+        <PropertyRef Name="WF_EMP_TYPE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_REC_M__WORKF__7132C993">
+    <End Role="TAB_WORKFLOW_MASTER" Type="Self.TAB_WORKFLOW_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_REC_MASTER" Type="Self.TAB_REC_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFLOW_MASTER">
+        <PropertyRef Name="WORKFLOW_ID" />
+      </Principal>
+      <Dependent Role="TAB_REC_MASTER">
+        <PropertyRef Name="WORKFLOW_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_ROLE___ROLE___5C6CB6D7">
+    <End Role="TAB_ROLE_MASTER" Type="Self.TAB_ROLE_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_ROLE_MENU_MAPPING" Type="Self.TAB_ROLE_MENU_MAPPING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ROLE_MASTER">
+        <PropertyRef Name="ROLE_ID" />
+      </Principal>
+      <Dependent Role="TAB_ROLE_MENU_MAPPING">
+        <PropertyRef Name="ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_USER___ROLE___04E4BC85">
+    <End Role="TAB_ROLE_MASTER" Type="Self.TAB_ROLE_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_USER_ROLE_MAPPING" Type="Self.TAB_USER_ROLE_MAPPING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ROLE_MASTER">
+        <PropertyRef Name="ROLE_ID" />
+      </Principal>
+      <Dependent Role="TAB_USER_ROLE_MAPPING">
+        <PropertyRef Name="ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WF_WO__SHIFT__16644E42">
+    <End Role="TAB_SHIFT_MASTER" Type="Self.TAB_SHIFT_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WF_WORK_DETAILS" Type="Self.TAB_WF_WORK_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_SHIFT_MASTER">
+        <PropertyRef Name="SHIFT_ID" />
+      </Principal>
+      <Dependent Role="TAB_WF_WORK_DETAILS">
+        <PropertyRef Name="SHIFT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__SKILL__220B0B18">
+    <End Role="TAB_SKILL_MASTER" Type="Self.TAB_SKILL_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_SKILL_MASTER">
+        <PropertyRef Name="SKILL_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="SKILL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_STATE__STATE__79FD19BE">
+    <End Role="TAB_STATE_MASTER" Type="Self.TAB_STATE_MASTER" Multiplicity="1" />
+    <End Role="TAB_STATE_CITY_MASTER" Type="Self.TAB_STATE_CITY_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_STATE_MASTER">
+        <PropertyRef Name="STATE_ID" />
+      </Principal>
+      <Dependent Role="TAB_STATE_CITY_MASTER">
+        <PropertyRef Name="STATE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__PERMA__25DB9BFC">
+    <End Role="TAB_STATE_CITY_MASTER" Type="Self.TAB_STATE_CITY_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_STATE_CITY_MASTER">
+        <PropertyRef Name="CITY_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="PERMANENT_ADDRESS_CITY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__PRESE__23F3538A">
+    <End Role="TAB_STATE_CITY_MASTER" Type="Self.TAB_STATE_CITY_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_STATE_CITY_MASTER">
+        <PropertyRef Name="CITY_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="PRESENT_ADDRESS_CITY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__PARMA__26CFC035">
+    <End Role="TAB_STATE_MASTER" Type="Self.TAB_STATE_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_STATE_MASTER">
+        <PropertyRef Name="STATE_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="PERMANENT_ADDRESS_STATE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__PRESE__24E777C3">
+    <End Role="TAB_STATE_MASTER" Type="Self.TAB_STATE_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_STATE_MASTER">
+        <PropertyRef Name="STATE_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="PRESENT_ADDRESS_STATE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__WF_DE__2116E6DF">
+    <End Role="TAB_WF_DESIGNATION_MASTER" Type="Self.TAB_WF_DESIGNATION_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WF_DESIGNATION_MASTER">
+        <PropertyRef Name="WF_DESIGNATION_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_DESIGNATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__WF_EM__1C5231C2">
+    <End Role="TAB_WORFORCE_TYPE" Type="Self.TAB_WORFORCE_TYPE" Multiplicity="1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORFORCE_TYPE">
+        <PropertyRef Name="WF_EMP_TYPE" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_EMP_TYPE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__WORKF__61F08603">
+    <End Role="TAB_WORKFLOW_MASTER" Type="Self.TAB_WORKFLOW_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFLOW_MAPPING_MASTER" Type="Self.TAB_WORKFLOW_MAPPING_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFLOW_MASTER">
+        <PropertyRef Name="WORKFLOW_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFLOW_MAPPING_MASTER">
+        <PropertyRef Name="WORKFLOW_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__WF_ID__57E98F8A">
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFORCE_DAILYWORK" Type="Self.TAB_WORKFORCE_DAILYWORK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_DAILYWORK">
+        <PropertyRef Name="WF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__WF_ED__1F2E9E6D">
+    <End Role="TAB_WORKFORCE_EDU_MASTER" Type="Self.TAB_WORKFORCE_EDU_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFORCE_EDU_MASTER">
+        <PropertyRef Name="WF_EDUCATION_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_EDUCATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__WF_ID__5EAA0504">
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFORCE_LEAVES" Type="Self.TAB_WORKFORCE_LEAVES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_LEAVES">
+        <PropertyRef Name="WF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WF_WO__WF_ID__119F9925">
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="1" />
+    <End Role="TAB_WF_WORK_DETAILS" Type="Self.TAB_WF_WORK_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_ID" />
+      </Principal>
+      <Dependent Role="TAB_WF_WORK_DETAILS">
+        <PropertyRef Name="WF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__WF_ID__5EBFDEF4">
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFORCE_SALARY_MASTER" Type="Self.TAB_WORKFORCE_SALARY_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_SALARY_MASTER">
+        <PropertyRef Name="WF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_WORKF__WF_ID__68BE4A7A">
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="0..1" />
+    <End Role="TAB_WORKFORCE_SALARY" Type="Self.TAB_WORKFORCE_SALARY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_SALARY">
+        <PropertyRef Name="WF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAB_WORKFORCE_PHOTO_MASTER_TAB_WORKFORCE_MASTER">
+    <End Role="TAB_WORKFORCE_MASTER" Type="Self.TAB_WORKFORCE_MASTER" Multiplicity="1" />
+    <End Role="TAB_WORKFORCE_PHOTO_MASTER" Type="Self.TAB_WORKFORCE_PHOTO_MASTER" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_WORKFORCE_MASTER">
+        <PropertyRef Name="WF_ID" />
+      </Principal>
+      <Dependent Role="TAB_WORKFORCE_PHOTO_MASTER">
+        <PropertyRef Name="WF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WFMSUMITEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TAB_AGENCY_MASTER" EntityType="Self.TAB_AGENCY_MASTER" />
+    <EntitySet Name="TAB_ALL_MAIL" EntityType="Self.TAB_ALL_MAIL" />
+    <EntitySet Name="TAB_ALL_SMS" EntityType="Self.TAB_ALL_SMS" />
+    <EntitySet Name="TAB_ALL_WHATSAPP" EntityType="Self.TAB_ALL_WHATSAPP" />
+    <EntitySet Name="TAB_BANK_MASTER" EntityType="Self.TAB_BANK_MASTER" />
+    <EntitySet Name="TAB_BIOMETRIC" EntityType="Self.TAB_BIOMETRIC" />
+    <EntitySet Name="TAB_BUILDING_MASTER" EntityType="Self.TAB_BUILDING_MASTER" />
+    <EntitySet Name="TAB_COMPANY_MASTER" EntityType="Self.TAB_COMPANY_MASTER" />
+    <EntitySet Name="TAB_DEPARTMENT_MASTER" EntityType="Self.TAB_DEPARTMENT_MASTER" />
+    <EntitySet Name="TAB_EMP_STATUS_MASTER" EntityType="Self.TAB_EMP_STATUS_MASTER" />
+    <EntitySet Name="TAB_EMPL_TYPE_MASTER" EntityType="Self.TAB_EMPL_TYPE_MASTER" />
+    <EntitySet Name="TAB_FLOOR_MASTER" EntityType="Self.TAB_FLOOR_MASTER" />
+    <EntitySet Name="TAB_GATEPASS" EntityType="Self.TAB_GATEPASS" />
+    <EntitySet Name="TAB_HOLIDAY" EntityType="Self.TAB_HOLIDAY" />
+    <EntitySet Name="TAB_ITEM_MASTER" EntityType="Self.TAB_ITEM_MASTER" />
+    <EntitySet Name="TAB_ITEM_OPERATION_MASTER" EntityType="Self.TAB_ITEM_OPERATION_MASTER" />
+    <EntitySet Name="TAB_LEVEL_MASTER" EntityType="Self.TAB_LEVEL_MASTER" />
+    <EntitySet Name="TAB_LOGIN_MASTER" EntityType="Self.TAB_LOGIN_MASTER" />
+    <EntitySet Name="TAB_MARITAL_STATUS_MASTER" EntityType="Self.TAB_MARITAL_STATUS_MASTER" />
+    <EntitySet Name="TAB_MENU" EntityType="Self.TAB_MENU" />
+    <EntitySet Name="TAB_MENU_MASTER" EntityType="Self.TAB_MENU_MASTER" />
+    <EntitySet Name="TAB_MENU_ROLE_MAPPING" EntityType="Self.TAB_MENU_ROLE_MAPPING" />
+    <EntitySet Name="TAB_MRF" EntityType="Self.TAB_MRF" />
+    <EntitySet Name="TAB_MRF_DETAILS" EntityType="Self.TAB_MRF_DETAILS" />
+    <EntitySet Name="TAB_REC_MASTER" EntityType="Self.TAB_REC_MASTER" />
+    <EntitySet Name="TAB_ROLE_MASTER" EntityType="Self.TAB_ROLE_MASTER" />
+    <EntitySet Name="TAB_SHIFT_MASTER" EntityType="Self.TAB_SHIFT_MASTER" />
+    <EntitySet Name="TAB_SKILL_MASTER" EntityType="Self.TAB_SKILL_MASTER" />
+    <EntitySet Name="TAB_STATE_CITY_MASTER" EntityType="Self.TAB_STATE_CITY_MASTER" />
+    <EntitySet Name="TAB_STATE_MASTER" EntityType="Self.TAB_STATE_MASTER" />
+    <EntitySet Name="TAB_SUBMENU" EntityType="Self.TAB_SUBMENU" />
+    <EntitySet Name="TAB_USER_ROLE_MAPPING" EntityType="Self.TAB_USER_ROLE_MAPPING" />
+    <EntitySet Name="TAB_WF_DESIGNATION_MASTER" EntityType="Self.TAB_WF_DESIGNATION_MASTER" />
+    <EntitySet Name="TAB_WORFORCE_TYPE" EntityType="Self.TAB_WORFORCE_TYPE" />
+    <EntitySet Name="TAB_WORKFLOW_MAPPING_MASTER" EntityType="Self.TAB_WORKFLOW_MAPPING_MASTER" />
+    <EntitySet Name="TAB_WORKFLOW_MASTER" EntityType="Self.TAB_WORKFLOW_MASTER" />
+    <EntitySet Name="TAB_WORKFORCE" EntityType="Self.TAB_WORKFORCE" />
+    <EntitySet Name="TAB_WORKFORCE_DAILYWORK" EntityType="Self.TAB_WORKFORCE_DAILYWORK" />
+    <EntitySet Name="TAB_WORKFORCE_EDU_MASTER" EntityType="Self.TAB_WORKFORCE_EDU_MASTER" />
+    <EntitySet Name="TAB_WORKFORCE_LEAVES" EntityType="Self.TAB_WORKFORCE_LEAVES" />
+    <EntitySet Name="TAB_WORKFORCE_MASTER" EntityType="Self.TAB_WORKFORCE_MASTER" />
+    <EntitySet Name="TAB_WORKFORCE_PHOTO_MASTER" EntityType="Self.TAB_WORKFORCE_PHOTO_MASTER" />
+    <EntitySet Name="TAB_WORKFORCE_SALARY" EntityType="Self.TAB_WORKFORCE_SALARY" />
+    <EntitySet Name="Logs_Debug" EntityType="Self.Logs_Debug" />
+    <EntitySet Name="Logs_Error" EntityType="Self.Logs_Error" />
+    <EntitySet Name="Logs_Fatal" EntityType="Self.Logs_Fatal" />
+    <EntitySet Name="Logs_Info" EntityType="Self.Logs_Info" />
+    <EntitySet Name="Logs_Trace" EntityType="Self.Logs_Trace" />
+    <EntitySet Name="Logs_Warn" EntityType="Self.Logs_Warn" />
+    <EntitySet Name="TAB_ACTIVITY_DETAILS" EntityType="Self.TAB_ACTIVITY_DETAILS" />
+    <EntitySet Name="TAB_BIOMETRIC_IMPORTHISTORY" EntityType="Self.TAB_BIOMETRIC_IMPORTHISTORY" />
+    <EntitySet Name="TAB_ERROR_LOGS" EntityType="Self.TAB_ERROR_LOGS" />
+    <EntitySet Name="TAB_ROLE_MENU_MAPPING" EntityType="Self.TAB_ROLE_MENU_MAPPING" />
+    <EntitySet Name="TAB_WF_WORK_DETAILS" EntityType="Self.TAB_WF_WORK_DETAILS" />
+    <EntitySet Name="TAB_WF_WORK_DETAILS_OLD" EntityType="Self.TAB_WF_WORK_DETAILS_OLD" />
+    <EntitySet Name="TAB_WORKFORCE_MASTER_OLD" EntityType="Self.TAB_WORKFORCE_MASTER_OLD" />
+    <EntitySet Name="TAB_WORKFORCE_SALARY_MASTER" EntityType="Self.TAB_WORKFORCE_SALARY_MASTER" />
+    <EntitySet Name="TAB_WORKFORCE_SALARY_MASTER_OLD" EntityType="Self.TAB_WORKFORCE_SALARY_MASTER_OLD" />
+    <AssociationSet Name="FK__TAB_AGENC__COMPA__3E52440B" Association="Self.FK__TAB_AGENC__COMPA__3E52440B">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_AGENCY_MASTER" EntitySet="TAB_AGENCY_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__BANK___60A82766" Association="Self.FK__TAB_WORKF__BANK___60A82766">
+      <End Role="TAB_BANK_MASTER" EntitySet="TAB_BANK_MASTER" />
+      <End Role="TAB_WORKFORCE_SALARY_MASTER" EntitySet="TAB_WORKFORCE_SALARY_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_BIOME__COMPA__42EE72A4" Association="Self.FK__TAB_BIOME__COMPA__42EE72A4">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_BIOMETRIC" EntitySet="TAB_BIOMETRIC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAB_BIOMETRIC_TAB_WORKFORCE_MASTER" Association="Self.FK_TAB_BIOMETRIC_TAB_WORKFORCE_MASTER">
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+      <End Role="TAB_BIOMETRIC" EntitySet="TAB_BIOMETRIC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_BUILD__COMPA__5535A963" Association="Self.FK__TAB_BUILD__COMPA__5535A963">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_BUILDING_MASTER" EntitySet="TAB_BUILDING_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_FLOOR__BUILD__5BE2A6F2" Association="Self.FK__TAB_FLOOR__BUILD__5BE2A6F2">
+      <End Role="TAB_BUILDING_MASTER" EntitySet="TAB_BUILDING_MASTER" />
+      <End Role="TAB_FLOOR_MASTER" EntitySet="TAB_FLOOR_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_MRF_D__BUILD__1D114BD1" Association="Self.FK__TAB_MRF_D__BUILD__1D114BD1">
+      <End Role="TAB_BUILDING_MASTER" EntitySet="TAB_BUILDING_MASTER" />
+      <End Role="TAB_MRF_DETAILS" EntitySet="TAB_MRF_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WF_WO__BUILD__147C05D0" Association="Self.FK__TAB_WF_WO__BUILD__147C05D0">
+      <End Role="TAB_BUILDING_MASTER" EntitySet="TAB_BUILDING_MASTER" />
+      <End Role="TAB_WF_WORK_DETAILS" EntitySet="TAB_WF_WORK_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_DEPAR__COMPA__4F7CD00D" Association="Self.FK__TAB_DEPAR__COMPA__4F7CD00D">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_DEPARTMENT_MASTER" EntitySet="TAB_DEPARTMENT_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_EMP_S__COMPA__7EC1CEDB" Association="Self.FK__TAB_EMP_S__COMPA__7EC1CEDB">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_EMP_STATUS_MASTER" EntitySet="TAB_EMP_STATUS_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_EMPL___COMPA__6F7F8B4B" Association="Self.FK__TAB_EMPL___COMPA__6F7F8B4B">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_EMPL_TYPE_MASTER" EntitySet="TAB_EMPL_TYPE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_FLOOR__COMPA__5AEE82B9" Association="Self.FK__TAB_FLOOR__COMPA__5AEE82B9">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_FLOOR_MASTER" EntitySet="TAB_FLOOR_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_ITEM___COMPA__062DE679" Association="Self.FK__TAB_ITEM___COMPA__062DE679">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_ITEM_MASTER" EntitySet="TAB_ITEM_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_ITEM___COMPA__0CDAE408" Association="Self.FK__TAB_ITEM___COMPA__0CDAE408">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_ITEM_OPERATION_MASTER" EntitySet="TAB_ITEM_OPERATION_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_LOGIN__COMPA__787EE5A0" Association="Self.FK__TAB_LOGIN__COMPA__787EE5A0">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_LOGIN_MASTER" EntitySet="TAB_LOGIN_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_MARIT__COMPA__038683F8" Association="Self.FK__TAB_MARIT__COMPA__038683F8">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_MARITAL_STATUS_MASTER" EntitySet="TAB_MARITAL_STATUS_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_MENU___COMPA__57A801BA" Association="Self.FK__TAB_MENU___COMPA__57A801BA">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_MENU_MASTER" EntitySet="TAB_MENU_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_MRF__COMPANY__76EBA2E9" Association="Self.FK__TAB_MRF__COMPANY__76EBA2E9">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_MRF" EntitySet="TAB_MRF" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_REC_M__COMPA__703EA55A" Association="Self.FK__TAB_REC_M__COMPA__703EA55A">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_REC_MASTER" EntitySet="TAB_REC_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_ROLE___COMPA__00200768" Association="Self.FK__TAB_ROLE___COMPA__00200768">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_ROLE_MASTER" EntitySet="TAB_ROLE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_SHIFT__COMPA__440B1D61" Association="Self.FK__TAB_SHIFT__COMPA__440B1D61">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_SHIFT_MASTER" EntitySet="TAB_SHIFT_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_SKILL__COMPA__49C3F6B7" Association="Self.FK__TAB_SKILL__COMPA__49C3F6B7">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_SKILL_MASTER" EntitySet="TAB_SKILL_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WF_DE__COMPA__6ABAD62E" Association="Self.FK__TAB_WF_DE__COMPA__6ABAD62E">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_WF_DESIGNATION_MASTER" EntitySet="TAB_WF_DESIGNATION_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WF_WO__COMPA__1293BD5E" Association="Self.FK__TAB_WF_WO__COMPA__1293BD5E">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_WF_WORK_DETAILS" EntitySet="TAB_WF_WORK_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORFO__COMPA__61316BF4" Association="Self.FK__TAB_WORFO__COMPA__61316BF4">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_WORFORCE_TYPE" EntitySet="TAB_WORFORCE_TYPE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__COMPA__1B5E0D89" Association="Self.FK__TAB_WORKF__COMPA__1B5E0D89">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__COMPA__5FB4032D" Association="Self.FK__TAB_WORKF__COMPA__5FB4032D">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_WORKFORCE_SALARY_MASTER" EntitySet="TAB_WORKFORCE_SALARY_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__COMPA__619B8048" Association="Self.FK__TAB_WORKF__COMPA__619B8048">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_WORKFLOW_MASTER" EntitySet="TAB_WORKFLOW_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__COMPA__65F62111" Association="Self.FK__TAB_WORKF__COMPA__65F62111">
+      <End Role="TAB_COMPANY_MASTER" EntitySet="TAB_COMPANY_MASTER" />
+      <End Role="TAB_WORKFORCE_EDU_MASTER" EntitySet="TAB_WORKFORCE_EDU_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_ITEM___DEPT___07220AB2" Association="Self.FK__TAB_ITEM___DEPT___07220AB2">
+      <End Role="TAB_DEPARTMENT_MASTER" EntitySet="TAB_DEPARTMENT_MASTER" />
+      <End Role="TAB_ITEM_MASTER" EntitySet="TAB_ITEM_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_LOGIN__DEPT___778AC167" Association="Self.FK__TAB_LOGIN__DEPT___778AC167">
+      <End Role="TAB_DEPARTMENT_MASTER" EntitySet="TAB_DEPARTMENT_MASTER" />
+      <End Role="TAB_LOGIN_MASTER" EntitySet="TAB_LOGIN_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WF_WO__DEPT___1387E197" Association="Self.FK__TAB_WF_WO__DEPT___1387E197">
+      <End Role="TAB_DEPARTMENT_MASTER" EntitySet="TAB_DEPARTMENT_MASTER" />
+      <End Role="TAB_WF_WORK_DETAILS" EntitySet="TAB_WF_WORK_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__DEPT___1E3A7A34" Association="Self.FK__TAB_WORKF__DEPT___1E3A7A34">
+      <End Role="TAB_DEPARTMENT_MASTER" EntitySet="TAB_DEPARTMENT_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__DEPT___60083D91" Association="Self.FK__TAB_WORKF__DEPT___60083D91">
+      <End Role="TAB_DEPARTMENT_MASTER" EntitySet="TAB_DEPARTMENT_MASTER" />
+      <End Role="TAB_WORKFLOW_MAPPING_MASTER" EntitySet="TAB_WORKFLOW_MAPPING_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__EMP_S__27C3E46E" Association="Self.FK__TAB_WORKF__EMP_S__27C3E46E">
+      <End Role="TAB_EMP_STATUS_MASTER" EntitySet="TAB_EMP_STATUS_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__EMP_T__22FF2F51" Association="Self.FK__TAB_WORKF__EMP_T__22FF2F51">
+      <End Role="TAB_EMPL_TYPE_MASTER" EntitySet="TAB_EMPL_TYPE_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_MRF_D__FLOOR__1E05700A" Association="Self.FK__TAB_MRF_D__FLOOR__1E05700A">
+      <End Role="TAB_FLOOR_MASTER" EntitySet="TAB_FLOOR_MASTER" />
+      <End Role="TAB_MRF_DETAILS" EntitySet="TAB_MRF_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WF_WO__FLOOR__15702A09" Association="Self.FK__TAB_WF_WO__FLOOR__15702A09">
+      <End Role="TAB_FLOOR_MASTER" EntitySet="TAB_FLOOR_MASTER" />
+      <End Role="TAB_WF_WORK_DETAILS" EntitySet="TAB_WF_WORK_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAB_GATEPASS_TAB_WORKFORCE_MASTER" Association="Self.FK_TAB_GATEPASS_TAB_WORKFORCE_MASTER">
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+      <End Role="TAB_GATEPASS" EntitySet="TAB_GATEPASS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_ITEM___ITEM___0DCF0841" Association="Self.FK__TAB_ITEM___ITEM___0DCF0841">
+      <End Role="TAB_ITEM_MASTER" EntitySet="TAB_ITEM_MASTER" />
+      <End Role="TAB_ITEM_OPERATION_MASTER" EntitySet="TAB_ITEM_OPERATION_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WF_WO__ITEM___1758727B" Association="Self.FK__TAB_WF_WO__ITEM___1758727B">
+      <End Role="TAB_ITEM_MASTER" EntitySet="TAB_ITEM_MASTER" />
+      <End Role="TAB_WF_WORK_DETAILS" EntitySet="TAB_WF_WORK_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__ITEM___59D1D7FC" Association="Self.FK__TAB_WORKF__ITEM___59D1D7FC">
+      <End Role="TAB_ITEM_MASTER" EntitySet="TAB_ITEM_MASTER" />
+      <End Role="TAB_WORKFORCE_DAILYWORK" EntitySet="TAB_WORKFORCE_DAILYWORK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WF_WO__UNIQU__184C96B4" Association="Self.FK__TAB_WF_WO__UNIQU__184C96B4">
+      <End Role="TAB_ITEM_OPERATION_MASTER" EntitySet="TAB_ITEM_OPERATION_MASTER" />
+      <End Role="TAB_WF_WORK_DETAILS" EntitySet="TAB_WF_WORK_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__UNIQU__58DDB3C3" Association="Self.FK__TAB_WORKF__UNIQU__58DDB3C3">
+      <End Role="TAB_ITEM_OPERATION_MASTER" EntitySet="TAB_ITEM_OPERATION_MASTER" />
+      <End Role="TAB_WORKFORCE_DAILYWORK" EntitySet="TAB_WORKFORCE_DAILYWORK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__LEVEL__60FC61CA" Association="Self.FK__TAB_WORKF__LEVEL__60FC61CA">
+      <End Role="TAB_LEVEL_MASTER" EntitySet="TAB_LEVEL_MASTER" />
+      <End Role="TAB_WORKFLOW_MAPPING_MASTER" EntitySet="TAB_WORKFLOW_MAPPING_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_USER___USER___03F0984C" Association="Self.FK__TAB_USER___USER___03F0984C">
+      <End Role="TAB_LOGIN_MASTER" EntitySet="TAB_LOGIN_MASTER" />
+      <End Role="TAB_USER_ROLE_MAPPING" EntitySet="TAB_USER_ROLE_MAPPING" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__MARIT__2022C2A6" Association="Self.FK__TAB_WORKF__MARIT__2022C2A6">
+      <End Role="TAB_MARITAL_STATUS_MASTER" EntitySet="TAB_MARITAL_STATUS_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAB_MENU_ROLE_MAPPING_TAB_MENU" Association="Self.FK_TAB_MENU_ROLE_MAPPING_TAB_MENU">
+      <End Role="TAB_MENU" EntitySet="TAB_MENU" />
+      <End Role="TAB_MENU_ROLE_MAPPING" EntitySet="TAB_MENU_ROLE_MAPPING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAB_SUBMENU_TAB_MENU" Association="Self.FK_TAB_SUBMENU_TAB_MENU">
+      <End Role="TAB_MENU" EntitySet="TAB_MENU" />
+      <End Role="TAB_SUBMENU" EntitySet="TAB_SUBMENU" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_ROLE___MENU___5B78929E" Association="Self.FK__TAB_ROLE___MENU___5B78929E">
+      <End Role="TAB_MENU_MASTER" EntitySet="TAB_MENU_MASTER" />
+      <End Role="TAB_ROLE_MENU_MAPPING" EntitySet="TAB_ROLE_MENU_MAPPING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAB_MENU_ROLE_MAPPING_TAB_ROLE_MASTER" Association="Self.FK_TAB_MENU_ROLE_MAPPING_TAB_ROLE_MASTER">
+      <End Role="TAB_ROLE_MASTER" EntitySet="TAB_ROLE_MASTER" />
+      <End Role="TAB_MENU_ROLE_MAPPING" EntitySet="TAB_MENU_ROLE_MAPPING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAB_MENU_ROLE_MAPPING_TAB_SUBMENU" Association="Self.FK_TAB_MENU_ROLE_MAPPING_TAB_SUBMENU">
+      <End Role="TAB_SUBMENU" EntitySet="TAB_SUBMENU" />
+      <End Role="TAB_MENU_ROLE_MAPPING" EntitySet="TAB_MENU_ROLE_MAPPING" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_MRF__WORKFLO__77DFC722" Association="Self.FK__TAB_MRF__WORKFLO__77DFC722">
+      <End Role="TAB_WORKFLOW_MASTER" EntitySet="TAB_WORKFLOW_MASTER" />
+      <End Role="TAB_MRF" EntitySet="TAB_MRF" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_MRF_D__MRP_I__1FEDB87C" Association="Self.FK__TAB_MRF_D__MRP_I__1FEDB87C">
+      <End Role="TAB_MRF" EntitySet="TAB_MRF" />
+      <End Role="TAB_MRF_DETAILS" EntitySet="TAB_MRF_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_MRF_D__SKILL__1EF99443" Association="Self.FK__TAB_MRF_D__SKILL__1EF99443">
+      <End Role="TAB_SKILL_MASTER" EntitySet="TAB_SKILL_MASTER" />
+      <End Role="TAB_MRF_DETAILS" EntitySet="TAB_MRF_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_MRF_D__WF_DE__20E1DCB5" Association="Self.FK__TAB_MRF_D__WF_DE__20E1DCB5">
+      <End Role="TAB_WF_DESIGNATION_MASTER" EntitySet="TAB_WF_DESIGNATION_MASTER" />
+      <End Role="TAB_MRF_DETAILS" EntitySet="TAB_MRF_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_MRF_D__WF_EM__21D600EE" Association="Self.FK__TAB_MRF_D__WF_EM__21D600EE">
+      <End Role="TAB_WORFORCE_TYPE" EntitySet="TAB_WORFORCE_TYPE" />
+      <End Role="TAB_MRF_DETAILS" EntitySet="TAB_MRF_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_REC_M__WORKF__7132C993" Association="Self.FK__TAB_REC_M__WORKF__7132C993">
+      <End Role="TAB_WORKFLOW_MASTER" EntitySet="TAB_WORKFLOW_MASTER" />
+      <End Role="TAB_REC_MASTER" EntitySet="TAB_REC_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_ROLE___ROLE___5C6CB6D7" Association="Self.FK__TAB_ROLE___ROLE___5C6CB6D7">
+      <End Role="TAB_ROLE_MASTER" EntitySet="TAB_ROLE_MASTER" />
+      <End Role="TAB_ROLE_MENU_MAPPING" EntitySet="TAB_ROLE_MENU_MAPPING" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_USER___ROLE___04E4BC85" Association="Self.FK__TAB_USER___ROLE___04E4BC85">
+      <End Role="TAB_ROLE_MASTER" EntitySet="TAB_ROLE_MASTER" />
+      <End Role="TAB_USER_ROLE_MAPPING" EntitySet="TAB_USER_ROLE_MAPPING" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WF_WO__SHIFT__16644E42" Association="Self.FK__TAB_WF_WO__SHIFT__16644E42">
+      <End Role="TAB_SHIFT_MASTER" EntitySet="TAB_SHIFT_MASTER" />
+      <End Role="TAB_WF_WORK_DETAILS" EntitySet="TAB_WF_WORK_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__SKILL__220B0B18" Association="Self.FK__TAB_WORKF__SKILL__220B0B18">
+      <End Role="TAB_SKILL_MASTER" EntitySet="TAB_SKILL_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_STATE__STATE__79FD19BE" Association="Self.FK__TAB_STATE__STATE__79FD19BE">
+      <End Role="TAB_STATE_MASTER" EntitySet="TAB_STATE_MASTER" />
+      <End Role="TAB_STATE_CITY_MASTER" EntitySet="TAB_STATE_CITY_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__PERMA__25DB9BFC" Association="Self.FK__TAB_WORKF__PERMA__25DB9BFC">
+      <End Role="TAB_STATE_CITY_MASTER" EntitySet="TAB_STATE_CITY_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__PRESE__23F3538A" Association="Self.FK__TAB_WORKF__PRESE__23F3538A">
+      <End Role="TAB_STATE_CITY_MASTER" EntitySet="TAB_STATE_CITY_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__PARMA__26CFC035" Association="Self.FK__TAB_WORKF__PARMA__26CFC035">
+      <End Role="TAB_STATE_MASTER" EntitySet="TAB_STATE_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__PRESE__24E777C3" Association="Self.FK__TAB_WORKF__PRESE__24E777C3">
+      <End Role="TAB_STATE_MASTER" EntitySet="TAB_STATE_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__WF_DE__2116E6DF" Association="Self.FK__TAB_WORKF__WF_DE__2116E6DF">
+      <End Role="TAB_WF_DESIGNATION_MASTER" EntitySet="TAB_WF_DESIGNATION_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__WF_EM__1C5231C2" Association="Self.FK__TAB_WORKF__WF_EM__1C5231C2">
+      <End Role="TAB_WORFORCE_TYPE" EntitySet="TAB_WORFORCE_TYPE" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__WORKF__61F08603" Association="Self.FK__TAB_WORKF__WORKF__61F08603">
+      <End Role="TAB_WORKFLOW_MASTER" EntitySet="TAB_WORKFLOW_MASTER" />
+      <End Role="TAB_WORKFLOW_MAPPING_MASTER" EntitySet="TAB_WORKFLOW_MAPPING_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__WF_ID__57E98F8A" Association="Self.FK__TAB_WORKF__WF_ID__57E98F8A">
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+      <End Role="TAB_WORKFORCE_DAILYWORK" EntitySet="TAB_WORKFORCE_DAILYWORK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__WF_ED__1F2E9E6D" Association="Self.FK__TAB_WORKF__WF_ED__1F2E9E6D">
+      <End Role="TAB_WORKFORCE_EDU_MASTER" EntitySet="TAB_WORKFORCE_EDU_MASTER" />
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__WF_ID__5EAA0504" Association="Self.FK__TAB_WORKF__WF_ID__5EAA0504">
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+      <End Role="TAB_WORKFORCE_LEAVES" EntitySet="TAB_WORKFORCE_LEAVES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WF_WO__WF_ID__119F9925" Association="Self.FK__TAB_WF_WO__WF_ID__119F9925">
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+      <End Role="TAB_WF_WORK_DETAILS" EntitySet="TAB_WF_WORK_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__WF_ID__5EBFDEF4" Association="Self.FK__TAB_WORKF__WF_ID__5EBFDEF4">
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+      <End Role="TAB_WORKFORCE_SALARY_MASTER" EntitySet="TAB_WORKFORCE_SALARY_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_WORKF__WF_ID__68BE4A7A" Association="Self.FK__TAB_WORKF__WF_ID__68BE4A7A">
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+      <End Role="TAB_WORKFORCE_SALARY" EntitySet="TAB_WORKFORCE_SALARY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAB_WORKFORCE_PHOTO_MASTER_TAB_WORKFORCE_MASTER" Association="Self.FK_TAB_WORKFORCE_PHOTO_MASTER_TAB_WORKFORCE_MASTER">
+      <End Role="TAB_WORKFORCE_MASTER" EntitySet="TAB_WORKFORCE_MASTER" />
+      <End Role="TAB_WORKFORCE_PHOTO_MASTER" EntitySet="TAB_WORKFORCE_PHOTO_MASTER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

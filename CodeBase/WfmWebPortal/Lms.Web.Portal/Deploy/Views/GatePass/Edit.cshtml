@@ -1,0 +1,258 @@
+﻿@model Wfm.App.Core.Model.GatePassMetaData
+
+@{
+    ViewBag.Title = "Gate Pass - Edit";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Gate Pass</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/GatePass/Create">
+                                <i class="fas fa-layer-group"></i> Gate Pass
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">Edit</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Edit</strong> Gate Pass
+                            </h2>                            
+                        </div>
+                        @using (Html.BeginForm("Edit", "GatePass", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                        {
+                            @Html.HiddenFor(m => m.ID)
+                            @Html.HiddenFor(m => m.STATUS)
+                            @Html.HiddenFor(m => m.WORKFORCE.WF_ID, new { id = "WF_ID" })
+                            <div class="body">
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.DEPT_ID, "Department")
+                                                @Html.DropDownListFor(x => x.DEPT_ID, ViewBag.Dept as SelectList, "-- Select--", new { id = "DEPT_ID", required = "true", @onchange = "onDepartmentChange()" })
+                                                @Html.ValidationMessageFor(m => m.DEPT_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.SUBDEPT_ID, "Sub Department")
+                                                @Html.DropDownListFor(x => x.SUBDEPT_ID, ViewBag.SubDepartments as SelectList, "-- Select--", new { id = "SUBDEPT_ID", required = "true" })
+                                                @Html.ValidationMessageFor(m => m.SUBDEPT_ID)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.WF_EMP_TYPE, "Employee type")
+                                                @Html.DropDownListFor(x => x.WF_EMP_TYPE, new SelectList(ViewBag.EmployeeTypes, "Value", "Text"), "-- Select--", htmlAttributes: new { id = "WF_EMP_TYPE", required = "true", disabled = "disabled" })
+                                                @Html.ValidationMessageFor(m => m.WF_EMP_TYPE)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(x => x.WORKFORCE.EMP_NAME, "Employee name")
+                                                @Html.TextBoxFor(x => x.WORKFORCE.EMP_NAME, new { id = "EMP_NAME", @class = "form-control", @type = "text", required = "true", disabled = "disabled" })
+                                                @Html.ValidationMessageFor(m => m.WORKFORCE.EMP_NAME)
+                                                @Html.HiddenFor(x => x.WORKFORCE.EMP_ID, new { id = "EMP_ID" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                              
+                                <div class="row clearfix">                                    
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.START_DATE, "Start Date")
+                                                @Html.TextBoxFor(m => m.START_DATE, "{0: dd/MM/yyyy}" , new { @class = "form-control datepicker" })
+                                                @Html.ValidationMessageFor(m => m.START_DATE)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.END_DATE, "End Date")
+                                                @Html.TextBoxFor(m => m.END_DATE, "{0: dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                                                @Html.ValidationMessageFor(m => m.END_DATE)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">                                    
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.OUT_TIME, "Out Time")
+                                                @Html.TextBoxFor(m => m.OUT_TIME, new { @class = "form-control timepicker", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.OUT_TIME)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.IN_TIME, "In Time")
+                                                @Html.TextBoxFor(m => m.IN_TIME, new { @class = "form-control timepicker", @type = "text" })
+                                                @Html.ValidationMessageFor(m => m.IN_TIME)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.ACTUAL_OUTTIME, "Actual Out Time")
+                                                @Html.TextBoxFor(m => m.ACTUAL_OUTTIME, "", new { @class = "form-control timepicker", @type = "text", @disabled = "disabled" })
+                                                @Html.ValidationMessageFor(m => m.OUT_TIME)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.ACTUAL_INTIME, "Actual In Time")
+                                                @Html.TextBoxFor(m => m.ACTUAL_INTIME, "", new { @class = "form-control timepicker", @type = "text", @disabled = "disabled" })
+                                                @Html.ValidationMessageFor(m => m.IN_TIME)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">                                    
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @*@Html.LabelFor(m => m.WORKFORCE.EMAIL_ID, "Email")
+                                                @Html.TextBoxFor(m => m.WORKFORCE.EMAIL_ID, new { @class = "form-control disabled" })*@ 
+                                                
+                                                @Html.LabelFor(m => m.WORKFORCE.MOBILE_NO, "Mobile no.")
+                                                @Html.TextBoxFor(m => m.WORKFORCE.MOBILE_NO, new { @class = "form-control disabled" })                                               
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.PURPOSE, "Purpose")
+                                                @Html.DropDownListFor(m => m.PURPOSE, new List<SelectListItem>
+                                                {
+                                                    new SelectListItem{ Text="Official", Value = "Official" },
+                                                    new SelectListItem{ Text="Personal", Value = "Personal" }
+                                                }, "Purpose", new { @class = "col-12 m-t-20 p-l-0" })
+                                                @Html.ValidationMessageFor(m => m.PURPOSE)
+                                            </div>
+                                        </div>
+                                    </div>                                                                 
+                                </div>   
+                                <div class="row clearfix" style="display:none">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                               @Html.LabelFor(m => m.WORKFORCE.FATHER_NAME, "Father name")
+                                               @Html.TextBoxFor(m => m.WORKFORCE.FATHER_NAME, new { @class = "form-control disabled", @type = "text" })
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.WORKFORCE.EMP_NAME, "Full name")
+                                                @Html.TextBoxFor(m => m.WORKFORCE.EMP_NAME, "", new { @class = "form-control disabled", @type = "text" })
+                                            </div>
+                                        </div>
+                                    </div>                                        
+                                </div>                             
+                                <div class="row clearfix">                                                                        
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                @Html.LabelFor(m => m.REMARK, "Remark")
+                                                @Html.TextAreaFor(m => m.REMARK, 2, 40, new { @class = "form-control no-resize", @type = "text" })                                                                                                       
+                                            </div>
+                                        </div>
+                                    </div>  
+                                 </div>                               
+                                 <div class="col-lg-12 p-t-20 text-center">
+                                     <button id="edit" type="button" class="btn btn-primary waves-effect m-r-15">Submit</button>                                        
+                                     <button id="cancel" type="button" class="btn btn-danger waves-effect">Cancel</button>                                        
+                                 </div>
+                             </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/assets/js/pages/gatepass/gatepass.js"></script>
+<script tyep="text/javascript">
+    function onDepartmentChange() {
+        var departmentId = $("#DEPT_ID option:selected").val();
+        $.get('/GatePass/GetSubDepartmentByDepartmentId?departmentId=' + departmentId, function (data) {
+            $('#SUBDEPT_ID').find('option').not(':first').remove();
+            $.each(data, function (i, item) {
+                $('#SUBDEPT_ID').append($('<option>', {
+                    value: item.SUBDEPT_ID,
+                    text: item.SUBDEPT_NAME
+                }));
+            });
+            $('#SUBDEPT_ID').formSelect();
+        });
+    }
+
+    $("#EMP_NAME").autocomplete({
+        max: 10,
+        minLength: 1,
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("LoadWorkforceByWFType", "Workforce")',
+                datatype: "json",
+                data: {
+                    deptId: $('#DEPT_ID').val(),
+                    sub_dept_id: $('#SUBDEPT_ID').val(),
+                    query: $('#EMP_NAME').val(),
+                    emp_type_id: $('#WF_EMP_TYPE').val()
+                },
+                success: function (data) {
+                    response($.map(data, function (val, item) {
+                        return {
+                            label: val.Name,
+                            value: val.Name,
+                            empId: val.ID
+                        }
+                    }))
+                }
+            })
+        },
+        select: function (event, ui) {
+            $('#WF_ID').val(ui.item.empId);
+            Wfm.App.GatePass.Search();
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+</script>

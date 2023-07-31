@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Wfm.App.Core.Model.GenerateCardViewModel>
+@{
+    Layout = null;
+}
+<style>
+    .cardTr {
+        position: relative;
+    }
+
+        .cardTr::after {
+            content: "";
+            background-image: url(/Content/IdCardImages/karamIcon.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 182px;
+            opacity: 0.1; /* set your opacity */
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+        }
+</style>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="header" style="margin: 1% 10% 1% 10%;">
+                    <a href="/IDCardGeneration/GetEmployess">
+                        <i class="fas fa-layer-group"></i> Back to Employee
+                    </a>
+                </div>
+                <div class="card" style="margin: 1% 10% 1% 10%;">
+                    @*<div class="card" style=" margin-left:30px;">*@
+                    <div class="header">
+                        <h2>
+                            <strong>Employee</strong> Cards&nbsp;&nbsp;
+                            <input type='button' id='btn' value='Print' onclick='printDiv();'>
+                        </h2>
+                    </div>
+                    <div class="body" id='DivIdToPrint'>
+                        @foreach (var item in Model)
+                        {
+                            <div>@Html.Raw(item.EmployeeCard)</div>
+                        }
+                    </div>
+                    <div class="header">
+                        <h2>
+                            <strong>Employee</strong> Cards&nbsp;&nbsp;
+                            <input type='button' id='btn' value='Print' onclick='printDiv();'>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    function printDiv() {
+
+        var divToPrint = document.getElementById('DivIdToPrint');
+        var newWin = window.open('', 'Print-Window');
+        newWin.document.open();
+        newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+        newWin.document.close();
+        setTimeout(function () { newWin.close(); }, 10);
+
+    }
+</script>

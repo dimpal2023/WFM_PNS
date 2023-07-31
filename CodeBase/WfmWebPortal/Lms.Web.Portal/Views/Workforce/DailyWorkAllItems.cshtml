@@ -1,0 +1,77 @@
+﻿@model IList< Wfm.App.Core.Model.WorkforceMetaDataList> 
+
+@{
+    ViewBag.Title = "Workforce - Daily Work Items";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Employee List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="/Workforce/WFCreate">
+                                <i class="fas fa-layer-group"></i> Employee List
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>View</strong> Employee List
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Employee Id</th>
+                                    <th>Name</th>
+                                    <th>Contact No.</th>
+                                    <th>Department</th>
+                                    <th>Designation</th>
+                                    <th>Date of Joining</th>
+                                    <th>Aadhar No.</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.EMP_ID</td>
+                                        <td>@item.EMP_NAME</td>
+                                        <td>@item.MOBILE_NO</td>
+                                        <td>@item.DEPT</td>
+                                        <td>@item.WF_DESIGNATION</td>
+                                        <td>@Wfm.App.Common.Utility.FormatDate(@item.DOJ)</td>
+                                        <td>@item.AADHAR_NO</td>
+                                        <td>@item.STATUS</td>
+                                        <td>
+                                            <a href="/Workforce/Edit?EMP_ID=@item.EMP_ID">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

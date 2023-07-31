@@ -1,0 +1,244 @@
+﻿@*@model Wfm.App.Core.Model.GetMonthlyAttendanceReport*@
+@model Wfm.App.Core.Model.AttendanceDetails
+@{
+    int Cols = ViewBag.TotalDays + 1;
+}
+<style>
+    .bold {
+        font-weight: bold
+    }
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #26b99a;
+    }
+    .table-bordered thead th, .table-bordered thead td {
+         border-bottom-width: 0px; 
+    }
+    .table th, .table td {
+        padding: 0.1rem;
+    }
+</style>
+@if (Model.AllReport.Count > 0)
+{
+    <div class="table-responsive">
+        <table id="tableExports"
+               class="display table table-bordered table-checkable order-column m-t-20 width-per-100" width="100%">
+            <thead>
+                <tr  style="background: #26b99a; color: white; font-weight: 400 !important;">
+
+                    <td class="bold" colspan="@Cols" style="text-align: center; font-size: 1.7rem; ">
+                        Monthly Attendance Report
+                       
+                    </td>
+
+                </tr>
+                <tr  style="background: #26b99a;color:white;font-weight:400!important">
+                    <td  class="bold"  colspan="@Cols" style="text-align: center; font-size: 1.7rem; " id="monthwithyear"></td>
+                </tr>
+                <tr style="background: #26b99a;color:white;font-weight:400!important">
+                    <td  class="bold"  colspan="@Cols" style="text-align: center; font-size: 1.7rem; ">Company : @Model.Company</td>
+                </tr>
+                <tr style="background: #26b99a;color:white;font-weight:400!important">
+                    <td colspan="@Cols" style="font-size: 1.2rem; ">Department : @Model.Department</td>
+                </tr>
+                <tr style="background: #26b99a;color:white;font-weight:400!important">
+                    <td colspan="@Cols" style="font-size: 1.2rem; "> Employee : @Model.Employee</td>
+                </tr>
+                <tr style="background: #26b99a;color:white;font-weight:400!important">
+                    <td colspan="@Cols" style="font-size: 1.2rem; ">Biometric Code : @Model.BiometricCode</td>
+                </tr>
+                <tr style="background: #26b99a;color:white;font-weight:400!important">
+                    <td colspan="@Cols" style="font-size: 1.2rem; ">Days Present : @Model.Present &nbsp; &nbsp; &nbsp;  Absent : @Model.Absent &nbsp; &nbsp; &nbsp;  WeeklyOff : @Model.WeeklyOff &nbsp; &nbsp; &nbsp; Holiday : @Model.Holiday &nbsp; &nbsp; &nbsp; OT Hrs : @Model.OTHours &nbsp; &nbsp; &nbsp; Early By Days : @Model.EarlyByDay &nbsp; &nbsp; &nbsp; Late By Days : @Model.LateByDay &nbsp; &nbsp; &nbsp; Gate Pass Hrs : @Model.GatePassHours &nbsp; &nbsp; &nbsp; Gate Pass Days : @Model.GatePassDays &nbsp; &nbsp; &nbsp;</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border: 1px solid black; ">
+                    <td class="bold">Dates</td>
+                    @for (var i = 1; i <= ViewBag.TotalDays; i++)
+                    {
+                        <td class="bold" style="text-align:center">@i</td>
+                    }
+                </tr>
+                <tr style="background: #b3cfbf17; border: 1px solid black">
+                    <td class="bold">Status</td>
+
+                    @for (var i = 1; i <= ViewBag.TotalDays; i++)
+                    {
+                        foreach (var item in Model.AllReport)
+                        {
+                            if (item.Dates == i)
+                            {
+                                <td style="text-align:center">@item.Status</td>
+                                break;
+                            }
+                        }
+
+                    }
+                </tr>
+                <tr style="border: 1px solid black">
+                    <td class="bold">In</td>
+                    @for (var i = 1; i <= ViewBag.TotalDays; i++)
+                    {
+                        foreach (var item in Model.AllReport)
+                        {
+                            if (item.Dates == i)
+                            {
+                                if (item.In != "12:00")
+                                {
+                                    <td style="text-align:center">@item.In</td>
+                                }
+                                else
+                                {
+                                    <td style="text-align:center">00:00</td>
+                                }
+
+                                break;
+                            }
+                        }
+
+                    }
+                </tr>
+                <tr style="background: #b3cfbf17; border: 1px solid black">
+                    <td class="bold">Out</td>
+                    @for (var i = 1; i <= ViewBag.TotalDays; i++)
+                    {
+                        foreach (var item in Model.AllReport)
+                        {
+                            if (item.Dates == i)
+                            {
+                                if (item.Out != "12:00")
+                                {
+                                    <td style="text-align:center">@item.Out</td>
+                                }
+                                else
+                                {
+                                    <td style="text-align:center">00:00</td>
+                                }
+
+                                break;
+                            }
+                        }
+                    }
+                </tr>
+                <tr style="border: 1px solid black">
+                    <td class="bold">Duration</td>
+                    @for (var i = 1; i <= ViewBag.TotalDays; i++)
+                    {
+                        foreach (var item in Model.AllReport)
+                        {
+                            if (item.Dates == i)
+                            {
+                                <td style="text-align:center">@item.Duration</td>
+                                break;
+                            }
+                        }
+                    }
+                </tr>
+                <tr style="background: #b3cfbf17; border: 1px solid black">
+                    <td class="bold">Early By</td>
+                    @for (var i = 1; i <= ViewBag.TotalDays; i++)
+                    {
+                        foreach (var item in Model.AllReport)
+                        {
+                            if (item.Dates == i)
+                            {
+                                <td style="text-align:center">@item.EarlyBy</td>
+                                break;
+                            }
+                        }
+                    }
+                </tr>
+                <tr style="border: 1px solid black">
+                    <td class="bold">Late By</td>
+                    @for (var i = 1; i <= ViewBag.TotalDays; i++)
+                    {
+                        foreach (var item in Model.AllReport)
+                        {
+                            if (item.Dates == i)
+                            {
+                                <td style="text-align:center">@item.LateBy</td>
+                                break;
+                            }
+                        }
+                    }
+                </tr>
+                <tr style="background: #b3cfbf17; border: 1px solid black">
+                    <td class="bold">OT</td>
+
+                    @for (var i = 1; i <= ViewBag.TotalDays; i++)
+                    {
+                        foreach (var item in Model.AllReport)
+                        {
+                            if (item.Dates == i)
+                            {
+                                <td style="text-align:center">@item.OT</td>
+                                break;
+                            }
+                        }
+                    }
+                </tr>
+                <tr style="border: 1px solid black">
+                    <td class="bold">Permission</td>
+                    @for (var i = 1; i <= ViewBag.TotalDays; i++)
+                    {
+                        foreach (var item in Model.AllReport)
+                        {
+                            if (item.Dates == i)
+                            {
+                                if (@item.Permission == "0:00")
+                                {
+                                    <td style="text-align:center"></td>
+                                }
+                                else
+                                {
+                                    <td style="text-align:center">@item.Permission</td>
+                                }
+
+                                break;
+                            }
+                        }
+                    }
+
+                </tr>
+                <tr style="background: #b3cfbf17; border: 1px solid black">
+                    <td class="bold">Shift</td>
+                    @for (var i = 1; i <= ViewBag.TotalDays; i++)
+                    {
+                        foreach (var item in Model.AllReport)
+                        {
+                            if (item.Dates == i)
+                            {
+                                <td style="text-align:center">@item.Shift</td>
+                                break;
+                            }
+                        }
+                    }
+
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+@*else
+    {
+        <div class="text-center"><span>No data found.</span></div>
+    }*@
+
+<script>
+    $("document").ready(function () {
+        //$('#tableExport').DataTable({
+        //    dom: 'Bfrtip',
+        //    ordering: false,
+        //    responsive: true,
+        //    buttons: [
+        //        'copy',
+        //        'csv',
+        //        'excel',
+        //        'pdf',
+        //        'print'
+        //    ]
+        //});
+        //$('#tableExport').dataTable();
+    });
+</script>

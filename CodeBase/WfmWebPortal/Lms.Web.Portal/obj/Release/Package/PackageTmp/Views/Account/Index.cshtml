@@ -1,0 +1,102 @@
+﻿@model Wfm.App.Core.Model.LoginMasterMetaData
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Login</title>
+    <!-- Favicon-->
+    <link rel="icon" href="~/Content/assets/images/karam.png" type="image/x-icon">
+    <!-- Plugins Core Css -->
+    <link href="~/Content/assets/css/app.min.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/pages/extra_pages.css" rel="stylesheet" />
+    <style>
+        .container-login100 {
+            /*  width: calc(100% - 560px);*/
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            /* position: relative; */
+            z-index: 1;
+        }
+
+        .login100-form {
+            width: 360px !important;
+            height: 400px !important;
+            background: #7ac9cd54;
+            padding: 25px 50px !important;
+        }
+
+        input {
+            color: white !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url(@Url.Content("~/Content/assets/images/pages/34.jpg"));">
+            <div class="wrap-login100">
+                <div class="login100-more">
+                </div>
+                @using (Html.BeginForm("Index", "Account", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
+                    <span class="login100-form-title" style="color:white">
+
+                        <img src="~/Content/assets/images/karam.png" style="width:130px;height:81px" />
+                        @*<br /> Work Force Management*@
+                    </span>
+                    <div class="flex-sb-m w-full p-t-15 p-b-20">
+                        <div class="col-pink">
+                            
+                        </div>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Username is required">
+                        @Html.TextBoxFor(m => m.USER_LOGIN_ID, "sumit", new { @class = "input100", @name = "Username", @type = "text" })
+                        @Html.ValidationMessageFor(m => m.USER_LOGIN_ID)
+
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        @Html.PasswordFor(m => m.CURRENT_PASSWORD, new { @class = "input100", @name = "Password", @type = "password" })
+                        @Html.ValidationMessageFor(m => m.CURRENT_PASSWORD)
+
+                    </div>
+                    <div class="flex-sb-m w-full p-t-15 p-b-20">
+                        <div class="form-check">
+
+                        </div>
+                        <div>
+                            <input type="hidden" name="ReturnUrl" value="@Request.QueryString["ReturnUrl"]" />
+                            @Html.ActionLink("Forgot Password?", "ForgotPassword", "Account", new { @class = "txt1", id = "", @style = "color:white" })
+                        </div>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <input type="submit" name="submit" class="login100-form-btn" value="Login" />
+                    </div>
+                    <div class="flex-sb-m w-full p-t-15 p-b-20">
+                        <div class="col-pink">
+                            @ViewBag.Message
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- Plugins Js -->
+    <script src="~/Content/assets/js/app.min.js"></script>
+    <!-- Extra page Js -->
+    <script src="~/Content/assets/js/pages/examples/pages.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("input[type='hidden'][name='REMEMBER_ME.Value']").remove();
+        });
+    </script>
+</body>
+</html>
+
